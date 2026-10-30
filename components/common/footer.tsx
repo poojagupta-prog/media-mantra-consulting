@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { links, services } from "./data";
+import { ScrollToSection } from "@/components/ui/scroll-to-section";
 
 
 export function Footer() {
@@ -8,8 +10,20 @@ export function Footer() {
     <footer className="overflow-hidden bg-[#19181b] text-white">
       <div className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)] flex flex-wrap justify-between gap-10 border-b border-white/15 py-12">
         <div>
-          <p className="text-lg font-medium">Media Mantra Consulting</p>
-          <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mt-4 text-white/50">
+          <Link
+            href="/"
+            aria-label="Media Mantra Consulting home"
+            className="inline-block w-44 rounded-xl  p-3 transition-transform hover:-translate-y-0.5"
+          >
+            <Image
+              src="/logo.png"
+              alt="Media Mantra Consulting"
+              width={180}
+              height={135}
+              className="h-auto w-full"
+            />
+          </Link>
+          <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mt-5 text-white/50">
             Dubai, UAE · Connected to the world
           </p>
         </div>
@@ -46,9 +60,9 @@ export function Footer() {
       <div className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)] flex flex-wrap justify-between gap-3 py-7 text-[10px] text-white/45">
         <span>© 2026 Media Mantra Consulting</span>
         <span>Concept website · Illustrative content & photography</span>
-        <a href="#main-content" className="text-white/75">
+        <ScrollToSection targetId="top" className="text-white/75">
           Back to top ↑
-        </a>
+        </ScrollToSection>
       </div>
     </footer>
   );

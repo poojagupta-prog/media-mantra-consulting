@@ -1,6 +1,7 @@
 import { ArrowDown, Asterisk } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { ParallaxImage } from "@/components/common/scroll-motion";
+import { ScrollToSection } from "@/components/ui/scroll-to-section";
 
 export function HeroSection() {
   return (
@@ -30,12 +31,12 @@ export function HeroSection() {
               We are a creative communications consultancy built around one
               simple belief: a good story can change what happens next.
             </p>
-            <a
-              href="#who-we-are"
+            <ScrollToSection
+              targetId="who-we-are"
               className="mt-9 inline-flex items-center gap-3 border-b border-foreground/30 pb-2 text-xs font-semibold uppercase tracking-wider"
             >
               Get to know us <ArrowDown size={16} />
-            </a>
+            </ScrollToSection>
           </Reveal>
           <Reveal delay={0.12} className="relative">
             <ParallaxImage

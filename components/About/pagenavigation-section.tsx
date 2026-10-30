@@ -1,3 +1,5 @@
+import { ScrollToSection } from "@/components/ui/scroll-to-section";
+
 export function PageNavigationSection() {
   return (
     <nav
@@ -9,18 +11,18 @@ export function PageNavigationSection() {
           The minds behind the mantra
         </span>
         {[
-          ["#who-we-are", "Who we are"],
-          ["#vision", "Our vision"],
-          ["#team", "The team"],
-          ["#mantras", "Our mantras"],
-        ].map(([href, label]) => (
-          <a
-            key={href}
-            href={href}
+          ["who-we-are", "Who we are"],
+          ["vision", "Our vision"],
+          ["team", "The team"],
+          ["mantras", "Our mantras"],
+        ].map(([targetId, label]) => (
+          <ScrollToSection
+            key={targetId}
+            targetId={targetId}
             className="transition-colors hover:text-teal"
           >
             {label} ↗
-          </a>
+          </ScrollToSection>
         ))}
       </div>
     </nav>

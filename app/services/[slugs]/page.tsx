@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, ArrowDown } from "lucide-react";
 import { services } from "@/components/common/data";
 import { servicePerspectives } from "./service-perspectives";
+import { ScrollToSection } from "@/components/ui/scroll-to-section";
 
 export function generateStaticParams() {
   return services.map(({ slug }) => ({ slugs: slug }));
@@ -140,9 +141,9 @@ export default async function ServiceDetailPage({
           </div>
           <div className="flex flex-wrap items-end justify-between gap-6 border-t border-white/35 py-8 md:py-10">
             <p className="max-w-2xl text-lg leading-8 text-white/90 md:text-xl">{service.text}</p>
-            <a href="#approach" className="inline-flex shrink-0 items-center gap-3 border-b border-white/50 pb-2 text-xs font-semibold uppercase tracking-wider transition-colors hover:border-white">
+            <ScrollToSection targetId="approach" className="inline-flex shrink-0 items-center gap-3 border-b border-white/50 pb-2 text-xs font-semibold uppercase tracking-wider transition-colors hover:border-white">
               Discover the approach <ArrowDown size={16} />
-            </a>
+            </ScrollToSection>
           </div>
         </div>
       </section>

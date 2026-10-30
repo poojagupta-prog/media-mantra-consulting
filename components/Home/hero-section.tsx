@@ -2,6 +2,7 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { ArrowText } from "../ui/arrow-text";
 import { photos } from "../common/data";
+import { ScrollToSection } from "../ui/scroll-to-section";
 
 export function HeroSection() {
   return (
@@ -90,8 +91,8 @@ export function HeroSection() {
           </div>
         </div>
         <div className="grid grid-cols-[.9fr_1fr_1.15fr_1.1fr] gap-6 border-t border-[#233f3426] py-[26px] max-[1101px]:grid-cols-2 max-[1101px]:gap-[25px] max-[768px]:gap-x-4 max-[768px]:gap-y-[22px]">
-          <a
-            href="#intro"
+          <ScrollToSection
+            targetId="intro"
             className="group/discover flex items-center gap-[13px] text-[#536257] max-[768px]:gap-[9px] max-[768px]:[&>span:last-child]:text-[8px]"
           >
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#233f3440] transition-colors duration-200 group-hover/discover:bg-[#d8e8be]">
@@ -102,7 +103,7 @@ export function HeroSection() {
               <br />
               starts here
             </span>
-          </a>
+          </ScrollToSection>
           {[
             ["01", "Find your voice", "Positioning & brand narratives"],
             [

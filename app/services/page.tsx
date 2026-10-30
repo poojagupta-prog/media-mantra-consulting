@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Asterisk } from "lucide-react";
 import { services } from "@/components/common/data";
+import { ScrollToSection } from "@/components/ui/scroll-to-section";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -31,12 +32,12 @@ export default function ServicesPage() {
               reputation, we bring strategy, creativity and care to every
               connection.
             </p>
-            <a
-              href="#services-list"
+            <ScrollToSection
+              targetId="services-list"
               className="inline-flex items-center gap-3 border-b border-foreground/30 pb-2 text-xs font-semibold uppercase tracking-wider"
             >
               Explore our services <ArrowDown size={17} />
-            </a>
+            </ScrollToSection>
           </div>
         </div>
         <Asterisk
