@@ -152,7 +152,7 @@ export function Header() {
       {open && (
         <nav
           id="mobile-nav"
-          className="absolute inset-x-0 top-full max-h-[calc(100vh-92px)] overflow-y-auto border-t border-black/10 bg-background px-6 pb-8 shadow-2xl lg:hidden"
+          className="absolute inset-x-0 top-full max-h-[calc(100dvh-88px)] overflow-y-auto border-t border-black/10 bg-background px-5 pb-6 shadow-2xl overscroll-contain lg:hidden"
           aria-label="Mobile navigation"
         >
           {links.map(([href, label]) =>
@@ -162,7 +162,7 @@ export function Header() {
                   <Link
                     href={href}
                     onClick={closeMobile}
-                    className={`block py-4 text-2xl font-medium tracking-tight ${pathname.startsWith(href) ? "text-teal" : ""}`}
+                    className={`block py-3.5 text-[17px] font-medium tracking-[-.025em] ${pathname.startsWith(href) ? "text-teal" : ""}`}
                     aria-current={pathname === href ? "page" : undefined}
                   >
                     Services
@@ -173,29 +173,30 @@ export function Header() {
                     aria-expanded={openServices}
                     aria-controls="mobile-services-menu"
                     onClick={() => setOpenServices(!openServices)}
-                    className="rounded-full border border-black/10 p-2"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-black/10 text-foreground/70"
                   >
                     <ChevronDown
-                      size={18}
+                      size={16}
                       className={`transition-transform ${openServices ? "rotate-180" : ""}`}
                     />
                   </button>
                 </div>
                 {openServices && (
-                  <div id="mobile-services-menu" className="grid gap-1 pb-4">
-                    {services.map((service) => (
+                  <div id="mobile-services-menu" className="grid gap-0.5 border-t border-black/5 pb-3 pt-2">
+                    {services.map((service, index) => (
                       <Link
                         key={service.slug}
                         href={`/services/${service.slug}`}
                         onClick={closeMobile}
-                        className="rounded-xl bg-black/[.035] px-4 py-3 text-sm"
+                        className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] leading-5 ${pathname === `/services/${service.slug}` ? "bg-[#e6efeb] font-medium text-teal" : "text-foreground/75 hover:bg-black/[.035]"}`}
                         aria-current={
                           pathname === `/services/${service.slug}`
                             ? "page"
                             : undefined
                         }
                       >
-                        {service.title}
+                        <span className="w-5 shrink-0 font-mono text-[10px] text-muted">{String(index + 1).padStart(2, "0")}</span>
+                        <span>{service.title}</span>
                       </Link>
                     ))}
                   </div>
@@ -207,7 +208,7 @@ export function Header() {
                 href={href}
                 onClick={closeMobile}
                 aria-current={pathname === href ? "page" : undefined}
-                className={`block border-b border-black/10 py-4 text-2xl font-medium tracking-tight ${pathname === href ? "text-teal" : ""}`}
+                className={`block border-b border-black/10 py-3.5 text-[17px] font-medium tracking-[-.025em] ${pathname === href ? "text-teal" : ""}`}
               >
                 {label}
               </Link>
@@ -216,9 +217,9 @@ export function Header() {
           <Link
             href="/contact"
             onClick={closeMobile}
-            className="mt-6 flex items-center justify-between rounded-full bg-teal py-3 pl-6 pr-3 text-sm font-medium text-white"
+            className="mt-5 flex items-center justify-between rounded-full bg-teal py-2.5 pl-5 pr-3 text-[13px] font-medium text-white"
           >
-            Start a conversation <ArrowUpRight size={19} />
+            Start a conversation <ArrowUpRight size={18} />
           </Link>
         </nav>
       )}

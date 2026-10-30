@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { links } from "./data";
+import { links, services } from "./data";
 
 
 export function Footer() {
@@ -26,6 +26,12 @@ export function Footer() {
               {label}
             </Link>
           ))}
+        </nav>
+      </div>
+      <div className="mx-auto grid w-[min(1440px,calc(100%-112px))] gap-7 border-b border-white/15 py-10 max-[768px]:w-[calc(100%-40px)] md:grid-cols-[220px_1fr]">
+        <Link href="/services" className="font-mono text-[10px] uppercase tracking-[.13em] text-[#92dfd4] hover:text-white">Explore our services ↗</Link>
+        <nav aria-label="Services" className="grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((service) => <Link key={service.slug} href={`/services/${service.slug}`} className="text-sm text-white/70 transition-colors hover:text-[#92dfd4]">{service.title}</Link>)}
         </nav>
       </div>
       <div

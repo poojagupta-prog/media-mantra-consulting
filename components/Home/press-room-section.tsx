@@ -31,13 +31,13 @@ export function PressRoomSection() {
           </p>
           <div
             className="mt-9 flex flex-wrap gap-2"
-            aria-label="Public relations services"
+            aria-label="Related services"
           >
             {[
-              "Media relations",
-              "Press office",
-              "Thought leadership",
-              "Launch campaigns",
+              "Media Relations",
+              "Public Relations",
+              "Strategic Content Planning",
+              "Brand Elevation",
             ].map((item) => (
               <span
                 key={item}
