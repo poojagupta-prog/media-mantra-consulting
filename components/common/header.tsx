@@ -7,6 +7,8 @@ import { useState } from "react";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { links, services } from "./data";
 
+const navigationLinks = links.filter(([href]) => href !== "/contact");
+
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -35,9 +37,9 @@ export function Header() {
         </Link>
         <nav
           aria-label="Main navigation"
-          className="hidden h-full items-center gap-1 lg:flex"
+          className="hidden h-full items-center gap-1 xl:flex"
         >
-          {links.map(([href, label]) =>
+          {navigationLinks.map(([href, label]) =>
             href === "/services" ? (
               <div
                 key={href}
@@ -129,7 +131,7 @@ export function Header() {
         </nav>
         <Link
           href="/contact"
-          className="hidden shrink-0 items-center gap-5 rounded-full bg-foreground py-2 pl-5 pr-2 text-xs font-medium text-white transition-colors hover:bg-teal lg:inline-flex"
+          className="hidden shrink-0 items-center gap-5 rounded-full bg-foreground py-2 pl-5 pr-2 text-xs font-medium text-white transition-colors hover:bg-teal xl:inline-flex"
         >
           Let’s talk{" "}
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-foreground">
@@ -137,7 +139,7 @@ export function Header() {
           </span>
         </Link>
         <button
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-black/15 lg:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-black/15 xl:hidden"
           onClick={() => {
             setOpen(!open);
             setOpenServices(false);
@@ -152,10 +154,10 @@ export function Header() {
       {open && (
         <nav
           id="mobile-nav"
-          className="absolute inset-x-0 top-full max-h-[calc(100dvh-88px)] overflow-y-auto border-t border-black/10 bg-background px-5 pb-6 shadow-2xl overscroll-contain lg:hidden"
+          className="absolute inset-x-0 top-full max-h-[calc(100dvh-88px)] overflow-y-auto border-t border-black/10 bg-background px-5 pb-6 shadow-2xl overscroll-contain xl:hidden"
           aria-label="Mobile navigation"
         >
-          {links.map(([href, label]) =>
+          {navigationLinks.map(([href, label]) =>
             href === "/services" ? (
               <div key={href} className="border-b border-black/10">
                 <div className="flex items-center justify-between">
