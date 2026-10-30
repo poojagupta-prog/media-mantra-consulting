@@ -66,3 +66,70 @@ export const links = [
   ["case-studies", "Case studies"],
   ["/contact", "Contact"],
 ];
+
+export const caseStudies = [
+  {
+    brand: "THE DUNE HOUSE",
+    category: "Hospitality & destinations",
+    title: "A new address. The city’s next conversation.",
+    description:
+      "Introducing a boutique Dubai retreat with a story rooted in local design, thoughtful hospitality, and a different way to experience the city.",
+    image: photos.city,
+    alt: "Dubai skyline and waterfront at sunset",
+    color: "bg-[#dcece5]",
+    services: ["Brand launch", "Media relations", "Creator experiences"],
+    metrics: [
+      ["48", "editorial features"],
+      ["3.2M", "potential reach"],
+      ["12", "creator partnerships"],
+    ],
+    challenge:
+      "An independent hotel needed to stand out in a crowded luxury market. With no existing brand awareness, the brief was to build curiosity before opening and give travellers a reason to look beyond familiar names.",
+    approach:
+      "We built a narrative around the people and craftsmanship behind the property. An intimate media preview, neighbourhood guides, and a curated creator programme brought that story to life across travel, design, and lifestyle channels.",
+    result:
+      "The illustrative eight-week launch generated 48 editorial features and 12 creator partnerships. A consistent story across every touchpoint helped position the property as a destination with a distinctive point of view.",
+  },
+  {
+    brand: "NOVA TECHNOLOGIES",
+    category: "Technology & innovation",
+    title: "Making a complex idea feel wonderfully human.",
+    description:
+      "Moving an emerging technology brand from product announcements to a meaningful conversation about the future of work.",
+    image: photos.tech,
+    alt: "Modern glass towers viewed from street level",
+    color: "bg-[#e9e5f0]",
+    services: ["Thought leadership", "Corporate positioning"],
+    metrics: [
+      ["24", "expert interviews"],
+      ["2.4×", "share of voice"],
+    ],
+    challenge:
+      "Nova’s technical expertise was strong, but its message was getting lost in industry jargon. The team needed a clearer story that would connect with business leaders beyond the technology press.",
+    approach:
+      "We translated product capabilities into everyday business stories, developed a leadership point of view, and created a programme of commentary, interviews, and accessible explainers.",
+    result:
+      "Over a fictional three-month programme, the brand secured 24 expert interviews and increased its share of voice by 2.4 times against a sample competitor set.",
+  },
+  {
+    brand: "COMMON GROUND",
+    category: "Lifestyle & culture",
+    title: "From a new label to a shared sense of belonging.",
+    description:
+      "Building a community around a homegrown lifestyle label through real people, local stories, and experiences worth sharing.",
+    image: photos.lifestyle,
+    alt: "Bright lifestyle boutique with clothing displays",
+    color: "bg-[#f5e3d9]",
+    services: ["Community building", "Social storytelling"],
+    metrics: [
+      ["180%", "engagement uplift"],
+      ["650", "event visitors"],
+    ],
+    challenge:
+      "A new lifestyle label wanted to build lasting connections with a young UAE audience. The goal was to turn an initial product launch into an ongoing community conversation.",
+    approach:
+      "We partnered with local creatives to tell their stories, designed a series of neighbourhood pop-ups, and connected the physical experience with a social content series shaped by the community.",
+    result:
+      "In this sample campaign, the launch attracted 650 event visitors and delivered a 180% increase in engagement compared with the brand’s fictional pre-launch baseline.",
+  },
+];
