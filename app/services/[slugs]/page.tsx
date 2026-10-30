@@ -94,16 +94,26 @@ const designs = {
 } as const;
 
 const heroImages = {
-  "media-relations": "https://images.unsplash.com/photo-1689421755395-c18b8cd24db3?auto=format&fit=crop&w=2400&q=85",
-  "public-relations": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2400&q=85",
-  "social-digital-media": "https://images.unsplash.com/photo-1781606424661-de1dc2b4c6e1?auto=format&fit=crop&w=2400&q=85",
-  "event-management": "https://images.unsplash.com/photo-1774092137702-2abdbf38e683?auto=format&fit=crop&w=2400&q=85",
-  "reputation-building-management": "https://images.unsplash.com/photo-1758518726775-70e538b0d46e?auto=format&fit=crop&w=2400&q=85",
-  "seo-performance-marketing": "https://images.unsplash.com/photo-1784729553968-07da5d7b7c99?auto=format&fit=crop&w=2400&q=85",
-  podcast: "https://images.unsplash.com/photo-1782274265689-4f10a91d4abb?auto=format&fit=crop&w=2400&q=85",
-  "content-marketing": "https://images.unsplash.com/photo-1769159523569-bdf28e5f9441?auto=format&fit=crop&w=2400&q=85",
-  "strategic-content-planning": "https://images.unsplash.com/photo-1590402494587-44b71d7772f6?auto=format&fit=crop&w=2400&q=85",
-  "brand-elevation": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=2400&q=85",
+  "media-relations":
+    "https://images.unsplash.com/photo-1689421755395-c18b8cd24db3?auto=format&fit=crop&w=2400&q=85",
+  "public-relations":
+    "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2400&q=85",
+  "social-digital-media":
+    "https://images.unsplash.com/photo-1781606424661-de1dc2b4c6e1?auto=format&fit=crop&w=2400&q=85",
+  "event-management":
+    "https://images.unsplash.com/photo-1774092137702-2abdbf38e683?auto=format&fit=crop&w=2400&q=85",
+  "reputation-building-management":
+    "https://images.unsplash.com/photo-1758518726775-70e538b0d46e?auto=format&fit=crop&w=2400&q=85",
+  "seo-performance-marketing":
+    "https://images.unsplash.com/photo-1784729553968-07da5d7b7c99?auto=format&fit=crop&w=2400&q=85",
+  podcast:
+    "https://images.unsplash.com/photo-1782274265689-4f10a91d4abb?auto=format&fit=crop&w=2400&q=85",
+  "content-marketing":
+    "https://images.unsplash.com/photo-1769159523569-bdf28e5f9441?auto=format&fit=crop&w=2400&q=85",
+  "strategic-content-planning":
+    "https://images.unsplash.com/photo-1590402494587-44b71d7772f6?auto=format&fit=crop&w=2400&q=85",
+  "brand-elevation":
+    "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=2400&q=85",
 } as const;
 
 export default async function ServiceDetailPage({
@@ -124,24 +134,39 @@ export default async function ServiceDetailPage({
         <div
           aria-hidden="true"
           className="absolute inset-0 -z-20 bg-cover bg-center"
-          style={{ backgroundImage: `url('${heroImages[service.slug as keyof typeof heroImages]}')` }}
+          style={{
+            backgroundImage: `url('${heroImages[service.slug as keyof typeof heroImages]}')`,
+          }}
         />
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(10,17,17,.88)_0%,rgba(10,17,17,.65)_46%,rgba(10,17,17,.2)_100%),linear-gradient(0deg,rgba(10,17,17,.62),transparent_45%)]" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(10,17,17,.88)_0%,rgba(10,17,17,.65)_46%,rgba(10,17,17,.2)_100%),linear-gradient(0deg,rgba(10,17,17,.62),transparent_45%)]"
+        />
         <div className="mx-auto flex w-[min(1440px,calc(100%-112px))] flex-1 flex-col max-[768px]:w-[calc(100%-40px)]">
-          <Link href="/services" className="mt-10 inline-flex w-fit items-center gap-2 text-xs font-medium text-white/85 transition-colors hover:text-white md:mt-14">
+          <Link
+            href="/services"
+            className="mt-10 inline-flex w-fit items-center gap-2 text-xs font-medium text-white/85 transition-colors hover:text-white md:mt-14"
+          >
             <ArrowLeft size={16} /> All services
           </Link>
           <div className="my-auto py-20">
             <span className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/35 bg-black/15 px-4 py-2 font-mono text-[10px] uppercase tracking-[.13em] text-white backdrop-blur-sm">
-              <span className="h-2 w-2 rounded-full bg-orange" /> 0{index + 1} / {design.eyebrow}
+              <span className="h-2 w-2 rounded-full bg-orange" /> 0{index + 1} /{" "}
+              {design.eyebrow}
             </span>
             <h1 className="max-w-5xl text-[clamp(3.8rem,8vw,8.5rem)] font-[650] leading-[.92] tracking-[-.075em] text-balance">
-              {service.title}<span className="text-[#92dfd4]">.</span>
+              {service.title}
+              <span className="text-[#92dfd4]">.</span>
             </h1>
           </div>
           <div className="flex flex-wrap items-end justify-between gap-6 border-t border-white/35 py-8 md:py-10">
-            <p className="max-w-2xl text-lg leading-8 text-white/90 md:text-xl">{service.text}</p>
-            <ScrollToSection targetId="approach" className="inline-flex shrink-0 items-center gap-3 border-b border-white/50 pb-2 text-xs font-semibold uppercase tracking-wider transition-colors hover:border-white">
+            <p className="max-w-2xl text-lg leading-8 text-white/90 md:text-xl">
+              {service.text}
+            </p>
+            <ScrollToSection
+              targetId="approach"
+              className="inline-flex shrink-0 items-center gap-3 border-b border-white/50 pb-2 text-xs font-semibold uppercase tracking-wider transition-colors hover:border-white"
+            >
               Discover the approach <ArrowDown size={16} />
             </ScrollToSection>
           </div>
@@ -288,7 +313,7 @@ export default async function ServiceDetailPage({
           </div>
         </div>
       </section>
-      <section className="bg-[#19181b] py-20 text-white md:py-28">
+      <section className="bg-foreground/80 py-20 text-white md:py-28">
         <div className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)]">
           <p className="mb-7 font-mono text-[10px] uppercase tracking-[.13em] text-[#92dfd4]">
             The next step starts here
