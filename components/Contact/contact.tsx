@@ -1,6 +1,7 @@
 import { ArrowDownRight, MapPin } from "lucide-react";
 import { Reveal } from "../ui/reveal";
 import ContactForm from "../common/contact-form";
+import { offices, contactEmails } from "../common/contact-details";
 
 export function ContactView() {
   return (
@@ -26,15 +27,41 @@ export function ContactView() {
             className="mb-12 hidden h-24 w-24 text-teal lg:block"
             strokeWidth={1}
           />
-          <div className="max-w-sm border-t border-black/20 pt-7">
-            <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mb-4">
-              From Dubai, with perspective.
+          <div className="border-t border-black/20 pt-6">
+            <p className="mb-5 font-mono text-[10px] uppercase leading-relaxed tracking-[.13em] text-teal">
+              Two offices. One connected team.
             </p>
-            <p className="flex items-center gap-2 text-sm">
-              <MapPin size={16} />
-              Dubai, United Arab Emirates
-            </p>
-            <p className="mt-7 text-xs leading-6 text-muted">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+              {offices.map((office) => (
+                <section key={office.title} className="min-w-0">
+                  <h2 className="mb-3 flex items-center gap-2 text-sm font-semibold">
+                    <MapPin size={16} className="shrink-0 text-teal" aria-hidden="true" />
+                    {office.title}
+                  </h2>
+                  <address className="space-y-3 text-xs leading-6 not-italic text-muted">
+                    <p>{office.address}</p>
+                    <a
+                      href={`tel:${office.telephone}`}
+                      className="inline-block font-medium text-teal hover:underline focus-visible:outline-offset-4"
+                    >
+                      {office.phone}
+                    </a>
+                    <div className="flex flex-col items-start gap-1">
+                      {contactEmails.map((email) => (
+                        <a
+                          key={email}
+                          href={`mailto:${email}`}
+                          className="max-w-full break-words text-teal hover:underline focus-visible:outline-offset-4"
+                        >
+                          {email}
+                        </a>
+                      ))}
+                    </div>
+                  </address>
+                </section>
+              ))}
+            </div>
+            <p className="mt-6 text-xs leading-6 text-muted">
               This is a concept website. Try the enquiry experience — no
               information is sent or stored.
             </p>

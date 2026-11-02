@@ -109,7 +109,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-      <section className="bg-[#19181b] py-20 text-white md:py-28">
+      <section className="bg-[#19181b]/80 py-20 text-white md:py-28">
         <div className="mx-auto flex w-[min(1440px,calc(100%-112px))] flex-wrap items-end justify-between gap-8 max-[768px]:w-[calc(100%-40px)]">
           <div>
             <p className="mb-7 font-mono text-[10px] uppercase tracking-[.13em] text-[#92dfd4]">
