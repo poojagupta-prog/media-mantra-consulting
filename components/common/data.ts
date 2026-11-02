@@ -116,7 +116,7 @@ export const links = [
   ["/services", "Services"],
   ["/sectors", "Sectors"],
   ["/news-room", "Newsroom"],
-  ["case-studies", "Case studies"],
+  ["/case-studies", "Case studies"],
   ["/contact", "Contact"],
 ];
 

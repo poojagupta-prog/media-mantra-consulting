@@ -28,18 +28,28 @@ export function Footer() {
           </p>
         </div>
         {offices.map((office) => (
-          <section key={office.title} className="min-w-0 border-l border-[#92dfd4]/30 pl-5">
+          <section
+            key={office.title}
+            className="min-w-0 border-l border-[#92dfd4]/30 pl-5"
+          >
             <h2 className="mb-3 font-mono text-[11px] font-medium uppercase tracking-[.12em] text-[#92dfd4]">
               {office.title}
             </h2>
             <address className="space-y-2 text-xs leading-relaxed not-italic text-white/70">
               <p className="max-w-sm">{office.address}</p>
-              <a href={`tel:${office.telephone}`} className="inline-block text-white transition-colors hover:text-[#92dfd4] focus-visible:outline-offset-4">
+              <a
+                href={`tel:${office.telephone}`}
+                className="inline-block text-white transition-colors hover:text-[#92dfd4] focus-visible:outline-offset-4"
+              >
                 {office.phone}
               </a>
               <div className="flex flex-col items-start gap-1">
                 {contactEmails.map((email) => (
-                  <a key={email} href={`mailto:${email}`} className="max-w-full break-words transition-colors hover:text-[#92dfd4] focus-visible:outline-offset-4">
+                  <a
+                    key={email}
+                    href={`mailto:${email}`}
+                    className="max-w-full break-words transition-colors hover:text-[#92dfd4] focus-visible:outline-offset-4"
+                  >
                     {email}
                   </a>
                 ))}
@@ -53,7 +63,13 @@ export function Footer() {
           aria-label="Footer navigation"
           className="flex flex-wrap items-start gap-x-6 gap-y-3"
         >
-          {links.map(([href, label]) => (
+          {[
+            ...links,
+            ["/dubai-it", "Dubai IT"],
+            ["/podcasts", "Podcasts"],
+            ["/awards", "Awards"],
+            ["/gallery", "Gallery"],
+          ].map(([href, label]) => (
             <Link
               key={href}
               href={href}
@@ -65,9 +81,25 @@ export function Footer() {
         </nav>
       </div>
       <div className="mx-auto grid w-[min(1440px,calc(100%-112px))] gap-5 border-b border-white/15 py-6 max-[768px]:w-[calc(100%-40px)] md:grid-cols-[220px_1fr]">
-        <Link href="/services" className="font-mono text-[10px] uppercase tracking-[.13em] text-[#92dfd4] hover:text-white">Explore our services ↗</Link>
-        <nav aria-label="Services" className="grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => <Link key={service.slug} href={`/services/${service.slug}`} className="text-sm text-white/70 transition-colors hover:text-[#92dfd4]">{service.title}</Link>)}
+        <Link
+          href="/services"
+          className="font-mono text-[10px] uppercase tracking-[.13em] text-[#92dfd4] hover:text-white"
+        >
+          Explore our services ↗
+        </Link>
+        <nav
+          aria-label="Services"
+          className="grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {services.map((service) => (
+            <Link
+              key={service.slug}
+              href={`/services/${service.slug}`}
+              className="text-sm text-white/70 transition-colors hover:text-[#92dfd4]"
+            >
+              {service.title}
+            </Link>
+          ))}
         </nav>
       </div>
       <div

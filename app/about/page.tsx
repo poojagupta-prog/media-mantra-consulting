@@ -1,8 +1,11 @@
+import {
+  RecognitionPreview,
+  GalleryPreview,
+} from "@/components/media/previews";
 import type { Metadata } from "next";
 import { ScrollProgress } from "@/components/common/scroll-motion";
 import { Marquee } from "@/components/ui/marquee";
 import { HeroSection } from "@/components/About/hero-section";
-import { PageNavigationSection } from "@/components/About/pagenavigation-section";
 import { WhoWeAreSection } from "@/components/About/whoweare-section";
 import { VisionSection } from "@/components/About/vision-section";
 import { TeamSection } from "@/components/About/team-section";
@@ -31,6 +34,8 @@ export default function AboutUs() {
       <EssenceSection />
       <PhilosophySection />
       <MantrasSection />
+      <RecognitionPreview />
+      <GalleryPreview />
       <CTA />
     </div>
   );

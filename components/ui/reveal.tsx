@@ -15,7 +15,7 @@ export function Reveal({
   const reduced = useReducedMotion();
   return (
     <motion.div
-      initial={{ opacity: 0, y: reduced ? 0 : 30 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{
@@ -23,7 +23,7 @@ export function Reveal({
         delay: reduced ? 0 : delay,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className={className}
+      className={`motion-reduce:opacity-100! motion-reduce:transform-none! ${className}`}
     >
       {children}
     </motion.div>

@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowText } from "../ui/arrow-text";
 import { Reveal } from "../ui/reveal";
 import { caseStudies } from "../common/data";
@@ -34,15 +35,16 @@ export function CaseStudies() {
           {caseStudies.map((study) => (
             <Reveal key={study.brand} className="h-full">
               <Link
-                href="/case-studies"
+                href={`/case-studies/${["dune-house-hospitality-launch", "nova-technology-storytelling", "common-ground-community-launch"][caseStudies.indexOf(study)]}`}
                 aria-label={`Read the ${study.brand.toLowerCase()} case study`}
                 className={`group flex h-full flex-col overflow-hidden rounded-sm text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#92dfd4] ${study.color}`}
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
+                  <Image
                     src={study.image}
                     alt={study.alt}
-                    loading="lazy"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     className="h-full w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-105"
                   />
                   <span
@@ -54,7 +56,7 @@ export function CaseStudies() {
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mb-3 text-muted">
-                    {study.category}
+                    Concept example · {study.category}
                   </p>
                   <p className="mb-4 text-xs font-semibold">{study.brand}</p>
                   <h3 className="text-2xl leading-tight tracking-[-.045em]">

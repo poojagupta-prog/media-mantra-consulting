@@ -70,7 +70,7 @@ export function DubaiPerspective() {
             <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mb-6 flex items-center gap-2 text-[#92dfd4]">
               <MapPin size={14} /> Dubai · UAE · GCC
             </p>
-            <ArrowText href="/about">Get to know our perspective</ArrowText>
+            <ArrowText href="/dubai-it">Explore the Dubai IT concept</ArrowText>
           </div>
         </div>
       </div>

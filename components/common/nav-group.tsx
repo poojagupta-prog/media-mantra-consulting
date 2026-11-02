@@ -1,0 +1,87 @@
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useRef } from "react";
+import { ChevronDown } from "lucide-react";
+export const navGroups: Record<
+  string,
+  { label: string; items: [string, string][] }
+> = {
+  "/about": {
+    label: "About us",
+    items: [
+      ["/about", "Our story"],
+      ["/about#team", "Management team"],
+      ["/awards", "Awards & recognition"],
+      ["/gallery", "Gallery"],
+    ],
+  },
+  "/#case-studies": {
+    label: "Our work",
+    items: [
+      ["/#case-studies", "Case studies"],
+      ["/dubai-it", "Dubai IT"],
+    ],
+  },
+  "/news-room": {
+    label: "Insights & media",
+    items: [
+      ["/news-room", "Newsroom & insights"],
+      ["/podcasts", "Podcasts"],
+    ],
+  },
+};
+export function NavGroup({
+  group,
+  mobile = false,
+  onNavigate,
+}: {
+  group: (typeof navGroups)[string];
+  mobile?: boolean;
+  onNavigate?: () => void;
+}) {
+  const ref = useRef<HTMLDetailsElement>(null);
+  const pathname = usePathname();
+  return (
+    <details
+      ref={ref}
+      className={mobile ? "nav-group nav-group-mobile" : "nav-group"}
+      onMouseEnter={(e) => {
+        if (!mobile) e.currentTarget.open = true;
+      }}
+      onMouseLeave={(e) => {
+        if (!mobile) e.currentTarget.open = false;
+      }}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget))
+          e.currentTarget.open = false;
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Escape") {
+          e.currentTarget.open = false;
+          e.currentTarget.querySelector("summary")?.focus();
+        }
+      }}
+    >
+      <summary>
+        {group.label}
+        <ChevronDown size={14} />
+      </summary>
+      <div className="nav-group-panel">
+        {group.items.map(([href, label]) => (
+          <Link
+            href={href}
+            key={href}
+            aria-current={pathname === href ? "page" : undefined}
+            onClick={() => {
+              if (ref.current) ref.current.open = false;
+              onNavigate?.();
+            }}
+          >
+            {label}
+          </Link>
+        ))}
+      </div>
+    </details>
+  );
+}

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import { NavGroup, navGroups } from "./nav-group";
 import { links, services } from "./data";
 
 const navigationLinks = links.filter(([href]) => href !== "/contact");
@@ -40,7 +41,9 @@ export function Header() {
           className="hidden h-full items-center gap-1 xl:flex"
         >
           {navigationLinks.map(([href, label]) =>
-            href === "/services" ? (
+            navGroups[href] ? (
+              <NavGroup key={href} group={navGroups[href]} />
+            ) : href === "/services" ? (
               <div
                 key={href}
                 className="relative flex h-full items-center"
@@ -158,7 +161,14 @@ export function Header() {
           aria-label="Mobile navigation"
         >
           {navigationLinks.map(([href, label]) =>
-            href === "/services" ? (
+            navGroups[href] ? (
+              <NavGroup
+                key={href}
+                group={navGroups[href]}
+                mobile
+                onNavigate={closeMobile}
+              />
+            ) : href === "/services" ? (
               <div key={href} className="border-b border-black/10">
                 <div className="flex items-center justify-between">
                   <Link
@@ -184,7 +194,10 @@ export function Header() {
                   </button>
                 </div>
                 {openServices && (
-                  <div id="mobile-services-menu" className="grid gap-0.5 border-t border-black/5 pb-3 pt-2">
+                  <div
+                    id="mobile-services-menu"
+                    className="grid gap-0.5 border-t border-black/5 pb-3 pt-2"
+                  >
                     {services.map((service, index) => (
                       <Link
                         key={service.slug}
@@ -197,7 +210,9 @@ export function Header() {
                             : undefined
                         }
                       >
-                        <span className="w-5 shrink-0 font-mono text-[10px] text-muted">{String(index + 1).padStart(2, "0")}</span>
+                        <span className="w-5 shrink-0 font-mono text-[10px] text-muted">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
                         <span>{service.title}</span>
                       </Link>
                     ))}

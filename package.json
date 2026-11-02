@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sync:podcasts": "node scripts/sync-podcasts.mjs",
+    "test:podcasts": "node --test tests/youtube-catalogue.test.mjs"
   },
   "dependencies": {
     "framer-motion": "^14.8.0",

@@ -1,3 +1,9 @@
+import {
+  PodcastPreview,
+  RecognitionPreview,
+  GalleryPreview,
+  TestimonialPreview,
+} from "@/components/media/previews";
 import { ScrollProgress } from "@/components/common/scroll-motion";
 import { CapabilitiesSection } from "@/components/Home/capabilities";
 import { CaseStudies } from "@/components/Home/case-studies-section";
@@ -27,7 +33,11 @@ export default function Home() {
       <Dubai />
       <RegionalExpertise />
       <CaseStudies />
+      <RecognitionPreview />
+      <PodcastPreview />
       <OurProcess />
+      <TestimonialPreview />
+      <GalleryPreview />
       <Manifesto />
       <HomeFAQ />
     </div>
