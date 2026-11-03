@@ -30,14 +30,17 @@ const sectors = [
 
 export function SectorCarousel() {
   const [active, setActive] = useState(0);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   useEffect(() => {
-    const timer = window.setInterval(
+    if (hoveredCard === active) return;
+
+    const timer = window.setTimeout(
       () => setActive((index) => (index + 1) % sectors.length),
       4000,
     );
-    return () => window.clearInterval(timer);
-  }, []);
+    return () => window.clearTimeout(timer);
+  }, [active, hoveredCard]);
 
   return (
     <div
@@ -64,12 +67,18 @@ export function SectorCarousel() {
                     <ArrowUpRight size={23} aria-hidden="true" />
                   </span>
                 )}
-                <span className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase absolute bottom-5 left-5 bg-white px-3 py-2">
-                  Sector focus / 0{index + 1}
-                </span>
+                {position === 0 && (
+                  <span className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase absolute bottom-5 left-5 bg-white px-3 py-2">
+                    Sector focus / 0{index + 1}
+                  </span>
+                )}
               </div>
-              <h3 className="mt-5 text-2xl tracking-tight">{sector.title}</h3>
-              <p className="mt-2 text-xs text-muted">{sector.sub}</p>
+              {position === 0 && (
+                <>
+                  <h3 className="mt-5 text-2xl tracking-tight">{sector.title}</h3>
+                  <p className="mt-2 text-xs text-muted">{sector.sub}</p>
+                </>
+              )}
             </>
           );
           const className =
@@ -84,6 +93,10 @@ export function SectorCarousel() {
             <Link
               key={sector.title}
               href="/sectors"
+              onMouseEnter={() => {
+                if (position === 0) setHoveredCard(index);
+              }}
+              onMouseLeave={() => setHoveredCard(null)}
               onClick={(event) => {
                 if (position !== 0) {
                   event.preventDefault();
@@ -112,20 +125,35 @@ export function SectorCarousel() {
           );
         })}
       </div>
-      <div
-        className="mt-2 flex items-center justify-center gap-3"
-        aria-label="Choose a sector"
-      >
-        {sectors.map((sector, index) => (
-          <button
-            key={sector.title}
-            type="button"
-            onClick={() => setActive(index)}
-            aria-label={`Show ${sector.title}`}
-            aria-current={active === index ? "true" : undefined}
-            className={`h-2.5 rounded-full transition-all duration-300 ${active === index ? "w-8 bg-teal" : "w-2.5 bg-[#b7beb8]"}`}
-          />
-        ))}
+      <div className="mt-2 flex items-center justify-center gap-5">
+        <button
+          type="button"
+          onClick={() =>
+            setActive((index) => (index - 1 + sectors.length) % sectors.length)
+          }
+          className="text-sm underline-offset-4 hover:underline focus-visible:underline"
+        >
+          Previous
+        </button>
+        <div className="flex items-center gap-3" aria-label="Choose a sector">
+          {sectors.map((sector, index) => (
+            <button
+              key={sector.title}
+              type="button"
+              onClick={() => setActive(index)}
+              aria-label={`Show ${sector.title}`}
+              aria-current={active === index ? "true" : undefined}
+              className={`h-2.5 rounded-full transition-all duration-300 ${active === index ? "w-8 bg-teal" : "w-2.5 bg-[#b7beb8]"}`}
+            />
+          ))}
+        </div>
+        <button
+          type="button"
+          onClick={() => setActive((index) => (index + 1) % sectors.length)}
+          className="text-sm underline-offset-4 hover:underline focus-visible:underline"
+        >
+          Next
+        </button>
       </div>
     </div>
   );

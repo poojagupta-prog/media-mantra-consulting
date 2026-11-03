@@ -2,6 +2,33 @@ import { FAQ } from "../common/faq";
 import { ArrowText } from "../ui/arrow-text";
 import { Reveal } from "../ui/reveal";
 
+const faqData = [
+  {
+    id: 1,
+    question: "What does a partnership look like?",
+    answer:
+      "We start by listening. Together, we define your objectives, develop an approach, and agree on a scope that fits your ambitions.",
+  },
+  {
+    id: 2,
+    question: "Can you support a one-off launch?",
+    answer:
+      "Our illustrative services include focused launch campaigns as well as ongoing communications partnerships.",
+  },
+  {
+    id: 3,
+    question: "How do we get started?",
+    answer:
+      "Tell us about your brand on the contact page. The form is a demo, so no details are sent or stored.",
+  },
+  {
+    id: 4,
+    question: "What makes you different?",
+    answer:
+      "We combine strategic thinking with creative execution to deliver impactful solutions that drive real results.",
+  },
+];
+
 export function HomeFAQ() {
   return (
     <section className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)] grid gap-12 py-24 md:grid-cols-2">
@@ -20,7 +47,7 @@ export function HomeFAQ() {
           <ArrowText href="/contact">Have something else in mind?</ArrowText>
         </div>
       </Reveal>
-      <FAQ />
+      <FAQ data={faqData} />
     </section>
   );
 }
