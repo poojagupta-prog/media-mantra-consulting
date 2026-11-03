@@ -72,7 +72,12 @@ export function NavGroup({
     >
       <summary>
         {group.label}
-        <ChevronDown size={14} />
+        <span
+          aria-hidden="true"
+          className={mobile ? "flex h-9 w-9 items-center justify-center rounded-full border border-black/10" : ""}
+        >
+          <ChevronDown size={14} className="transition-transform rotate-180" />
+        </span>
       </summary>
       <div className="nav-group-panel">
         {group.items.map(([href, label]) => (

@@ -73,7 +73,7 @@ export function Header() {
                 >
                   <ChevronDown
                     size={15}
-                    className={`transition-transform ${desktopServices ? "rotate-180" : ""}`}
+                    className={`transition-transform ${desktopServices ? "" : "-rotate-180"}`}
                   />
                 </button>
                 {desktopServices && (
@@ -189,7 +189,7 @@ export function Header() {
                   >
                     <ChevronDown
                       size={16}
-                      className={`transition-transform ${openServices ? "rotate-180" : ""}`}
+                      className={`transition-transform ${openServices ? "" : "-rotate-180"}`}
                     />
                   </button>
                 </div>

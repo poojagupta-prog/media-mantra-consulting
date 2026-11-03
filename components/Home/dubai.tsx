@@ -6,34 +6,35 @@ import { photos } from "../common/data";
 import { Reveal } from "../ui/reveal";
 import { ArrowText } from "../ui/arrow-text";
 import { useState } from "react";
+import Image from "next/image";
 
 const locations = [
   {
     name: "Dubai Marina",
     area: "Destination storytelling",
-    x: 27,
-    y: 67,
+    x: 29,
+    y: 48,
     note: "A launch story that makes a place feel like somewhere people want to be.",
   },
   {
     name: "Palm Jumeirah",
     area: "Hospitality & lifestyle",
-    x: 32,
-    y: 43,
+    x: 33,
+    y: 34,
     note: "Thoughtful experiences give people a story worth sharing.",
   },
   {
     name: "Downtown Dubai",
     area: "Brand positioning",
-    x: 58,
-    y: 56,
+    x: 67,
+    y: 53,
     note: "A clear point of view can turn an ambitious idea into a conversation.",
   },
   {
     name: "Dubai Creek",
     area: "Culture & community",
-    x: 74,
-    y: 34,
+    x: 81,
+    y: 53,
     note: "The strongest messages begin with an understanding of the city.",
   },
 ];
@@ -110,92 +111,16 @@ export function DubaiMap() {
         </div>
         <div className="grid overflow-hidden border border-[#164b4930] bg-[#d3e4df] lg:grid-cols-[1.55fr_.85fr]">
           <div
-            className="relative min-h-[360px] overflow-hidden sm:min-h-[480px]"
-            aria-label="Illustrated map of Dubai with four interactive locations"
+            className="relative h-[360px] overflow-hidden sm:h-[480px]"
+            aria-label="Map of Dubai with four interactive locations"
           >
-            <svg
-              viewBox="0 0 900 520"
-              preserveAspectRatio="xMidYMid slice"
-              className="absolute inset-0 h-full w-full"
-              role="img"
-              aria-label="Stylized map showing Dubai's coastline, Palm Jumeirah and Dubai Creek"
-            >
-              <rect width="900" height="520" fill="#a6cbc9" />
-              <path
-                d="M0 467 C140 420 220 391 312 351 C387 319 454 271 534 224 C644 158 745 123 900 82 L900 520 L0 520Z"
-                fill="#e8e5d6"
-              />
-              <path
-                d="M0 467 C140 420 220 391 312 351 C387 319 454 271 534 224 C644 158 745 123 900 82"
-                fill="none"
-                stroke="#f7f5e9"
-                strokeWidth="8"
-              />
-              <path
-                d="M405 369 C530 333 623 280 713 234 C787 196 844 186 900 172 M339 420 C481 389 586 336 670 300 C762 257 845 245 900 224 M491 520 C512 432 581 361 681 303 M672 520 C669 411 731 328 806 258 M782 520 C764 398 803 307 900 247"
-                fill="none"
-                stroke="#fffaf0"
-                strokeWidth="10"
-                opacity=".85"
-              />
-              <path
-                d="M543 268 C605 282 653 317 714 311 C788 303 813 362 900 360"
-                fill="none"
-                stroke="#a6cbc9"
-                strokeWidth="19"
-              />
-              <path
-                d="M543 268 C605 282 653 317 714 311 C788 303 813 362 900 360"
-                fill="none"
-                stroke="#f7f5e9"
-                strokeWidth="3"
-                opacity=".8"
-              />
-              <path
-                d="M287 361 C265 326 244 288 237 246"
-                fill="none"
-                stroke="#e8e5d6"
-                strokeWidth="12"
-              />
-              <path
-                d="M237 247 C191 231 178 180 207 145 C233 115 284 120 307 154 C338 199 286 244 237 247Z"
-                fill="none"
-                stroke="#e8e5d6"
-                strokeWidth="13"
-              />
-              <path
-                d="M237 243 L236 151 M236 180 L204 158 M236 180 L270 155 M236 205 L194 190 M236 205 L286 187 M236 225 L206 221 M236 225 L277 219"
-                fill="none"
-                stroke="#e8e5d6"
-                strokeWidth="9"
-                strokeLinecap="round"
-              />
-              <path
-                d="M95 500 L570 267 M317 520 L738 244 M585 520 L840 193"
-                fill="none"
-                stroke="#d2c9b7"
-                strokeWidth="2"
-                strokeDasharray="5 9"
-              />
-              <text
-                x="55"
-                y="95"
-                fill="#367d80"
-                fontSize="14"
-                letterSpacing="4"
-              >
-                ARABIAN GULF
-              </text>
-              <text
-                x="490"
-                y="442"
-                fill="#79918a"
-                fontSize="13"
-                letterSpacing="3"
-              >
-                DUBAI
-              </text>
-            </svg>
+            <Image
+              src="/dubai-map.png"
+              alt="Street map of Dubai showing the coastline, Palm Jumeirah and Dubai Creek"
+              fill
+              sizes="(min-width: 1024px) 60vw, 100vw"
+              className="object-fill"
+            />
             {locations.map((point, index) => (
               <button
                 key={point.name}
@@ -213,17 +138,22 @@ export function DubaiMap() {
                 >
                   <MapPin size={19} fill="currentColor" strokeWidth={1.5} />
                 </span>
-                <span className="whitespace-nowrap rounded bg-[#073f43] px-2 py-1 font-mono text-[9px] uppercase tracking-[.08em] text-white shadow-sm">
+                <span className="hidden whitespace-nowrap rounded bg-[#073f43] px-2 py-1 font-mono text-[9px] uppercase tracking-[.08em] text-white shadow-sm sm:block">
                   {point.name}
                 </span>
               </button>
             ))}
-            <span className="absolute bottom-4 left-4 rounded bg-white/80 px-3 py-1.5 font-mono text-[9px] uppercase tracking-widest text-[#315b55]">
-              Illustrative map · not to scale
-            </span>
+            <a
+              href="https://commons.wikimedia.org/wiki/File:Dubai_map_city_landmarks.svg"
+              target="_blank"
+              rel="noreferrer"
+              className="absolute bottom-4 left-4 rounded bg-white/90 px-3 py-1.5 font-mono text-[9px] text-[#315b55]"
+            >
+              Map: AreJay / Wikimedia Commons · CC BY 3.0
+            </a>
           </div>
           <div
-            className="flex min-h-[260px] flex-col justify-between bg-[#073f43] p-7 text-white sm:p-10"
+            className="flex min-h-[360px] flex-col justify-between bg-[#073f43] p-7 text-white sm:min-h-[480px] sm:p-10 lg:h-[480px]"
             aria-live="polite"
           >
             <div>
