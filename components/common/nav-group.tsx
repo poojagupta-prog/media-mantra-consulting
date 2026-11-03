@@ -23,6 +23,13 @@ export const navGroups: Record<
       ["/dubai-it", "Dubai IT"],
     ],
   },
+  "/case-studies": {
+    label: "Stories",
+    items: [
+      ["/case-studies", "Case studies"],
+      ["/blogs", "Blogs"],
+    ],
+  },
   "/news-room": {
     label: "Insights & media",
     items: [

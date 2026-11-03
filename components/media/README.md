@@ -41,9 +41,9 @@ with approved content; remove their placeholder labels only after verification.
   panel deliberately contains no invented quote or client identity.
 - About: the existing management profiles remain explicitly labelled concepts.
 
-Existing case studies are homepage content at `/#case-studies`; this checkout
-has no separate case-study or blog route. Navigation preserves `/news-room`
-and routes insights to its existing articles instead of adding duplicate pages.
+Case studies are available at `/case-studies` and on the homepage. The journal
+is available at `/blogs`, alongside `/news-room` in Insights & media. See
+`lib/blogs/README.md` for content import and CMS integration.
 
 ## Interaction checks
 

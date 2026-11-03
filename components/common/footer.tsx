@@ -69,6 +69,8 @@ export function Footer() {
             ["/podcasts", "Podcasts"],
             ["/awards", "Awards"],
             ["/gallery", "Gallery"],
+            ["/blogs", "Blogs"],
+            ["/contact", "Contact"],
           ].map(([href, label]) => (
             <Link
               key={href}
