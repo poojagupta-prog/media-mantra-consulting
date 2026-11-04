@@ -1,3 +1,4 @@
+import { BrandStar } from "@/components/ui/brand-star";
 import { ArrowDown, Asterisk } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { ParallaxImage } from "@/components/common/scroll-motion";
@@ -45,7 +46,8 @@ export function HeroSection() {
               className="h-80 md:h-115"
             />
             <span className="absolute -bottom-5 right-4 rotate-[-5deg] bg-orange px-5 py-4 text-sm font-semibold shadow-[6px_6px_0_#19181b] md:right-8">
-              Different minds. One big energy. ✳
+              Different minds. One big energy.{" "}
+              <BrandStar className="inline-block align-middle" />
             </span>
           </Reveal>
         </div>

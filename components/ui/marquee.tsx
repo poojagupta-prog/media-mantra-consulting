@@ -1,4 +1,6 @@
 "use client";
+import { BrandStar } from "@/components/ui/brand-star";
+
 
 import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
@@ -49,7 +51,7 @@ export function Marquee() {
             {labels.map((t) => (
               <span key={t} className="flex items-center gap-10">
                 {t}
-                <span className="text-[#92dfd4]">✳</span>
+                <BrandStar className="shrink-0 text-[#92dfd4]" />
               </span>
             ))}
           </div>

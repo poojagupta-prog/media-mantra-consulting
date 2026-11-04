@@ -1,4 +1,6 @@
 "use client";
+import { BrandStar } from "@/components/ui/brand-star";
+
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -108,7 +110,7 @@ export function Header() {
                             }
                           >
                             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-lg text-teal">
-                              {service.icon}
+                              {service.icon === "✳" ? <BrandStar className="inline-block align-middle" /> : service.icon}
                             </span>
                             <span className="pt-1 text-sm font-medium leading-5 group-hover:text-teal">
                               {service.title}

@@ -1,3 +1,4 @@
+import { BrandStar } from "@/components/ui/brand-star";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Asterisk } from "lucide-react";
@@ -83,7 +84,7 @@ export default function ServicesPage() {
                   <span
                     className={`flex h-12 w-12 items-center justify-center rounded-full text-2xl ${service.color}`}
                   >
-                    {service.icon}
+                    {service.icon === "✳" ? <BrandStar className="inline-block align-middle" /> : service.icon}
                   </span>
                 </div>
                 <div className="mt-auto pt-10">

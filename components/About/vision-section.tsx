@@ -1,3 +1,4 @@
+import { BrandStar } from "@/components/ui/brand-star";
 import { Reveal } from "@/components/ui/reveal";
 
 export function VisionSection() {
@@ -50,12 +51,7 @@ export function VisionSection() {
           </Reveal>
         </div>
       </div>
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-32 right-0 text-[25rem] leading-none text-white/[.03]"
-      >
-        ✳
-      </span>
+      <BrandStar className="pointer-events-none absolute -bottom-32 right-0 text-[25rem] text-white opacity-[.03]" />
     </section>
   );
 }

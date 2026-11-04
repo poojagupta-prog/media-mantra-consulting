@@ -1,3 +1,4 @@
+import { BrandStar } from "@/components/ui/brand-star";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { ArrowText } from "../ui/arrow-text";
@@ -64,7 +65,7 @@ export function HeroSection() {
               className="absolute -top-7 -right-[26px] rotate-12 text-[132px] leading-none text-[#e96540] max-[1024px]:text-[clamp(76px,14vw,110px)] max-[1024px]:right-0 max-[1024px]:-top-2.5"
               aria-hidden="true"
             >
-              ✳
+              <BrandStar />
             </span>
             <div className="absolute -bottom-9 -right-[18px] w-[88%] -rotate-3 bg-[#d8e8be] px-[26px] py-[23px] text-[#183b32] shadow-[0_12px_30px_#163a3212] [&>span]:text-[9px] [&>div]:mt-3 [&>div]:flex [&>div]:justify-between [&>div]:items-end [&>div]:gap-3 [&_p]:text-[clamp(23px,2.2vw,32px)] [&_p]:leading-[1.12] [&_p]:tracking-[-.035em] max-[1024px]:relative max-[1024px]:bottom-auto max-[1024px]:right-auto max-[1024px]:ml-auto max-[1024px]:-mt-14 max-[1024px]:w-[94%] max-[1024px]:-rotate-2 max-[1024px]:p-[clamp(16px,3vw,24px)] max-[1024px]:[&_p]:text-[clamp(21px,3.8vw,30px)]">
               <span className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase">
