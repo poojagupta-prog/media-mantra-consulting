@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef } from "react";
 import { ChevronDown } from "lucide-react";
+
 export const navGroups: Record<
   string,
   { label: string; items: [string, string][] }
@@ -38,6 +39,7 @@ export const navGroups: Record<
     ],
   },
 };
+
 export function NavGroup({
   group,
   mobile = false,
@@ -60,7 +62,9 @@ export function NavGroup({
         if (!mobile) e.currentTarget.open = false;
       }}
       onBlur={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget))
+        // Touch browsers can blur the summary before dispatching a link click.
+        // Keep mobile panels open until selection so the tap target stays visible.
+        if (!mobile && !e.currentTarget.contains(e.relatedTarget))
           e.currentTarget.open = false;
       }}
       onKeyDown={(e) => {
@@ -74,7 +78,11 @@ export function NavGroup({
         {group.label}
         <span
           aria-hidden="true"
-          className={mobile ? "flex h-9 w-9 items-center justify-center rounded-full border border-black/10" : ""}
+          className={
+            mobile
+              ? "flex h-9 w-9 items-center justify-center rounded-full border border-black/10"
+              : ""
+          }
         >
           <ChevronDown size={14} className="transition-transform rotate-180" />
         </span>

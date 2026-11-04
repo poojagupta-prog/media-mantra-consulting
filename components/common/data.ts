@@ -15,8 +15,13 @@ export const services = [
     icon: "↗",
     color: "bg-[#fbe9df] text-[#cb572a]",
     tags: "Press strategy · Journalist relationships · Media outreach",
-    detail: "A strong media presence starts with a story worth telling. We find the angle, identify the right publications and people, and create thoughtful opportunities for your brand to be heard.",
-    offerings: ["Media strategy and story development", "Press office and journalist engagement", "Interviews, features and media briefings"],
+    detail:
+      "A strong media presence starts with a story worth telling. We find the angle, identify the right publications and people, and create thoughtful opportunities for your brand to be heard.",
+    offerings: [
+      "Media strategy and story development",
+      "Press office and journalist engagement",
+      "Interviews, features and media briefings",
+    ],
   },
   {
     title: "Public Relations",
@@ -25,8 +30,13 @@ export const services = [
     icon: "✳",
     color: "bg-[#e0efec] text-teal",
     tags: "Communications strategy · Campaigns · Stakeholder engagement",
-    detail: "We bring strategy and storytelling together to help brands show up with clarity and purpose. From a defining announcement to an ongoing communications programme, every move is grounded in your goals.",
-    offerings: ["Communications planning and counsel", "Integrated PR campaigns", "Launches and stakeholder communications"],
+    detail:
+      "We bring strategy and storytelling together to help brands show up with clarity and purpose. From a defining announcement to an ongoing communications programme, every move is grounded in your goals.",
+    offerings: [
+      "Communications planning and counsel",
+      "Integrated PR campaigns",
+      "Launches and stakeholder communications",
+    ],
   },
   {
     title: "Social & Digital Media",
@@ -35,8 +45,13 @@ export const services = [
     icon: "◎",
     color: "bg-[#e0efec] text-teal",
     tags: "Social strategy · Community · Digital campaigns",
-    detail: "Digital channels are where brands meet people every day. We develop the ideas, content and channel plans that make those interactions feel relevant, consistent and human.",
-    offerings: ["Social media strategy and management", "Community engagement", "Digital campaign planning and reporting"],
+    detail:
+      "Digital channels are where brands meet people every day. We develop the ideas, content and channel plans that make those interactions feel relevant, consistent and human.",
+    offerings: [
+      "Social media strategy and management",
+      "Community engagement",
+      "Digital campaign planning and reporting",
+    ],
   },
   {
     title: "Event Management",
@@ -45,8 +60,13 @@ export const services = [
     icon: "⌘",
     color: "bg-[#e2ecfa] text-[#275591]",
     tags: "Concept · Production · Guest experience",
-    detail: "From the first invitation to the final conversation, we plan every touchpoint with intention. Our events bring audiences and ideas together in ways that feel effortless and memorable.",
-    offerings: ["Event concept and planning", "Launches and media events", "Guest, partner and on-site coordination"],
+    detail:
+      "From the first invitation to the final conversation, we plan every touchpoint with intention. Our events bring audiences and ideas together in ways that feel effortless and memorable.",
+    offerings: [
+      "Event concept and planning",
+      "Launches and media events",
+      "Guest, partner and on-site coordination",
+    ],
   },
   {
     title: "Reputation Building & Management",
@@ -55,8 +75,13 @@ export const services = [
     icon: "◇",
     color: "bg-[#f8e4ec] text-pink",
     tags: "Positioning · Issues management · Counsel",
-    detail: "Reputation is built through what you say, what you do and how consistently the two align. We help you understand perceptions, strengthen credibility and communicate clearly when the stakes are high.",
-    offerings: ["Reputation strategy and positioning", "Issues and crisis communications", "Stakeholder messaging and counsel"],
+    detail:
+      "Reputation is built through what you say, what you do and how consistently the two align. We help you understand perceptions, strengthen credibility and communicate clearly when the stakes are high.",
+    offerings: [
+      "Reputation strategy and positioning",
+      "Issues and crisis communications",
+      "Stakeholder messaging and counsel",
+    ],
   },
   {
     title: "SEO & Performance Marketing",
@@ -65,8 +90,13 @@ export const services = [
     icon: "↗",
     color: "bg-[#fff0d6] text-[#9b6900]",
     tags: "Search visibility · Paid campaigns · Optimisation",
-    detail: "Creative work should be easy to discover and easy to act on. We combine search thinking, paid media and continuous learning to make your digital presence work harder.",
-    offerings: ["SEO planning and content optimisation", "Paid search and social campaigns", "Measurement and performance improvement"],
+    detail:
+      "Creative work should be easy to discover and easy to act on. We combine search thinking, paid media and continuous learning to make your digital presence work harder.",
+    offerings: [
+      "SEO planning and content optimisation",
+      "Paid search and social campaigns",
+      "Measurement and performance improvement",
+    ],
   },
   {
     title: "Podcast",
@@ -75,8 +105,13 @@ export const services = [
     icon: "◉",
     color: "bg-[#e9e5f0] text-[#705a87]",
     tags: "Show concept · Production · Distribution",
-    detail: "A great podcast gives people room to listen, learn and connect. We help shape the format, find the stories and carry each episode from idea to audience.",
-    offerings: ["Podcast concept and editorial direction", "Guest and episode planning", "Production and promotion"],
+    detail:
+      "A great podcast gives people room to listen, learn and connect. We help shape the format, find the stories and carry each episode from idea to audience.",
+    offerings: [
+      "Podcast concept and editorial direction",
+      "Guest and episode planning",
+      "Production and promotion",
+    ],
   },
   {
     title: "Content Marketing",
@@ -85,8 +120,13 @@ export const services = [
     icon: "✦",
     color: "bg-[#fff0d6] text-[#9b6900]",
     tags: "Editorial · Campaign content · Storytelling",
-    detail: "We turn ideas and expertise into content with a clear purpose. Every story is crafted for its audience and channel, while adding up to a recognisable brand voice.",
-    offerings: ["Editorial content and copywriting", "Campaign storytelling", "Multi-channel content creation"],
+    detail:
+      "We turn ideas and expertise into content with a clear purpose. Every story is crafted for its audience and channel, while adding up to a recognisable brand voice.",
+    offerings: [
+      "Editorial content and copywriting",
+      "Campaign storytelling",
+      "Multi-channel content creation",
+    ],
   },
   {
     title: "Strategic Content Planning",
@@ -95,8 +135,13 @@ export const services = [
     icon: "▤",
     color: "bg-[#e0efec] text-teal",
     tags: "Audience insight · Content pillars · Calendars",
-    detail: "Good content becomes more powerful when the thinking behind it is clear. We map audiences, themes, channels and timing into a plan your team can put into action.",
-    offerings: ["Audience and channel planning", "Content pillars and messaging", "Editorial calendars and governance"],
+    detail:
+      "Good content becomes more powerful when the thinking behind it is clear. We map audiences, themes, channels and timing into a plan your team can put into action.",
+    offerings: [
+      "Audience and channel planning",
+      "Content pillars and messaging",
+      "Editorial calendars and governance",
+    ],
   },
   {
     title: "Brand Elevation",
@@ -105,8 +150,13 @@ export const services = [
     icon: "✳",
     color: "bg-[#fbe9df] text-[#cb572a]",
     tags: "Brand narrative · Positioning · Visibility",
-    detail: "As ambitions grow, a brand needs a sharper point of view. We bring together positioning, narrative and communications to make your next chapter feel unmistakably yours.",
-    offerings: ["Brand positioning and narrative", "Voice and messaging development", "Visibility and communications planning"],
+    detail:
+      "As ambitions grow, a brand needs a sharper point of view. We bring together positioning, narrative and communications to make your next chapter feel unmistakably yours.",
+    offerings: [
+      "Brand positioning and narrative",
+      "Voice and messaging development",
+      "Visibility and communications planning",
+    ],
   },
 ];
 
@@ -118,4 +168,3 @@ export const links = [
   ["/news-room", "Newsroom"],
   ["/case-studies", "Case studies"],
 ];
-
