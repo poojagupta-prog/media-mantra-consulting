@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowText } from "../ui/arrow-text";
 import { Reveal } from "../ui/reveal";
-import { caseStudies } from "../common/data";
+import { portfolioStudies } from "../CaseStudies/case-studies-data";
 
 export function CaseStudies() {
   return (
@@ -32,12 +32,12 @@ export function CaseStudies() {
           <ArrowText href="/case-studies">View all case studies</ArrowText>
         </Reveal>
         <div className="grid gap-7 md:grid-cols-3">
-          {caseStudies.map((study) => (
+          {portfolioStudies.map((study) => (
             <Reveal key={study.brand} className="h-full">
               <Link
-                href={`/case-studies/${["dune-house-hospitality-launch", "nova-technology-storytelling", "common-ground-community-launch"][caseStudies.indexOf(study)]}`}
+                href={`/case-studies/${study.slug}`}
                 aria-label={`Read the ${study.brand.toLowerCase()} case study`}
-                className={`group flex h-full flex-col overflow-hidden rounded-sm text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#92dfd4] ${study.color}`}
+                className={`group flex h-full flex-col overflow-hidden rounded-sm text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#92dfd4] ${study.brand === "boAt" ? "bg-[#dcece5]" : "bg-[#e9e5f0]"}`}
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <Image
@@ -56,11 +56,11 @@ export function CaseStudies() {
                 </div>
                 <div className="flex flex-1 flex-col p-6">
                   <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mb-3 text-muted">
-                    Concept example · {study.category}
+                    {study.sector}
                   </p>
                   <p className="mb-4 text-xs font-semibold">{study.brand}</p>
                   <h3 className="text-2xl leading-tight tracking-[-.045em]">
-                    {study.title}
+                    {"listingTitle" in study ? study.listingTitle : study.title}
                   </h3>
                   <span className="mt-auto flex items-center gap-2 pt-6 text-sm font-medium text-[#075c5e]">
                     Read case study{" "}

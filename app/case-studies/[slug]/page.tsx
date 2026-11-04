@@ -22,11 +22,14 @@ export async function generateMetadata({
   const study = getPortfolioStudy(slug);
   if (!study) return { title: "Case study not found" };
   return {
-    title: `${study.title} | Concept Case Study`,
-    description: `Illustrative ${study.sector} concept: ${study.description}`,
+    title: `${study.title} | ${study.brand === "boAt" ? "boAt Middle East PR Campaign" : study.brand === "Atlys" ? "Atlys UAE Travel Technology PR Campaign" : "Concept Case Study"}`,
+    description:
+      study.brand === "boAt" || study.brand === "Atlys"
+        ? study.description
+        : `Illustrative ${study.sector} concept: ${study.description}`,
     alternates: { canonical: `/case-studies/${slug}` },
     openGraph: {
-      title: `${study.title} | Concept Case Study`,
+      title: `${study.title} | ${study.brand === "boAt" ? "boAt Middle East PR Campaign" : study.brand === "Atlys" ? "Atlys UAE Travel Technology PR Campaign" : "Concept Case Study"}`,
       description: study.description,
       images: [{ url: study.image, alt: study.alt }],
     },
@@ -92,10 +95,15 @@ async function CaseStudyContent({
           <div className="grid gap-8 md:grid-cols-[1fr_2fr]">
             <div>
               <span className="font-mono text-[11px] uppercase tracking-[.15em] text-[#92dfd4]">
-                {study.sector} / Concept example
+                {study.sector}
+                {study.brand !== "boAt" && study.brand !== "Atlys" && " / Concept example"}
               </span>
               <p className="mt-5 text-sm text-white/60">
-                Illustrative portfolio story
+                {study.brand === "boAt"
+                  ? "boAt / United Arab Emirates"
+                  : study.brand === "Atlys"
+                    ? "Atlys / United Arab Emirates / August–November 2025"
+                    : "Illustrative portfolio story"}
               </p>
             </div>
             <div>
@@ -109,7 +117,7 @@ async function CaseStudyContent({
           </div>
         </div>
       </header>
-      <div className="relative h-[45vh] min-h-[340px] max-h-[720px] bg-[#dcece5] md:h-[65vh]">
+      <div className="relative h-[45vh] min-h-[340px] max-h-[720px] bg-[#dcece5] md:h-[85vh]">
         <Image
           src={study.image}
           alt={study.alt}
@@ -118,9 +126,6 @@ async function CaseStudyContent({
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute bottom-5 left-5 rounded-full bg-background px-4 py-2 font-mono text-[10px] uppercase tracking-[.12em]">
-          Concept visual
-        </div>
       </div>
       <div className="mx-auto grid w-[min(1440px,calc(100%-112px))] gap-12 py-20 max-[768px]:w-[calc(100%-40px)] md:grid-cols-[1fr_2fr] md:py-28">
         <aside>
@@ -139,16 +144,22 @@ async function CaseStudyContent({
         </aside>
         <div>
           <h2 className="max-w-[16ch] text-[clamp(2.3rem,4vw,4.5rem)] leading-[1.04] tracking-[-.055em]">
-            A story shaped around what matters.
+            {study.brand === "boAt"
+              ? "Making boAt’s UAE expansion a regional story."
+              : study.brand === "Atlys"
+                ? "A clearer story for UAE travellers."
+                : "A story shaped around what matters."}
           </h2>
           <p className="mt-8 max-w-[650px] text-base leading-8 text-muted">
-            {study.description}
+            {"overview" in study ? study.overview : study.description}
           </p>
-          <p className="mt-5 border-l-2 border-orange pl-5 text-sm leading-7 text-muted">
-            This is an illustrative campaign concept based on sample content
-            already featured on this site. It does not describe verified client
-            work or measured results.
-          </p>
+          {study.brand !== "boAt" && study.brand !== "Atlys" && (
+            <p className="mt-5 border-l-2 border-orange pl-5 text-sm leading-7 text-muted">
+              This is an illustrative campaign concept based on sample content
+              already featured on this site. It does not describe verified
+              client work or measured results.
+            </p>
+          )}
         </div>
       </div>
       <section className="bg-[#e7f0eb] py-20 md:py-28">
@@ -183,15 +194,31 @@ async function CaseStudyContent({
       <section className="mx-auto w-[min(1440px,calc(100%-112px))] py-20 max-[768px]:w-[calc(100%-40px)] md:py-28">
         <div className="grid gap-8 md:grid-cols-[1fr_2fr]">
           <p className="font-mono text-[10px] uppercase tracking-[.14em] text-teal">
-            Illustrative outcome
+            {study.brand === "boAt" || study.brand === "Atlys" ? "The results" : "Illustrative outcome"}
           </p>
           <div>
             <h2 className="text-[clamp(2.3rem,4vw,4.5rem)] leading-[1.04] tracking-[-.055em]">
-              What the idea could make possible.
+              {"resultHeading" in study
+                ? study.resultHeading
+                : study.brand === "boAt"
+                  ? "Regional coverage. Measurable visibility."
+                  : "What the idea could make possible."}
             </h2>
             <p className="mt-7 max-w-[650px] text-base leading-8 text-muted">
               {study.result}
             </p>
+            {"metrics" in study && (
+              <div className={`mt-10 grid grid-cols-2 gap-4 border-t border-foreground/20 pt-6 ${study.brand === "Atlys" ? "sm:grid-cols-4" : "sm:grid-cols-3"}`}>
+                {study.metrics.map((metric) => (
+                  <div key={metric.label}>
+                    <p className="text-3xl tracking-[-.05em]">{metric.value}</p>
+                    <p className="mt-2 text-xs leading-5 text-muted">
+                      {metric.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
         <div className="mt-16 grid gap-4 md:grid-cols-2">
@@ -202,14 +229,32 @@ async function CaseStudyContent({
             >
               <Image
                 src={galleryImage(image)}
-                alt={`${study.sector} concept moodboard image ${index + 1}`}
+                alt={
+                  study.brand === "Atlys"
+                    ? ["UAE aircraft at an airport", "Winter travel destination street scene"][index]
+                    : study.brand === "boAt"
+                      ? `${["Gulf News", "Pan Time Arabia", "Dubai Magazine", "One Ville News", "Emirates Reporter"][index]} coverage of boAt’s UAE retail expansion`
+                    : `${study.sector} concept moodboard image ${index + 1}`
+                }
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 loading="lazy"
-                className="object-cover"
+                className={
+                  study.brand === "boAt" || study.brand === "Atlys" ? "object-contain" : "object-cover"
+                }
               />
               <figcaption className="absolute bottom-3 left-3 bg-background/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[.1em]">
-                Concept moodboard {String(index + 1).padStart(2, "0")}
+                {study.brand === "Atlys"
+                  ? ["UAE airline travel photograph", "Winter travel destination street scene"][index]
+                  : study.brand === "boAt"
+                    ? [
+                      "Gulf News",
+                      "Pan Time Arabia",
+                      "Dubai Magazine",
+                      "One Ville News",
+                      "Emirates Reporter",
+                    ][index]
+                  : `Concept moodboard ${String(index + 1).padStart(2, "0")}`}
               </figcaption>
             </figure>
           ))}
