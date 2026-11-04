@@ -1,15 +1,23 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Suspense } from "react";
 import {
-  galleryImage,
   getPortfolioStudy,
   portfolioStudies,
 } from "@/components/CaseStudies/case-studies-data";
+import { caseStudyStories } from "@/components/CaseStudies/case-study-stories";
+import {
+  StoryContents,
+  StoryHero,
+  StorySectionView,
+} from "@/components/CaseStudies/story-renderer";
 import { StudyCard } from "@/components/CaseStudies/study-card";
+import "../stories.css";
+
+const siteOrigin =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://mediamantraconsulting.com";
 
 export function generateStaticParams() {
   return portfolioStudies.map(({ slug }) => ({ slug }));
@@ -20,18 +28,32 @@ export async function generateMetadata({
 }: PageProps<"/case-studies/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const study = getPortfolioStudy(slug);
-  if (!study) return { title: "Case study not found" };
+  const story = caseStudyStories[slug];
+  if (!study || !story) return { title: "Case study not found" };
+  const url = new URL(`/case-studies/${slug}`, siteOrigin).toString();
   return {
-    title: `${study.title} | ${study.brand === "boAt" ? "boAt Middle East PR Campaign" : study.brand === "Atlys" ? "Atlys UAE Travel Technology PR Campaign" : "Concept Case Study"}`,
-    description:
-      study.brand === "boAt" || study.brand === "Atlys"
-        ? study.description
-        : `Illustrative ${study.sector} concept: ${study.description}`,
-    alternates: { canonical: `/case-studies/${slug}` },
+    title: story.seoTitle,
+    description: study.description,
+    alternates: { canonical: url },
     openGraph: {
-      title: `${study.title} | ${study.brand === "boAt" ? "boAt Middle East PR Campaign" : study.brand === "Atlys" ? "Atlys UAE Travel Technology PR Campaign" : "Concept Case Study"}`,
+      type: "article",
+      title: story.seoTitle,
       description: study.description,
-      images: [{ url: study.image, alt: study.alt }],
+      url,
+      images: [
+        {
+          url: new URL(story.heroImage.src, siteOrigin).toString(),
+          alt: story.heroImage.alt,
+          width: story.heroImage.width,
+          height: story.heroImage.height,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: story.seoTitle,
+      description: study.description,
+      images: [new URL(story.heroImage.src, siteOrigin).toString()],
     },
   };
 }
@@ -46,13 +68,7 @@ export default function CaseStudyDetailPage({
           role="status"
           className="min-h-[70vh] bg-[#19181b] px-5 py-20 text-white"
         >
-          <div className="mx-auto max-w-[1440px]">
-            <p className="font-mono text-xs uppercase tracking-[.14em] text-[#92dfd4]">
-              Case study
-            </p>
-            <div className="mt-12 h-20 max-w-2xl animate-pulse rounded bg-white/10 motion-reduce:animate-none" />
-            <span className="sr-only">Loading case study</span>
-          </div>
+          Loading case study…
         </div>
       }
     >
@@ -68,227 +84,104 @@ async function CaseStudyContent({
 }) {
   const { slug } = await params;
   const study = getPortfolioStudy(slug);
-  if (!study) notFound();
+  const story = caseStudyStories[slug];
+  if (!study || !story) notFound();
   const related = portfolioStudies
     .filter((item) => item.slug !== slug)
     .slice(0, 2);
+  const url = new URL(`/case-studies/${slug}`, siteOrigin).toString();
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": `${url}#article`,
+        headline: story.seoTitle,
+        description: study.description,
+        image: new URL(story.heroImage.src, siteOrigin).toString(),
+        mainEntityOfPage: url,
+        inLanguage: "en",
+        about: {
+          "@type": study.scope ? "Thing" : "Organization",
+          name:
+            study.scope === "sector-portfolio"
+              ? "UAE real estate communications"
+              : study.brand,
+        },
+        author: {
+          "@type": "Organization",
+          name: "Media Mantra Consulting",
+          url: siteOrigin,
+        },
+        articleSection: study.sector,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteOrigin },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Case studies",
+            item: new URL("/case-studies", siteOrigin).toString(),
+          },
+          { "@type": "ListItem", position: 3, name: study.brand, item: url },
+        ],
+      },
+    ],
+  };
   return (
-    <article>
-      <header className="bg-[#19181b] pb-14 pt-8 text-white md:pb-20">
-        <div className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)]">
-          <nav
-            aria-label="Breadcrumb"
-            className="mb-16 flex flex-wrap items-center gap-3 font-mono text-[10px] uppercase tracking-[.12em] text-white/60"
-          >
-            <Link href="/" className="hover:text-[#92dfd4]">
-              Home
-            </Link>
-            <span>/</span>
-            <Link href="/case-studies" className="hover:text-[#92dfd4]">
-              Case studies
-            </Link>
-            <span>/</span>
-            <span aria-current="page" className="text-white">
-              {study.brand}
-            </span>
-          </nav>
-          <div className="grid gap-8 md:grid-cols-[1fr_2fr]">
-            <div>
-              <span className="font-mono text-[11px] uppercase tracking-[.15em] text-[#92dfd4]">
-                {study.sector}
-                {study.brand !== "boAt" && study.brand !== "Atlys" && " / Concept example"}
-              </span>
-              <p className="mt-5 text-sm text-white/60">
-                {study.brand === "boAt"
-                  ? "boAt / United Arab Emirates"
-                  : study.brand === "Atlys"
-                    ? "Atlys / United Arab Emirates / August–November 2025"
-                    : "Illustrative portfolio story"}
-              </p>
-            </div>
-            <div>
-              <h1 className="max-w-[15ch] text-[clamp(3rem,6vw,6.5rem)] leading-[.98] tracking-[-.065em]">
-                {study.title}
-              </h1>
-              <p className="mt-7 max-w-[580px] text-base leading-7 text-white/70">
-                {study.description}
-              </p>
-            </div>
-          </div>
-        </div>
-      </header>
-      <div className="relative h-[45vh] min-h-[340px] max-h-[720px] bg-[#dcece5] md:h-[85vh]">
-        <Image
-          src={study.image}
-          alt={study.alt}
-          fill
-          preload
-          sizes="100vw"
-          className="object-cover"
-        />
-      </div>
-      <div className="mx-auto grid w-[min(1440px,calc(100%-112px))] gap-12 py-20 max-[768px]:w-[calc(100%-40px)] md:grid-cols-[1fr_2fr] md:py-28">
-        <aside>
-          <p className="font-mono text-[10px] uppercase tracking-[.14em] text-teal">
-            Project overview
-          </p>
-          <p className="mt-5 text-sm text-muted">
-            Sector <span className="block text-foreground">{study.sector}</span>
-          </p>
-          <p className="mt-5 text-sm text-muted">Disciplines</p>
-          <ul className="mt-2 space-y-1 text-sm">
-            {study.services.map((service) => (
-              <li key={service}>{service}</li>
-            ))}
-          </ul>
-        </aside>
-        <div>
-          <h2 className="max-w-[16ch] text-[clamp(2.3rem,4vw,4.5rem)] leading-[1.04] tracking-[-.055em]">
-            {study.brand === "boAt"
-              ? "Making boAt’s UAE expansion a regional story."
-              : study.brand === "Atlys"
-                ? "A clearer story for UAE travellers."
-                : "A story shaped around what matters."}
-          </h2>
-          <p className="mt-8 max-w-[650px] text-base leading-8 text-muted">
-            {"overview" in study ? study.overview : study.description}
-          </p>
-          {study.brand !== "boAt" && study.brand !== "Atlys" && (
-            <p className="mt-5 border-l-2 border-orange pl-5 text-sm leading-7 text-muted">
-              This is an illustrative campaign concept based on sample content
-              already featured on this site. It does not describe verified
-              client work or measured results.
-            </p>
-          )}
-        </div>
-      </div>
-      <section className="bg-[#e7f0eb] py-20 md:py-28">
-        <div className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)]">
-          <p className="mb-10 font-mono text-[10px] uppercase tracking-[.14em] text-teal">
-            The thinking / 01—03
-          </p>
-          <div className="grid gap-10 md:grid-cols-3">
-            {[
-              { number: "01", title: "The challenge", copy: study.challenge },
-              { number: "02", title: "The strategy", copy: study.strategy },
-              { number: "03", title: "The execution", copy: study.execution },
-            ].map((section) => (
-              <div
-                key={section.number}
-                className="border-t border-foreground/20 pt-5"
-              >
-                <span className="font-mono text-xs text-teal">
-                  {section.number}
-                </span>
-                <h2 className="mt-8 text-3xl tracking-[-.05em]">
-                  {section.title}
-                </h2>
-                <p className="mt-5 text-sm leading-7 text-muted">
-                  {section.copy}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="mx-auto w-[min(1440px,calc(100%-112px))] py-20 max-[768px]:w-[calc(100%-40px)] md:py-28">
-        <div className="grid gap-8 md:grid-cols-[1fr_2fr]">
-          <p className="font-mono text-[10px] uppercase tracking-[.14em] text-teal">
-            {study.brand === "boAt" || study.brand === "Atlys" ? "The results" : "Illustrative outcome"}
-          </p>
-          <div>
-            <h2 className="text-[clamp(2.3rem,4vw,4.5rem)] leading-[1.04] tracking-[-.055em]">
-              {"resultHeading" in study
-                ? study.resultHeading
-                : study.brand === "boAt"
-                  ? "Regional coverage. Measurable visibility."
-                  : "What the idea could make possible."}
-            </h2>
-            <p className="mt-7 max-w-[650px] text-base leading-8 text-muted">
-              {study.result}
-            </p>
-            {"metrics" in study && (
-              <div className={`mt-10 grid grid-cols-2 gap-4 border-t border-foreground/20 pt-6 ${study.brand === "Atlys" ? "sm:grid-cols-4" : "sm:grid-cols-3"}`}>
-                {study.metrics.map((metric) => (
-                  <div key={metric.label}>
-                    <p className="text-3xl tracking-[-.05em]">{metric.value}</p>
-                    <p className="mt-2 text-xs leading-5 text-muted">
-                      {metric.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-        <div className="mt-16 grid gap-4 md:grid-cols-2">
-          {study.gallery.map((image, index) => (
-            <figure
-              key={image}
-              className="relative aspect-[4/3] overflow-hidden bg-[#e0efec]"
-            >
-              <Image
-                src={galleryImage(image)}
-                alt={
-                  study.brand === "Atlys"
-                    ? ["UAE aircraft at an airport", "Winter travel destination street scene"][index]
-                    : study.brand === "boAt"
-                      ? `${["Gulf News", "Pan Time Arabia", "Dubai Magazine", "One Ville News", "Emirates Reporter"][index]} coverage of boAt’s UAE retail expansion`
-                    : `${study.sector} concept moodboard image ${index + 1}`
-                }
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                loading="lazy"
-                className={
-                  study.brand === "boAt" || study.brand === "Atlys" ? "object-contain" : "object-cover"
-                }
-              />
-              <figcaption className="absolute bottom-3 left-3 bg-background/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[.1em]">
-                {study.brand === "Atlys"
-                  ? ["UAE airline travel photograph", "Winter travel destination street scene"][index]
-                  : study.brand === "boAt"
-                    ? [
-                      "Gulf News",
-                      "Pan Time Arabia",
-                      "Dubai Magazine",
-                      "One Ville News",
-                      "Emirates Reporter",
-                    ][index]
-                  : `Concept moodboard ${String(index + 1).padStart(2, "0")}`}
-              </figcaption>
-            </figure>
+    <article className={`cs-story cs-${story.theme}`}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
+      />
+      <div className="cs-progress" aria-hidden="true" />
+      <StoryHero study={study} story={story} />
+      <StoryContents study={study} story={story} />
+      <div className="cs-project-strip cs-wrap">
+        <span className="cs-eyebrow">The disciplines</span>
+        <ul>
+          {study.services.map((service) => (
+            <li key={service}>{service}</li>
           ))}
-        </div>
-      </section>
-      <section className="bg-[#19181b] py-20 text-white md:py-28">
-        <div className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)]">
-          <div className="mb-9 flex flex-wrap items-end justify-between gap-5">
+        </ul>
+      </div>
+      {story.sections.map((section) => (
+        <StorySectionView key={section.id} section={section} />
+      ))}
+      <section className="cs-related">
+        <div className="cs-wrap">
+          <div className="cs-related-heading">
             <div>
-              <p className="mb-4 font-mono text-[10px] uppercase tracking-[.14em] text-[#92dfd4]">
-                Keep exploring
-              </p>
-              <h2 className="text-[clamp(2.3rem,4vw,4rem)] tracking-[-.055em]">
-                More stories
-              </h2>
+              <p className="cs-eyebrow">Keep exploring</p>
+              <h2>Another perspective.</h2>
             </div>
-            <Link
-              href="/case-studies"
-              className="inline-flex items-center gap-2 text-sm text-[#92dfd4]"
-            >
-              <ArrowLeft size={16} /> All case studies
+            <Link href="/case-studies">
+              <ArrowLeft size={16} aria-hidden="true" /> All case studies
             </Link>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="cs-related-grid">
             {related.map((item) => (
               <StudyCard key={item.slug} study={item} />
             ))}
+            <div className="cs-cta">
+              <p className="cs-eyebrow">Your next chapter</p>
+              <h3>
+                A story worth
+                <br />
+                putting into
+                <br />
+                <em>the world.</em>
+              </h3>
+              <Link href="/contact">
+                Let’s discuss your story{" "}
+                <ArrowUpRight size={20} aria-hidden="true" />
+              </Link>
+            </div>
           </div>
-          <Link
-            href="/contact"
-            className="mt-12 inline-flex items-center gap-2 text-sm text-[#92dfd4]"
-          >
-            Let’s discuss your story <ArrowUpRight size={16} />
-          </Link>
         </div>
       </section>
     </article>

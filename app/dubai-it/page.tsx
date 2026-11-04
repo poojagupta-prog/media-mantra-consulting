@@ -7,6 +7,7 @@ import { DubaiContribution } from "@/components/DubaiIt/contribution-section";
 import { DubaiPerspective } from "@/components/DubaiIt/perspective-section";
 
 export const metadata: Metadata = {
+  robots: { index: false },
   title: "Dubai-it | Turning ambition into action",
   description:
     "Explore the Dubai-it philosophy and how Media Mantra Consulting contributes through stories, connections and communications that turn ideas into action.",

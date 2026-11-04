@@ -6,7 +6,7 @@ import { StudyFilter } from "@/components/CaseStudies/study-filter";
 export const metadata: Metadata = {
   title: "Case Studies",
   description:
-    "Explore boAt’s Middle East PR campaign and sector-led communications stories from Media Mantra Consulting.",
+    "Explore PR case studies for boAt, Atlys, Bradford International Alliance, DECA × UNICO and a six-client UAE real estate portfolio.",
   alternates: { canonical: "/case-studies" },
 };
 
@@ -47,8 +47,8 @@ export default function CaseStudiesPage() {
           </h1>
           <div className="mt-12 flex flex-wrap items-end justify-between gap-8 border-t border-white/20 pt-7">
             <p className="max-w-[560px] text-sm leading-7 text-white/70 md:text-base">
-              Explore the thinking behind stories across the sectors we serve.
-              Explore documented campaigns for boAt and Atlys.
+              Explore the thinking behind consumer technology, travel, education
+              and real estate campaigns, from brand narratives to regional media outcomes.
             </p>
             <a
               href="#work"
