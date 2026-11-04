@@ -16,7 +16,7 @@ export const realEstateStory: CaseStudyStory = {
   seoTitle: "Real Estate PR: Six UAE Developer Stories",
   sections: [
     {
-      id: "perspective", kind: "narrative", eyebrow: "01 / The sector perspective",
+      id: "perspective", kind: "narrative", eyebrow: "The sector perspective",
       title: "A distinctive address deserves a distinctive story.",
       aside: "Six clients. Different ambitions. A considered approach to each.",
       paragraphs: [
@@ -25,7 +25,7 @@ export const realEstateStory: CaseStudyStory = {
       ],
     },
     {
-      id: "bnw", kind: "project", eyebrow: "02 / Branded residences", number: "01",
+      id: "bnw", kind: "project", eyebrow: "Branded residences", number: "01",
       client: "BnW Developments", location: "Al Marjan Island, Ras Al Khaimah",
       title: "Introducing Taj Wellington Mews to an international audience.",
       paragraphs: [
@@ -36,7 +36,7 @@ export const realEstateStory: CaseStudyStory = {
       publications: ["Khaleej Times", "Gulf Times", "Al Khaleej", "Construction Week"],
     },
     {
-      id: "aum", kind: "project", eyebrow: "03 / Wellness living", number: "02",
+      id: "aum", kind: "project", eyebrow: "Wellness living", number: "02",
       client: "AUM Developments", location: "Jumeirah Village Circle, Dubai",
       title: "Giving VEDA Wellness a clear place in the neighbourhood.",
       paragraphs: [
@@ -56,7 +56,7 @@ export const realEstateStory: CaseStudyStory = {
       },
     },
     {
-      id: "deca", kind: "project", eyebrow: "04 / Strategic partnerships", number: "03",
+      id: "deca", kind: "project", eyebrow: "Strategic partnerships", number: "03",
       client: "DECA Properties", location: "Dubai / UNICO × DECA",
       title: "Making the value of a partnership visible.",
       paragraphs: [
@@ -67,7 +67,7 @@ export const realEstateStory: CaseStudyStory = {
       publications: ["Khaleej Times", "Gulf Construction Online", "Construction Business News ME", "Arabian Business Week"],
     },
     {
-      id: "centurion", kind: "project", eyebrow: "05 / Partnerships & scale", number: "04",
+      id: "centurion", kind: "project", eyebrow: "Partnerships & scale", number: "04",
       client: "Centurion Properties", location: "UAE / Corporate communications",
       title: "Communicating ambition through concrete milestones.",
       paragraphs: [
@@ -79,7 +79,7 @@ export const realEstateStory: CaseStudyStory = {
       note: "Additional milestone: GCC Top 100 developer recognition.",
     },
     {
-      id: "bamx", kind: "project", eyebrow: "06 / Luxury positioning", number: "05",
+      id: "bamx", kind: "project", eyebrow: "Luxury positioning", number: "05",
       client: "BAMX Developments", location: "UAE / Market entry",
       title: "A quieter expression of luxury, with a longer story behind it.",
       paragraphs: [
@@ -90,7 +90,7 @@ export const realEstateStory: CaseStudyStory = {
       publications: ["Gulf News", "Zawya", "TradingView via Reuters", "International Business Magazine"],
     },
     {
-      id: "amirah", kind: "project", eyebrow: "07 / In-person experiences", number: "06",
+      id: "amirah", kind: "project", eyebrow: "In-person experiences", number: "06",
       client: "Amirah Developments", location: "UAE / Launch & open house",
       title: "Two different settings. One focus on the guest experience.",
       paragraphs: [
@@ -100,14 +100,14 @@ export const realEstateStory: CaseStudyStory = {
       metrics: [{ value: "700", label: "Project launch attendees" }, { value: "100", label: "Open house attendees" }],
     },
     {
-      id: "portfolio-results", kind: "metrics", eyebrow: "08 / The portfolio view",
+      id: "portfolio-results", kind: "metrics", eyebrow: "The portfolio view",
       title: "Individual stories. A broader body of work.",
       metrics: [{ value: "115+", label: "Reported portfolio media placements" }, { value: "6", label: "Client portfolios" }, { value: "2", label: "Amirah events" }],
       copy: "Across five developer brands, the portfolio reports 115+ media placements, spanning national, trade and regional digital outlets, with English and Arabic coverage. Amirah adds a sixth client story through two events: a 700-attendee launch and a 100-attendee open house.",
       note: "The portfolio total is reported separately from the rounded client-level counts. Event attendance, project values, brand heritage and reservation milestones retain their own client-specific context; they are not additional media placements or measures of PR-attributed revenue.",
     },
     {
-      id: "takeaway", kind: "narrative", eyebrow: "09 / The lasting perspective", tone: "tint",
+      id: "takeaway", kind: "narrative", eyebrow: "The lasting perspective", tone: "tint",
       title: "The strongest sector story leaves room for difference.",
       paragraphs: [
         "Across this work, the role of communications changes with the brief: introducing a hospitality-led residence, explaining wellness living, contextualising a commercial alliance or bringing people together at a launch. The editorial lesson is to begin with that distinction, then choose the narrative and channels that make it understandable.",

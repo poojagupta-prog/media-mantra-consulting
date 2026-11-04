@@ -12,7 +12,7 @@ export function PressRoomSection() {
       <div className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)] grid items-center gap-14 lg:grid-cols-[.85fr_1.15fr]">
         <Reveal>
           <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mb-6 text-teal">
-            Inside the press room / 01
+            Inside the press room
           </p>
           <h2
             id="press-room-title"
@@ -73,7 +73,7 @@ export function PressRoomSection() {
             <div className="grid gap-6 pt-6 sm:grid-cols-[1.1fr_.9fr]">
               <div>
                 <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mb-4 text-[#c55937]">
-                  The angle / 001
+                  The angle
                 </p>
                 <p className="font-serif text-4xl leading-[1.02] tracking-tight md:text-5xl">
                   Ideas become news when they mean something.

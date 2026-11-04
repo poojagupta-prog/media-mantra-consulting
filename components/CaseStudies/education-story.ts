@@ -14,7 +14,7 @@ export const educationStory: CaseStudyStory = {
   seoTitle: "Bradford International Alliance: Education PR Case Study",
   sections: [
     {
-      id: "context", kind: "narrative", eyebrow: "01 / The education brief",
+      id: "context", kind: "narrative", eyebrow: "The education brief",
       title: "Recognition starts with a reason to believe.",
       aside: "An education story built around access, careers and relevance to working life.",
       paragraphs: [
@@ -24,7 +24,7 @@ export const educationStory: CaseStudyStory = {
       ],
     },
     {
-      id: "approach", kind: "chapters", eyebrow: "02 / Two complementary tracks",
+      id: "approach", kind: "chapters", eyebrow: "Two complementary tracks",
       title: "Make the milestone visible. Give the idea room to grow.",
       items: [
         { label: "Announcement-led", title: "Breadth at the right moments", copy: "Graduation, market entry and a topical business session provided distinct reasons for coverage. Wire distribution and regional pickup extended the institutional stories beyond a single publication, while the Sapio campaign also included a market-trends angle in Khaleej Times." },
@@ -32,7 +32,7 @@ export const educationStory: CaseStudyStory = {
       ],
     },
     {
-      id: "programme", kind: "timeline", eyebrow: "03 / The four-month narrative",
+      id: "programme", kind: "timeline", eyebrow: "The four-month narrative",
       title: "A sequence of stories, rather than isolated announcements.",
       period: "Programme sequence / Months 1–4",
       items: [
@@ -52,14 +52,14 @@ export const educationStory: CaseStudyStory = {
       },
     },
     {
-      id: "results", kind: "metrics", eyebrow: "04 / Programme outcomes",
+      id: "results", kind: "metrics", eyebrow: "Programme outcomes",
       title: "Four months of connected visibility.",
       metrics: [{ value: "115", label: "Reported total media placements" }, { value: "8", label: "Reported premium named placements" }, { value: "4", label: "Programme months" }],
       copy: "The campaign summary reports 115 placements: 60 for Graduation Day, eight for Sapio’s launch, 39 for the skill-sharing event and eight premium named placements. The premium placements sit within the total, rather than being additional to it.",
       note: "Programme totals are reported summary figures. The editorial schedule lists nine entries while the summary reports eight premium placements, so the schedule is presented as selected subject examples rather than a reconciled byline count. Monthly unique visitor and valuation estimates apply only to Graduation Day.",
     },
     {
-      id: "graduation-measurement", kind: "evidence", eyebrow: "05 / Graduation Day in context",
+      id: "graduation-measurement", kind: "evidence", eyebrow: "Graduation Day in context",
       title: "A closer look at the measured campaign.",
       copy: "Graduation Day is the only campaign stream with audience and valuation estimates recorded. Its November–December 2025 coverage included regional newswire sites and business blogs, with MENAFN, PR MENA and GCC Wire among the named outlets.",
       rows: [
@@ -71,7 +71,7 @@ export const educationStory: CaseStudyStory = {
       note: "AVE and PRV are reporting estimates, not earned revenue or proven return on investment. Their combined reported value is $780,000; it is not a separate additional outcome. No equivalent audience or valuation figures were recorded for Sapio, the skill-sharing campaign or the premium editorial stream.",
     },
     {
-      id: "editorial", kind: "press", eyebrow: "06 / Selected editorial subjects",
+      id: "editorial", kind: "press", eyebrow: "Selected editorial subjects",
       title: "A consistent thread through different publications.",
       copy: "Selected subjects from the editorial schedule, rewritten here as summaries. These examples show the range of the narrative; they are not a new count of premium placements.",
       items: [
@@ -82,7 +82,7 @@ export const educationStory: CaseStudyStory = {
       ],
     },
     {
-      id: "takeaway", kind: "narrative", eyebrow: "07 / The wider lesson", tone: "tint",
+      id: "takeaway", kind: "narrative", eyebrow: "The wider lesson", tone: "tint",
       title: "A stronger education narrative connects the institution with the individual.",
       paragraphs: [
         "The programme’s organising idea was the relevance of learning to people’s lives. Graduation supplied achievement, flexible study supplied access and the skills subjects supplied a connection to the workplace. These were different stories, but they gave the institution a consistent editorial territory.",

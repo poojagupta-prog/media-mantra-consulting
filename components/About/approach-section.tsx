@@ -11,7 +11,7 @@ export function ApproachSection() {
       <div className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)] grid gap-12 lg:grid-cols-[1fr_1.4fr]">
         <Reveal>
           <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mb-7 text-teal">
-            04 / Our approach
+            Our approach
           </p>
           <h2
             id="approach-title"

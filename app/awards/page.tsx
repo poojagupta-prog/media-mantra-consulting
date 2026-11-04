@@ -50,7 +50,7 @@ export default function Awards() {
       </section>
       <section className="media-wrap media-section">
         <Heading
-          label="01 / Featured recognition"
+          label="Featured recognition"
           title="Every honour has"
           accent="a story."
         >
@@ -91,7 +91,7 @@ export default function Awards() {
       </section>
       <section className="media-wrap awards-timeline">
         <Heading
-          label="02 / Through the years"
+          label="Through the years"
           title="A record of"
           accent="recognition."
         />
@@ -113,7 +113,7 @@ export default function Awards() {
           </div>
         ))}
       </section>
-      <RelatedNews label="03 / Recognition in the press" />
+      <RelatedNews label="Recognition in the press" />
       <Closing title="Let’s create work worth talking about." />
     </div>
   );

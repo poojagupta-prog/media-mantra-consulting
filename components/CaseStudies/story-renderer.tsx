@@ -52,7 +52,7 @@ export function StoryHero({ study, story }: ComposedStudy) {
 }
 
 export function StoryContents({ study, story }: ComposedStudy) {
-  return <nav className="cs-contents" aria-label="Story chapters"><div className="cs-wrap"><span className="cs-contents-brand">{study.brand} <span>/ The story</span></span><div>{story.sections.filter((s) => ["narrative", "chapters", "metrics", "gallery", "project", "press", "evidence"].includes(s.kind)).map((section) => <a key={section.id} href={`#${section.id}`}>{section.kind === "project" ? section.client.split(" ")[0] : section.eyebrow.split(" / ")[1]}</a>)}</div></div></nav>;
+  return <nav className="cs-contents" aria-label="Story chapters"><div className="cs-wrap"><span className="cs-contents-brand">{study.brand} <span>/ The story</span></span><div>{story.sections.filter((s) => ["narrative", "chapters", "metrics", "gallery", "project", "press", "evidence"].includes(s.kind)).map((section) => <a key={section.id} href={`#${section.id}`}>{section.kind === "project" ? section.client.split(" ")[0] : section.eyebrow}</a>)}</div></div></nav>;
 }
 
 /** Low-level sections can be reordered and combined independently for every story. */

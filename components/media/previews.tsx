@@ -1,6 +1,7 @@
 import { Award, Quote } from "lucide-react";
 import { PodcastCard } from "./episode-list";
-import { media, testimonials } from "./content";
+import { testimonials } from "./content";
+import { galleryItems } from "./gallery-data";
 import catalogue from "@/data/podcasts.json";
 import { Heading, Label, MediaImage, TextLink } from "./shared";
 export function PodcastPreview({ compact = false }: { compact?: boolean }) {
@@ -67,7 +68,7 @@ export function GalleryPreview() {
         accent="a moment."
       />
       <div className="gallery-preview">
-        {media.slice(0, 3).map((item) => (
+        {galleryItems.slice(0, 3).map((item) => (
           <a key={item.id} href="/gallery" className="group">
             <div className="media-picture">
               <MediaImage
@@ -76,7 +77,7 @@ export function GalleryPreview() {
                 className="transition-transform duration-500 group-hover:scale-105"
               />
             </div>
-            <Label>{item.category} / Illustrative photography</Label>
+            <Label>{item.category} / {item.title}</Label>
           </a>
         ))}
       </div>

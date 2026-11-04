@@ -23,7 +23,7 @@ export function DubaiContribution() {
   return (
     <section className="media-wrap media-section">
       <Heading
-        label="03 / Our contribution"
+        label="Our contribution"
         title="We help ideas"
         accent="move people."
       >
@@ -34,7 +34,7 @@ export function DubaiContribution() {
       <div className="media-three mt-[55px] [&>div]:border-t [&>div]:border-[#19181b33] [&>div]:py-[30px] [&_h3]:mb-[18px] [&_h3]:text-[29px] [&_h3]:tracking-[-.045em] [&_p:last-child]:text-sm [&_p:last-child]:leading-[1.9] [&_p:last-child]:text-muted">
         {contributions.map(([number, title, description]) => (
           <Reveal key={number}>
-            <Label>{number} / How we contribute</Label>
+            <Label>How we contribute</Label>
             <h3>{title}</h3>
             <p>{description}</p>
           </Reveal>

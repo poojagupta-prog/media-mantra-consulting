@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import { galleryItems } from "@/components/media/gallery-data";
 import { GalleryGrid } from "@/components/media/gallery-grid";
 import { Closing, Label, TextLink } from "@/components/media/shared";
+
+
 export const metadata: Metadata = {
   title: "Gallery",
   description:
-    "Explore the Media Mantra visual notebook: newsroom imagery and clearly labelled creative references.",
+    "Explore the Media Mantra gallery: events, team moments and conversations behind the scenes.",
 };
 export default function Gallery() {
   return (
@@ -20,8 +23,8 @@ export default function Gallery() {
         <div className="gallery-intro">
           <p>The places, people and perspectives that inspire a story.</p>
           <p className="media-copy">
-            A mix of existing press assets and labelled stock references.
-            Explore an image for its caption and context.
+            Events, team moments and conversations from the Media Mantra
+            gallery. Explore an image for its caption and context.
           </p>
         </div>
       </section>
@@ -29,7 +32,7 @@ export default function Gallery() {
         className="media-wrap gallery-section"
         aria-label="Media gallery"
       >
-        <GalleryGrid />
+        <GalleryGrid items={galleryItems} />
       </section>
       <section className="media-wrap gallery-related">
         <div>

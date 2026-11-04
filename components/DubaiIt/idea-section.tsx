@@ -4,7 +4,7 @@ import { ScrollStatement } from "@/components/common/scroll-motion";
 export function DubaiIdea() {
   return (
     <section id="the-idea" className="media-wrap media-section">
-      <Heading label="01 / The idea" title="A city that" accent="does.">
+      <Heading label="The idea" title="A city that" accent="does.">
         Introduced by His Highness Sheikh Mohammed bin Rashid Al Maktoum, Vice
         President and Prime Minister of the UAE and Ruler of Dubai, Dubai-it
         gives a name to the city’s philosophy: turn bold ideas into reality

@@ -11,7 +11,7 @@ export function SectorDirectory() {
         <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
           <div>
             <p className="mb-6 font-mono text-[10px] uppercase tracking-[.13em] text-teal">
-              Sector expertise / 01—12
+              Sector expertise
             </p>
             <h2 className="text-[clamp(2.8rem,5vw,5.5rem)] font-[550] leading-none tracking-[-.065em]">
               Fluent in{" "}

@@ -8,7 +8,7 @@ export function WhoWeAreSection() {
     >
       <Reveal>
         <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase text-teal">
-          01 / Who we are
+          Who we are
         </p>
         <div className="mt-8 hidden h-px w-24 bg-teal/40 md:block" />
       </Reveal>

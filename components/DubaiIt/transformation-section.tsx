@@ -6,7 +6,7 @@ export function DubaiTransformation() {
     <section className="media-section bg-[#e7efea]">
       <div className="media-wrap">
         <Heading
-          label="02 / Vision made visible"
+          label="Vision made visible"
           title="See the"
           accent="transformation."
         >

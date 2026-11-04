@@ -8,7 +8,7 @@ export function PhilosophySection() {
     >
       <Reveal>
         <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase text-teal">
-          06 / Our philosophy
+          Our philosophy
         </p>
       </Reveal>
       <Reveal>

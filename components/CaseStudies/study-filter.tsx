@@ -13,7 +13,7 @@ export function StudyFilter() {
     <section id="work" className="scroll-mt-10 py-20 md:py-28" aria-labelledby="work-title">
       <div className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)]">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-5 border-b border-black/15 pb-7">
-          <div><p className="mb-4 font-mono text-[10px] uppercase tracking-[.14em] text-teal">The collection / 01</p><h2 id="work-title" className="text-[clamp(2.3rem,4vw,4rem)] leading-none tracking-[-.055em]">Explore the work<span className="text-orange">.</span></h2></div>
+          <div><p className="mb-4 font-mono text-[10px] uppercase tracking-[.14em] text-teal">The collection</p><h2 id="work-title" className="text-[clamp(2.3rem,4vw,4rem)] leading-none tracking-[-.055em]">Explore the work<span className="text-orange">.</span></h2></div>
           <p aria-live="polite" className="font-mono text-[11px] uppercase tracking-[.1em] text-muted">{visible.length} {visible.length === 1 ? "story" : "stories"}</p>
         </div>
         <div className="mb-10 flex flex-wrap gap-2" role="group" aria-label="Filter case studies by sector">

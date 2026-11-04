@@ -14,7 +14,7 @@ export const decaUnicoStory: CaseStudyStory = {
   seoTitle: "DECA × UNICO: Dubai Partnership PR Case Study",
   sections: [
     {
-      id: "partnership", kind: "narrative", eyebrow: "01 / The partnership story",
+      id: "partnership", kind: "narrative", eyebrow: "The partnership story",
       title: "Give an agreement a meaning beyond the signing.",
       aside: "International design ambition, connected with local market expertise.",
       paragraphs: [
@@ -24,14 +24,14 @@ export const decaUnicoStory: CaseStudyStory = {
       ],
     },
     {
-      id: "results", kind: "metrics", eyebrow: "02 / The campaign record",
+      id: "results", kind: "metrics", eyebrow: "The campaign record",
       title: "One announcement, carried into different editorial settings.",
       metrics: [{ value: "15", label: "Reported media placements" }, { value: "2", label: "Languages: English and Arabic" }, { value: "19M+", label: "Reported publisher MUV total" }],
       copy: "The December campaign summary reports 15 placements, including English and Arabic coverage. Khaleej Times was the headline placement, alongside specialist titles such as Gulf Construction, Property Time and Construction Business News. The report describes a combined publisher monthly unique visitor figure above 19 million.",
       note: "Publisher MUV describes the monthly audience of the outlets, not verified views of these articles, unique campaign reach or sales. The 19M+ total is a reported potential-audience indicator. Placements in this campaign overlap with the DECA work in the sector portfolio and must not be added to its aggregate total.",
     },
     {
-      id: "message", kind: "chapters", eyebrow: "03 / The message architecture",
+      id: "message", kind: "chapters", eyebrow: "The message architecture",
       title: "A clear appointment. A complementary proposition.",
       introduction: "The coverage centres on three connected elements: what was agreed, what each partner brought and the kind of residential development they intended to support.",
       items: [
@@ -50,7 +50,7 @@ export const decaUnicoStory: CaseStudyStory = {
       },
     },
     {
-      id: "coverage", kind: "press", eyebrow: "04 / Across the media landscape",
+      id: "coverage", kind: "press", eyebrow: "Across the media landscape",
       title: "Different audiences. A recognisable core story.",
       copy: "Selected publications named in the campaign record. These editorial summaries describe the coverage themes; generated architectural imagery is used for atmosphere and is not presented as evidence of a placement.",
       items: [
@@ -62,7 +62,7 @@ export const decaUnicoStory: CaseStudyStory = {
       ],
     },
     {
-      id: "audience-context", kind: "evidence", eyebrow: "05 / Reading the audience figures",
+      id: "audience-context", kind: "evidence", eyebrow: "Reading the audience figures",
       title: "Publication scale is context, rather than article readership.",
       copy: "The campaign record supplies outlet-level monthly unique visitor estimates. A selection is shown below to explain the scale of the publications represented, without implying that every visitor read the partnership coverage.",
       rows: [
@@ -74,7 +74,7 @@ export const decaUnicoStory: CaseStudyStory = {
       note: "These estimates are publisher audience indicators from the campaign record. They do not measure article impressions, deduplicated reach, enquiries or transaction value. No commercial conversion claim is inferred from them.",
     },
     {
-      id: "takeaway", kind: "narrative", eyebrow: "06 / The partnership perspective", tone: "tint",
+      id: "takeaway", kind: "narrative", eyebrow: "The partnership perspective", tone: "tint",
       title: "The appointment was the news. The rationale made it a story.",
       paragraphs: [
         "The campaign’s documented outcome is a bilingual body of coverage around a clearly defined partnership. The story appeared in national news as well as specialist construction, property and regional publications, giving different readerships a route into the same announcement.",

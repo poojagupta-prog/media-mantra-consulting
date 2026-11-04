@@ -151,7 +151,7 @@ export default async function ServiceDetailPage({
           </Link>
           <div className="my-auto py-20">
             <span className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/35 bg-black/15 px-4 py-2 font-mono text-[10px] uppercase tracking-[.13em] text-white backdrop-blur-sm">
-              <span className="h-2 w-2 rounded-full bg-orange" /> 0{index + 1} /{" "}
+              <span className="h-2 w-2 rounded-full bg-orange" />
               {design.eyebrow}
             </span>
             <h1 className="max-w-5xl text-[clamp(3.8rem,8vw,8.5rem)] font-[650] leading-[.92] tracking-[-.075em] text-balance">
@@ -237,7 +237,7 @@ export default async function ServiceDetailPage({
               <p
                 className={`mb-6 font-mono text-[10px] uppercase tracking-[.13em] ${design.accent}`}
               >
-                The approach / {String(index + 1).padStart(2, "0")}
+                The approach
               </p>
               <h2 className="text-[clamp(2.8rem,5vw,5.5rem)] font-[550] leading-none tracking-[-.065em]">
                 A clear path
@@ -263,7 +263,7 @@ export default async function ServiceDetailPage({
                 <span
                   className={`font-mono text-[10px] uppercase tracking-[.13em] ${design.accent}`}
                 >
-                  0{i + 1} / {perspective.label}
+                  {perspective.label}
                 </span>
                 <div className="mt-auto pt-12">
                   <h3 className="text-2xl font-medium leading-tight tracking-[-.045em]">

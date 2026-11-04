@@ -9,7 +9,7 @@ export function VisionSection() {
       <div className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)] relative z-10">
         <Reveal>
           <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mb-10 text-[#92dfd4]">
-            02 / Our visions and goals
+            Our visions and goals
           </p>
           <h2 className="text-[clamp(2.6rem,5vw,5.1rem)] leading-none tracking-[-.065em] font-[550] max-w-5xl">
             We want the world to{" "}

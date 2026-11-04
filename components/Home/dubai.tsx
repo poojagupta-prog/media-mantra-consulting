@@ -159,7 +159,7 @@ export function DubaiMap() {
             <div>
               <div className="mb-10 flex items-center justify-between text-[#92dfd4]">
                 <span className="font-mono text-[10px] uppercase tracking-[.13em]">
-                  Story preview / 0{active + 1}
+                  Story preview
                 </span>
                 <Quote size={24} strokeWidth={1.3} />
               </div>

@@ -45,14 +45,7 @@ export function GalleryGrid({
     <>
       {!compact && (
         <div className="media-filters" aria-label="Gallery categories">
-          {[
-            "All",
-            "Events",
-            "Campaigns",
-            "Media",
-            "Team",
-            "Behind the Scenes",
-          ].map((c) => (
+          {["All", ...new Set(items.map((item) => item.category))].map((c) => (
             <button
               key={c}
               aria-pressed={c === category}

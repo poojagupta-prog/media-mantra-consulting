@@ -69,7 +69,7 @@ export function SectorCarousel() {
                 )}
                 {position === 0 && (
                   <span className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase absolute bottom-5 left-5 bg-white px-3 py-2">
-                    Sector focus / 0{index + 1}
+                    Sector focus
                   </span>
                 )}
               </div>

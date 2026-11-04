@@ -10,7 +10,7 @@ export function EssenceSection() {
       <div className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)]">
         <Reveal>
           <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mb-8">
-            05 / Our essence
+            Our essence
           </p>
           <h2
             id="essence-title"

@@ -54,7 +54,7 @@ export default function ServicesPage() {
           <div className="mb-12 flex flex-wrap items-end justify-between gap-5">
             <div>
               <p className="mb-5 font-mono text-[10px] uppercase tracking-[.13em] text-teal">
-                Our expertise / 01—10
+                Our expertise
               </p>
               <h2 className="text-[clamp(2.8rem,5vw,5.5rem)] font-[550] leading-none tracking-[-.065em]">
                 The right mix for
@@ -70,7 +70,7 @@ export default function ServicesPage() {
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
-            {services.map((service, index) => (
+            {services.map((service) => (
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
@@ -78,7 +78,7 @@ export default function ServicesPage() {
               >
                 <div className="flex items-start justify-between">
                   <span className="font-mono text-[10px] uppercase tracking-[.13em] text-muted">
-                    Service / {String(index + 1).padStart(2, "0")}
+                    Service
                   </span>
                   <span
                     className={`flex h-12 w-12 items-center justify-center rounded-full text-2xl ${service.color}`}

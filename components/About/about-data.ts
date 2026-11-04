@@ -1,39 +1,24 @@
 export const team = [
   {
-    name: "Amira Rahman",
-    role: "Founder & Managing Partner",
-    line: "The big-picture thinker who can find the human story in any brief.",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=85",
+    name: "Udit Pathak",
+    role: "Co-founder",
+    image: "/images/about/udit.jpeg",
     color: "bg-[#e8b4c8]",
     number: "01",
   },
   {
-    name: "Rohan Mehta",
-    role: "Head of Strategy",
-    line: "Equal parts sharp insight, good questions, and an excellent playlist.",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=85",
+    name: "Puja Pathak",
+    role: "Co-founder",
+    image: "/images/about/puja.jpeg",
     color: "bg-[#c9eae2]",
     number: "02",
   },
   {
-    name: "Leila Haddad",
-    role: "Creative Director",
-    line: "Turning the unexpected into ideas people cannot scroll past.",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=85",
+    name: "Abhishek Singh",
+    role: "Co-founder",
+    image: "/images/about/abhishek.jpg",
     color: "bg-[#f9d9ad]",
     number: "03",
-  },
-  {
-    name: "Daniel Okafor",
-    role: "Director of Communications",
-    line: "Building connections that make a story travel further.",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=85",
-    color: "bg-[#cfd9ef]",
-    number: "04",
   },
 ];
 

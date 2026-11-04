@@ -27,7 +27,7 @@ export const caseStudyStories: Record<string, CaseStudyStory> = {
     seoTitle: "boAt Middle East: UAE Retail Expansion PR Case Study",
     sections: [
       {
-        id: "opportunity", kind: "narrative", eyebrow: "01 / The opportunity",
+        id: "opportunity", kind: "narrative", eyebrow: "The opportunity",
         title: "A bigger retail footprint needed a bigger conversation.",
         aside: "From product availability to regional relevance.",
         paragraphs: [
@@ -37,13 +37,13 @@ export const caseStudyStories: Record<string, CaseStudyStory> = {
         ],
       },
       {
-        id: "challenge", kind: "statement", eyebrow: "02 / The communications challenge",
+        id: "challenge", kind: "statement", eyebrow: "The communications challenge",
         title: "Turn a retail announcement into a consumer technology story.",
         copy: boat.challenge,
         note: "Campaign objective / Awareness of availability and market presence",
       },
       {
-        id: "strategy", kind: "chapters", eyebrow: "03 / The strategic approach",
+        id: "strategy", kind: "chapters", eyebrow: "The strategic approach",
         title: "One expansion. More than one editorial angle.",
         introduction: "The strategy positioned boAt’s retail expansion as a story that could travel across business, technology and lifestyle desks while retaining a consistent core message.",
         items: [
@@ -53,7 +53,7 @@ export const caseStudyStories: Record<string, CaseStudyStory> = {
         ],
       },
       {
-        id: "rollout", kind: "timeline", eyebrow: "04 / Campaign breakdown",
+        id: "rollout", kind: "timeline", eyebrow: "Campaign breakdown",
         title: "A clear message, carried across the region.",
         items: [
           { title: "The announcement", copy: "The retail partnership and expanded availability supplied the central news hook. Both gave the campaign a specific development around which to build regional awareness." },
@@ -62,20 +62,20 @@ export const caseStudyStories: Record<string, CaseStudyStory> = {
         ],
       },
       {
-        id: "results", kind: "metrics", eyebrow: "05 / Recorded outcomes",
+        id: "results", kind: "metrics", eyebrow: "Recorded outcomes",
         title: "The expansion earned its place in the headlines.",
         metrics: boat.metrics,
         copy: boat.result,
         note: "Source: existing campaign coverage record. Potential viewership describes the reported potential audience of coverage; it is not verified impressions, unique reach or sales attribution.",
       },
       {
-        id: "coverage", kind: "gallery", eyebrow: "06 / In the press",
+        id: "coverage", kind: "gallery", eyebrow: "In the press",
         title: "The story, in print and on screen.",
         copy: "Selected coverage assets from the campaign archive. Open each clipping to inspect it at its original proportions. These examples sit within the reported total of 15 placements; the gallery is a selection, not the complete coverage report.",
         images: boat.gallery.map((src, i) => ({ src, alt: `${["Gulf News", "Pan Time Arabia", "Dubai Magazine", "One Ville News", "Emirates Reporter"][i]} coverage of boAt’s UAE retail expansion`, caption: ["Gulf News", "Pan Time Arabia", "Dubai Magazine", "One Ville News", "Emirates Reporter"][i] })),
       },
       {
-        id: "takeaway", kind: "narrative", eyebrow: "07 / The takeaway", tone: "tint",
+        id: "takeaway", kind: "narrative", eyebrow: "The takeaway", tone: "tint",
         title: "Make market access a story people can understand.",
         paragraphs: [
           "The campaign gave boAt’s retail expansion a visible editorial presence across regional publications. Its measurable outcome is media visibility: 15 placements, coverage in two languages and a reported potential audience figure. Those results demonstrate the distribution of the story without making claims about customer acquisition or commercial conversion.",
@@ -93,7 +93,7 @@ export const caseStudyStories: Record<string, CaseStudyStory> = {
     seoTitle: "Atlys UAE: Travel Technology PR Case Study",
     sections: [
       {
-        id: "context", kind: "narrative", eyebrow: "01 / Before the departure",
+        id: "context", kind: "narrative", eyebrow: "Before the departure",
         title: "Every journey starts before the airport.",
         paragraphs: [
           "For Atlys, the UAE communications challenge began with the work that happens before a traveller can leave: understanding visa requirements, finding an appointment and navigating uncertainty around an application. A visa service needs recognition, but it also needs credibility in a category where the details matter to people making real travel plans.",
@@ -103,7 +103,7 @@ export const caseStudyStories: Record<string, CaseStudyStory> = {
         aside: "The starting point: a traveller’s uncertainty. The ambition: a clearer, more credible media presence.",
       },
       {
-        id: "pain-points", kind: "chapters", eyebrow: "02 / The traveller’s perspective",
+        id: "pain-points", kind: "chapters", eyebrow: "The traveller’s perspective",
         title: "Complexity is a human story.",
         introduction: "The existing campaign brief identifies three linked concerns. Together, they explain why trust and clarity were central to the communications objective.",
         items: [
@@ -118,18 +118,18 @@ export const caseStudyStories: Record<string, CaseStudyStory> = {
         image: { src: "/images/case-studies/atlys/winter-travel-destinations.png", alt: "Winter travel destination street scene from the Atlys case study image archive", caption: "Travel imagery from the case study archive / Winter destinations" },
       },
       {
-        id: "storylines", kind: "chapters", eyebrow: "03 / Four editorial routes",
+        id: "storylines", kind: "chapters", eyebrow: "Four editorial routes",
         title: "One brand. Four ways into the story.",
         introduction: "The campaign’s four documented storylines connected service relevance, business commentary and seasonal interest. Each offered a different editorial entry point into the same travel technology brand.",
         items: [
-          { label: "01 / Practical travel", title: "Schengen visa simplification", copy: "Schengen applications placed the programme close to a recognisable traveller concern. Simplification provided a service-led narrative: a way to explain why the category matters and how Atlys wanted to be understood within it." },
-          { label: "02 / Destination intent", title: "US tourist visa applications", copy: "The US tourist visa storyline extended that practical conversation to another application context. It broadened the programme’s subject matter while keeping attention on the decisions and uncertainty that precede a trip." },
-          { label: "03 / Technology & leadership", title: "AI and the executive perspective", copy: "AI-driven innovation and executive thought leadership added a business and technology dimension. These subjects gave the programme space to discuss the company’s perspective alongside the traveller-facing service narrative." },
-          { label: "04 / Seasonal relevance", title: "Winter travel insights", copy: "Data-led destination stories connected the brand with seasonal travel interest. Winter travel offered a timely editorial context, expanding the conversation from application complexity to the trips people were considering." },
+          { label: "Practical travel", title: "Schengen visa simplification", copy: "Schengen applications placed the programme close to a recognisable traveller concern. Simplification provided a service-led narrative: a way to explain why the category matters and how Atlys wanted to be understood within it." },
+          { label: "Destination intent", title: "US tourist visa applications", copy: "The US tourist visa storyline extended that practical conversation to another application context. It broadened the programme’s subject matter while keeping attention on the decisions and uncertainty that precede a trip." },
+          { label: "Technology & leadership", title: "AI and the executive perspective", copy: "AI-driven innovation and executive thought leadership added a business and technology dimension. These subjects gave the programme space to discuss the company’s perspective alongside the traveller-facing service narrative." },
+          { label: "Seasonal relevance", title: "Winter travel insights", copy: "Data-led destination stories connected the brand with seasonal travel interest. Winter travel offered a timely editorial context, expanding the conversation from application complexity to the trips people were considering." },
         ],
       },
       {
-        id: "programme", kind: "timeline", eyebrow: "04 / The four-month programme",
+        id: "programme", kind: "timeline", eyebrow: "The four-month programme",
         title: "A sustained presence, from August to November.",
         period: "August–November 2025", months: ["August", "September", "October", "November"],
         items: [
@@ -139,7 +139,7 @@ export const caseStudyStories: Record<string, CaseStudyStory> = {
         ],
       },
       {
-        id: "coverage", kind: "gallery", eyebrow: "05 / Across the media landscape",
+        id: "coverage", kind: "gallery", eyebrow: "Across the media landscape",
         title: "Travel relevance. Business credibility.",
         copy: "The campaign record names Gulf News, Gulf Business, Khaleej Times, Arabian Business and MSN among its notable outlets. The images below are travel imagery from the case study archive, rather than press clippings or evidence of individual editorial placements.",
         publications: ["Gulf News", "Gulf Business", "Khaleej Times", "Arabian Business", "MSN"],
@@ -149,13 +149,13 @@ export const caseStudyStories: Record<string, CaseStudyStory> = {
         ],
       },
       {
-        id: "results", kind: "metrics", eyebrow: "06 / Arrival, in numbers",
+        id: "results", kind: "metrics", eyebrow: "Arrival, in numbers",
         title: "Four months. One consistent conversation.",
         metrics: atlys.metrics, copy: atlys.result,
         note: "Source: existing campaign record. The seven flagship editorial wins are included within the 32 media outcomes. Storylines and languages describe campaign scope, rather than additional coverage totals.",
       },
       {
-        id: "takeaway", kind: "narrative", eyebrow: "07 / What the journey shows", tone: "tint",
+        id: "takeaway", kind: "narrative", eyebrow: "What the journey shows", tone: "tint",
         title: "Positioning built through relevance, over time.",
         paragraphs: [
           "The programme strengthened Atlys’s media positioning by giving the brand several connected roles in the editorial conversation: a visa services business, a technology voice and a source of travel-related stories. The documented results show sustained visibility across travel, technology and business media, with coverage in English and Arabic.",

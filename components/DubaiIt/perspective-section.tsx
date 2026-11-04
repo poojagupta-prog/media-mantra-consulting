@@ -9,7 +9,7 @@ export function DubaiPerspective() {
           <MediaImage src={photos.tech} alt="Modern towers seen from below" />
         </div>
         <div>
-          <Label>04 / Our point of view</Label>
+          <Label>Our point of view</Label>
           <h2 className="mb-[25px]">
             Progress deserves
             <br />

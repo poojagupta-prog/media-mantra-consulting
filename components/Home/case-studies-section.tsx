@@ -32,7 +32,7 @@ export function CaseStudies() {
           <ArrowText href="/case-studies">View all case studies</ArrowText>
         </Reveal>
         <div className="grid gap-7 md:grid-cols-3">
-          {portfolioStudies.map((study) => (
+          {portfolioStudies.slice(0, 3).map((study) => (
             <Reveal key={study.brand} className="h-full">
               <Link
                 href={`/case-studies/${study.slug}`}
