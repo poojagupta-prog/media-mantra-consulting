@@ -1,21 +1,21 @@
 export const team = [
   {
     name: "Udit Pathak",
-    role: "Co-founder",
+    role: "Partner",
     image: "/images/about/udit.jpeg",
     color: "bg-[#e8b4c8]",
     number: "01",
   },
   {
     name: "Puja Pathak",
-    role: "Co-founder",
+    role: "Partner",
     image: "/images/about/puja.jpeg",
     color: "bg-[#c9eae2]",
     number: "02",
   },
   {
     name: "Abhishek Singh",
-    role: "Co-founder",
+    role: "Partner",
     image: "/images/about/abhishek.jpg",
     color: "bg-[#f9d9ad]",
     number: "03",

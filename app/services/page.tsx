@@ -1,4 +1,5 @@
-import { BrandStar } from "@/components/ui/brand-star";
+import Image from "next/image";
+import { serviceImages } from "@/lib/service-images";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Asterisk } from "lucide-react";
@@ -70,40 +71,44 @@ export default function ServicesPage() {
               the best way forward together.
             </p>
           </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            {services.map((service) => (
+          <div className="grid gap-6 md:grid-cols-2 md:gap-8">
+            {services.map((service, index) => (
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
-                className="group flex min-h-72 flex-col rounded-[26px] border border-black/10 bg-white p-7 transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(25,24,27,.09)] md:p-9"
+                className="group flex h-full flex-col overflow-hidden rounded-[24px] border border-black/10 bg-white transition-[transform,box-shadow,border-color] duration-300 hover:border-teal/30 hover:shadow-[0_20px_50px_rgba(25,24,27,.08)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal motion-safe:hover:-translate-y-1"
               >
-                <div className="flex items-start justify-between">
-                  <span className="font-mono text-[10px] uppercase tracking-[.13em] text-muted">
-                    Service
-                  </span>
-                  <span
-                    className={`flex h-12 w-12 items-center justify-center rounded-full text-2xl ${service.color}`}
-                  >
-                    {service.icon === "✳" ? <BrandStar className="inline-block align-middle" /> : service.icon}
-                  </span>
+                <div className="relative aspect-[16/9] overflow-hidden bg-[#c9eae2]">
+                  <Image
+                    src={serviceImages[service.slug as keyof typeof serviceImages]}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) calc(100vw - 40px), (max-width: 1552px) calc((100vw - 144px) / 2), 704px"
+                    className="object-cover transition-transform duration-700 motion-safe:group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                 </div>
-                <div className="mt-auto pt-10">
-                  <h3 className="max-w-lg text-[clamp(1.7rem,3vw,2.8rem)] font-medium leading-[1.08] tracking-[-.055em] group-hover:text-teal">
-                    {service.title}
-                  </h3>
+                <div className="flex flex-1 flex-col p-6 md:p-8">
+                  <div className="flex items-start justify-between gap-5">
+                    <h3 className="max-w-lg text-[clamp(1.65rem,2.6vw,2.5rem)] font-medium leading-[1.12] tracking-[-.05em] transition-colors group-hover:text-teal">
+                      {service.title}
+                    </h3>
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-teal/20 bg-[#edf6f3] text-teal transition-colors duration-300 group-hover:bg-teal group-hover:text-white">
+                      <ArrowUpRight aria-hidden="true" size={21} />
+                    </span>
+                  </div>
                   <p className="mt-4 max-w-md text-sm leading-7 text-muted">
                     {service.text}
                   </p>
-                </div>
-                <div className="mt-7 flex items-center justify-between border-t border-black/10 pt-5">
-                  <span className="font-mono text-[10px] uppercase tracking-[.09em] text-muted">
-                    {service.tags}
-                  </span>
-                  <ArrowUpRight
-                    aria-hidden="true"
-                    size={21}
-                    className="shrink-0 transition-transform group-hover:rotate-45"
-                  />
+                  <div className="mt-auto pt-6">
+                    <div className="flex flex-wrap gap-2 border-t border-black/10 pt-5">
+                      {service.tags.split(" · ").map((tag) => (
+                        <span key={tag} className="rounded-full bg-[#f3f5f2] px-3 py-1.5 text-[11px] leading-4 text-teal">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </Link>
             ))}

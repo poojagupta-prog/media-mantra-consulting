@@ -66,17 +66,67 @@ export const media: MediaItem[] = [
     posterOnly: true,
   },
 ];
-export const awards = [
+export const featuredAward = {
+  name: "PR agency Head of the Year 2026",
+  recipient: "Udit Pathak",
+  organization: "Adgully IMAGEXX Awards",
+  year: 2026,
+  category: "PR Agency Head of the Year",
+  image: "/images/about/udit.jpeg",
+  description:
+    "Udit Pathak recognised as PR Agency Head of the Year at the Adgully IMAGEXX Awards 2026.",
+  announcement:
+    "https://www.linkedin.com/posts/uditpathak_mediamantra-imagexxawards2026-publicrelations-activity-7468181386911264768-Z3GG",
+};
+
+// Source: https://mediamantraglobal.com/awards/
+// Keep undated honours undated, as listed by the global website.
+export const awardGroups = [
   {
-    id: "recognition",
-    name: "Our next recognition story",
-    organization: "Awarding body to be confirmed",
-    year: null as number | null,
-    category: "Category pending verification",
-    image: null as string | null,
-    status: "Placeholder · No award claimed",
-    description:
-      "An approved award citation, category and year will appear here once confirmed.",
+    name: "Udit Pathak Awards",
+    description: "Agency leadership & industry accolades",
+    honours: [
+      "PR Agency Head of the Year 2026 — Adgully IMAGEXX Awards",
+      "Brand Communication Icon 2026",
+      "PR Agency Head of the Year — Adgully IMAGEXX Awards 2024",
+      "PR & Corp Comm Maestro 2024 — e4m",
+      "PR Professional of the Year 2022 and 2021 — IPRCCA",
+      "Top 100 Influential Game Changers — E4M 2022 & 2023",
+      "People & Team PR Agency Head of the Year 2022 — Campaign India Awards",
+      "Featured in e4m’s ‘30 Under 30’ and ‘40 Under 40’ lists",
+      "Top 10 men leading large PR agencies in India",
+    ],
+  },
+  {
+    name: "Puja Pathak Awards",
+    description: "Founder honours & leadership recognition",
+    honours: [
+      "Women Entrepreneur of the Year 2026 — Adgully",
+      "E4m Mentor of the Year 2024",
+      "SABRE Award Jury Member SE Asia 2025",
+      "Featured in Trailblazers — an initiative by the Department of Media Business Studies at IIMC Delhi",
+      "2019 E4M — 40 Under 40 in PR",
+      "Adgully’s Powerful Influencer Award 2021",
+    ],
+  },
+  {
+    name: "Industry Awards",
+    description: "Agency wins across campaigns & consultancy",
+    honours: [
+      "AdGully IMAGEXX Agency of the Year 2026 — 14 awards, including 6 Gold and 5 Silver",
+      "IPRCCA 2024 — 2 Gold, 3 Silver, 2 Bronze",
+      "PRPCL North Winner 2026",
+      "Media Mantra’s journey to e4m PR Agencies — 13 Years of Bold Thinking",
+      "Top 20 PR Companies — e4m PR & Corporate Communications Watchlist 2026",
+      "Adgully IMAGEXX Independent PR Agency of the Year 2025 — 12 awards, including 5 Gold, 2 Silver, 3 Bronze",
+      "IPRCCA 2025 — Large PR Consultancy of the Year; 3 Gold, 3 Silver, 2 Bronze",
+      "BW Excel Awards 2025 — Agency of the Year (Large)",
+      "PRPCL 2025",
+      "IMAGEXX 2024 — 8 Gold, 2 Silver, 4 Bronze",
+      "PRPCL 2024",
+      "India’s PRide 2026 — Brand Communications",
+      "Best Hospitality and Travel Sector Campaign — #BloomInAbundance for Swastik Wellbeing",
+    ],
   },
 ];
 export const dubaiFocus = [

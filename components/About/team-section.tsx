@@ -14,7 +14,7 @@ export function TeamSection() {
       <Reveal className="mb-12 flex flex-wrap items-end justify-between gap-6">
         <div>
           <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mb-7 text-teal">
-            Meet the co-founders
+            Meet the partners
           </p>
           <h2 className="text-[clamp(2.6rem,5vw,5.1rem)] leading-none tracking-[-.065em] font-[550]">
             The people who{" "}
@@ -44,7 +44,7 @@ export function TeamSection() {
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <span className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase absolute left-4 top-4 rounded-full bg-white px-3 py-1.5">
-                Co-founder
+                Team Member
               </span>
             </div>
             <div className="p-6">

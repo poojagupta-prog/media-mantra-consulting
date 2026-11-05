@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Award } from "lucide-react";
-import { awards } from "@/components/media/content";
+import { ArrowDown, Award } from "lucide-react";
+import { BrandStar } from "@/components/ui/brand-star";
+import { awardGroups, featuredAward } from "@/components/media/content";
 import {
   Closing,
   Heading,
@@ -11,30 +12,38 @@ import {
 export const metadata: Metadata = {
   title: "Awards & Recognition",
   description:
-    "A home for verified awards, recognition and the stories behind the work. Award records are awaiting confirmation.",
+    "Explore Media Mantra’s awards and industry recognition, including Udit Pathak’s PR agency Head of the Year 2026 honour.",
 };
 export default function Awards() {
-  const years = [...new Set(awards.map((a) => a.year))].sort(
-    (a, b) => (b ?? 0) - (a ?? 0),
-  );
   return (
     <div className="media-page">
-      <section className="awards-hero media-wrap">
-        <Label>Awards & recognition</Label>
-        <div className="award-orbit" aria-hidden="true">
-          <Award strokeWidth={0.7} />
+      <section className="awards-hero">
+        <div className="media-wrap awards-hero-layout">
+          <div className="awards-hero-copy">
+            <Label>Awards & recognition</Label>
+            <h1>
+              Good work.
+              <br />
+              <em>Lasting resonance.</em>
+            </h1>
+            <p className="media-copy">
+              Recognition means more when there is a meaningful story behind it.
+            </p>
+            <a className="media-link" href="#recognition">
+              Explore recognition <ArrowDown size={16} aria-hidden="true" />
+            </a>
+            <span className="media-status">
+              28 honours · Founder & industry recognition
+            </span>
+          </div>
+          <div className="awards-hero-art" aria-hidden="true">
+            <div className="award-orbit">
+              <Award strokeWidth={0.8} />
+            </div>
+            <BrandStar className="awards-hero-star" />
+            <span className="awards-hero-art-note">Ideas. Impact. Resonance.</span>
+          </div>
         </div>
-        <h1>
-          Good work.
-          <br />
-          <em>Lasting resonance.</em>
-        </h1>
-        <p>
-          Recognition means more when there is a meaningful story behind it.
-        </p>
-        <span className="media-status">
-          Recognition archive · Awaiting verified records
-        </span>
       </section>
       <section className="recognition-intro">
         <div className="media-wrap media-split">
@@ -48,27 +57,25 @@ export default function Awards() {
           </h2>
         </div>
       </section>
-      <section className="media-wrap media-section">
+      <section id="recognition" className="media-wrap media-section awards-recognition">
         <Heading
           label="Featured recognition"
           title="Every honour has"
           accent="a story."
         >
-          This archive is prepared for confirmed achievements. No awards,
-          awarding bodies or results are claimed in these previews.
+          Celebrating the leadership, creativity and impact behind our work.
         </Heading>
-        {awards.map((a) => (
-          <article key={a.id} className="award-feature">
+        {[featuredAward].map((a) => (
+          <article key={a.name} className="award-feature">
             <div className="award-mark">
               {a.image ? (
-                <MediaImage src={a.image} alt={a.name} />
+                <MediaImage src={a.image} alt="Udit Pathak, PR agency Head of the Year 2026" className="object-top" />
               ) : (
                 <Award size={100} strokeWidth={0.8} aria-hidden="true" />
               )}
-              <span>Awaiting official award imagery</span>
             </div>
             <div>
-              <Label>{a.status}</Label>
+              <Label>Featured award · {a.recipient}</Label>
               <h3>{a.name}</h3>
               <p className="media-copy">{a.description}</p>
               <dl className="award-details">
@@ -82,36 +89,68 @@ export default function Awards() {
                 </div>
                 <div>
                   <dt>Year</dt>
-                  <dd>{a.year ?? "To be confirmed"}</dd>
+                  <dd>{a.year}</dd>
                 </div>
               </dl>
+              <a className="media-link" href={a.announcement} target="_blank" rel="noopener noreferrer">
+                View announcement
+              </a>
             </div>
           </article>
         ))}
       </section>
-      <section className="media-wrap awards-timeline">
-        <Heading
-          label="Through the years"
-          title="A record of"
-          accent="recognition."
-        />
-        {years.map((year) => (
-          <div className="timeline-row" key={year ?? "pending"}>
-            <h3>{year ?? "Year pending"}</h3>
+      <section className="awards-collection" aria-labelledby="honours-title">
+        <div className="media-wrap">
+          <div className="honours-heading">
             <div>
-              {awards
-                .filter((a) => a.year === year)
-                .map((a) => (
-                  <div key={a.id}>
-                    <h4>{a.name}</h4>
-                    <p>
-                      {a.status} · {a.organization}
-                    </p>
-                  </div>
-                ))}
+              <Label>The recognition collection</Label>
+              <h2 id="honours-title">Made of ambition.<br /><em>Marked by excellence.</em></h2>
             </div>
+            <p>Individual vision. Collective brilliance. A collection of the moments that recognise both.</p>
           </div>
-        ))}
+          <nav className="honours-nav" aria-label="Award categories">
+            {awardGroups.map((group, index) => (
+              <a href={`#honours-${index}`} key={group.name}>
+                <span>0{index + 1}</span>
+                {group.name.replace(" Awards", "")}
+                <ArrowDown size={14} aria-hidden="true" />
+              </a>
+            ))}
+          </nav>
+          {awardGroups.map((group, index) => (
+            <section className={`honours-group honours-group-${index}`} id={`honours-${index}`} key={group.name} aria-labelledby={`honours-label-${index}`}>
+              <header className="honours-category">
+                <div className="honours-category-top">
+                  <span>Collection / 0{index + 1}</span>
+                  <Award size={24} strokeWidth={1.2} aria-hidden="true" />
+                </div>
+                <h3 id={`honours-label-${index}`}>{group.name.replace(" Awards", "")}<em>{index === 2 ? "Agency recognition" : "Leadership honours"}</em></h3>
+                <p>{group.description}</p>
+                <div className="honours-count"><strong>{String(group.honours.length).padStart(2, "0")}</strong><span>honours &<br />milestones</span></div>
+                <BrandStar className="honours-category-star" aria-hidden="true" />
+              </header>
+              <ul className="honours-grid">
+                {group.honours.map((honour, awardIndex) => {
+                  const [title, ...details] = honour.split(" — ");
+                  const years = [...new Set(honour.match(/\b(?:19|20)\d{2}\b/g) ?? [])];
+                  return (
+                    <li className="honour-card" key={honour}>
+                      <div className="honour-card-top">
+                        <span className="honour-index">{String(awardIndex + 1).padStart(2, "0")}</span>
+                        <span className="honour-year">{years.length ? years.join(" / ") : "Recognition"}</span>
+                      </div>
+                      <div className="honour-card-copy">
+                        <h4>{title}</h4>
+                        {details.length > 0 && <p>{details.join(" — ")}</p>}
+                      </div>
+                      <BrandStar className="honour-card-star" aria-hidden="true" />
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          ))}
+        </div>
       </section>
       <RelatedNews label="Recognition in the press" />
       <Closing title="Let’s create work worth talking about." />

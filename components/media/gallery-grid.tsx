@@ -1,8 +1,11 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, X, Expand, Film } from "lucide-react";
 import { media, type MediaItem } from "./content";
 import { MediaImage } from "./shared";
+
+const PAGE_SIZE = 9;
+
 export function GalleryGrid({
   items = media,
   compact = false,
@@ -11,6 +14,8 @@ export function GalleryGrid({
   compact?: boolean;
 }) {
   const [category, setCategory] = useState("All");
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const gridId = useId();
   const [active, setActive] = useState<MediaItem | null>(null);
   const isOpen = active !== null;
   const dialog = useRef<HTMLDialogElement>(null);
@@ -18,6 +23,7 @@ export function GalleryGrid({
   const filtered = items.filter(
     (i) => category === "All" || i.category === category,
   );
+  const visibleItems = filtered.slice(0, visibleCount);
   const move = (direction: number) => {
     if (active)
       setActive(
@@ -49,7 +55,10 @@ export function GalleryGrid({
             <button
               key={c}
               aria-pressed={c === category}
-              onClick={() => setCategory(c)}
+              onClick={() => {
+                setCategory(c);
+                setVisibleCount(PAGE_SIZE);
+              }}
             >
               {c}
             </button>
@@ -57,15 +66,16 @@ export function GalleryGrid({
         </div>
       )}
       <p className="sr-only" aria-live="polite">
-        {filtered.length} gallery items
+        Showing {visibleItems.length} of {filtered.length} gallery items
       </p>
       <div
+        id={gridId}
         className={compact ? "gallery-grid gallery-compact" : "gallery-grid"}
       >
-        {filtered.map((item, index) => (
+        {visibleItems.map((item, index) => (
           <figure
             key={item.id}
-            className={`gallery-item gallery-shape-${index % 3}`}
+            className="gallery-item"
           >
             <button
               onClick={(e) => {
@@ -73,9 +83,10 @@ export function GalleryGrid({
                 setActive(item);
               }}
               aria-label={`Open ${item.title}`}
+              aria-haspopup="dialog"
             >
               <MediaImage src={item.image} alt={item.alt} />
-              <span className="gallery-expand">
+              <span className="gallery-expand" aria-hidden="true">
                 {item.videoUrl || item.posterOnly ? (
                   <Film size={18} />
                 ) : (
@@ -83,14 +94,33 @@ export function GalleryGrid({
                 )}
               </span>
               <span className="gallery-overlay">
-                <span className="media-label">{item.category}</span>
+                <span className="gallery-meta">
+                  <span className="media-label">{item.category}</span>
+                  <span className="gallery-index" aria-hidden="true">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </span>
                 <strong>{item.title}</strong>
               </span>
             </button>
-            <figcaption>{item.caption}</figcaption>
+            <figcaption className="sr-only">{item.caption}</figcaption>
           </figure>
         ))}
       </div>
+      {visibleItems.length < filtered.length && (
+        <div className="gallery-pagination">
+          <p>
+            {visibleItems.length} / {filtered.length} images
+          </p>
+          <button
+            type="button"
+            aria-controls={gridId}
+            onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
+          >
+            Load more <ArrowRight size={16} aria-hidden="true" />
+          </button>
+        </div>
+      )}
       {active && (
         <dialog
           ref={dialog}
