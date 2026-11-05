@@ -1,15 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, LoaderCircle } from "lucide-react";
 import { services } from "./data";
+import { useContactForm } from "@/hooks/use-contact-form";
+import { contactEmails } from "./contact-details";
 
 export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const { submit, reset, status, error, isSubmitting } = useContactForm();
 
   return (
     <div className="bg-[#f8fbf9] p-7 md:p-12">
-      {submitted ? (
+      {status === "success" ? (
         <div
           role="status"
           className="flex min-h-120 flex-col items-start justify-center"
@@ -17,22 +18,29 @@ export default function ContactForm() {
           <CheckCircle2 size={40} className="mb-6 text-teal" />
           <h2 className="text-3xl tracking-tight">That’s a great start.</h2>
           <p className="mb-7 mt-4 text-sm leading-7 text-muted">
-            Thanks for trying the demo! Your message has not been sent or
-            stored. On the live website, this is where your conversation would
-            begin.
+            Thank you — your enquiry has been sent to our team. We look forward
+            to connecting.
           </p>
           <button
-            onClick={() => setSubmitted(false)}
+            onClick={reset}
             className="rounded-full bg-teal px-6 py-3 text-sm text-white"
           >
-            Try another enquiry
+            Send another enquiry
           </button>
         </div>
       ) : (
         <form
+          aria-busy={isSubmitting}
           onSubmit={(event) => {
             event.preventDefault();
-            setSubmitted(true);
+            const data = new FormData(event.currentTarget);
+            void submit({
+              name: String(data.get("name") ?? "").trim(),
+              email: String(data.get("email") ?? "").trim(),
+              company: String(data.get("company") ?? "").trim(),
+              service: String(data.get("service") ?? ""),
+              message: String(data.get("message") ?? "").trim(),
+            });
           }}
         >
           <h2 className="mb-3 text-3xl leading-tight tracking-[-.05em]">
@@ -41,7 +49,13 @@ export default function ContactForm() {
           <p className="mb-8 text-xs text-muted">
             All fields marked * are required.
           </p>
-          <div className="grid gap-6 sm:grid-cols-2">
+          <fieldset
+            disabled={isSubmitting}
+            className="grid gap-6 sm:grid-cols-2"
+          >
+            <legend className="sr-only">
+              Your contact details and enquiry
+            </legend>
             <label className="block text-[11px] font-semibold">
               Your name *
               <input
@@ -62,6 +76,7 @@ export default function ContactForm() {
                 autoComplete="email"
                 placeholder="alex@company.com"
                 required
+                maxLength={254}
               />
             </label>
             <label className="block text-[11px] font-semibold sm:col-span-2">
@@ -85,7 +100,11 @@ export default function ContactForm() {
                 <option value="" disabled>
                   Select a service
                 </option>
-                {services.map((service) => <option key={service.slug} value={service.title}>{service.title}</option>)}
+                {services.map((service) => (
+                  <option key={service.slug} value={service.title}>
+                    {service.title}
+                  </option>
+                ))}
                 <option>Something else</option>
               </select>
             </label>
@@ -100,16 +119,35 @@ export default function ContactForm() {
                 maxLength={5000}
               />
             </label>
-          </div>
+          </fieldset>
           <p className="my-6 text-xs leading-5 text-muted">
-            This is a demo form. No information will be sent or stored.
+            We’ll use these details to respond to your enquiry.
           </p>
+          {error && (
+            <p role="alert" className="mb-6 text-sm leading-6 text-[#8b302b]">
+              {error}{" "}
+              <a href={`mailto:${contactEmails[0]}`} className="underline">
+                Email us
+              </a>
+            </p>
+          )}
           <button
             type="submit"
+            disabled={isSubmitting}
             className="flex w-full items-center justify-center gap-5 rounded-full bg-teal px-6 py-4 text-sm font-medium text-white transition-colors hover:bg-[#005e63]"
           >
-            Let’s start a conversation
-            <ArrowUpRight size={18} />
+            {isSubmitting
+              ? "Sending your enquiry…"
+              : "Let’s start a conversation"}
+            {isSubmitting ? (
+              <LoaderCircle
+                size={18}
+                className="animate-spin"
+                aria-hidden="true"
+              />
+            ) : (
+              <ArrowUpRight size={18} aria-hidden="true" />
+            )}
           </button>
         </form>
       )}

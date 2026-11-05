@@ -62,8 +62,8 @@ export function ContactView() {
               ))}
             </div>
             <p className="mt-6 text-xs leading-6 text-muted">
-              This is a concept website. Try the enquiry experience — no
-              information is sent or stored.
+              Share your brief using the enquiry form. Our team will get back
+              to you using the contact details you provide.
             </p>
           </div>
         </Reveal>

@@ -1,6 +1,9 @@
 import { services } from "@/components/common/data";
+import nodemailer from "nodemailer";
 
-/** Forward enquiries to the configured CRM/form service without exposing its URL or token. */
+const recipient = "mediamantragroupindia@gmail.com";
+
+/** Email validated enquiries; delivery credentials are only read on the server. */
 export async function POST(request: Request) {
   let body: unknown;
   try {
@@ -51,8 +54,23 @@ export async function POST(request: Request) {
     );
   }
 
-  const endpoint = process.env.CONTACT_API_URL;
-  if (!endpoint) {
+  const host = process.env.SMTP_HOST?.trim();
+  const port = Number(process.env.SMTP_PORT?.trim() || "587");
+  const secureSetting = process.env.SMTP_SECURE?.trim();
+  const secure = secureSetting ? secureSetting === "true" : port === 465;
+  const user = process.env.SMTP_USER?.trim();
+  const pass = process.env.SMTP_PASS;
+  const from = process.env.CONTACT_FROM_EMAIL?.trim();
+  if (
+    !host ||
+    !user ||
+    !pass?.trim() ||
+    !from ||
+    !Number.isInteger(port) ||
+    port < 1 ||
+    port > 65535 ||
+    (secureSetting && !["true", "false"].includes(secureSetting))
+  ) {
     return Response.json(
       {
         error: "Contact service is not configured. Please contact us by email.",
@@ -62,20 +80,41 @@ export async function POST(request: Request) {
   }
 
   try {
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        ...(process.env.CONTACT_API_TOKEN
-          ? { Authorization: `Bearer ${process.env.CONTACT_API_TOKEN}` }
-          : {}),
-      },
-      body: JSON.stringify(enquiry),
-      signal: AbortSignal.timeout(15_000),
-      cache: "no-store",
-      redirect: "error",
+    const transporter = nodemailer.createTransport({
+      host,
+      port,
+      secure,
+      requireTLS: !secure,
+      auth: { user, pass },
+      connectionTimeout: 5_000,
+      greetingTimeout: 5_000,
+      socketTimeout: 10_000,
+      dnsTimeout: 5_000,
+      disableFileAccess: true,
+      disableUrlAccess: true,
     });
-    if (!response.ok) throw new Error("Contact service failed.");
+    const result = await transporter.sendMail({
+      from,
+      to: [recipient],
+      replyTo: enquiry.email,
+      subject: `New website enquiry: ${enquiry.service}`,
+      text: [
+        "New enquiry from the Media Mantra Consulting website",
+        "",
+        `Name: ${enquiry.name}`,
+        `Email: ${enquiry.email}`,
+        `Company: ${enquiry.company || "Not provided"}`,
+        `Service: ${enquiry.service}`,
+        "",
+        "Message:",
+        enquiry.message,
+      ].join("\n"),
+    });
+    if (
+      !result.accepted.some((address) => address.toLowerCase() === recipient)
+    ) {
+      throw new Error("Email service did not accept the enquiry.");
+    }
     return Response.json({ success: true });
   } catch {
     return Response.json(

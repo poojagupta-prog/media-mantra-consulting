@@ -6,7 +6,20 @@ Contact CTAs throughout the site open the form-only modal. Header and footer con
 
 `useContactForm(endpoint?)` from `@/hooks/use-contact-form` exposes `submit(enquiry)`, `reset()`, `status`, `error`, and `isSubmitting`. It posts JSON with `name`, `email`, `company`, `service`, and `message`. The provider accepts an optional `endpoint` prop, defaulting to `/api/contact`.
 
-To enable delivery through the default API route, set `CONTACT_API_URL` in `.env.local` to your CRM/form service's JSON POST endpoint. Optionally set `CONTACT_API_TOKEN` for bearer authentication. Both values stay on the server. The service must accept the above JSON fields and return a 2xx status when it accepts an enquiry. Restart the server after changing environment variables. Until configured, submission returns an error with an email fallback; no enquiry is reported as sent. The existing `/contact` page retains its separate demo form.
+Both the modal and `/contact` page send enquiries through `/api/contact` using [Nodemailer’s SMTP transport](https://nodemailer.com/smtp). Each email goes to `mediamantragroupindia@gmail.com` and includes the name, email, company, service, and message. Reply-To is the submitter’s email address. The recipient is controlled on the server and cannot be overridden by form submissions.
+
+To enable delivery, fill in `.env.local` (see `.env.example`):
+
+```dotenv
+SMTP_HOST=smtp.your-provider.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=your_smtp_username
+SMTP_PASS=your_smtp_password
+CONTACT_FROM_EMAIL="Media Mantra Consulting <website@your-domain.com>"
+```
+
+Use a sender address authorized by your SMTP provider. Set `SMTP_SECURE=true` for implicit TLS (usually port 465), or `false` for STARTTLS (usually port 587). STARTTLS is required when implicit TLS is disabled. Use your provider’s SMTP credentials or an app password where required. These variables are server-only; `.env.local` is ignored by Git. Add the same variables to your hosting environment for production, then restart or redeploy. No real credentials are included in the repository. Until configured, the API returns 503 and forms show an error instead of a success message. Success means the SMTP server has accepted the recipient, not confirmation that the email has reached the inbox. The route uses the Node.js runtime, and hosting must allow outbound SMTP connections. Run `npm run test:contact` to check validation and mocked email delivery without sending a real email.
 
 ## Getting Started
 

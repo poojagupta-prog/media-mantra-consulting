@@ -19,7 +19,7 @@ const faqData = [
     id: 3,
     question: "How do we get started?",
     answer:
-      "Tell us about your brand on the contact page. The form is a demo, so no details are sent or stored.",
+      "Tell us about your brand using the contact form. Share your goals and the support you’re looking for, and our team will get back to you.",
   },
   {
     id: 4,

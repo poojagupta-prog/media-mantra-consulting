@@ -116,9 +116,9 @@ export function Footer() {
         aria-hidden="true"
         className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)] pt-5 text-[clamp(2.8rem,8vw,8rem)] font-semibold leading-none tracking-[-.08em] text-[#324340]"
       >
-        <div className="relative isolate pb-[.3em]">
+        <div className="relative isolate w-fit pb-[.3em]">
           media mantra<span className="text-teal">.</span>
-          <span className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 block select-none whitespace-nowrap text-[clamp(1.15rem,3.5vw,3.5rem)] max-[768px]:text-[clamp(1.15rem,4.5vw,4.5rem)] tracking-[-.05em] text-white/[.07]">
+          <span className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 block select-none whitespace-nowrap text-end text-[clamp(1.15rem,3.5vw,3.5rem)] max-[768px]:text-[clamp(1.15rem,4.5vw,4.5rem)] tracking-[-.05em] text-white/[.07]">
             Consultancy FZCO
           </span>
         </div>
