@@ -1,10 +1,58 @@
 import { services } from "@/components/common/data";
+import { isIP } from "node:net";
 import nodemailer from "nodemailer";
 
-const recipient = "mediamantragroupindia@gmail.com";
+const recipient =
+  process.env.CONTACT_TO_EMAIL?.trim() || "mediamantragroupindia@gmail.com";
+
+const RATE_LIMIT = 5;
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+const MAX_TRACKED_CLIENTS = 10_000;
+// Per server instance. The hosting proxy must overwrite client IP headers.
+const clients = new Map<string, { count: number; resetAt: number }>();
+
+function rateLimit(request: Request): Response | null {
+  const now = Date.now();
+  // Entries are inserted in expiry order; remove idle clients without timers.
+  for (const [key, entry] of clients) {
+    if (entry.resetAt > now) break;
+    clients.delete(key);
+  }
+
+  const forwarded = request.headers.get("x-forwarded-for")?.split(",", 1)[0]?.trim();
+  const realIP = request.headers.get("x-real-ip")?.trim();
+  const ip = forwarded && isIP(forwarded)
+    ? forwarded
+    : realIP && isIP(realIP) ? realIP : "unknown";
+  let client = clients.get(ip);
+  if (!client && clients.size < MAX_TRACKED_CLIENTS) {
+    client = { count: 0, resetAt: now + RATE_WINDOW_MS };
+    clients.set(ip, client);
+  }
+
+  if (!client || client.count >= RATE_LIMIT) {
+    // At capacity, reject new clients until space expires instead of evicting limits.
+    const resetAt = client?.resetAt ?? clients.values().next().value!.resetAt;
+    return Response.json(
+      { error: "Too many enquiries. Please try again later." },
+      {
+        status: 429,
+        headers: {
+          "Retry-After": String(Math.max(1, Math.ceil((resetAt - now) / 1000))),
+          "Cache-Control": "no-store",
+        },
+      },
+    );
+  }
+  client.count += 1;
+  return null;
+}
 
 /** Email validated enquiries; delivery credentials are only read on the server. */
 export async function POST(request: Request) {
+  const limited = rateLimit(request);
+  if (limited) return limited;
+
   let body: unknown;
   try {
     const text = await request.text();

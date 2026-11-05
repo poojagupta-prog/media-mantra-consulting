@@ -48,6 +48,13 @@ function ContactModal({
   const { submit, status, error, isSubmitting } = useContactForm(endpoint);
 
   useEffect(() => {
+    if (status !== "success") return;
+
+    const timeout = window.setTimeout(onClose, 2000);
+    return () => window.clearTimeout(timeout);
+  }, [status, onClose]);
+
+  useEffect(() => {
     const element = dialog.current;
     if (!element) return;
     const previousFocus = document.activeElement;

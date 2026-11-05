@@ -21,6 +21,8 @@ CONTACT_FROM_EMAIL="Media Mantra Consulting <website@your-domain.com>"
 
 Use a sender address authorized by your SMTP provider. Set `SMTP_SECURE=true` for implicit TLS (usually port 465), or `false` for STARTTLS (usually port 587). STARTTLS is required when implicit TLS is disabled. Use your provider’s SMTP credentials or an app password where required. These variables are server-only; `.env.local` is ignored by Git. Add the same variables to your hosting environment for production, then restart or redeploy. No real credentials are included in the repository. Until configured, the API returns 503 and forms show an error instead of a success message. Success means the SMTP server has accepted the recipient, not confirmation that the email has reached the inbox. The route uses the Node.js runtime, and hosting must allow outbound SMTP connections. Run `npm run test:contact` to check validation and mocked email delivery without sending a real email.
 
+The contact API allows 5 POST attempts per client IP in a 10-minute window, including invalid enquiries and failed deliveries. Further attempts return HTTP 429 with a `Retry-After` header in seconds. Configure the hosting proxy to overwrite `X-Forwarded-For` (first address) or `X-Real-IP`; requests without a valid IP share one fallback limit. Counters are held in memory, capped at 10,000 clients, and reset on server restarts. Multiple server instances have separate counters; use a shared store or hosting-level limiter when a deployment-wide limit is required.
+
 ## Getting Started
 
 First, run the development server:
