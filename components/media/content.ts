@@ -67,14 +67,14 @@ export const media: MediaItem[] = [
   },
 ];
 export const featuredAward = {
-  name: "PR agency Head of the Year 2026",
+  name: "MDME 2026 award",
   recipient: "Udit Pathak",
-  organization: "Adgully IMAGEXX Awards",
+  organization: "Grand Axis Global",
   year: 2026,
-  category: "PR Agency Head of the Year",
-  image: "/images/about/udit.jpeg",
+  category: "Excellence in PR & Communications Leadership",
+  image: "/images/gallery/award.jpeg",
   description:
-    "Udit Pathak recognised as PR Agency Head of the Year at the Adgully IMAGEXX Awards 2026.",
+    "Udit Pathak recognised as a leading PR & communications professional for his work in the Middle East",
   announcement:
     "https://www.linkedin.com/posts/uditpathak_mediamantra-imagexxawards2026-publicrelations-activity-7468181386911264768-Z3GG",
 };
@@ -149,25 +149,29 @@ export const dubaiFocus = [
 export const reviews = [
   {
     id: 1,
-    quote: "The team understood our market and got our launch featured in the right UAE publications.",
+    quote:
+      "The team understood our market and got our launch featured in the right UAE publications.",
     clientName: "Eastman Auto & Power",
     designation: "Marketing Director",
   },
   {
     id: 2,
-    quote: "Clear communication, fast turnaround and coverage we could actually measure.",
+    quote:
+      "Clear communication, fast turnaround and coverage we could actually measure.",
     clientName: "Virgio",
     designation: "Founder & CEO",
   },
   {
     id: 3,
-    quote: "A reliable PR partner in Dubai for our brand and our leadership team.",
+    quote:
+      "A reliable PR partner in Dubai for our brand and our leadership team.",
     clientName: "Centurion Properties",
     designation: "Head of Communications",
   },
   {
     id: 4,
-    quote: "Their press release distribution gave us reach well beyond what we expected.",
+    quote:
+      "Their press release distribution gave us reach well beyond what we expected.",
     clientName: "BAMX Developments",
     designation: "Business Development Manager",
   },

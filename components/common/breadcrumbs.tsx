@@ -11,6 +11,8 @@ export function Breadcrumbs({ labels }: { labels: Record<string, string> }) {
   const segments = pathname.split("/").filter(Boolean);
   const currentPath = `/${segments.join("/")}`;
 
+  if (currentPath === "/") return null;
+
   // These pages already render breadcrumbs within their bespoke story heroes.
   if (currentPath === "/case-studies" || currentPath.startsWith("/case-studies/")) {
     return null;

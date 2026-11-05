@@ -75,8 +75,8 @@ export default function Awards() {
               {a.image ? (
                 <MediaImage
                   src={a.image}
-                  alt="Udit Pathak, PR agency Head of the Year 2026"
-                  className="object-top"
+                  alt={a.name}
+                  className="object-[50%_30%]"
                 />
               ) : (
                 <Award size={100} strokeWidth={0.8} aria-hidden="true" />
@@ -149,7 +149,9 @@ export default function Awards() {
                   <h3 id={`honours-label-${index}`}>
                     {group.name.replace(" Awards", "")}
                     <em>
-                      {index === 2 ? "Agency recognition" : "Leadership honours"}
+                      {index === 2
+                        ? "Agency recognition"
+                        : "Leadership honours"}
                     </em>
                   </h3>
                   <Award size={24} strokeWidth={1.2} aria-hidden="true" />

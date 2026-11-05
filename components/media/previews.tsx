@@ -1,6 +1,6 @@
 import { Award, Quote } from "lucide-react";
 import { PodcastCard } from "./episode-list";
-import { reviews } from "./content";
+import { featuredAward, reviews } from "./content";
 import { galleryItems } from "./gallery-data";
 import catalogue from "@/data/podcasts.json";
 import { Heading, Label, MediaImage, TextLink } from "./shared";
@@ -41,20 +41,52 @@ export function PodcastPreview({ compact = false }: { compact?: boolean }) {
 }
 export function RecognitionPreview() {
   return (
-    <section className="recognition-preview">
+    <section
+      className="recognition-preview"
+      aria-labelledby="recognition-preview-title"
+    >
       <div className="media-wrap">
-        <Award size={44} strokeWidth={1} />
-        <div>
-          <Label>Awards & recognition</Label>
-          <h2>
+        <figure className="recognition-preview-photo">
+          <MediaImage
+            src={featuredAward.image}
+            alt={`${featuredAward.recipient} receiving the ${featuredAward.name} by ${featuredAward.organization}`}
+            className="object-[50%_30%]"
+          />
+          <figcaption>
+            <Award size={20} strokeWidth={1.25} aria-hidden="true" />
+            <span>
+              {featuredAward.organization} · {featuredAward.year}
+            </span>
+          </figcaption>
+        </figure>
+        <div className="recognition-preview-copy">
+          <div className="recognition-preview-eyebrow">
+            <Label>Awards & recognition</Label>
+            <span>Featured honour / {featuredAward.year}</span>
+          </div>
+          <h2 id="recognition-preview-title">
             Work that leaves <em>an impression.</em>
           </h2>
-          <p>
-            Our recognition archive is taking shape. Verified award records are
-            awaiting confirmation.
+          <div className="recognition-preview-award">
+            <h3>{featuredAward.name}</h3>
+            <p className="recognition-preview-organisation">
+              By {featuredAward.organization}
+            </p>
+            <p className="recognition-preview-category">
+              {featuredAward.category}
+            </p>
+          </div>
+          <p className="recognition-preview-description">
+            {featuredAward.description}.
           </p>
+          <div className="recognition-preview-footer">
+            <span>
+              {featuredAward.recipient}
+              <small>Award recipient</small>
+            </span>
+            <TextLink href="/awards#recognition">Explore recognition</TextLink>
+          </div>
         </div>
-        <TextLink href="/awards">Explore recognition</TextLink>
       </div>
     </section>
   );
@@ -100,17 +132,32 @@ export function TestimonialPreview() {
       >
         A few words from the brands we work with.
       </Heading>
-      <div className="testimonial-grid">
-        {reviews.map((review) => (
-          <figure key={review.id} className="testimonial-card">
-            <Quote size={32} strokeWidth={1.25} aria-hidden="true" />
-            <blockquote>“{review.quote}”</blockquote>
-            <figcaption>
-              <strong>{review.clientName}</strong>
-              <span>{review.designation}</span>
-            </figcaption>
-          </figure>
-        ))}
+      <div
+        className="testimonial-carousel"
+        tabIndex={0}
+        role="region"
+        aria-label="Client reviews. Hover or focus to pause scrolling."
+      >
+        <div className="testimonial-track">
+          {[false, true].map((isDuplicate) => (
+            <div
+              key={String(isDuplicate)}
+              className="testimonial-group"
+              aria-hidden={isDuplicate || undefined}
+            >
+              {reviews.map((review) => (
+                <figure key={review.id} className="testimonial-card">
+                  <Quote size={24} strokeWidth={1.25} aria-hidden="true" />
+                  <blockquote>“{review.quote}”</blockquote>
+                  <figcaption>
+                    <strong>{review.clientName}</strong>
+                    <span>{review.designation}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
       <div className="testimonial-footer">
         <Label>Your next chapter starts with a conversation</Label>
