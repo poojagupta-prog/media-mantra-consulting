@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { photos } from "../common/data";
 
 const sectors = [
@@ -48,7 +48,7 @@ export function SectorCarousel() {
       aria-roledescription="carousel"
       aria-label="Sectors we work in"
     >
-      <div className="relative h-[430px] overflow-hidden md:h-[570px]">
+      <div className="relative h-[300px] overflow-hidden md:h-[450px]">
         {sectors.map((sector, index) => {
           const forward = (index - active + sectors.length) % sectors.length;
           const position = forward === sectors.length - 1 ? -1 : forward;
@@ -62,23 +62,26 @@ export function SectorCarousel() {
                   className="h-full w-full object-cover"
                   loading="lazy"
                 />
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"
+                />
                 {position === 0 && (
                   <span className="absolute right-5 top-5 flex h-12 w-12 items-center justify-center rounded-full bg-white">
                     <ArrowUpRight size={23} aria-hidden="true" />
                   </span>
                 )}
                 {position === 0 && (
-                  <span className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase absolute bottom-5 left-5 bg-white px-3 py-2">
-                    Sector focus
-                  </span>
+                  <div className="absolute inset-x-0 bottom-0 p-5 text-white md:p-8">
+                    <h3 className="text-2xl leading-tight tracking-tight">
+                      {sector.title}
+                    </h3>
+                    <p className="mt-2 text-xs leading-relaxed text-white/90">
+                      {sector.sub}
+                    </p>
+                  </div>
                 )}
               </div>
-              {position === 0 && (
-                <>
-                  <h3 className="mt-5 text-2xl tracking-tight">{sector.title}</h3>
-                  <p className="mt-2 text-xs text-muted">{sector.sub}</p>
-                </>
-              )}
             </>
           );
           const className =
@@ -125,15 +128,16 @@ export function SectorCarousel() {
           );
         })}
       </div>
-      <div className="mt-2 flex items-center justify-center gap-5">
+      <div className="mt-4 flex items-center justify-center gap-5">
         <button
           type="button"
           onClick={() =>
             setActive((index) => (index - 1 + sectors.length) % sectors.length)
           }
-          className="text-sm underline-offset-4 hover:underline focus-visible:underline"
+          aria-label="Previous sector"
+          className="group flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-teal text-white transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-teal/85 hover:shadow-md active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal motion-reduce:transform-none motion-reduce:transition-none"
         >
-          Previous
+          <ArrowLeft aria-hidden="true" className="h-5 w-5 transition-transform duration-200 group-hover:-translate-x-0.5 motion-reduce:transform-none motion-reduce:transition-none" />
         </button>
         <div className="flex items-center gap-3" aria-label="Choose a sector">
           {sectors.map((sector, index) => (
@@ -150,9 +154,10 @@ export function SectorCarousel() {
         <button
           type="button"
           onClick={() => setActive((index) => (index + 1) % sectors.length)}
-          className="text-sm underline-offset-4 hover:underline focus-visible:underline"
+          aria-label="Next sector"
+          className="group flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-teal text-white transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-teal/85 hover:shadow-md active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal motion-reduce:transform-none motion-reduce:transition-none"
         >
-          Next
+          <ArrowRight aria-hidden="true" className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transform-none motion-reduce:transition-none" />
         </button>
       </div>
     </div>
