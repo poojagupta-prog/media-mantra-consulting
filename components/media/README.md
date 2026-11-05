@@ -7,7 +7,7 @@ packages were added.
 ## Publishing content
 
 `content.ts` contains typed episode and gallery records, award previews,
-Dubai focus areas and the testimonial placeholder. Replace preview records
+Dubai focus areas and the supplied client testimonials. Replace preview records
 with approved content; remove their placeholder labels only after verification.
 
 - Podcasts now use the real, deduplicated YouTube catalogue in `data/podcasts.json`.
@@ -37,8 +37,8 @@ with approved content; remove their placeholder labels only after verification.
 - Dubai IT: approve the initiative’s identity, scope, company involvement,
   campaign details and any outcome statistics before replacing page notices.
   Existing newsroom links are related regional coverage, not initiative evidence.
-- Testimonials: obtain an approved quote and publication permission; the current
-  panel deliberately contains no invented quote or client identity.
+- Testimonials: `reviews` contains the five user-supplied quotes, client names
+  and designations rendered by the testimonial preview.
 - About: the existing management profiles remain explicitly labelled concepts.
 
 Case studies are available at `/case-studies` and on the homepage. The journal

@@ -146,10 +146,35 @@ export const dubaiFocus = [
     "Put people, culture and meaningful outcomes at the centre of a communications story.",
   ],
 ];
-export const testimonials = [
+export const reviews = [
   {
-    title: "The client perspective",
-    text: "Approved client feedback will appear here, with permission and attribution.",
-    attribution: "Testimonial placeholder · No client quote supplied",
+    id: 1,
+    quote: "The team understood our market and got our launch featured in the right UAE publications.",
+    clientName: "Eastman Auto & Power",
+    designation: "Marketing Director",
+  },
+  {
+    id: 2,
+    quote: "Clear communication, fast turnaround and coverage we could actually measure.",
+    clientName: "Virgio",
+    designation: "Founder & CEO",
+  },
+  {
+    id: 3,
+    quote: "A reliable PR partner in Dubai for our brand and our leadership team.",
+    clientName: "Centurion Properties",
+    designation: "Head of Communications",
+  },
+  {
+    id: 4,
+    quote: "Their press release distribution gave us reach well beyond what we expected.",
+    clientName: "BAMX Developments",
+    designation: "Business Development Manager",
+  },
+  {
+    id: 5,
+    quote: "They treat our brand story like their own. Highly recommended.",
+    clientName: "boAt",
+    designation: "Brand Manager",
   },
 ];

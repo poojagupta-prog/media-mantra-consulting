@@ -1,6 +1,6 @@
 import { Award, Quote } from "lucide-react";
 import { PodcastCard } from "./episode-list";
-import { testimonials } from "./content";
+import { reviews } from "./content";
 import { galleryItems } from "./gallery-data";
 import catalogue from "@/data/podcasts.json";
 import { Heading, Label, MediaImage, TextLink } from "./shared";
@@ -77,7 +77,9 @@ export function GalleryPreview() {
                 className="transition-transform duration-500 group-hover:scale-105"
               />
             </div>
-            <Label>{item.category} / {item.title}</Label>
+            <Label>
+              {item.category} / {item.title}
+            </Label>
           </a>
         ))}
       </div>
@@ -87,19 +89,33 @@ export function GalleryPreview() {
 }
 export function TestimonialPreview() {
   return (
-    <section className="media-wrap testimonial-preview">
-      <Quote size={44} strokeWidth={1} aria-hidden="true" />
-      <div>
-        <Label>Client voices / Coming into focus</Label>
-        {testimonials.map((t) => (
-          <div key={t.title}>
-            <h2>{t.title}</h2>
-            <p>{t.text}</p>
-            <span className="media-status">{t.attribution}</span>
-          </div>
+    <section
+      className="media-wrap testimonial-preview"
+      aria-label="Client testimonials"
+    >
+      <Heading
+        label="Client voices"
+        title="Good stories."
+        accent="Lasting partnerships."
+      >
+        A few words from the brands we work with.
+      </Heading>
+      <div className="testimonial-grid">
+        {reviews.map((review) => (
+          <figure key={review.id} className="testimonial-card">
+            <Quote size={32} strokeWidth={1.25} aria-hidden="true" />
+            <blockquote>“{review.quote}”</blockquote>
+            <figcaption>
+              <strong>{review.clientName}</strong>
+              <span>{review.designation}</span>
+            </figcaption>
+          </figure>
         ))}
       </div>
-      <TextLink href="/contact">Share your experience</TextLink>
+      <div className="testimonial-footer">
+        <Label>Your next chapter starts with a conversation</Label>
+        <TextLink href="/contact">Let’s tell your story</TextLink>
+      </div>
     </section>
   );
 }
