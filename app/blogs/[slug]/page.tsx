@@ -9,7 +9,6 @@ import { blogDate } from "@/lib/blogs/query";
 import { blogBodies } from "@/lib/blogs/bodies";
 import { BlogCard } from "@/components/blogs/blog-card";
 import { TableOfContents, ShareTools } from "@/components/blogs/article-tools";
-import { Comments } from "@/components/blogs/comments";
 import "../blogs.css";
 type Props = { params: Promise<{ slug: string }> };
 export async function generateStaticParams() {
@@ -167,7 +166,7 @@ async function Article({ params }: Props) {
               ))}
             </ul>
           )}
-          <Comments key={blog.slug} slug={blog.slug} />
+          {/* TODO: Restore the Comments component once the CMS is ready. */}
         </div>
         <aside className="blog-share-rail">
           <ShareTools title={blog.title} url={url} />
