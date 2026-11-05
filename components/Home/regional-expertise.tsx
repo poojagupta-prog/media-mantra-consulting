@@ -1,69 +1,81 @@
-import { Globe2, Languages, Radio } from "lucide-react";
 import { Reveal } from "../ui/reveal";
-import { Stagger } from "../common/scroll-motion";
+
+const perspectives = [
+  {
+    label: "Local perspective",
+    title: "A local lens.",
+    emphasis: "A global outlook.",
+    text: "Regional context shapes the story. We consider the audiences, communities, and conversations that make the UAE distinct.",
+    background: "bg-[#e7eeea]",
+  },
+  {
+    label: "Cultural understanding",
+    title: "Culture",
+    emphasis: "before copy.",
+    text: "From Arabic and English messaging to the nuances between markets, meaningful communication starts with cultural understanding.",
+    background: "bg-[#efe9df]",
+  },
+  {
+    label: "Meaningful connections",
+    title: "The right",
+    emphasis: "conversation.",
+    text: "Business media, digital creators, industry voices, and community platforms. A thoughtful mix helps each story find its audience.",
+    background: "bg-[#eee7e8]",
+  },
+];
 
 export function RegionalExpertise() {
-  const items = [
-    {
-      icon: Globe2,
-      title: "A local lens. A global outlook.",
-      text: "Regional context shapes the story. We consider the audiences, communities, and conversations that make the UAE distinct.",
-      color: "text-teal",
-      number: "01",
-    },
-    {
-      icon: Languages,
-      title: "Culture before copy.",
-      text: "From Arabic and English messaging to the nuances between markets, meaningful communication starts with cultural understanding.",
-      color: "text-pink",
-      number: "02",
-    },
-    {
-      icon: Radio,
-      title: "The right conversation.",
-      text: "Business media, digital creators, industry voices, and community platforms. A thoughtful mix helps each story find its audience.",
-      color: "text-[#b64b24]",
-      number: "03",
-    },
-  ];
   return (
-    <section className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)] py-22 md:py-28">
-      <Reveal className="mb-14 flex flex-wrap items-end justify-between gap-8">
-        <div>
-          <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mb-6 text-teal">
+    <section
+      aria-labelledby="regional-expertise-title"
+      className="mx-auto w-[min(1440px,calc(100%-112px))] py-20 max-[768px]:w-[calc(100%-40px)] md:py-28"
+    >
+      <div className="grid items-start gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16 xl:gap-24">
+        <Reveal className="lg:sticky lg:top-32 lg:py-5">
+          <p className="mb-7 font-mono text-[10px] leading-relaxed tracking-[.16em] text-teal uppercase">
             Made for this market
           </p>
-          <h2 className="text-[clamp(2.6rem,5vw,5.1rem)] leading-none tracking-[-.065em] font-[550]">
+          <h2
+            id="regional-expertise-title"
+            className="text-[clamp(2.6rem,4.5vw,4.8rem)] font-[550] leading-[1.05] tracking-[-.065em]"
+          >
             Global stories.
             <br />
-            <span className="font-[Georgia,'Times_New_Roman',serif] italic font-normal tracking-[-.065em]">
+            <span className="font-[Georgia,'Times_New_Roman',serif] font-normal text-teal italic">
               Regional relevance.
             </span>
           </h2>
+          <p className="mt-7 max-w-[19rem] text-base leading-8 text-muted">
+            Dubai moves fast. Your communications should move with purpose.
+          </p>
+          <div className="mt-10 max-w-[19rem] border-t border-teal/25 pt-5 lg:mt-16">
+            <p className="font-[Georgia,'Times_New_Roman',serif] text-xl italic text-teal">
+              Rooted in the region. Open to the world.
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="grid gap-4">
+          {perspectives.map(({ label, title, emphasis, text, background }) => (
+            <Reveal key={label}>
+              <article className={`${background} rounded-[3px] px-6 py-8 sm:px-9 sm:py-10 xl:px-11`}>
+                <p className="mb-5 font-mono text-[9px] leading-relaxed tracking-[.14em] text-[#44615b] uppercase">
+                  {label}
+                </p>
+                <h3 className="text-[clamp(1.75rem,2.6vw,2.5rem)] font-medium leading-[1.12] tracking-[-.045em]">
+                  {title}{" "}
+                  <span className="font-[Georgia,'Times_New_Roman',serif] font-normal text-[#285c56] italic">
+                    {emphasis}
+                  </span>
+                </h3>
+                <p className="mt-5 max-w-lg text-sm leading-7 text-[#575b57]">
+                  {text}
+                </p>
+              </article>
+            </Reveal>
+          ))}
         </div>
-        <p className="max-w-xs text-sm leading-7 text-muted">
-          Dubai moves fast. Your communications should move with purpose.
-        </p>
-      </Reveal>
-      <Stagger className="grid gap-8 md:grid-cols-3">
-        {items.map(({ icon: Icon, title, text, color, number }) => (
-          <article
-            key={number}
-            className="h-full border-t border-black/20 pt-7"
-          >
-            <div className="mb-9 flex items-center justify-between">
-              <Icon className={color} size={32} strokeWidth={1.3} />
-              <span className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase text-muted">
-                {number}
-              </span>
-            </div>
-            <h3 className="max-w-xs text-2xl leading-tight tracking-tight">
-              {title}
-            </h3>
-            <p className="mt-5 text-sm leading-7 text-muted">{text}</p>
-          </article>
-        ))}
-      </Stagger>
+      </div>
     </section>
   );
 }

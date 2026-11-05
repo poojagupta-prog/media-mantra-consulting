@@ -29,31 +29,24 @@ export function OurProcess() {
       <div>
         {[
           [
-            "01",
             "Listen to the landscape.",
             "We start with your business, your audience, and the conversations around you. Insight gives the story its direction.",
           ],
           [
-            "02",
             "Find your distinctive voice.",
             "We define the narrative, messages, and creative angle that connect your ambition with what people care about.",
           ],
           [
-            "03",
             "Bring the story to life.",
             "We connect media, content, creators, and experiences in a coordinated communications plan.",
           ],
           [
-            "04",
             "Learn. Refine. Keep moving.",
             "We review message quality, audience response, and agreed outcomes to understand what resonated and what comes next.",
           ],
-        ].map(([n, title, text]) => (
-          <Reveal key={n} className="border-t border-black/20 py-10 md:py-14">
-            <span className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase text-teal">
-              {n} /
-            </span>
-            <h3 className="mt-5 text-3xl tracking-[-.04em]">{title}</h3>
+        ].map(([title, text]) => (
+          <Reveal key={title} className="border-t border-black/20 py-10 md:py-14">
+            <h3 className="text-3xl tracking-[-.04em]">{title}</h3>
             <p className="mt-5 max-w-md text-sm leading-7 text-muted">{text}</p>
           </Reveal>
         ))}

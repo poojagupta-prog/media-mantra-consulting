@@ -40,8 +40,9 @@ export default function Awards() {
             <div className="award-orbit">
               <Award strokeWidth={0.8} />
             </div>
-            <BrandStar className="awards-hero-star" />
-            <span className="awards-hero-art-note">Ideas. Impact. Resonance.</span>
+            <span className="awards-hero-art-note">
+              Ideas. Impact. Resonance.
+            </span>
           </div>
         </div>
       </section>
@@ -57,7 +58,10 @@ export default function Awards() {
           </h2>
         </div>
       </section>
-      <section id="recognition" className="media-wrap media-section awards-recognition">
+      <section
+        id="recognition"
+        className="media-wrap media-section awards-recognition"
+      >
         <Heading
           label="Featured recognition"
           title="Every honour has"
@@ -69,7 +73,11 @@ export default function Awards() {
           <article key={a.name} className="award-feature">
             <div className="award-mark">
               {a.image ? (
-                <MediaImage src={a.image} alt="Udit Pathak, PR agency Head of the Year 2026" className="object-top" />
+                <MediaImage
+                  src={a.image}
+                  alt="Udit Pathak, PR agency Head of the Year 2026"
+                  className="object-top"
+                />
               ) : (
                 <Award size={100} strokeWidth={0.8} aria-hidden="true" />
               )}
@@ -92,7 +100,12 @@ export default function Awards() {
                   <dd>{a.year}</dd>
                 </div>
               </dl>
-              <a className="media-link" href={a.announcement} target="_blank" rel="noopener noreferrer">
+              <a
+                className="media-link"
+                href={a.announcement}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 View announcement
               </a>
             </div>
@@ -104,9 +117,16 @@ export default function Awards() {
           <div className="honours-heading">
             <div>
               <Label>The recognition collection</Label>
-              <h2 id="honours-title">Made of ambition.<br /><em>Marked by excellence.</em></h2>
+              <h2 id="honours-title">
+                Made of ambition.
+                <br />
+                <em>Marked by excellence.</em>
+              </h2>
             </div>
-            <p>Individual vision. Collective brilliance. A collection of the moments that recognise both.</p>
+            <p>
+              Individual vision. Collective brilliance. A collection of the
+              moments that recognise both.
+            </p>
           </div>
           <nav className="honours-nav" aria-label="Award categories">
             {awardGroups.map((group, index) => (
@@ -118,32 +138,61 @@ export default function Awards() {
             ))}
           </nav>
           {awardGroups.map((group, index) => (
-            <section className={`honours-group honours-group-${index}`} id={`honours-${index}`} key={group.name} aria-labelledby={`honours-label-${index}`}>
+            <section
+              className={`honours-group honours-group-${index}`}
+              id={`honours-${index}`}
+              key={group.name}
+              aria-labelledby={`honours-label-${index}`}
+            >
               <header className="honours-category">
                 <div className="honours-category-top">
-                  <span>Collection / 0{index + 1}</span>
+                  <h3 id={`honours-label-${index}`}>
+                    {group.name.replace(" Awards", "")}
+                    <em>
+                      {index === 2 ? "Agency recognition" : "Leadership honours"}
+                    </em>
+                  </h3>
                   <Award size={24} strokeWidth={1.2} aria-hidden="true" />
                 </div>
-                <h3 id={`honours-label-${index}`}>{group.name.replace(" Awards", "")}<em>{index === 2 ? "Agency recognition" : "Leadership honours"}</em></h3>
                 <p>{group.description}</p>
-                <div className="honours-count"><strong>{String(group.honours.length).padStart(2, "0")}</strong><span>honours &<br />milestones</span></div>
-                <BrandStar className="honours-category-star" aria-hidden="true" />
+                <div className="honours-count">
+                  <strong>
+                    {String(group.honours.length).padStart(2, "0")}
+                  </strong>
+                  <span>
+                    honours &<br />
+                    milestones
+                  </span>
+                </div>
+                <BrandStar
+                  className="honours-category-star"
+                  aria-hidden="true"
+                />
               </header>
               <ul className="honours-grid">
                 {group.honours.map((honour, awardIndex) => {
                   const [title, ...details] = honour.split(" — ");
-                  const years = [...new Set(honour.match(/\b(?:19|20)\d{2}\b/g) ?? [])];
+                  const years = [
+                    ...new Set(honour.match(/\b(?:19|20)\d{2}\b/g) ?? []),
+                  ];
                   return (
                     <li className="honour-card" key={honour}>
                       <div className="honour-card-top">
-                        <span className="honour-index">{String(awardIndex + 1).padStart(2, "0")}</span>
-                        <span className="honour-year">{years.length ? years.join(" / ") : "Recognition"}</span>
+                        <span className="honour-index">
+                          {String(awardIndex + 1).padStart(2, "0")}
+                        </span>
+                        <span className="honour-year">
+                          {years.length ? years.join(" / ") : "Recognition"}
+                        </span>
                       </div>
                       <div className="honour-card-copy">
                         <h4>{title}</h4>
                         {details.length > 0 && <p>{details.join(" — ")}</p>}
                       </div>
-                      <BrandStar className="honour-card-star" aria-hidden="true" />
+                      <BrandStar
+                        className="honour-card-star"
+                        aria-hidden="true"
+                      />
                     </li>
                   );
                 })}

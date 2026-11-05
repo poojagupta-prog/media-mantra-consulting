@@ -94,8 +94,6 @@ const designs = {
   },
 } as const;
 
-
-
 export default async function ServiceDetailPage({
   params,
 }: PageProps<"/services/[slugs]">) {
@@ -327,7 +325,7 @@ export default async function ServiceDetailPage({
               href={`/services/${next.slug}`}
               className="inline-flex items-center gap-2 hover:text-[#92dfd4]"
             >
-              Next: {next.title} <ArrowUpRight size={17} />
+              {next.title} <ArrowUpRight size={17} />
             </Link>
           </div>
         </div>

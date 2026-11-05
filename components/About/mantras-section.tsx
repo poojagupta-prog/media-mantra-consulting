@@ -27,12 +27,9 @@ export function MantrasSection() {
         <div className="mt-16">
           {mantras.map((item) => (
             <Reveal
-              key={item.number}
-              className="grid gap-5 border-t border-white/20 py-9 md:grid-cols-[80px_1fr_1fr]"
+              key={item.title}
+              className="grid gap-5 border-t border-white/20 py-9 md:grid-cols-2"
             >
-              <span className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase pt-2 text-[#92dfd4]">
-                {item.number}
-              </span>
               <h3 className="text-4xl tracking-[-.05em] md:text-5xl">
                 {item.title}
               </h3>

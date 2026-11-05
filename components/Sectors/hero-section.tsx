@@ -1,5 +1,6 @@
+import { BrandStar } from "@/components/ui/brand-star";
 import Image from "next/image";
-import { ArrowDown, Asterisk } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { ScrollToSection } from "@/components/ui/scroll-to-section";
 import { sectors, photo } from "./sectors-data";
 
@@ -69,7 +70,7 @@ export function HeroSection() {
         </div>
         <div className="mt-7 flex items-center justify-between gap-6 font-mono text-[10px] uppercase tracking-[.12em] text-teal">
           <span>12 sectors. Countless possibilities.</span>
-          <Asterisk
+          <BrandStar
             size={28}
             aria-hidden="true"
             className="shrink-0 text-orange"

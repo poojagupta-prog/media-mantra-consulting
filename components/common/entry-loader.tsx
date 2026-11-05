@@ -194,10 +194,10 @@ export function EntryLoader() {
         </div>
         <div className="entry-punchline">
           <div>
-            <span>CREATING A</span>
+            <span>Consulting</span>
           </div>
           <div>
-            <span className="entry-noise">New You.</span>
+            <span className="entry-noise">FZCO.</span>
           </div>
         </div>
       </div>

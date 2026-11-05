@@ -35,12 +35,9 @@ export function ApproachSection() {
         <div>
           {principles.map((item) => (
             <Reveal
-              key={item.number}
-              className="grid gap-4 border-t border-foreground/20 py-7 sm:grid-cols-[60px_1fr]"
+              key={item.title}
+              className="border-t border-foreground/20 py-7"
             >
-              <span className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase pt-2 text-teal">
-                {item.number}
-              </span>
               <div>
                 <h3 className="text-3xl tracking-[-.05em]">{item.title}</h3>
                 <p className="mt-3 max-w-lg text-sm leading-7 text-muted">

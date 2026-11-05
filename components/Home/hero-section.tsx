@@ -62,7 +62,7 @@ export function HeroSection() {
               </div>
             </div>
             <span
-              className="absolute -top-7 -right-[26px] rotate-12 text-[132px] leading-none text-[#e96540] max-[1024px]:text-[clamp(76px,14vw,110px)] max-[1024px]:right-0 max-[1024px]:-top-2.5"
+              className="absolute -top-15 -right-[56px] rotate-12 text-[132px] leading-none text-[#e96540] max-[1024px]:text-[clamp(76px,14vw,110px)] max-[1024px]:right-0 max-[1024px]:-top-6"
               aria-hidden="true"
             >
               <BrandStar />
@@ -118,9 +118,6 @@ export function HeroSection() {
               key={number}
               className="flex gap-[15px] border-l border-[#233f3426] pl-6 [&>span]:pt-[3px] [&>span]:text-[#00777b] [&_h2]:text-sm [&_h2]:font-[550] [&_h2]:tracking-[-.02em] [&_p]:mt-[5px] [&_p]:text-[11px] [&_p]:leading-[1.6] [&_p]:text-[#62635d] max-[1101px]:pl-4 max-[768px]:gap-[9px] max-[768px]:pl-3 max-[768px]:[&_h2]:text-[13px] max-[768px]:[&_p]:text-[10px]"
             >
-              <span className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase">
-                {number}
-              </span>
               <div>
                 <h2>{title}</h2>
                 <p>{detail}</p>

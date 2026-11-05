@@ -1,4 +1,6 @@
 "use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { links, services } from "./data";
@@ -6,6 +8,12 @@ import { ScrollToSection } from "@/components/ui/scroll-to-section";
 import { offices, contactEmails } from "./contact-details";
 
 export function Footer() {
+  const [year, setYear] = useState<number | null>(null);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="overflow-hidden bg-[#19181b] text-white">
       <div className="mx-auto grid w-[min(1440px,calc(100%-112px))] gap-7 border-b border-white/15 py-8 max-[768px]:w-[calc(100%-40px)] md:grid-cols-2 lg:grid-cols-[.8fr_1fr_1fr] lg:gap-10">
@@ -114,8 +122,7 @@ export function Footer() {
         </span>
       </div>
       <div className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)] flex flex-wrap justify-between gap-3 py-7 text-[10px] text-white/45">
-        <span>© 2026 Media Mantra Consulting</span>
-        <span>Concept website · Illustrative content & photography</span>
+        <span>© {year} Media Mantra Consulting</span>
         <ScrollToSection targetId="top" className="text-white/75">
           Back to top ↑
         </ScrollToSection>

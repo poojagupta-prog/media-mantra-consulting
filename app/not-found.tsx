@@ -1,6 +1,7 @@
+import { BrandStar } from "@/components/ui/brand-star";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight, Asterisk } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Page not found",
@@ -45,7 +46,7 @@ export default function NotFound() {
           <span aria-hidden="true" className="text-[clamp(5rem,18vw,17rem)] font-[650] leading-[.7] tracking-[-.09em] text-teal/15">404</span>
           <div className="flex items-center gap-4 pb-1 font-mono text-[10px] uppercase tracking-[.12em] text-teal">
             <span>Every story has a way forward.</span>
-            <Asterisk size={28} aria-hidden="true" className="shrink-0 text-orange" />
+            <BrandStar size={28} aria-hidden="true" className="shrink-0 text-orange" />
           </div>
         </div>
       </div>

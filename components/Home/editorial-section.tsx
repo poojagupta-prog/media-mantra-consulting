@@ -1,89 +1,99 @@
-import { Mic2, Newspaper, Radio, Sparkles } from "lucide-react";
+import Link from "next/link";
 import { Reveal } from "../ui/reveal";
-import { ArrowText } from "../ui/arrow-text";
+
+const storyFormats = [
+  {
+    title: "Earn the",
+    emphasis: "headline.",
+    text: "Give journalists a timely, useful angle backed by substance and a voice worth hearing.",
+    label: "Media relations",
+    detail: "Stories worth telling. Coverage worth earning.",
+    color: "text-[#b9ded2]",
+  },
+  {
+    title: "Put people",
+    emphasis: "forward.",
+    text: "Turn founders and experts into trusted voices through strong points of view and thoughtful commentary.",
+    label: "Thought leadership",
+    detail: "A human voice. A lasting impression.",
+    color: "text-[#efc4a9]",
+  },
+  {
+    title: "Keep it",
+    emphasis: "moving.",
+    text: "Carry the conversation into social, creator and community spaces with content made for each one.",
+    label: "Community engagement",
+    detail: "Made for the moment. Built to travel.",
+    color: "text-[#c9c3e4]",
+  },
+];
 
 export function EditorialSection() {
   return (
     <section
-      className="bg-[#19181b] py-20 text-white md:py-28"
+      className="overflow-hidden bg-[#19181b] py-20 text-[#f5f1e9] md:py-28"
       aria-labelledby="story-formats-title"
     >
       <div className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)]">
-        <Reveal className="mb-12 grid gap-6 md:grid-cols-[1.4fr_1fr] md:items-end">
+        <Reveal className="grid gap-8 pb-12 md:pb-16 lg:grid-cols-[1.5fr_1fr] lg:items-end lg:gap-16">
           <div>
-            <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mb-6 text-[#92dfd4]">
+            <p className="mb-7 font-mono text-[10px] leading-relaxed tracking-[.18em] text-[#b9ded2] uppercase">
               How a message travels
             </p>
             <h2
               id="story-formats-title"
-              className="text-[clamp(2.6rem,5vw,5.1rem)] leading-none tracking-[-.065em] font-[550]"
+              className="text-[clamp(2.6rem,5vw,5.1rem)] leading-[1.04] font-[550] tracking-[-.065em]"
             >
               One clear idea.
               <br />
-              <span className="font-[Georgia,'Times_New_Roman',serif] italic font-normal tracking-[-.065em] text-[#92dfd4]">
+              <span className="font-[Georgia,'Times_New_Roman',serif] font-normal text-[#b9ded2] italic">
                 Many ways to move it.
               </span>
             </h2>
           </div>
-          <p className="max-w-sm text-sm leading-7 text-white/60">
+          <p className="max-w-sm text-sm leading-7 text-[#f5f1e9]/65 lg:mb-1 lg:justify-self-end">
             We connect the right message with the right format, voice and
             audience. Every channel has a job to do in the bigger story.
           </p>
         </Reveal>
-        <div className="grid gap-3 md:grid-cols-3">
-          {[
-            {
-              icon: Newspaper,
-              number: "01",
-              title: "Earn the headline",
-              text: "Give journalists a timely, useful angle backed by substance and a voice worth hearing.",
-              label: "Media / Editorial",
-              color: "bg-[#e6efeb] text-[#073f43]",
-            },
-            {
-              icon: Mic2,
-              number: "02",
-              title: "Put people forward",
-              text: "Turn founders and experts into trusted voices through strong points of view and thoughtful commentary.",
-              label: "People / Perspective",
-              color: "bg-[#f4d9c8] text-[#552f23]",
-            },
-            {
-              icon: Radio,
-              number: "03",
-              title: "Keep it moving",
-              text: "Carry the conversation into social, creator and community spaces with content made for each one.",
-              label: "Culture / Conversation",
-              color: "bg-[#d7d8ee] text-[#363354]",
-            },
-          ].map(({ icon: Icon, number, title, text, label, color }, i) => (
+
+        <div className="grid border-y border-[#f5f1e9]/20 md:grid-cols-3">
+          {storyFormats.map(({ title, emphasis, text, label, detail, color }, i) => (
             <Reveal
-              key={number}
+              key={label}
               delay={i * 0.08}
-              className={`${color} flex h-full min-h-80 flex-col p-7 md:p-8`}
+              className="flex flex-col border-b border-[#f5f1e9]/15 py-9 last:border-b-0 md:border-r md:border-b-0 md:px-7 md:py-11 md:first:pl-0 md:last:border-r-0 md:last:pr-0 lg:px-11 lg:py-14"
             >
-              <div className="flex items-start justify-between">
-                <Icon size={35} strokeWidth={1.3} aria-hidden="true" />
-                <span className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase">
-                  {number} / 03
+              <p className={`font-mono text-[10px] leading-relaxed tracking-[.14em] uppercase ${color}`}>
+                {label}
+              </p>
+              <h3 className="mt-8 text-[clamp(2rem,3.2vw,3.5rem)] leading-[1.08] font-medium tracking-[-.05em] md:mt-12">
+                {title}
+                <br />
+                <span className={`font-[Georgia,'Times_New_Roman',serif] font-normal italic ${color}`}>
+                  {emphasis}
                 </span>
-              </div>
-              <div className="mt-auto">
-                <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mb-4 opacity-65">
-                  {label}
-                </p>
-                <h3 className="text-3xl tracking-tight">{title}</h3>
-                <p className="mt-4 text-sm leading-7 opacity-75">{text}</p>
-              </div>
+              </h3>
+              <p className="mt-6 max-w-sm text-sm leading-7 text-[#f5f1e9]/65">
+                {text}
+              </p>
+              <p className="mt-auto pt-9 text-xs leading-6 text-[#f5f1e9]/45 md:pt-12">
+                {detail}
+              </p>
             </Reveal>
           ))}
         </div>
-        <Reveal className="mt-9 flex flex-wrap items-center justify-between gap-5 border-t border-white/20 pt-6">
-          <p className="flex items-center gap-3 text-sm text-white/70">
-            <Sparkles size={18} className="text-[#92dfd4]" aria-hidden="true" />
+
+        <Reveal className="mt-9 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+          <p className="max-w-md font-[Georgia,'Times_New_Roman',serif] text-xl leading-relaxed text-[#f5f1e9]/80 italic md:text-2xl">
             The best coverage starts with a story people care about.
           </p>
-          <ArrowText href="/contact">Let’s find yours</ArrowText>
+          <Link
+            href="/contact"
+            className="shrink-0 rounded-full border border-[#b9ded2]/50 px-7 py-3.5 text-sm font-medium text-[#b9ded2] transition-colors hover:border-[#b9ded2] hover:bg-[#b9ded2] hover:text-[#19181b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b9ded2]"
+          >
+            Let’s find yours
+          </Link>
         </Reveal>
       </div>
     </section>

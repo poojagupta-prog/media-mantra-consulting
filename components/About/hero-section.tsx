@@ -1,5 +1,5 @@
 import { BrandStar } from "@/components/ui/brand-star";
-import { ArrowDown, Asterisk } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { ParallaxImage } from "@/components/common/scroll-motion";
 import { ScrollToSection } from "@/components/ui/scroll-to-section";
@@ -23,10 +23,9 @@ export function HeroSection() {
         </Reveal>
         <div className="mt-12 grid items-end gap-8 md:grid-cols-[.75fr_1.25fr] md:gap-12">
           <Reveal className="pb-12 md:pb-16">
-            <Asterisk
+            <BrandStar
               aria-hidden="true"
-              className="motion-safe:animate-[spin_20s_linear_infinite] mb-8 h-16 w-16 text-orange md:h-24 md:w-24"
-              strokeWidth={1.2}
+              className="mb-8 h-16 w-16 text-orange md:h-24 md:w-24"
             />
             <p className="max-w-sm text-lg leading-8">
               We are a creative communications consultancy built around one

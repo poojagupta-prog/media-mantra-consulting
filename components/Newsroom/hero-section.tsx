@@ -1,4 +1,5 @@
-import { ArrowDown, Asterisk } from "lucide-react";
+import { BrandStar } from "@/components/ui/brand-star";
+import { ArrowDown } from "lucide-react";
 import { ScrollToSection } from "@/components/ui/scroll-to-section";
 import { FeaturedStory } from "./featured-story";
 import { articles } from "./newsroom-data";
@@ -38,7 +39,7 @@ export function HeroSection() {
           </div>
           <div className="relative mx-auto w-full max-w-xl pb-4 pr-4 lg:pt-5">
             <div aria-hidden="true" className="absolute bottom-0 left-4 right-0 top-4 rounded-[8px] bg-teal/20 lg:top-9" />
-            <Asterisk aria-hidden="true" strokeWidth={1.1} className="absolute -right-5 -top-8 z-20 h-20 w-20 rotate-12 text-orange md:-right-7 md:h-24 md:w-24" />
+            <BrandStar aria-hidden="true" className="absolute -right-5 -top-8 z-20 h-20 w-20 rotate-12 text-orange md:-right-7 md:h-24 md:w-24" />
             <FeaturedStory />
           </div>
         </div>

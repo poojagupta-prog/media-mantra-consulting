@@ -813,9 +813,11 @@
 .honours-category-top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 45px;
+  align-items: flex-start;
+  gap: 16px;
 }
+.honours-category-top > h3 { min-width: 0; flex: 1; }
+.honours-category-top > svg { flex-shrink: 0; margin-top: 4px; }
 .honours-category-top > span {
   font: 10px var(--font-geist-mono), monospace;
   text-transform: uppercase;
@@ -875,8 +877,7 @@
   .honours-nav a { padding: 10px 14px; gap: 10px; font-size: 12px; }
   .honours-group { grid-template-columns: 1fr; gap: 16px; margin-bottom: 35px; }
   .honours-category { position: relative; top: auto; border-radius: 5px 5px 40px 5px; padding: 26px; }
-  .honours-category-top { margin-bottom: 25px; }
-  .honours-category h3 { max-width: 70%; font-size: 32px; }
+  .honours-category h3 { font-size: 32px; }
   .honours-category > p { max-width: 70%; }
   .honours-count { position: absolute; right: 28px; bottom: 28px; display: block; margin: 0; }
   .honours-count strong { display: block; font-size: 55px; }

@@ -1,8 +1,9 @@
+import { BrandStar } from "@/components/ui/brand-star";
 import Image from "next/image";
 import { serviceImages } from "@/lib/service-images";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight, Asterisk } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { services } from "@/components/common/data";
 import { ScrollToSection } from "@/components/ui/scroll-to-section";
 
@@ -42,9 +43,8 @@ export default function ServicesPage() {
             </ScrollToSection>
           </div>
         </div>
-        <Asterisk
+        <BrandStar
           aria-hidden="true"
-          strokeWidth={0.7}
           className="pointer-events-none absolute -right-20 top-12 h-72 w-72 text-teal/15 md:h-[550px] md:w-[550px]"
         />
       </section>

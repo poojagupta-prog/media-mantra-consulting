@@ -12,29 +12,29 @@ const locations = [
   {
     name: "Dubai Marina",
     area: "Destination storytelling",
-    x: 29,
-    y: 48,
+    x: 17,
+    y: 84,
     note: "A launch story that makes a place feel like somewhere people want to be.",
   },
   {
     name: "Palm Jumeirah",
     area: "Hospitality & lifestyle",
-    x: 33,
-    y: 34,
+    x: 21,
+    y: 58,
     note: "Thoughtful experiences give people a story worth sharing.",
   },
   {
     name: "Downtown Dubai",
     area: "Brand positioning",
-    x: 67,
-    y: 53,
+    x: 65,
+    y: 49,
     note: "A clear point of view can turn an ambitious idea into a conversation.",
   },
   {
     name: "Dubai Creek",
     area: "Culture & community",
-    x: 81,
-    y: 53,
+    x: 83,
+    y: 28,
     note: "The strongest messages begin with an understanding of the city.",
   },
 ];
@@ -105,55 +105,59 @@ export function DubaiMap() {
             </h2>
           </div>
           <p className="max-w-xs text-sm leading-7 text-muted">
-            Explore the markers for a glimpse of the stories we could help shape
+            Explore the pins for a glimpse of the stories we could help shape
             across Dubai.
           </p>
         </div>
         <div className="grid overflow-hidden border border-[#164b4930] bg-[#d3e4df] lg:grid-cols-[1.55fr_.85fr]">
-          <div
-            className="relative h-[360px] overflow-hidden sm:h-[480px]"
-            aria-label="Map of Dubai with four interactive locations"
-          >
-            <Image
-              src="/dubai-map.png"
-              alt="Street map of Dubai showing the coastline, Palm Jumeirah and Dubai Creek"
-              fill
-              sizes="(min-width: 1024px) 60vw, 100vw"
-              className="object-fill"
-            />
-            {locations.map((point, index) => (
-              <button
-                key={point.name}
-                type="button"
-                onMouseEnter={() => setActive(index)}
-                onFocus={() => setActive(index)}
-                onClick={() => setActive(index)}
-                aria-label={`Show ${point.name} story preview`}
-                aria-pressed={active === index}
-                className="group absolute z-10 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1 outline-none"
-                style={{ left: `${point.x}%`, top: `${point.y}%` }}
-              >
-                <span
-                  className={`flex h-10 w-10 items-center justify-center rounded-full border-[3px] border-white shadow-[0_4px_14px_#073f4350] transition-transform group-hover:scale-125 group-focus-visible:scale-125 ${active === index ? "scale-110 bg-[#e96540] text-white" : "bg-[#073f43] text-white"}`}
-                >
-                  <MapPin size={19} fill="currentColor" strokeWidth={1.5} />
-                </span>
-                <span className="hidden whitespace-nowrap rounded bg-[#073f43] px-2 py-1 font-mono text-[9px] uppercase tracking-[.08em] text-white shadow-sm sm:block">
-                  {point.name}
-                </span>
-              </button>
-            ))}
-            <a
-              href="https://commons.wikimedia.org/wiki/File:Dubai_map_city_landmarks.svg"
-              target="_blank"
-              rel="noreferrer"
-              className="absolute bottom-4 left-4 rounded bg-white/90 px-3 py-1.5 font-mono text-[9px] text-[#315b55]"
+          <div className="flex min-w-0 items-center bg-[#0c5055]">
+            <div
+              className="relative w-full"
+              role="group"
+              aria-label="Illustrated aerial map of Dubai with four interactive locations"
             >
-              Map: AreJay / Wikimedia Commons · CC BY 3.0
-            </a>
+              <Image
+                src="/dubai-aerial-map.webp"
+                alt="Aerial-style map of Dubai’s coastline, Palm Jumeirah and city streets"
+                width={1536}
+                height={1024}
+                sizes="(min-width: 1024px) 60vw, 100vw"
+                className="block h-auto w-full"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#073f43]/10 via-transparent to-[#073f43]/20" />
+              <span className="pointer-events-none absolute left-[8%] top-[22%] -rotate-[35deg] font-[Georgia,serif] text-[clamp(.7rem,1.5vw,1.1rem)] italic tracking-[.15em] text-white/65">
+                Arabian Gulf
+              </span>
+              {locations.map((point, index) => (
+                <button
+                  key={point.name}
+                  type="button"
+                  onMouseEnter={() => setActive(index)}
+                  onFocus={() => setActive(index)}
+                  onClick={() => setActive(index)}
+                  aria-label={`Show ${point.name} story preview`}
+                  aria-pressed={active === index}
+                  className="group absolute z-10 flex -translate-x-1/2 -translate-y-full flex-col items-center gap-1.5 outline-none"
+                  style={{ left: `${point.x}%`, top: `${point.y}%` }}
+                >
+                  <span
+                    className={`flex h-11 w-11 items-center justify-center rounded-full border-2 border-white shadow-[0_4px_18px_#073f4360] transition-transform duration-200 group-hover:scale-110 group-focus-visible:scale-110 group-focus-visible:ring-4 group-focus-visible:ring-[#92dfd4] ${active === index ? "scale-110 bg-[#e96540] text-white" : "bg-[#073f43] text-white"}`}
+                  >
+                    <MapPin size={20} strokeWidth={1.7} aria-hidden="true" />
+                  </span>
+                  <span className={`whitespace-nowrap rounded-sm px-2 py-1 font-mono text-[8px] uppercase tracking-[.05em] shadow-sm sm:text-[9px] ${active === index ? "bg-[#073f43] text-white" : "bg-[#f7f4eb]/95 text-[#073f43]"}`}>
+                    {point.name}
+                  </span>
+                  <span className="h-2 w-2 rounded-full border border-white bg-[#e96540] shadow-sm" />
+                </button>
+              ))}
+              <span className="pointer-events-none absolute bottom-3 left-4 font-mono text-[8px] uppercase tracking-[.12em] text-white/70">
+                Dubai / UAE · Illustrated aerial map
+              </span>
+            </div>
           </div>
           <div
-            className="flex min-h-[360px] flex-col justify-between bg-[#073f43] p-7 text-white sm:min-h-[480px] sm:p-10 lg:h-[480px]"
+            className="flex min-h-[360px] flex-col justify-between bg-[#073f43] p-7 text-white sm:min-h-[480px] sm:p-10"
             aria-live="polite"
           >
             <div>
@@ -173,7 +177,7 @@ export function DubaiMap() {
             </div>
             <p className="mt-9 border-t border-white/20 pt-4 text-xs leading-5 text-white/60">
               Illustrative copy, not a client testimonial. Hover, focus or tap a
-              marker to explore.
+              pin to explore.
             </p>
           </div>
         </div>

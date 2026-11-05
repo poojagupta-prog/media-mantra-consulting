@@ -110,7 +110,7 @@ export function Header() {
                             }
                           >
                             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-lg text-teal">
-                              {service.icon === "✳" ? <BrandStar className="inline-block align-middle" /> : service.icon}
+                              {(service.icon === "✳" || service.icon === "✦") ? <BrandStar className="inline-block align-middle" /> : service.icon}
                             </span>
                             <span className="pt-1 text-sm font-medium leading-5 group-hover:text-teal">
                               {service.title}
