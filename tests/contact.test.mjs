@@ -133,6 +133,30 @@ test("contact API emails all enquiry details to the fixed recipient with the sub
   assert.doesNotMatch(email.text, /omit me/);
 });
 
+test("configured recipients support comma-separated addresses and case-insensitive acceptance", async () => {
+  for (const accepted of [["first@example.com", "SECOND@example.com"], ["second@example.com"]]) {
+    let sent;
+    const post = handler(
+      { ...emailEnv, CONTACT_TO_EMAIL: " First@example.com, , second@example.com, " },
+      async (email) => {
+        sent = email;
+        return { accepted };
+      },
+    );
+    assert.equal((await post(request({ ...enquiry, to: ["other@example.com"] }))).status, 200);
+    assert.deepEqual(Array.from(sent.to), ["First@example.com", "second@example.com"]);
+  }
+});
+
+test("recipient lists with no addresses fail configuration and unrelated acceptance fails delivery", async () => {
+  assert.equal((await handler({ ...emailEnv, CONTACT_TO_EMAIL: " , , " })(request(enquiry))).status, 503);
+  const post = handler(
+    { ...emailEnv, CONTACT_TO_EMAIL: "first@example.com,second@example.com" },
+    async () => ({ accepted: ["other@example.com"] }),
+  );
+  assert.equal((await post(request(enquiry))).status, 502);
+});
+
 test("enquiries without a company and multiline messages are included correctly", async () => {
   let email;
   const post = handler(emailEnv, async (message) => {

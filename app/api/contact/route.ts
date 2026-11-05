@@ -2,8 +2,12 @@ import { services } from "@/components/common/data";
 import { isIP } from "node:net";
 import nodemailer from "nodemailer";
 
-const recipient =
-  process.env.CONTACT_TO_EMAIL?.trim() || "mediamantragroupindia@gmail.com";
+// Configure one or more plain email addresses separated by commas.
+const recipients =
+  "mediamantragroupindia@gmail.com,karthik.prakash@mediamantra.in"
+    .split(",")
+    .map((address) => address.trim())
+    .filter(Boolean);
 
 const RATE_LIMIT = 5;
 const RATE_WINDOW_MS = 10 * 60 * 1000;
@@ -19,11 +23,17 @@ function rateLimit(request: Request): Response | null {
     clients.delete(key);
   }
 
-  const forwarded = request.headers.get("x-forwarded-for")?.split(",", 1)[0]?.trim();
+  const forwarded = request.headers
+    .get("x-forwarded-for")
+    ?.split(",", 1)[0]
+    ?.trim();
   const realIP = request.headers.get("x-real-ip")?.trim();
-  const ip = forwarded && isIP(forwarded)
-    ? forwarded
-    : realIP && isIP(realIP) ? realIP : "unknown";
+  const ip =
+    forwarded && isIP(forwarded)
+      ? forwarded
+      : realIP && isIP(realIP)
+        ? realIP
+        : "unknown";
   let client = clients.get(ip);
   if (!client && clients.size < MAX_TRACKED_CLIENTS) {
     client = { count: 0, resetAt: now + RATE_WINDOW_MS };
@@ -110,6 +120,7 @@ export async function POST(request: Request) {
   const pass = process.env.SMTP_PASS;
   const from = process.env.CONTACT_FROM_EMAIL?.trim();
   if (
+    recipients.length === 0 ||
     !host ||
     !user ||
     !pass?.trim() ||
@@ -143,7 +154,7 @@ export async function POST(request: Request) {
     });
     const result = await transporter.sendMail({
       from,
-      to: [recipient],
+      to: recipients,
       replyTo: enquiry.email,
       subject: `New website enquiry: ${enquiry.service}`,
       text: [
@@ -159,7 +170,11 @@ export async function POST(request: Request) {
       ].join("\n"),
     });
     if (
-      !result.accepted.some((address) => address.toLowerCase() === recipient)
+      !result.accepted.some((address) =>
+        recipients.some(
+          (recipient) => recipient.toLowerCase() === address.toLowerCase(),
+        ),
+      )
     ) {
       throw new Error("Email service did not accept the enquiry.");
     }
