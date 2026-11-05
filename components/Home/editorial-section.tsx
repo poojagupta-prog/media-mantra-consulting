@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ContactModalLink } from "@/components/common/contact-modal-link";
 import { Reveal } from "../ui/reveal";
 
 const storyFormats = [
@@ -88,12 +88,12 @@ export function EditorialSection() {
           <p className="max-w-md font-[Georgia,'Times_New_Roman',serif] text-xl leading-relaxed text-[#f5f1e9]/80 italic md:text-2xl">
             The best coverage starts with a story people care about.
           </p>
-          <Link
+          <ContactModalLink
             href="/contact"
             className="shrink-0 rounded-full border border-[#b9ded2]/50 px-7 py-3.5 text-sm font-medium text-[#b9ded2] transition-colors hover:border-[#b9ded2] hover:bg-[#b9ded2] hover:text-[#19181b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b9ded2]"
           >
             Let’s find yours
-          </Link>
+          </ContactModalLink>
         </Reveal>
       </div>
     </section>

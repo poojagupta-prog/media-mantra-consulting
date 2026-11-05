@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import { ContactModalLink } from "@/components/common/contact-modal-link";
 
 import { ArrowUpRight } from "lucide-react";
 
@@ -10,7 +10,7 @@ export function CTA() {
         <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mb-8">
           Good things start with a hello / Let’s collaborate
         </p>
-        <Link
+        <ContactModalLink
           href="/contact"
           className="group flex items-center justify-between gap-6"
         >
@@ -28,7 +28,7 @@ export function CTA() {
               strokeWidth={1}
             />
           </span>
-        </Link>
+        </ContactModalLink>
         <p className="mt-10 text-sm text-foreground/65">
           Bring the ambition. We’ll bring a fresh perspective.
         </p>

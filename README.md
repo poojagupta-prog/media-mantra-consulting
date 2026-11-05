@@ -1,5 +1,13 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Contact modal
+
+Contact CTAs throughout the site open the form-only modal. Header and footer contact links continue to navigate to `/contact`. `ContactModalLink` preserves each CTA’s styling and supports modified clicks to open the contact page in another tab. Shared `Button`, `ArrowText`, and media `TextLink` components use it when their destination is `/contact`. `ContactModalProvider` is mounted in the root layout. In any client component, call `const { isOpen, open, close } = useContactModal()` from `@/hooks/use-contact-modal` to control it.
+
+`useContactForm(endpoint?)` from `@/hooks/use-contact-form` exposes `submit(enquiry)`, `reset()`, `status`, `error`, and `isSubmitting`. It posts JSON with `name`, `email`, `company`, `service`, and `message`. The provider accepts an optional `endpoint` prop, defaulting to `/api/contact`.
+
+To enable delivery through the default API route, set `CONTACT_API_URL` in `.env.local` to your CRM/form service's JSON POST endpoint. Optionally set `CONTACT_API_TOKEN` for bearer authentication. Both values stay on the server. The service must accept the above JSON fields and return a 2xx status when it accepts an enquiry. Restart the server after changing environment variables. Until configured, submission returns an error with an email fallback; no enquiry is reported as sent. The existing `/contact` page retains its separate demo form.
+
 ## Getting Started
 
 First, run the development server:

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ContactModalLink } from "@/components/common/contact-modal-link";
 import { ArrowUpRight } from "lucide-react";
 
 const container =
@@ -26,7 +26,7 @@ export function CTA() {
             your ambitions and what you want to change.
           </p>
         </div>
-        <Link
+        <ContactModalLink
           href="/contact"
           className="inline-flex items-center gap-6 rounded-full bg-[#c9eae2] py-3 pl-6 pr-3 text-sm font-medium text-foreground transition-colors hover:bg-white"
         >
@@ -34,7 +34,7 @@ export function CTA() {
           <span className="flex h-11 w-11 items-center justify-center rounded-full bg-teal text-white">
             <ArrowUpRight size={22} aria-hidden="true" />
           </span>
-        </Link>
+        </ContactModalLink>
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { ContactModalLink } from "@/components/common/contact-modal-link";
 import { ArrowUpRight } from "lucide-react";
 import { photo, type Sector } from "./sectors-data";
 
@@ -32,13 +32,13 @@ export function SectorCard({ sector, index }: { sector: Sector; index: number })
         <p className="text-[10px] leading-5 uppercase tracking-[.07em] text-muted">
           {sector.tags}
         </p>
-        <Link
+        <ContactModalLink
           href="/contact"
           aria-label={`Let’s talk about ${sector.title}`}
           className="mt-4 inline-flex items-center gap-3 text-xs font-semibold transition-colors hover:text-teal"
         >
           Let’s talk <ArrowUpRight size={17} aria-hidden="true" />
-        </Link>
+        </ContactModalLink>
       </div>
     </article>
   );

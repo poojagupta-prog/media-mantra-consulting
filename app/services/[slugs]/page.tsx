@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ContactModalLink } from "@/components/common/contact-modal-link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, ArrowDown } from "lucide-react";
 import { serviceImages } from "@/lib/service-images";
@@ -304,7 +305,7 @@ export default async function ServiceDetailPage({
                 an impact.
               </span>
             </h2>
-            <Link
+            <ContactModalLink
               href="/contact"
               className="inline-flex items-center gap-5 rounded-full bg-[#c9eae2] py-3 pl-6 pr-3 text-sm font-medium text-foreground hover:bg-white"
             >
@@ -312,7 +313,7 @@ export default async function ServiceDetailPage({
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-teal text-white">
                 <ArrowUpRight size={20} />
               </span>
-            </Link>
+            </ContactModalLink>
           </div>
           <div className="mt-20 flex flex-wrap items-center justify-between gap-5 border-t border-white/20 pt-7 text-sm">
             <Link

@@ -1,6 +1,6 @@
 import { BrandStar } from "@/components/ui/brand-star";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { Button } from "../ui/button";
+import { ContactModalButton } from "../common/contact-modal-button";
 import { ArrowText } from "../ui/arrow-text";
 import { photos } from "../common/data";
 import { ScrollToSection } from "../ui/scroll-to-section";
@@ -31,7 +31,7 @@ export function HeroSection() {
               trust, and move the conversation forward.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-6 max-[768px]:gap-[22px]">
-              <Button>Let’s shape your story</Button>
+              <ContactModalButton>Let’s shape your story</ContactModalButton>
               <ArrowText href="/services">Explore our expertise</ArrowText>
             </div>
           </div>

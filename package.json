@@ -7,6 +7,7 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
+    "test:contact": "node --test tests/contact.test.mjs",
     "sync:podcasts": "node scripts/sync-podcasts.mjs",
     "test:podcasts": "node --test tests/youtube-catalogue.test.mjs",
     "test:blogs": "node --experimental-strip-types --test tests/blogs.test.mjs"

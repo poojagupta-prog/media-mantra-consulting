@@ -1,5 +1,193 @@
 @import "tailwindcss";
 
+/* Form-only enquiry dialog, using the site's paper, ink and teal palette. */
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(620px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  padding: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  color: var(--color-foreground);
+  background: var(--color-background);
+  border: 1px solid #ffffff90;
+  border-radius: 28px;
+  box-shadow: 0 32px 120px #071e2450;
+  scrollbar-width: thin;
+}
+.contact-modal[open] {
+  animation: contact-modal-enter 240ms ease-out;
+}
+.contact-modal::backdrop {
+  background: #102b2bd1;
+  backdrop-filter: blur(7px);
+}
+.contact-modal-content {
+  position: relative;
+  padding: 36px 42px;
+  background: radial-gradient(ellipse at 0 0, #dceee6b0, transparent 55%);
+}
+.contact-modal-close {
+  position: absolute;
+  top: 21px;
+  right: 21px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #19181b20;
+  border-radius: 50%;
+  transition: background 180ms, color 180ms;
+}
+.contact-modal-close:hover {
+  background: var(--color-teal);
+  color: white;
+}
+.contact-modal-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-right: 30px;
+  margin-bottom: 21px;
+  font: 10px/1.6 var(--font-geist-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--color-teal);
+}
+.contact-modal-title {
+  font-size: clamp(38px, 6vw, 54px);
+  font-weight: 550;
+  line-height: 1.02;
+  letter-spacing: -.065em;
+}
+.contact-modal-title em {
+  color: var(--color-teal);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+}
+.contact-modal-description {
+  max-width: 380px;
+  margin: 16px 0 24px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+.contact-modal-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px 22px;
+  min-width: 0;
+}
+.contact-modal-fields label {
+  min-width: 0;
+  font-size: 11px;
+  font-weight: 600;
+}
+.contact-modal-fields label > span:not(.contact-modal-optional) {
+  color: var(--color-teal);
+}
+.contact-modal-optional {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--color-muted);
+}
+.contact-modal-fields :is(input, select, textarea) {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin-top: 7px;
+  padding: 11px 12px;
+  border: 1px solid #19181b24;
+  border-radius: 9px;
+  background: #ffffff80;
+  font: 400 14px/1.5 var(--font-geist-sans);
+  transition: border-color 180ms, background 180ms;
+}
+.contact-modal-fields :is(input, textarea)::placeholder {
+  color: #767b79;
+  opacity: 1;
+}
+.contact-modal-fields :is(input, select, textarea):focus {
+  outline: none;
+  box-shadow: none;
+}
+.contact-modal-fields textarea {
+  resize: vertical;
+  min-height: 84px;
+  max-height: 240px;
+}
+.contact-modal-fields:disabled {
+  opacity: .65;
+}
+.contact-modal-note {
+  margin: 16px 0 20px;
+  color: var(--color-muted);
+  font-size: 10px;
+  line-height: 1.7;
+}
+.contact-modal-submit {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 9px 8px 23px;
+  border-radius: 999px;
+  background: var(--color-teal);
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 180ms;
+}
+.contact-modal-submit:hover:not(:disabled) {
+  background: #005e63;
+}
+.contact-modal-submit:disabled {
+  cursor: default;
+}
+.contact-modal-submit > span {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--color-teal);
+}
+.contact-modal-feedback {
+  margin-bottom: 16px;
+  border: 1px solid #007f8330;
+  border-radius: 9px;
+  padding: 12px;
+  background: #e0efeb;
+  color: #005e63;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.contact-modal-error {
+  border-color: #9d342f30;
+  background: #f9ece6;
+  color: #8b302b;
+}
+.contact-modal-feedback a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@keyframes contact-modal-enter {
+  from { opacity: 0; transform: translateY(14px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (max-width: 639px) {
+  .contact-modal-content { padding: 30px 23px 24px; }
+  .contact-modal-fields { grid-template-columns: minmax(0, 1fr); gap: 15px; }
+  .contact-modal-fields :is(input, select, textarea) { font-size: 16px; }
+  .contact-modal-close { top: 16px; right: 16px; }
+  .contact-modal-eyebrow { font-size: 9px; }
+}
+
 @font-face {
   font-family: Geist;
   font-style: normal;

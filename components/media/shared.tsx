@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ContactModalLink } from "@/components/common/contact-modal-link";
 import type { ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
@@ -61,11 +62,12 @@ export function TextLink({
   href: string;
   children: ReactNode;
 }) {
+  const NavigationLink = href === "/contact" ? ContactModalLink : Link;
   return (
-    <Link className="media-link" href={href}>
+    <NavigationLink className="media-link" href={href}>
       {children}
       <ArrowUpRight size={18} aria-hidden="true" />
-    </Link>
+    </NavigationLink>
   );
 }
 export function Closing({

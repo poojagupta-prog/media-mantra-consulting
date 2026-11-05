@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ContactModalLink } from "@/components/common/contact-modal-link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { StudyFilter } from "@/components/CaseStudies/study-filter";
 
@@ -70,12 +71,12 @@ export default function CaseStudiesPage() {
               Let’s create something worth talking about.
             </h2>
           </div>
-          <Link
+          <ContactModalLink
             href="/contact"
             className="inline-flex items-center gap-3 rounded-full bg-foreground px-6 py-4 text-sm text-white transition-colors hover:bg-teal"
           >
             Start a conversation <ArrowUpRight size={18} />
-          </Link>
+          </ContactModalLink>
         </div>
       </section>
     </>

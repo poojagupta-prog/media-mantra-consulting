@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ContactModalLink } from "@/components/common/contact-modal-link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Suspense } from "react";
@@ -176,10 +177,10 @@ async function CaseStudyContent({
                 <br />
                 <em>the world.</em>
               </h3>
-              <Link href="/contact">
+              <ContactModalLink href="/contact">
                 Let’s discuss your story{" "}
                 <ArrowUpRight size={20} aria-hidden="true" />
-              </Link>
+              </ContactModalLink>
             </div>
           </div>
         </div>

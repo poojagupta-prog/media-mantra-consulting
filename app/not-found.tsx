@@ -1,6 +1,7 @@
 import { BrandStar } from "@/components/ui/brand-star";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ContactModalLink } from "@/components/common/contact-modal-link";
 import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -35,9 +36,9 @@ export default function NotFound() {
                   <ArrowUpRight size={18} aria-hidden="true" className="transition-transform group-hover:rotate-45" />
                 </span>
               </Link>
-              <Link href="/contact" className="inline-flex items-center gap-2 border-b border-teal/40 pb-2 text-xs font-semibold uppercase tracking-wider hover:text-teal">
+              <ContactModalLink href="/contact" className="inline-flex items-center gap-2 border-b border-teal/40 pb-2 text-xs font-semibold uppercase tracking-wider hover:text-teal">
                 Get in touch <ArrowUpRight size={16} aria-hidden="true" />
-              </Link>
+              </ContactModalLink>
             </div>
           </div>
         </div>

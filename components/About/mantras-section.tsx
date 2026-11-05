@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ContactModalLink } from "@/components/common/contact-modal-link";
 
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
@@ -40,7 +40,7 @@ export function MantrasSection() {
           ))}
         </div>
         <Reveal className="mt-12">
-          <Link
+          <ContactModalLink
             href="/contact"
             className="group inline-flex items-center gap-4 border-b border-[#92dfd4] pb-2 text-sm text-[#92dfd4]"
           >
@@ -49,7 +49,7 @@ export function MantrasSection() {
               size={18}
               className="transition-transform group-hover:rotate-45"
             />
-          </Link>
+          </ContactModalLink>
         </Reveal>
       </div>
     </section>
