@@ -116,13 +116,18 @@ export function Footer() {
         aria-hidden="true"
         className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)] pt-5 text-[clamp(2.8rem,8vw,8rem)] font-semibold leading-none tracking-[-.08em] text-[#324340]"
       >
-        media mantra<span className="text-teal">.</span>
+        <div className="relative isolate pb-[.3em]">
+          media mantra<span className="text-teal">.</span>
+          <span className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 block select-none whitespace-nowrap text-[clamp(1.15rem,3.5vw,3.5rem)] max-[768px]:text-[clamp(1.15rem,4.5vw,4.5rem)] tracking-[-.05em] text-white/[.07]">
+            Consultancy FZCO
+          </span>
+        </div>
         <span className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase block mt-4 text-white/60">
           Consulting · PR & communications · Dubai & Gurugram
         </span>
       </div>
       <div className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)] flex flex-wrap justify-between gap-3 py-7 text-[10px] text-white/45">
-        <span>© {year} Media Mantra Consulting</span>
+        <span>© {year} Media Mantra Consultancy FZCO</span>
         <ScrollToSection targetId="top" className="text-white/75">
           Back to top ↑
         </ScrollToSection>

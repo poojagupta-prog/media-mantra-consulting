@@ -194,7 +194,7 @@ export function EntryLoader() {
         </div>
         <div className="entry-punchline">
           <div>
-            <span>Consulting</span>
+            <span>Consultancy</span>
           </div>
           <div>
             <span className="entry-noise">FZCO.</span>

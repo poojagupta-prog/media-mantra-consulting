@@ -5,6 +5,22 @@ import { Header } from "@/components/common/header";
 import { Footer } from "@/components/common/footer";
 import { ScrollToSection } from "@/components/ui/scroll-to-section";
 import { AnchorNavigation } from "@/components/common/anchor-navigation";
+import { Suspense } from "react";
+import { Breadcrumbs } from "@/components/common/breadcrumbs";
+import { links, services } from "@/components/common/data";
+import { blogs } from "@/lib/blogs/data";
+
+const breadcrumbLabels: Record<string, string> = {
+  ...Object.fromEntries(links),
+  "/contact": "Contact",
+  "/blogs": "Blogs",
+  "/awards": "Awards",
+  "/gallery": "Gallery",
+  "/podcasts": "Podcasts",
+  "/dubai-it": "Dubai-it",
+  ...Object.fromEntries(services.map(({ slug, title }) => [`/services/${slug}`, title])),
+  ...Object.fromEntries(blogs.map(({ slug, title }) => [`/blogs/${slug}`, title])),
+};
 
 export const metadata: Metadata = {
   title: {
@@ -49,6 +65,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </ScrollToSection>
         <Header />
         <main id="main-content" className="flex-1">
+          <Suspense fallback={null}>
+            <Breadcrumbs labels={breadcrumbLabels} />
+          </Suspense>
           {children}
         </main>
         <Footer />
