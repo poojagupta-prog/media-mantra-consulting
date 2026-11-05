@@ -48,10 +48,10 @@ test("pagination covers all articles exactly once and bounds invalid inputs", ()
   const first = queryBlogs(blogs, {});
   const second = queryBlogs(blogs, { page: "2" });
   assert.equal(first.items.length, 9);
-  assert.equal(second.items.length, 8);
+  assert.equal(second.items.length, blogs.length - 9);
   assert.equal(
     new Set([...first.items, ...second.items].map((blog) => blog.id)).size,
-    17,
+    blogs.length,
   );
   assert.equal(queryBlogs(blogs, { page: "-1" }).page, 1);
   assert.equal(queryBlogs(blogs, { page: "oops" }).page, 1);

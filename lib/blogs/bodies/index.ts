@@ -17,7 +17,10 @@ import Body14 from "./the-rise-of-digital-pr-how-the-best-public-relations-agenc
 import Body15 from "./how-a-media-relations-agency-in-dubai-builds-trust-and-credibility-for-brands";
 import Body16 from "./how-startups-can-leverage-dubai-pr-and-communications-services-for-market-entry";
 
+import AwardBlogBody from "./media-mantra-consultancy-fzco-recognised-at-the-mdme-awards-2026-in-dubai";
+
 export const blogBodies: Record<string, () => ReactNode> = {
+  "media-mantra-consultancy-fzco-recognised-at-the-mdme-awards-2026-in-dubai": AwardBlogBody,
   "healthcare-pr-in-the-uae": Body0,
   "pr-vs-marketing-what-actually-drives-brand-growth-in-2026": Body1,
   "top-pr-firms-in-dubai-a-january-2026-breakdown-of-the-best": Body2,
