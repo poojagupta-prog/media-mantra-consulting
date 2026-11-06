@@ -168,7 +168,9 @@ export function EntryLoader() {
     >
       <video
         className="entry-background-video"
-        src="/videos/dubai.mp4"
+        src="/videos/dubai-entry.mp4"
+        poster="/videos/dubai-entry-poster.jpg"
+        preload="auto"
         autoPlay
         muted
         loop

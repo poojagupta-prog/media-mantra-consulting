@@ -54,6 +54,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <link
           rel="preload"
+          href="/videos/dubai-entry-poster.jpg"
+          as="image"
+          fetchPriority="high"
+        />
+        <link
+          rel="preload"
           href="/fonts/geist-4.woff2"
           as="font"
           type="font/woff2"

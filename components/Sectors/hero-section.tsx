@@ -25,9 +25,10 @@ export function HeroSection() {
           </h1>
           <div>
             <p className="max-w-md text-lg leading-8">
-              Find the story that matters. From emerging ideas to established
-              icons, we bring a fresh perspective and a deep understanding of
-              your world.
+              Every industry speaks its own language, but the instinct behind
+              great PR never changes: find the story that matters. From fresh
+              ideas to established icons, we bring a sharp perspective and a
+              deep understanding of your world.
             </p>
             <ScrollToSection
               targetId="sector-directory"
