@@ -21,7 +21,7 @@ export default function ServicesPage() {
         <div className="relative z-10 mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)]">
           <p className="mb-9 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[.13em] text-teal">
             <span className="h-2 w-2 rounded-full bg-orange" /> What we do /
-            Media Mantra Consulting
+            Media Mantra Consultancy FZCO
           </p>
           <h1 className="max-w-5xl text-[clamp(4rem,9vw,9rem)] font-[650] leading-[.92] tracking-[-.075em]">
             Ideas that move.
@@ -32,9 +32,10 @@ export default function ServicesPage() {
           </h1>
           <div className="mt-16 flex flex-wrap items-end justify-between gap-8 border-t border-teal/25 pt-8">
             <p className="max-w-xl text-lg leading-8 md:text-xl">
-              From the first spark of a story to the moments that define a
-              reputation, we bring strategy, creativity and care to every
-              connection.
+              Looking for a communications partner that thinks like a founder
+              and works like a newsroom? Media Mantra Consultancy in Dubai takes
+              you from the first spark of a story to the moments that define
+              your reputation, with strategy, creativity and care at every step.
             </p>
             <ScrollToSection
               targetId="services-list"
@@ -68,8 +69,11 @@ export default function ServicesPage() {
               </h2>
             </div>
             <p className="max-w-xs text-sm leading-7 text-muted">
-              Explore each discipline, or bring us a challenge and we’ll find
-              the best way forward together.
+              Every brand needs a different blend. Explore each discipline
+              below, or bring us a challenge and we'll build the right mix. As a
+              PR and communications agency, Media Mantra Consultancy pairs
+              regional insight with global experience, so your message lands
+              where it matters.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-2 md:gap-8">
@@ -81,7 +85,9 @@ export default function ServicesPage() {
               >
                 <div className="relative aspect-[16/9] overflow-hidden bg-[#c9eae2]">
                   <Image
-                    src={serviceImages[service.slug as keyof typeof serviceImages]}
+                    src={
+                      serviceImages[service.slug as keyof typeof serviceImages]
+                    }
                     alt=""
                     fill
                     sizes="(max-width: 768px) calc(100vw - 40px), (max-width: 1552px) calc((100vw - 144px) / 2), 704px"
@@ -104,7 +110,10 @@ export default function ServicesPage() {
                   <div className="mt-auto pt-6">
                     <div className="flex flex-wrap gap-2 border-t border-black/10 pt-5">
                       {service.tags.split(" · ").map((tag) => (
-                        <span key={tag} className="rounded-full bg-[#f3f5f2] px-3 py-1.5 text-[11px] leading-4 text-teal">
+                        <span
+                          key={tag}
+                          className="rounded-full bg-[#f3f5f2] px-3 py-1.5 text-[11px] leading-4 text-teal"
+                        >
                           {tag}
                         </span>
                       ))}
@@ -130,15 +139,23 @@ export default function ServicesPage() {
               </span>
             </h2>
           </div>
-          <ContactModalLink
-            href="/contact"
-            className="inline-flex items-center gap-5 rounded-full bg-[#c9eae2] py-3 pl-6 pr-3 text-sm font-medium text-foreground hover:bg-white"
-          >
-            Let’s talk{" "}
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-teal text-white">
-              <ArrowUpRight size={20} />
-            </span>
-          </ContactModalLink>
+          <div className="w-full space-y-7 lg:max-w-lg">
+            <p className="text-base leading-7 text-white/75">
+              Whether you&apos;re launching, growing or recovering, Media Mantra
+              Consultancy is ready to listen. Tell us what you&apos;re working on,
+              and we&apos;ll show you how a smarter story can move your business
+              forward.
+            </p>
+            <ContactModalLink
+              href="/contact"
+              className="inline-flex items-center gap-5 rounded-full bg-[#c9eae2] py-3 pl-6 pr-3 text-sm font-medium text-foreground hover:bg-white"
+            >
+              Let’s talk{" "}
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-teal text-white">
+                <ArrowUpRight size={20} />
+              </span>
+            </ContactModalLink>
+          </div>
         </div>
       </section>
     </div>

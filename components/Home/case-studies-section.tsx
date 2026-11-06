@@ -28,6 +28,10 @@ export function CaseStudies() {
                 Lasting impressions.
               </span>
             </h2>
+            <p className="mt-6 max-w-xl text-base leading-7 text-white/75">
+              See how our PR campaigns in Dubai turned strong ideas into
+              visibility, trust and growth.
+            </p>
           </div>
           <ArrowText href="/case-studies">View all case studies</ArrowText>
         </Reveal>

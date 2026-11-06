@@ -16,6 +16,10 @@ export function SectorsSection() {
               your world.
             </span>
           </h2>
+          <p className="mt-6 max-w-xl text-base leading-7 text-muted">
+            Good PR in the UAE starts with knowing your industry. We work with
+            brands in:
+          </p>
         </div>
         <ArrowText href="/sectors">Explore our sectors</ArrowText>
       </Reveal>

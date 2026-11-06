@@ -11,7 +11,7 @@ export function HeroSection() {
         <Reveal>
           <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mb-9 flex items-center gap-3 text-teal">
             <span className="h-2 w-2 rounded-full bg-orange" /> About Media
-            Mantra Consulting / Dubai
+            Mantra Consultancy FZCO / Dubai
           </p>
           <h1 className="text-[clamp(3.7rem,8.2vw,8.5rem)] leading-[.93] tracking-[-.075em] font-[650] max-[768px]:text-[clamp(3.5rem,12vw,6rem)] max-w-6xl">
             People first.

@@ -26,9 +26,9 @@ export function HeroSection() {
               to ignore<span className="text-[#e96540]">.</span>
             </h1>
             <p className="mt-7 max-w-[450px] text-[15px] leading-[1.85] text-[#62635d] max-[768px]:mt-[23px] max-[768px]:text-sm">
-              You have the ambition. We find the story. From first impressions
-              to lasting reputations, we help brands earn attention, build
-              trust, and move the conversation forward.
+              Media Mantra Consultancy FZCO is a PR agency in Dubai, UAE that
+              gets ambitious brands talked about by the right people, in the
+              right places, for the right reasons.
             </p>
             <div className="mt-7 flex flex-wrap items-center gap-6 max-[768px]:gap-[22px]">
               <ContactModalButton>Let’s shape your story</ContactModalButton>

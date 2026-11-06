@@ -7,23 +7,24 @@ import { photos } from "../common/data";
 
 const sectors = [
   {
-    title: "Technology & innovation",
-    sub: "The next big thing starts with a story.",
-    image: photos.tech,
-  },
-  {
-    title: "Real estate & places",
+    title: "Real estate and property",
     sub: "More than places. Possibilities.",
-    image: photos.city,
+    image: "/images/case-studies/real-estate/waterfront-residences.webp",
   },
   {
-    title: "Lifestyle & consumer",
-    sub: "Turning everyday brands into conversation.",
-    image: photos.lifestyle,
+    title: "Hospitality, luxury and lifestyle",
+    sub: "Extraordinary experiences deserve stories that stay with you.",
+    image:
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=85",
   },
   {
-    title: "Professional services",
-    sub: "Make expertise impossible to overlook.",
+    title: "Education and healthcare",
+    sub: "Building trust in the brands shaping better futures.",
+    image: "/images/case-studies/education/learning-commons.webp",
+  },
+  {
+    title: "Finance, technology and start-ups",
+    sub: "The next big thing starts with a story.",
     image: photos.team,
   },
 ];

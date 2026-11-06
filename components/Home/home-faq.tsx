@@ -2,30 +2,42 @@ import { FAQ } from "../common/faq";
 import { ArrowText } from "../ui/arrow-text";
 import { Reveal } from "../ui/reveal";
 
-const faqData = [
+export const faqData = [
   {
     id: 1,
-    question: "What does a partnership look like?",
+    question: "What does a PR agency in Dubai do?",
     answer:
-      "We start by listening. Together, we define your objectives, develop an approach, and agree on a scope that fits your ambitions.",
+      "A PR agency in Dubai manages how your brand is seen by the media, customers and investors. That includes media relations, press releases, thought leadership, events, crisis communication and reputation management.",
   },
   {
     id: 2,
-    question: "Can you support a one-off launch?",
+    question: "How much does a PR agency in the UAE cost?",
     answer:
-      "Our illustrative services include focused launch campaigns as well as ongoing communications partnerships.",
+      "It depends on scope, sector and duration. Most agencies work on monthly retainers, with separate pricing for events or one-off campaigns. We share a clear proposal once we understand your goals.",
   },
   {
     id: 3,
-    question: "How do we get started?",
+    question: "How do I choose the right PR company in Dubai?",
     answer:
-      "Tell us about your brand using the contact form. Share your goals and the support you’re looking for, and our team will get back to you.",
+      "Look for sector experience, real media relationships, transparent reporting and results you can verify. Ask to see case studies and how coverage connects to business outcomes.",
   },
   {
     id: 4,
-    question: "What makes you different?",
+    question: "How long does PR take to show results?",
     answer:
-      "We combine strategic thinking with creative execution to deliver impactful solutions that drive real results.",
+      "Early coverage can come within weeks. Trust and authority usually build over three to six months of consistent work.",
+  },
+  {
+    id: 5,
+    question: "Can you support both local and international brands?",
+    answer:
+      "Yes. We help UAE brands go global and international brands enter the Middle East, backed by our offices in India, Singapore and Australia.",
+  },
+  {
+    id: 6,
+    question: "Do you handle crisis communication and online reputation?",
+    answer:
+      "Yes. We build proactive reputation strategies and respond fast when issues arise.",
   },
 ];
 

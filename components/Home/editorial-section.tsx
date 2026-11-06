@@ -5,7 +5,7 @@ const storyFormats = [
   {
     title: "Earn the",
     emphasis: "headline.",
-    text: "Give journalists a timely, useful angle backed by substance and a voice worth hearing.",
+    text: "Newsworthy angles, sharp pitching and media that actually replies.",
     label: "Media relations",
     detail: "Stories worth telling. Coverage worth earning.",
     color: "text-[#b9ded2]",
@@ -13,7 +13,7 @@ const storyFormats = [
   {
     title: "Put people",
     emphasis: "forward.",
-    text: "Turn founders and experts into trusted voices through strong points of view and thoughtful commentary.",
+    text: "Founders and experts become trusted voices through interviews, op-eds and speaking slots.",
     label: "Thought leadership",
     detail: "A human voice. A lasting impression.",
     color: "text-[#efc4a9]",
@@ -21,7 +21,7 @@ const storyFormats = [
   {
     title: "Keep it",
     emphasis: "moving.",
-    text: "Carry the conversation into social, creator and community spaces with content made for each one.",
+    text: "One idea, carried across press, social, events and search, so it keeps working long after launch day.",
     label: "Community engagement",
     detail: "Made for the moment. Built to travel.",
     color: "text-[#c9c3e4]",
@@ -58,30 +58,36 @@ export function EditorialSection() {
         </Reveal>
 
         <div className="grid border-y border-[#f5f1e9]/20 md:grid-cols-3">
-          {storyFormats.map(({ title, emphasis, text, label, detail, color }, i) => (
-            <Reveal
-              key={label}
-              delay={i * 0.08}
-              className="flex flex-col border-b border-[#f5f1e9]/15 py-9 last:border-b-0 md:border-r md:border-b-0 md:px-7 md:py-11 md:first:pl-0 md:last:border-r-0 md:last:pr-0 lg:px-11 lg:py-14"
-            >
-              <p className={`font-mono text-[10px] leading-relaxed tracking-[.14em] uppercase ${color}`}>
-                {label}
-              </p>
-              <h3 className="mt-8 text-[clamp(2rem,3.2vw,3.5rem)] leading-[1.08] font-medium tracking-[-.05em] md:mt-12">
-                {title}
-                <br />
-                <span className={`font-[Georgia,'Times_New_Roman',serif] font-normal italic ${color}`}>
-                  {emphasis}
-                </span>
-              </h3>
-              <p className="mt-6 max-w-sm text-sm leading-7 text-[#f5f1e9]/65">
-                {text}
-              </p>
-              <p className="mt-auto pt-9 text-xs leading-6 text-[#f5f1e9]/45 md:pt-12">
-                {detail}
-              </p>
-            </Reveal>
-          ))}
+          {storyFormats.map(
+            ({ title, emphasis, text, label, detail, color }, i) => (
+              <Reveal
+                key={label}
+                delay={i * 0.08}
+                className="flex flex-col border-b border-[#f5f1e9]/15 py-9 last:border-b-0 md:border-r md:border-b-0 md:px-7 md:py-11 md:first:pl-0 md:last:border-r-0 md:last:pr-0 lg:px-11 lg:py-14"
+              >
+                <p
+                  className={`font-mono text-[10px] leading-relaxed tracking-[.14em] uppercase ${color}`}
+                >
+                  {label}
+                </p>
+                <h3 className="mt-8 text-[clamp(2rem,3.2vw,3.5rem)] leading-[1.08] font-medium tracking-[-.05em] md:mt-12">
+                  {title}
+                  <br />
+                  <span
+                    className={`font-[Georgia,'Times_New_Roman',serif] font-normal italic ${color}`}
+                  >
+                    {emphasis}
+                  </span>
+                </h3>
+                <p className="mt-6 max-w-sm text-sm leading-7 text-[#f5f1e9]/65">
+                  {text}
+                </p>
+                <p className="mt-auto pt-9 text-xs leading-6 text-[#f5f1e9]/45 md:pt-12">
+                  {detail}
+                </p>
+              </Reveal>
+            ),
+          )}
         </div>
 
         <Reveal className="mt-9 flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">

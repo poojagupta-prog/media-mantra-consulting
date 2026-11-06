@@ -73,7 +73,7 @@ export function Footer() {
         >
           {[
             ...links,
-            ["/dubai-it", "Dubai IT"],
+            // ["/dubai-it", "Dubai IT"],
             ["/podcasts", "Podcasts"],
             ["/awards", "Awards"],
             ["/gallery", "Gallery"],

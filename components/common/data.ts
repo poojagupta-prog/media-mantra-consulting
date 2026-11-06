@@ -11,7 +11,7 @@ export const services = [
   {
     title: "Media Relations",
     slug: "media-relations",
-    text: "Put your story in the right hands and build lasting relationships with the voices that shape the conversation.",
+    text: "Our media relations put your story in front of the journalists and editors who shape the conversation. We build real relationships, pitch with relevance, and earn coverage that builds credibility instead of chasing headlines that fade by tomorrow.",
     icon: "↗",
     color: "bg-[#fbe9df] text-[#cb572a]",
     tags: "Press strategy · Journalist relationships · Media outreach",
@@ -26,7 +26,7 @@ export const services = [
   {
     title: "Public Relations",
     slug: "public-relations",
-    text: "Shape the conversations that matter and create a meaningful connection between your brand and its audiences.",
+    text: "Social media marketing moves fast, and so do we. We build a voice your audience recognises, create content people actually want to share, and grow communities that talk back, so your brand stays part of the daily scroll.",
     icon: "✳",
     color: "bg-[#e0efec] text-teal",
     tags: "Communications strategy · Campaigns · Stakeholder engagement",
@@ -41,10 +41,10 @@ export const services = [
   {
     title: "Social & Digital Media",
     slug: "social-digital-media",
-    text: "Create conversations, communities and digital moments that make people want to stay connected.",
+    text: "Social Digital media moves fast, and so do we. We build a distinctive brand voice that resonates with your audience, create engaging content worth sharing, and nurture thriving communities that spark conversations. We make sure your brand stays relevant, connected, and always part of the daily scroll.",
     icon: "◎",
     color: "bg-[#e0efec] text-teal",
-    tags: "Social strategy · Community · Digital campaigns",
+    tags: "Social strategy · Community · Content creation",
     detail:
       "Digital channels are where brands meet people every day. We develop the ideas, content and channel plans that make those interactions feel relevant, consistent and human.",
     offerings: [
@@ -56,7 +56,7 @@ export const services = [
   {
     title: "Event Management",
     slug: "event-management",
-    text: "Turn an occasion into an experience people remember, share and talk about long after it ends.",
+    text: "Event management is about more than a venue and a guest list. We turn an occasion into an experience people remember, share and talk about long after it ends, from the first concept to the final goodbye.",
     icon: "⌘",
     color: "bg-[#e2ecfa] text-[#275591]",
     tags: "Concept · Production · Guest experience",
@@ -71,10 +71,10 @@ export const services = [
   {
     title: "Reputation Building & Management",
     slug: "reputation-building-management",
-    text: "Earn trust over time and navigate sensitive moments with perspective, preparation and care.",
+    text: "Earn trust over time and navigate sensitive moments with perspective, preparation and care. We build your credibility steadily, keep an eye on what is being said about you and stay ready to respond when something goes wrong. A calm, clear reply early often saves months of repair later.",
     icon: "◇",
     color: "bg-[#f8e4ec] text-pink",
-    tags: "Positioning · Issues management · Counsel",
+    tags: "Positioning · Thought leadership · Credibility",
     detail:
       "Reputation is built through what you say, what you do and how consistently the two align. We help you understand perceptions, strengthen credibility and communicate clearly when the stakes are high.",
     offerings: [
@@ -86,7 +86,7 @@ export const services = [
   {
     title: "SEO & Performance Marketing",
     slug: "seo-performance-marketing",
-    text: "Help the right people find you, then turn attention into measurable action.",
+    text: "Help the right people find you, then turn attention into measurable action. We improve how you show up in search, run paid campaigns against clear goals and report honestly on what the spend actually brought in. What works gets more budget, and what doesn’t gets fixed or dropped.",
     icon: "↗",
     color: "bg-[#fff0d6] text-[#9b6900]",
     tags: "Search visibility · Paid campaigns · Optimisation",
@@ -101,7 +101,7 @@ export const services = [
   {
     title: "Podcast",
     slug: "podcast",
-    text: "Give your ideas a voice through conversations your audience will choose to listen to.",
+    text: "Podcast production  gives your ideas a voice people choose to listen to. We shape the show concept, handle recording and editing, and distribute it widely, so your brand earns long-term attention through real conversations.",
     icon: "◉",
     color: "bg-[#e9e5f0] text-[#705a87]",
     tags: "Show concept · Production · Distribution",
@@ -116,7 +116,7 @@ export const services = [
   {
     title: "Content Marketing",
     slug: "content-marketing",
-    text: "Make useful, distinctive content that draws people in and keeps your brand in the conversation.",
+    text: "Content marketing works when it's useful, distinctive and honest. We create articles, stories and campaign content that draw people in and keep your brand in the conversation, long after the first click.",
     icon: "✦",
     color: "bg-[#fff0d6] text-[#9b6900]",
     tags: "Editorial · Campaign content · Storytelling",
@@ -131,7 +131,7 @@ export const services = [
   {
     title: "Strategic Content Planning",
     slug: "strategic-content-planning",
-    text: "Bring structure to your story with a content plan that connects every message to a purpose.",
+    text: "A good story needs a plan behind it. Our content strategy maps your audience, your key themes and your publishing calendar, so every message has a purpose and every post moves your business a step forward.",
     icon: "▤",
     color: "bg-[#e0efec] text-teal",
     tags: "Audience insight · Content pillars · Calendars",
@@ -146,7 +146,7 @@ export const services = [
   {
     title: "Brand Elevation",
     slug: "brand-elevation",
-    text: "Find the distinctive story and presence that move your brand to its next chapter.",
+    text: "Brand elevation  starts by finding what makes you different. We sharpen your story, refine your positioning and increase your visibility, so your brand steps into its next chapter with confidence and presence.",
     icon: "✳",
     color: "bg-[#fbe9df] text-[#cb572a]",
     tags: "Brand narrative · Positioning · Visibility",

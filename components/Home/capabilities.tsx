@@ -18,6 +18,9 @@ export function CapabilitiesSection() {
                 Serious impact.
               </span>
             </h2>
+            <p className="mt-6 max-w-xl text-base leading-7 text-muted">
+              One PR company in Dubai. Six ways to build your brand.
+            </p>
           </div>
           <ArrowText href="/services">All our capabilities</ArrowText>
         </Reveal>

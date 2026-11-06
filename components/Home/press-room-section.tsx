@@ -25,9 +25,13 @@ export function PressRoomSection() {
             </span>
           </h2>
           <p className="mt-7 max-w-md text-base leading-8 text-muted">
-            A memorable headline starts long before a pitch. We find the human
-            angle in your business, shape it for the moment, and put it in front
-            of the people who can move the conversation.
+            Dubai never slows down, and neither does the competition for
+            attention. A press release alone won't get you noticed. <br />
+            <br />
+            As a public relations agency in Dubai, we begin with the one story
+            only you can tell. Then we plan how to land it: the right media, the
+            right voices, the right moment. Less noise. More coverage that
+            actually moves the business.
           </p>
           <div
             className="mt-9 flex flex-wrap gap-2"

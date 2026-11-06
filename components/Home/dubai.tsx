@@ -71,7 +71,7 @@ export function DubaiPerspective() {
             <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mb-6 flex items-center gap-2 text-[#92dfd4]">
               <MapPin size={14} /> Dubai · UAE · GCC
             </p>
-            <ArrowText href="/dubai-it">Explore the Dubai IT</ArrowText>
+            {/* <ArrowText href="/dubai-it">Explore the Dubai IT</ArrowText> */}
           </div>
         </div>
       </div>
@@ -105,8 +105,9 @@ export function DubaiMap() {
             </h2>
           </div>
           <p className="max-w-xs text-sm leading-7 text-muted">
-            Explore the pins for a glimpse of the stories we could help shape
-            across Dubai.
+            From Downtown Dubai and DIFC to Abu Dhabi and the wider Emirates, we
+            know which stories land where. Local insight shapes every pitch, so
+            your message feels relevant, never borrowed.
           </p>
         </div>
         <div className="grid overflow-hidden border border-[#164b4930] bg-[#d3e4df] lg:grid-cols-[1.55fr_.85fr]">
@@ -145,7 +146,9 @@ export function DubaiMap() {
                   >
                     <MapPin size={20} strokeWidth={1.7} aria-hidden="true" />
                   </span>
-                  <span className={`whitespace-nowrap rounded-sm px-2 py-1 font-mono text-[8px] uppercase tracking-[.05em] shadow-sm sm:text-[9px] ${active === index ? "bg-[#073f43] text-white" : "bg-[#f7f4eb]/95 text-[#073f43]"}`}>
+                  <span
+                    className={`whitespace-nowrap rounded-sm px-2 py-1 font-mono text-[8px] uppercase tracking-[.05em] shadow-sm sm:text-[9px] ${active === index ? "bg-[#073f43] text-white" : "bg-[#f7f4eb]/95 text-[#073f43]"}`}
+                  >
                     {point.name}
                   </span>
                   <span className="h-2 w-2 rounded-full border border-white bg-[#e96540] shadow-sm" />
