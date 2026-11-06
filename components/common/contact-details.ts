@@ -1,6 +1,6 @@
 export const offices = [
   {
-    title: "UAE HQ, Dubai",
+    title: "UAE, Dubai",
     address: "Churchill Tower, 6th floor, 615, Business Bay",
     phone: "+971 56 179 1863",
     telephone: "+971561791863",
@@ -11,7 +11,14 @@ export const offices = [
     address: "Ground floor, Plot no. 63, Sector 32, Gurugram, Haryana 122001",
     phone: "+91 99907 95002",
     telephone: "+919990795002",
-    email: "info@mediamantra.net",
+    email: "",
+  },
+  {
+    title: "Australia",
+    address: "16 Earl Street, Hunters Hill, NSW 2110",
+    phone: "",
+    telephone: "",
+    email: "",
   },
 ];
 

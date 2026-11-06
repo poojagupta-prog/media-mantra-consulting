@@ -29,7 +29,7 @@ export function ContactView() {
           />
           <div className="border-t border-black/20 pt-6">
             <p className="mb-5 font-mono text-[10px] uppercase leading-relaxed tracking-[.13em] text-teal">
-              Two offices. One connected team.
+              Three offices. One connected team.
             </p>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               {offices.map((office) => (
@@ -40,19 +40,23 @@ export function ContactView() {
                   </h2>
                   <address className="space-y-3 text-xs leading-6 not-italic text-muted">
                     <p>{office.address}</p>
-                    <a
-                      href={`tel:${office.telephone}`}
-                      className="inline-block font-medium text-teal hover:underline focus-visible:outline-offset-4"
-                    >
-                      {office.phone}
-                    </a>
-                    <div className="flex flex-col items-start gap-1">
+                    {office.phone && office.telephone && (
                       <a
-                        href={`mailto:${office.email}`}
-                        className="max-w-full break-words text-teal hover:underline focus-visible:outline-offset-4"
+                        href={`tel:${office.telephone}`}
+                        className="inline-block font-medium text-teal hover:underline focus-visible:outline-offset-4"
                       >
-                        {office.email}
+                        {office.phone}
                       </a>
+                    )}
+                    <div className="flex flex-col items-start gap-1">
+                      {office.email && (
+                        <a
+                          href={`mailto:${office.email}`}
+                          className="max-w-full break-words text-teal hover:underline focus-visible:outline-offset-4"
+                        >
+                          {office.email}
+                        </a>
+                      )}
                       <a
                         href={`mailto:${founderEmail}`}
                         className="max-w-full break-words text-teal hover:underline focus-visible:outline-offset-4"

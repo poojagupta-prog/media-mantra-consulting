@@ -17,7 +17,7 @@ export function ServiceCards({ limit = 6 }: { limit?: number }) {
             <h3 className="text-2xl font-medium tracking-[-.04em] md:text-4xl">
               {s.title}
             </h3>
-            <p className="col-span-2 row-start-2 max-w-xs text-xs leading-6 text-muted md:col-span-1 md:col-start-2 md:row-start-1">{s.text}</p>
+            <p className="col-span-2 row-start-2 max-w-xs text-xs leading-6 text-muted md:col-span-1 md:col-start-2 md:row-start-1 md:max-w-none">{s.text}</p>
             <span className="col-start-2 row-start-1 transition-[transform,background,color] duration-300 group-hover/service:rotate-45 group-hover/service:bg-teal group-hover/service:text-white flex h-11 w-11 items-center justify-center rounded-full border border-black/20 md:col-start-3">
               <ArrowUpRight size={21} />
             </span>

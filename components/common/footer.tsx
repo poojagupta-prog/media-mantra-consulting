@@ -16,7 +16,7 @@ export function Footer() {
 
   return (
     <footer className="overflow-hidden bg-[#19181b] text-white">
-      <div className="mx-auto grid w-[min(1440px,calc(100%-112px))] gap-7 border-b border-white/15 py-8 max-[768px]:w-[calc(100%-40px)] md:grid-cols-2 lg:grid-cols-[.8fr_1fr_1fr] lg:gap-10">
+      <div className="mx-auto grid w-[min(1440px,calc(100%-112px))] gap-7 border-b border-white/15 py-8 max-[768px]:w-[calc(100%-40px)] md:grid-cols-2 lg:grid-cols-[.8fr_1fr_1fr_1fr] lg:gap-10">
         <div className="md:col-span-2 lg:col-span-1">
           <Link
             href="/"
@@ -32,7 +32,7 @@ export function Footer() {
             />
           </Link>
           <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mt-5 text-white/50">
-            Dubai · Gurugram · Connected to the world
+            Dubai · Gurugram · Australia · Connected to the world
           </p>
         </div>
         {offices.map((office) => (
@@ -45,19 +45,23 @@ export function Footer() {
             </h2>
             <address className="space-y-2 text-xs leading-relaxed not-italic text-white/70">
               <p className="max-w-sm">{office.address}</p>
-              <a
-                href={`tel:${office.telephone}`}
-                className="inline-block text-white transition-colors hover:text-[#92dfd4] focus-visible:outline-offset-4"
-              >
-                {office.phone}
-              </a>
-              <div className="flex flex-col items-start gap-1">
+              {office.phone && office.telephone && (
                 <a
-                  href={`mailto:${office.email}`}
-                  className="max-w-full break-words transition-colors hover:text-[#92dfd4] focus-visible:outline-offset-4"
+                  href={`tel:${office.telephone}`}
+                  className="inline-block text-white transition-colors hover:text-[#92dfd4] focus-visible:outline-offset-4"
                 >
-                  {office.email}
+                  {office.phone}
                 </a>
+              )}
+              <div className="flex flex-col items-start gap-1">
+                {office.email && (
+                  <a
+                    href={`mailto:${office.email}`}
+                    className="max-w-full break-words transition-colors hover:text-[#92dfd4] focus-visible:outline-offset-4"
+                  >
+                    {office.email}
+                  </a>
+                )}
                 <a
                   href={`mailto:${founderEmail}`}
                   className="max-w-full break-words transition-colors hover:text-[#92dfd4] focus-visible:outline-offset-4"
@@ -126,7 +130,7 @@ export function Footer() {
           </span>
         </div>
         <span className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase block mt-4 text-white/60">
-          Consulting · PR & communications · Dubai & Gurugram
+          Consulting · PR & communications · Dubai, Gurugram & Australia
         </span>
       </div>
       <div className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)] flex flex-wrap justify-between gap-3 py-7 text-[10px] text-white/45">
