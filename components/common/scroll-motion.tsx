@@ -10,14 +10,12 @@ import {
 } from "framer-motion";
 
 export function ScrollProgress() {
-  const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
-  if (reduced) return null;
   return (
     <motion.div
       aria-hidden="true"
-      className="bg-[linear-gradient(90deg,#ff6a35,#e50064,#007f83,#00afbf,#00c96b)] pointer-events-none fixed inset-x-0 top-0 z-[60] h-1 origin-left"
+      className="bg-[linear-gradient(90deg,#ff6a35,#e50064,#007f83,#00afbf,#00c96b)] motion-reduce:hidden pointer-events-none fixed inset-x-0 top-0 z-[60] h-1 origin-left"
       style={{ scaleX }}
     />
   );
@@ -33,7 +31,6 @@ export function ParallaxImage({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -46,8 +43,8 @@ export function ParallaxImage({
         src={src}
         alt={alt}
         loading="lazy"
-        className="h-full w-full object-cover"
-        style={reduced ? undefined : { y, scale }}
+        className="h-full w-full object-cover motion-reduce:transform-none!"
+        style={{ y, scale }}
       />
     </div>
   );
@@ -55,7 +52,6 @@ export function ParallaxImage({
 
 export function ScrollStatement({ children }: { children: string }) {
   const ref = useRef<HTMLParagraphElement>(null);
-  const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start 85%", "end 45%"],
@@ -72,7 +68,6 @@ export function ScrollStatement({ children }: { children: string }) {
           key={`${word}-${i}`}
           progress={scrollYProgress}
           range={[i / words.length, (i + 1) / words.length]}
-          reduced={!!reduced}
         >
           {word}
         </ScrollWord>
@@ -85,19 +80,17 @@ function ScrollWord({
   children,
   progress,
   range,
-  reduced,
 }: {
   children: string;
   progress: ReturnType<typeof useScroll>["scrollYProgress"];
   range: [number, number];
-  reduced: boolean;
 }) {
   const opacity = useTransform(progress, range, [0.3, 1]);
   return (
     <motion.span
       aria-hidden="true"
-      className="mr-[.22em] inline-block"
-      style={{ opacity: reduced ? 1 : opacity }}
+      className="mr-[.22em] inline-block motion-reduce:opacity-100!"
+      style={{ opacity }}
     >
       {children}
     </motion.span>
@@ -126,8 +119,9 @@ export function Stagger({
       {children.map((child, i) => (
         <motion.div
           key={i}
+          className="motion-reduce:opacity-100! motion-reduce:transform-none!"
           variants={{
-            hidden: { opacity: 0, y: reduced ? 0 : 35 },
+            hidden: { opacity: 0, y: 35 },
             visible: {
               opacity: 1,
               y: 0,

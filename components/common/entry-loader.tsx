@@ -2,11 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { BrandStar } from "@/components/ui/brand-star";
 
 const endings = ["EDIA", "ANTRA"];
 
 export function EntryLoader() {
   const root = useRef<HTMLDivElement>(null);
+  const backgroundVideo = useRef<HTMLVideoElement>(null);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -18,6 +20,8 @@ export function EntryLoader() {
     let timeline: gsap.core.Timeline | undefined;
     let skipTween: gsap.core.Tween | undefined;
     let skipping = false;
+    let disposed = false;
+    let started = false;
     let touchStartY = 0;
     const finish = () => {
       timeline?.kill();
@@ -73,6 +77,7 @@ export function EntryLoader() {
       });
       gsap.set(tails.slice(1), { visibility: "hidden" });
       timeline = gsap.timeline({
+        paused: true,
         defaults: { ease: "power3.inOut" },
         onComplete: finish,
       });
@@ -84,7 +89,7 @@ export function EntryLoader() {
           0.1,
         )
         .fromTo(
-          ".entry-dot",
+          ".entry-star",
           { scale: 0 },
           { scale: 1, duration: 0.4, ease: "back.out(2)" },
           0.45,
@@ -129,7 +134,7 @@ export function EntryLoader() {
           },
           2.85,
         )
-        .to(".entry-dot", { backgroundColor: "#92dfd4", duration: 0.3 }, 2.9)
+        .to(".entry-star", { color: "#92dfd4", duration: 0.3 }, 2.9)
         .to(
           ".entry-stage",
           { y: -50, opacity: 0, duration: 0.4, ease: "power2.in" },
@@ -147,7 +152,29 @@ export function EntryLoader() {
         );
     }, node);
 
+    const video = backgroundVideo.current;
+    const startAnimation = () => {
+      if (disposed || skipping || started) return;
+      started = true;
+      timeline?.play();
+    };
+    // Wait for actual playback, rather than metadata or a fixed delay.
+    // A cached video may already be playing before this effect attaches.
+    video?.addEventListener("playing", startAnimation);
+    video?.addEventListener("error", startAnimation);
+    if (!video || video.error) {
+      startAnimation();
+    } else if (!video.paused && video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
+      startAnimation();
+    } else {
+      // If autoplay is blocked, keep the poster and allow the intro to finish.
+      void video.play().catch(startAnimation);
+    }
+
     return () => {
+      disposed = true;
+      video?.removeEventListener("playing", startAnimation);
+      video?.removeEventListener("error", startAnimation);
       ctx.revert();
       document.removeEventListener("keydown", onKeyDown);
       window.removeEventListener("wheel", onWheel);
@@ -165,12 +192,18 @@ export function EntryLoader() {
       className="entry-loader"
       aria-label="Media Mantra introduction"
     >
-      <div className="entry-meta entry-header">
-        <span>
-          MEDIA MANTRA
-          <span className="entry-brand-sub">CONSULTING / DUBAI</span>
-        </span>
-      </div>
+      <video
+        ref={backgroundVideo}
+        className="entry-background-video"
+        src="/videos/dubai-entry.mp4"
+        poster="/videos/dubai-entry-poster.jpg"
+        preload="auto"
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden="true"
+      />
       <div className="entry-stage" aria-hidden="true">
         <div className="entry-wordmark">
           <span className="entry-initial-mask">
@@ -190,27 +223,16 @@ export function EntryLoader() {
               </span>
             ))}
           </span>
-          <span className="entry-dot" />
+          <BrandStar className="entry-star" />
         </div>
         <div className="entry-punchline">
           <div>
-            <span>CREATING A</span>
+            <span>Consultancy</span>
           </div>
           <div>
-            <span className="entry-noise">New You.</span>
+            <span className="entry-noise">FZCO.</span>
           </div>
         </div>
-      </div>
-      <div className="entry-meta entry-footer">
-        <span>
-          A LITTLE M.
-          <br />A LOT OF IMPACT.
-        </span>
-        <span className="entry-footer-note">
-          TURNING WORDS
-          <br />
-          INTO WORLDS.
-        </span>
       </div>
       <noscript>
         <style>{".entry-loader { display: none; }"}</style>

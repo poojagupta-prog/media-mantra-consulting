@@ -1,11 +1,16 @@
 "use client";
+import { BrandStar } from "@/components/ui/brand-star";
+
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import { NavGroup, navGroups } from "./nav-group";
 import { links, services } from "./data";
+
+const navigationLinks = links.filter(([href]) => href !== "/contact");
 
 export function Header() {
   const pathname = usePathname();
@@ -35,10 +40,12 @@ export function Header() {
         </Link>
         <nav
           aria-label="Main navigation"
-          className="hidden h-full items-center gap-1 lg:flex"
+          className="hidden h-full items-center gap-1 xl:flex"
         >
-          {links.map(([href, label]) =>
-            href === "/services" ? (
+          {navigationLinks.map(([href, label]) =>
+            navGroups[href] ? (
+              <NavGroup key={href} group={navGroups[href]} />
+            ) : href === "/services" ? (
               <div
                 key={href}
                 className="relative flex h-full items-center"
@@ -68,7 +75,7 @@ export function Header() {
                 >
                   <ChevronDown
                     size={15}
-                    className={`transition-transform ${desktopServices ? "rotate-180" : ""}`}
+                    className={`transition-transform ${desktopServices ? "" : "-rotate-180"}`}
                   />
                 </button>
                 {desktopServices && (
@@ -103,7 +110,7 @@ export function Header() {
                             }
                           >
                             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-lg text-teal">
-                              {service.icon}
+                              {(service.icon === "✳" || service.icon === "✦") ? <BrandStar className="inline-block align-middle" /> : service.icon}
                             </span>
                             <span className="pt-1 text-sm font-medium leading-5 group-hover:text-teal">
                               {service.title}
@@ -129,7 +136,7 @@ export function Header() {
         </nav>
         <Link
           href="/contact"
-          className="hidden shrink-0 items-center gap-5 rounded-full bg-foreground py-2 pl-5 pr-2 text-xs font-medium text-white transition-colors hover:bg-teal lg:inline-flex"
+          className="hidden shrink-0 items-center gap-5 rounded-full bg-foreground py-2 pl-5 pr-2 text-xs font-medium text-white transition-colors hover:bg-teal xl:inline-flex"
         >
           Let’s talk{" "}
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-foreground">
@@ -137,7 +144,7 @@ export function Header() {
           </span>
         </Link>
         <button
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-black/15 lg:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-black/15 xl:hidden"
           onClick={() => {
             setOpen(!open);
             setOpenServices(false);
@@ -152,17 +159,24 @@ export function Header() {
       {open && (
         <nav
           id="mobile-nav"
-          className="absolute inset-x-0 top-full max-h-[calc(100vh-92px)] overflow-y-auto border-t border-black/10 bg-background px-6 pb-8 shadow-2xl lg:hidden"
+          className="absolute inset-x-0 top-full max-h-[calc(100dvh-88px)] overflow-y-auto border-t border-black/10 bg-background px-5 pb-6 shadow-2xl overscroll-contain xl:hidden"
           aria-label="Mobile navigation"
         >
-          {links.map(([href, label]) =>
-            href === "/services" ? (
+          {navigationLinks.map(([href, label]) =>
+            navGroups[href] ? (
+              <NavGroup
+                key={href}
+                group={navGroups[href]}
+                mobile
+                onNavigate={closeMobile}
+              />
+            ) : href === "/services" ? (
               <div key={href} className="border-b border-black/10">
                 <div className="flex items-center justify-between">
                   <Link
                     href={href}
                     onClick={closeMobile}
-                    className={`block py-4 text-2xl font-medium tracking-tight ${pathname.startsWith(href) ? "text-teal" : ""}`}
+                    className={`block py-3.5 text-[17px] font-medium tracking-[-.025em] ${pathname.startsWith(href) ? "text-teal" : ""}`}
                     aria-current={pathname === href ? "page" : undefined}
                   >
                     Services
@@ -173,29 +187,35 @@ export function Header() {
                     aria-expanded={openServices}
                     aria-controls="mobile-services-menu"
                     onClick={() => setOpenServices(!openServices)}
-                    className="rounded-full border border-black/10 p-2"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-black/10 text-foreground/70"
                   >
                     <ChevronDown
-                      size={18}
-                      className={`transition-transform ${openServices ? "rotate-180" : ""}`}
+                      size={16}
+                      className={`transition-transform ${openServices ? "" : "-rotate-180"}`}
                     />
                   </button>
                 </div>
                 {openServices && (
-                  <div id="mobile-services-menu" className="grid gap-1 pb-4">
-                    {services.map((service) => (
+                  <div
+                    id="mobile-services-menu"
+                    className="grid gap-0.5 border-t border-black/5 pb-3 pt-2"
+                  >
+                    {services.map((service, index) => (
                       <Link
                         key={service.slug}
                         href={`/services/${service.slug}`}
                         onClick={closeMobile}
-                        className="rounded-xl bg-black/[.035] px-4 py-3 text-sm"
+                        className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-[13px] leading-5 ${pathname === `/services/${service.slug}` ? "bg-[#e6efeb] font-medium text-teal" : "text-foreground/75 hover:bg-black/[.035]"}`}
                         aria-current={
                           pathname === `/services/${service.slug}`
                             ? "page"
                             : undefined
                         }
                       >
-                        {service.title}
+                        <span className="w-5 shrink-0 font-mono text-[10px] text-muted">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <span>{service.title}</span>
                       </Link>
                     ))}
                   </div>
@@ -207,7 +227,7 @@ export function Header() {
                 href={href}
                 onClick={closeMobile}
                 aria-current={pathname === href ? "page" : undefined}
-                className={`block border-b border-black/10 py-4 text-2xl font-medium tracking-tight ${pathname === href ? "text-teal" : ""}`}
+                className={`block border-b border-black/10 py-3.5 text-[17px] font-medium tracking-[-.025em] ${pathname === href ? "text-teal" : ""}`}
               >
                 {label}
               </Link>
@@ -216,9 +236,9 @@ export function Header() {
           <Link
             href="/contact"
             onClick={closeMobile}
-            className="mt-6 flex items-center justify-between rounded-full bg-teal py-3 pl-6 pr-3 text-sm font-medium text-white"
+            className="mt-5 flex items-center justify-between rounded-full bg-teal py-2.5 pl-5 pr-3 text-[13px] font-medium text-white"
           >
-            Start a conversation <ArrowUpRight size={19} />
+            Start a conversation <ArrowUpRight size={18} />
           </Link>
         </nav>
       )}
