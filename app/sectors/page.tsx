@@ -4,9 +4,9 @@ import { SectorDirectory } from "@/components/Sectors/sector-directory";
 import { CTA } from "@/components/Sectors/cta";
 
 export const metadata: Metadata = {
-  title: "Sectors",
+  title: "PR Services by Sector in Dubai | Media Mantra Consultancy FZCO",
   description:
-    "Explore our PR expertise across technology, finance, retail, fashion, sports, entertainment, luxury, hospitality, real estate and more.",
+    "Sector-focused PR in Dubai for tech, finance, retail, fashion, sports, hospitality and real estate. Media Mantra Consultancy FZCO tells the story your industry needs.",
 };
 
 export default function SectorsPage() {

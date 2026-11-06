@@ -22,8 +22,9 @@ export function CTA() {
             </span>
           </h2>
           <p className="mt-8 max-w-lg text-sm leading-7 text-white/70">
-            Great stories don’t fit into boxes. Tell us about your business,
-            your ambitions and what you want to change.
+            Great stories rarely fit neatly into boxes. Tell us about your
+            business, your ambitions and the change you want to make, and we'll
+            show you how a sharper story can get you there.
           </p>
         </div>
         <ContactModalLink
