@@ -3,11 +3,12 @@ import { isIP } from "node:net";
 import nodemailer from "nodemailer";
 
 // Configure one or more plain email addresses separated by commas.
-const recipients =
-  "mediamantragroupindia@gmail.com,karthik.prakash@mediamantra.in"
-    .split(",")
-    .map((address) => address.trim())
-    .filter(Boolean);
+const recipients = (
+  process.env.CONTACT_TO_EMAIL || "info@mediamantraconsulting.com"
+)
+  .split(",")
+  .map((address) => address.trim())
+  .filter(Boolean);
 
 const RATE_LIMIT = 5;
 const RATE_WINDOW_MS = 10 * 60 * 1000;
