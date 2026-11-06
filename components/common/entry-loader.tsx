@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { BrandStar } from "@/components/ui/brand-star";
 
 const endings = ["EDIA", "ANTRA"];
 
@@ -84,7 +85,7 @@ export function EntryLoader() {
           0.1,
         )
         .fromTo(
-          ".entry-dot",
+          ".entry-star",
           { scale: 0 },
           { scale: 1, duration: 0.4, ease: "back.out(2)" },
           0.45,
@@ -129,7 +130,7 @@ export function EntryLoader() {
           },
           2.85,
         )
-        .to(".entry-dot", { backgroundColor: "#92dfd4", duration: 0.3 }, 2.9)
+        .to(".entry-star", { color: "#92dfd4", duration: 0.3 }, 2.9)
         .to(
           ".entry-stage",
           { y: -50, opacity: 0, duration: 0.4, ease: "power2.in" },
@@ -165,12 +166,15 @@ export function EntryLoader() {
       className="entry-loader"
       aria-label="Media Mantra introduction"
     >
-      <div className="entry-meta entry-header">
-        <span>
-          MEDIA MANTRA
-          <span className="entry-brand-sub">CONSULTING / DUBAI</span>
-        </span>
-      </div>
+      <video
+        className="entry-background-video"
+        src="/videos/dubai.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden="true"
+      />
       <div className="entry-stage" aria-hidden="true">
         <div className="entry-wordmark">
           <span className="entry-initial-mask">
@@ -190,7 +194,7 @@ export function EntryLoader() {
               </span>
             ))}
           </span>
-          <span className="entry-dot" />
+          <BrandStar className="entry-star" />
         </div>
         <div className="entry-punchline">
           <div>
@@ -200,17 +204,6 @@ export function EntryLoader() {
             <span className="entry-noise">FZCO.</span>
           </div>
         </div>
-      </div>
-      <div className="entry-meta entry-footer">
-        <span>
-          A LITTLE M.
-          <br />A LOT OF IMPACT.
-        </span>
-        <span className="entry-footer-note">
-          TURNING WORDS
-          <br />
-          INTO WORLDS.
-        </span>
       </div>
       <noscript>
         <style>{".entry-loader { display: none; }"}</style>

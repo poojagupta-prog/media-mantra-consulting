@@ -19,7 +19,9 @@ export function OurProcess() {
         </h2>
         <p className="mb-8 mt-7 max-w-sm text-sm leading-7 text-muted">
           A clear process. An open conversation. A shared ambition to make every
-          move mean something.
+          move mean something. We work with you the way a good editor works with
+          a writer: asking the hard questions early, cutting what doesn’t serve
+          the story, and pushing until the message lands where it matters.
         </p>
         <ArrowText href="/services">Explore our capabilities</ArrowText>
       </div>
@@ -27,19 +29,19 @@ export function OurProcess() {
         {[
           [
             "Listen to the landscape.",
-            "We audit your brand, competitors and media environment.",
+            "We audit your brand, your competitors and the media environment around you. We look at who is being covered, what they’re saying, where the gaps are and which conversations your brand can credibly own. Nothing gets planned until we know what’s already out there.",
           ],
           [
             "Find your distinctive voice.",
-            "We define the story, the spokespeople and the proof points.",
+            "We define the story, the spokespeople and the proof points. That means one clear narrative, the right people to carry it, and the facts, data and examples that make it believable. The result is a voice that sounds like you and not like everyone else in your category.",
           ],
           [
             "Bring the story to life.",
-            "We pitch, publish, host and amplify across channels.",
+            "We pitch, publish, host and amplify across channels. Media relations, owned content, events and digital come together as one plan, so every placement, post and conversation supports the same story and reaches the right audience.",
           ],
           [
             "Learn. Refine. Keep moving.",
-            "We track coverage, sentiment and business impact, then sharpen the plan.",
+            "We track coverage, sentiment and business impact, then sharpen the plan. You get honest reporting on what worked and what didn’t, and we use it to adjust the next move while the momentum is still with you.",
           ],
         ].map(([title, text]) => (
           <Reveal

@@ -1,7 +1,7 @@
 import { ArrowDownRight, MapPin } from "lucide-react";
 import { Reveal } from "../ui/reveal";
 import ContactForm from "../common/contact-form";
-import { offices, contactEmails } from "../common/contact-details";
+import { offices, founderEmail } from "../common/contact-details";
 
 export function ContactView() {
   return (
@@ -47,15 +47,18 @@ export function ContactView() {
                       {office.phone}
                     </a>
                     <div className="flex flex-col items-start gap-1">
-                      {contactEmails.map((email) => (
-                        <a
-                          key={email}
-                          href={`mailto:${email}`}
-                          className="max-w-full break-words text-teal hover:underline focus-visible:outline-offset-4"
-                        >
-                          {email}
-                        </a>
-                      ))}
+                      <a
+                        href={`mailto:${office.email}`}
+                        className="max-w-full break-words text-teal hover:underline focus-visible:outline-offset-4"
+                      >
+                        {office.email}
+                      </a>
+                      <a
+                        href={`mailto:${founderEmail}`}
+                        className="max-w-full break-words text-teal hover:underline focus-visible:outline-offset-4"
+                      >
+                        {founderEmail}
+                      </a>
                     </div>
                   </address>
                 </section>

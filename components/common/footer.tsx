@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { links, services } from "./data";
 import { ScrollToSection } from "@/components/ui/scroll-to-section";
-import { offices, contactEmails } from "./contact-details";
+import { offices, founderEmail } from "./contact-details";
 
 export function Footer() {
   const [year, setYear] = useState<number | null>(null);
@@ -52,15 +52,18 @@ export function Footer() {
                 {office.phone}
               </a>
               <div className="flex flex-col items-start gap-1">
-                {contactEmails.map((email) => (
-                  <a
-                    key={email}
-                    href={`mailto:${email}`}
-                    className="max-w-full break-words transition-colors hover:text-[#92dfd4] focus-visible:outline-offset-4"
-                  >
-                    {email}
-                  </a>
-                ))}
+                <a
+                  href={`mailto:${office.email}`}
+                  className="max-w-full break-words transition-colors hover:text-[#92dfd4] focus-visible:outline-offset-4"
+                >
+                  {office.email}
+                </a>
+                <a
+                  href={`mailto:${founderEmail}`}
+                  className="max-w-full break-words transition-colors hover:text-[#92dfd4] focus-visible:outline-offset-4"
+                >
+                  {founderEmail}
+                </a>
               </div>
             </address>
           </section>
