@@ -1973,3 +1973,22 @@
     transform: none;
   }
 }
+
+@keyframes publication-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.publication-marquee-track {
+  animation: publication-marquee-scroll 35s linear infinite;
+}
+
+.publication-marquee:hover .publication-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .publication-marquee-track {
+    animation: none;
+  }
+}

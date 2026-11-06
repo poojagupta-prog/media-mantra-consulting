@@ -1,11 +1,21 @@
 "use client";
-import { BrandStar } from "@/components/ui/brand-star";
+import Image from "next/image";
 
-
-import { motion, useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-const labels = ["Dubai PR", "Storytelling", "Culture", "Connection"];
+const publications = [
+  { name: "Al Arabiya", logo: "al-arabiya.svg" },
+  { name: "Gulf News", logo: "gulf-news.svg" },
+  { name: "Khaleej Times", logo: "khaleej-times.svg" },
+  { name: "The National", logo: "the-national-color.webp" },
+  { name: "Saudi Gazette", logo: "saudi-gazette.svg" },
+  { name: "Arab News", logo: "arab-news.png" },
+  { name: "Qatar Tribune", logo: "qatar-tribune.svg" },
+  { name: "Oman Observer", logo: "oman-observer-color.png" },
+  { name: "Kuwait Times", logo: "kuwait-times.svg" },
+  { name: "Gulf Business", logo: "gulf-business.png" },
+];
 
 export function Marquee() {
   const reduced = useReducedMotion();
@@ -20,7 +30,8 @@ export function Marquee() {
 
     const updateCopies = () => {
       const width = group.getBoundingClientRect().width;
-      if (width) setCopies(Math.max(1, Math.ceil(container.clientWidth / width)));
+      if (width)
+        setCopies(Math.max(1, Math.ceil(container.clientWidth / width)));
     };
 
     const observer = new ResizeObserver(updateCopies);
@@ -33,30 +44,46 @@ export function Marquee() {
   return (
     <div
       ref={containerRef}
-      className="overflow-hidden bg-teal py-5 text-white"
-      aria-label="Dubai PR, storytelling, culture, connection"
+      className="publication-marquee overflow-hidden border-y border-black/10 bg-teal py-5"
+      role="img"
+      aria-label={`Publications: ${publications.map(({ name }) => name).join(", ")}`}
     >
-      <motion.div
+      <div
         aria-hidden="true"
-        className="w-max flex"
-        animate={{ x: reduced ? 0 : ["0%", "-50%"] }}
-        transition={{ duration: 35 * copies, ease: "linear", repeat: Infinity }}
+        className="publication-marquee-track w-max flex"
+        style={{
+          animationDuration: `${35 * copies}s`,
+          animationName: reduced ? "none" : undefined,
+        }}
       >
         {Array.from({ length: copies * 2 }, (_, n) => (
           <div
             key={n}
             ref={n === 0 ? groupRef : undefined}
-            className="flex shrink-0 items-center gap-10 pr-10 text-xl font-medium uppercase tracking-[-.03em] md:text-3xl"
+            className="flex shrink-0 items-center gap-20 pr-20 md:gap-32 md:pr-32"
           >
-            {labels.map((t) => (
-              <span key={t} className="flex items-center gap-10">
-                {t}
-                <BrandStar className="shrink-0 text-[#92dfd4]" />
+            {publications.map(({ name, logo }) => (
+              <span
+                key={name}
+                className="group relative flex h-10 w-36 shrink-0 items-center justify-center md:h-12 md:w-44"
+              >
+                <Image
+                  src={`/images/publications/${logo}`}
+                  alt={name}
+                  width={176}
+                  height={48}
+                  unoptimized
+                  className={`h-full w-full object-contain brightness-0 invert transition-[filter] duration-200 ${
+                    logo === "gulf-business.png"
+                      ? "group-hover:invert-0"
+                      : "group-hover:brightness-100 group-hover:invert-0"
+                  }`}
+                />
               </span>
             ))}
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
