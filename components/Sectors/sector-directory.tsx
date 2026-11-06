@@ -21,8 +21,9 @@ export function SectorDirectory() {
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-7 text-muted">
-            Every industry has its own language. We find the human story
-            within it, and help you tell it with clarity, confidence and
+            Every industry has its own language, its own rules and its own way
+            of spotting nonsense. We learn yours fast, find the story hiding
+            inside it, and help you tell it with clarity, confidence and
             purpose.
           </p>
         </div>
