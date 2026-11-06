@@ -54,7 +54,7 @@ export function IntroductionSection() {
                 From the first spark to the next big headline, we bring the
                 clarity, creativity, and connections to move you forward.
               </p>
-              <ArrowText href="/about">
+              <ArrowText href="/about-us">
                 Meet the minds behind the mantra
               </ArrowText>
             </div>

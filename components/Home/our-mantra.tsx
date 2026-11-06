@@ -18,7 +18,7 @@ export function Manifesto() {
           </div>
           <div className="w-full sm:w-auto lg:w-80 lg:shrink-0">
             <ContactModalLink
-              href="/contact"
+              href="/contact-us"
               className="group flex items-start justify-between gap-6 border-t border-white/35 pt-6 pb-3 text-white transition-colors hover:border-[#b6e9df] hover:text-[#b6e9df]"
             >
               <span className="text-2xl leading-tight font-medium tracking-[-.035em]">

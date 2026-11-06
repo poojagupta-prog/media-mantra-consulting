@@ -8,11 +8,11 @@ export const navGroups: Record<
   string,
   { label: string; items: [string, string][] }
 > = {
-  "/about": {
+  "/about-us": {
     label: "About us",
     items: [
-      ["/about", "Our story"],
-      ["/about#team", "Management team"],
+      ["/about-us", "Our story"],
+      ["/about-us#team", "Management team"],
       ["/awards", "Awards & recognition"],
       ["/gallery", "Gallery"],
     ],

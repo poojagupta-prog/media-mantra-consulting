@@ -2,11 +2,11 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Contact modal
 
-Contact CTAs throughout the site open the form-only modal. Header and footer contact links continue to navigate to `/contact`. `ContactModalLink` preserves each CTA’s styling and supports modified clicks to open the contact page in another tab. Shared `Button`, `ArrowText`, and media `TextLink` components use it when their destination is `/contact`. `ContactModalProvider` is mounted in the root layout. In any client component, call `const { isOpen, open, close } = useContactModal()` from `@/hooks/use-contact-modal` to control it.
+Contact CTAs throughout the site open the form-only modal. Header and footer contact links continue to navigate to `/contact-us`. `ContactModalLink` preserves each CTA’s styling and supports modified clicks to open the contact page in another tab. Shared `Button`, `ArrowText`, and media `TextLink` components use it when their destination is `/contact-us`. `ContactModalProvider` is mounted in the root layout. In any client component, call `const { isOpen, open, close } = useContactModal()` from `@/hooks/use-contact-modal` to control it.
 
 `useContactForm(endpoint?)` from `@/hooks/use-contact-form` exposes `submit(enquiry)`, `reset()`, `status`, `error`, and `isSubmitting`. It posts JSON with `name`, `email`, `company`, `service`, and `message`. The provider accepts an optional `endpoint` prop, defaulting to `/api/contact`.
 
-Both the modal and `/contact` page send enquiries through `/api/contact` using [Nodemailer’s SMTP transport](https://nodemailer.com/smtp). Each email includes the name, email, company, service, and message. Reply-To is the submitter’s email address. Set `CONTACT_TO_EMAIL` to one or more plain email addresses separated by commas; it defaults to `mediamantragroupindia@gmail.com` when unset or blank. Recipients are controlled on the server and cannot be overridden by form submissions. Success requires SMTP acceptance of at least one configured recipient.
+Both the modal and `/contact-us` page send enquiries through `/api/contact` using [Nodemailer’s SMTP transport](https://nodemailer.com/smtp). Each email includes the name, email, company, service, and message. Reply-To is the submitter’s email address. Set `CONTACT_TO_EMAIL` to one or more plain email addresses separated by commas; it defaults to `mediamantragroupindia@gmail.com` when unset or blank. Recipients are controlled on the server and cannot be overridden by form submissions. Success requires SMTP acceptance of at least one configured recipient.
 
 To enable delivery, fill in `.env.local` (see `.env.example`):
 

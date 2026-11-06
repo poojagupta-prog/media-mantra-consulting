@@ -162,7 +162,7 @@ export const services = [
 
 export const links = [
   ["/", "Home"],
-  ["/about", "About us"],
+  ["/about-us", "About us"],
   ["/services", "Services"],
   ["/sectors", "Sectors"],
   ["/news-room", "Newsroom"],

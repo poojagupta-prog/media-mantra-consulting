@@ -95,7 +95,7 @@ export function EditorialSection() {
             The best coverage starts with a story people care about.
           </p>
           <ContactModalLink
-            href="/contact"
+            href="/contact-us"
             className="shrink-0 rounded-full border border-[#b9ded2]/50 px-7 py-3.5 text-sm font-medium text-[#b9ded2] transition-colors hover:border-[#b9ded2] hover:bg-[#b9ded2] hover:text-[#19181b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b9ded2]"
           >
             Let’s find yours

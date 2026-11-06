@@ -72,7 +72,7 @@ export default function CaseStudiesPage() {
             </h2>
           </div>
           <ContactModalLink
-            href="/contact"
+            href="/contact-us"
             className="inline-flex items-center gap-3 rounded-full bg-foreground px-6 py-4 text-sm text-white transition-colors hover:bg-teal"
           >
             Start a conversation <ArrowUpRight size={18} />

@@ -177,7 +177,7 @@ async function CaseStudyContent({
                 <br />
                 <em>the world.</em>
               </h3>
-              <ContactModalLink href="/contact">
+              <ContactModalLink href="/contact-us">
                 Let’s discuss your story{" "}
                 <ArrowUpRight size={20} aria-hidden="true" />
               </ContactModalLink>

@@ -20,7 +20,7 @@ export function DubaiPerspective() {
             shape a clear plan, bring the right people into the conversation and
             make sure the work is seen for what it achieves.
           </p>
-          <TextLink href="/about">Get to know Media Mantra</TextLink>
+          <TextLink href="/about-us">Get to know Media Mantra</TextLink>
         </div>
       </div>
     </section>

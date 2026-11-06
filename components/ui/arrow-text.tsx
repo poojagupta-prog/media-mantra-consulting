@@ -12,7 +12,7 @@ export function ArrowText({
   href: string;
   children: ReactNode;
 }) {
-  const NavigationLink = href === "/contact" ? ContactModalLink : Link;
+  const NavigationLink = href === "/contact-us" ? ContactModalLink : Link;
   return (
     <NavigationLink
       href={href}

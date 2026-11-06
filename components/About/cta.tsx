@@ -11,7 +11,7 @@ export function CTA() {
           Good things start with a hello / Let’s collaborate
         </p>
         <ContactModalLink
-          href="/contact"
+          href="/contact-us"
           className="group flex items-center justify-between gap-6"
         >
           <h2 className="text-[clamp(3.7rem,8.2vw,8.5rem)] leading-[.93] tracking-[-.075em] font-[650] max-[768px]:text-[clamp(3.5rem,12vw,6rem)]">
