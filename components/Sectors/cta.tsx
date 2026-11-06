@@ -28,7 +28,7 @@ export function CTA() {
           </p>
         </div>
         <ContactModalLink
-          href="/contact"
+          href="/contact-us"
           className="inline-flex items-center gap-6 rounded-full bg-[#c9eae2] py-3 pl-6 pr-3 text-sm font-medium text-foreground transition-colors hover:bg-white"
         >
           Start a conversation{" "}

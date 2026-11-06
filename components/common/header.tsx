@@ -10,7 +10,7 @@ import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { NavGroup, navGroups } from "./nav-group";
 import { links, services } from "./data";
 
-const navigationLinks = links.filter(([href]) => href !== "/contact");
+const navigationLinks = links.filter(([href]) => href !== "/contact-us");
 
 export function Header() {
   const pathname = usePathname();
@@ -135,7 +135,7 @@ export function Header() {
           )}
         </nav>
         <Link
-          href="/contact"
+          href="/contact-us"
           className="hidden shrink-0 items-center gap-5 rounded-full bg-foreground py-2 pl-5 pr-2 text-xs font-medium text-white transition-colors hover:bg-teal xl:inline-flex"
         >
           Let’s talk{" "}
@@ -234,7 +234,7 @@ export function Header() {
             ),
           )}
           <Link
-            href="/contact"
+            href="/contact-us"
             onClick={closeMobile}
             className="mt-5 flex items-center justify-between rounded-full bg-teal py-2.5 pl-5 pr-3 text-[13px] font-medium text-white"
           >

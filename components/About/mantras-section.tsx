@@ -41,7 +41,7 @@ export function MantrasSection() {
         </div>
         <Reveal className="mt-12">
           <ContactModalLink
-            href="/contact"
+            href="/contact-us"
             className="group inline-flex items-center gap-4 border-b border-[#92dfd4] pb-2 text-sm text-[#92dfd4]"
           >
             Have a story in mind? Let’s talk{" "}

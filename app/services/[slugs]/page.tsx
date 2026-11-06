@@ -306,7 +306,7 @@ export default async function ServiceDetailPage({
               </span>
             </h2>
             <ContactModalLink
-              href="/contact"
+              href="/contact-us"
               className="inline-flex items-center gap-5 rounded-full bg-[#c9eae2] py-3 pl-6 pr-3 text-sm font-medium text-foreground hover:bg-white"
             >
               Start a conversation{" "}

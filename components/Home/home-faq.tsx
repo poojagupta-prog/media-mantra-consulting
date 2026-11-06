@@ -56,7 +56,7 @@ export function HomeFAQ() {
           </span>
         </h2>
         <div className="mt-8">
-          <ArrowText href="/contact">Have something else in mind?</ArrowText>
+          <ArrowText href="/contact-us">Have something else in mind?</ArrowText>
         </div>
       </Reveal>
       <FAQ data={faqData} />

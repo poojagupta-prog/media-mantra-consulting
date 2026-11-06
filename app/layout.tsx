@@ -13,9 +13,9 @@ import { ContactModalProvider } from "@/components/common/contact-modal";
 
 const breadcrumbLabels: Record<string, string> = {
   ...Object.fromEntries(links),
-  "/contact": "Contact",
+  "/contact-us": "Contact",
   "/privacy-policy": "Privacy Policy",
-  "/terms-and-conditions": "Terms and Conditions",
+  "/terms-conditions": "Terms and Conditions",
   "/blogs": "Blogs",
   "/awards": "Awards",
   "/gallery": "Gallery",

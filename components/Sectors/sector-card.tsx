@@ -33,7 +33,7 @@ export function SectorCard({ sector, index }: { sector: Sector; index: number })
           {sector.tags}
         </p>
         <ContactModalLink
-          href="/contact"
+          href="/contact-us"
           aria-label={`Let’s talk about ${sector.title}`}
           className="mt-4 inline-flex items-center gap-3 text-xs font-semibold transition-colors hover:text-teal"
         >

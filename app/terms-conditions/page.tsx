@@ -5,7 +5,7 @@ import { termsAndConditions } from "@/components/legal/content";
 export const metadata: Metadata = {
   title: "Terms and Conditions",
   description: "Read the terms and conditions for using the Media Mantra Consultancy FZCO website, including intellectual property, privacy and governing law.",
-  alternates: { canonical: "/terms-and-conditions" },
+  alternates: { canonical: "/terms-conditions" },
 };
 
 export default function TermsAndConditionsPage() {

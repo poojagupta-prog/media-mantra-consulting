@@ -81,7 +81,7 @@ export function Footer() {
             ["/awards", "Awards"],
             ["/gallery", "Gallery"],
             ["/blogs", "Blogs"],
-            ["/contact", "Contact"],
+            ["/contact-us", "Contact"],
           ].map(([href, label]) => (
             <Link
               key={href}
@@ -131,11 +131,20 @@ export function Footer() {
       </div>
       <div className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)] flex flex-wrap justify-between gap-3 py-7 text-[10px] text-white/45">
         <span>© {year} Media Mantra Consultancy FZCO</span>
-        <nav aria-label="Legal" className="flex flex-wrap gap-x-6 gap-y-3 text-white/75">
-          <Link href="/privacy-policy" className="transition-colors hover:text-[#92dfd4]">
+        <nav
+          aria-label="Legal"
+          className="flex flex-wrap gap-x-6 gap-y-3 text-white/75"
+        >
+          <Link
+            href="/privacy-policy"
+            className="transition-colors hover:text-[#92dfd4]"
+          >
             Privacy Policy
           </Link>
-          <Link href="/terms-and-conditions" className="transition-colors hover:text-[#92dfd4]">
+          <Link
+            href="/terms-conditions"
+            className="transition-colors hover:text-[#92dfd4]"
+          >
             Terms and Conditions
           </Link>
         </nav>

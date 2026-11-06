@@ -7,7 +7,7 @@ import { ContactModalLink } from "@/components/common/contact-modal-link";
 
 export function Button({
   children,
-  href = "/contact",
+  href = "/contact-us",
   light = false,
   onClick,
 }: {
@@ -16,7 +16,7 @@ export function Button({
   light?: boolean;
   onClick?: () => void;
 }) {
-  const NavigationLink = href === "/contact" ? ContactModalLink : Link;
+  const NavigationLink = href === "/contact-us" ? ContactModalLink : Link;
   const className = `group inline-flex items-center gap-8 rounded-full py-2 pl-6 pr-2 text-xs font-medium transition-colors ${light ? "bg-white text-foreground hover:bg-[#c6eee5]" : "bg-teal text-white hover:bg-[#005e63]"}`;
   const content = (
     <>

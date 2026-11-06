@@ -161,7 +161,7 @@ export function TestimonialPreview() {
       </div>
       <div className="testimonial-footer">
         <Label>Your next chapter starts with a conversation</Label>
-        <TextLink href="/contact">Let’s tell your story</TextLink>
+        <TextLink href="/contact-us">Let’s tell your story</TextLink>
       </div>
     </section>
   );

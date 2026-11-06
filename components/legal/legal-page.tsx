@@ -20,7 +20,7 @@ function LinkedText({ text }: { text: string }) {
 export function LegalPage({ kind, document }: { kind: "privacy" | "terms"; document: LegalDocument }) {
   const isPrivacy = kind === "privacy";
   const title = isPrivacy ? "Privacy Policy" : "Terms and Conditions";
-  const relatedHref = isPrivacy ? "/terms-and-conditions" : "/privacy-policy";
+  const relatedHref = isPrivacy ? "/terms-conditions" : "/privacy-policy";
   const relatedTitle = isPrivacy ? "Terms and Conditions" : "Privacy Policy";
 
   return (
