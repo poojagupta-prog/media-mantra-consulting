@@ -1,7 +1,6 @@
 import { Newspaper } from "lucide-react";
 import { ArrowText } from "../ui/arrow-text";
 import { Reveal } from "../ui/reveal";
-import { photos } from "../common/data";
 
 export function PressRoomSection() {
   return (
@@ -88,11 +87,11 @@ export function PressRoomSection() {
                   conversation.
                 </p>
               </div>
-              <div className="relative min-h-55 overflow-hidden">
+              <div className="relative aspect-[4/5] min-h-55 overflow-hidden sm:aspect-auto">
                 <img
-                  src={photos.city}
-                  alt="Dubai skyline, the setting for regional brand stories"
-                  className="h-full w-full object-cover"
+                  src="/images/gallery/1788413274478.jpeg"
+                  alt="Two Media Mantra team members posing together"
+                  className="absolute inset-0 h-full w-full object-cover object-top"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-[#073f43] p-3 text-[10px] uppercase tracking-widest text-white">
                   On the ground / In the conversation ↗
