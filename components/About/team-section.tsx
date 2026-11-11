@@ -43,9 +43,6 @@ export function TeamSection() {
                 unoptimized
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <span className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase absolute left-4 top-4 rounded-full bg-white px-3 py-1.5">
-                Team Member
-              </span>
             </div>
             <div className="p-6">
               <p className="font-mono text-[10px] leading-[1.6] tracking-[.13em] uppercase mb-3 opacity-70">

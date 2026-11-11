@@ -33,7 +33,7 @@ export default function Awards() {
               Explore recognition <ArrowDown size={16} aria-hidden="true" />
             </a>
             <span className="media-status">
-              28 honours · Founder & industry recognition
+              Founder & industry recognition
             </span>
           </div>
           <div className="awards-hero-art" aria-hidden="true">
@@ -131,7 +131,6 @@ export default function Awards() {
           <nav className="honours-nav" aria-label="Award categories">
             {awardGroups.map((group, index) => (
               <a href={`#honours-${index}`} key={group.name}>
-                <span>0{index + 1}</span>
                 {group.name.replace(" Awards", "")}
                 <ArrowDown size={14} aria-hidden="true" />
               </a>
@@ -157,22 +156,13 @@ export default function Awards() {
                   <Award size={24} strokeWidth={1.2} aria-hidden="true" />
                 </div>
                 <p>{group.description}</p>
-                <div className="honours-count">
-                  <strong>
-                    {String(group.honours.length).padStart(2, "0")}
-                  </strong>
-                  <span>
-                    honours &<br />
-                    milestones
-                  </span>
-                </div>
                 <BrandStar
                   className="honours-category-star"
                   aria-hidden="true"
                 />
               </header>
               <ul className="honours-grid">
-                {group.honours.map((honour, awardIndex) => {
+                {group.honours.map((honour) => {
                   const [title, ...details] = honour.split(" — ");
                   const years = [
                     ...new Set(honour.match(/\b(?:19|20)\d{2}\b/g) ?? []),
@@ -180,9 +170,6 @@ export default function Awards() {
                   return (
                     <li className="honour-card" key={honour}>
                       <div className="honour-card-top">
-                        <span className="honour-index">
-                          {String(awardIndex + 1).padStart(2, "0")}
-                        </span>
                         <span className="honour-year">
                           {years.length ? years.join(" / ") : "Recognition"}
                         </span>
