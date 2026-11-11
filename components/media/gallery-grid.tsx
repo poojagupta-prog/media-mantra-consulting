@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useId, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, X, Expand, Film } from "lucide-react";
+import { ArrowLeft, ArrowRight, X, Expand, Film, Plus } from "lucide-react";
 import { media, type MediaItem } from "./content";
 import { MediaImage } from "./shared";
 
@@ -73,10 +73,7 @@ export function GalleryGrid({
         className={compact ? "gallery-grid gallery-compact" : "gallery-grid"}
       >
         {visibleItems.map((item, index) => (
-          <figure
-            key={item.id}
-            className="gallery-item"
-          >
+          <figure key={item.id} className="gallery-item">
             <button
               onClick={(e) => {
                 trigger.current = e.currentTarget;
@@ -85,7 +82,11 @@ export function GalleryGrid({
               aria-label={`Open ${item.title}`}
               aria-haspopup="dialog"
             >
-              <MediaImage src={item.image} alt={item.alt} />
+              <MediaImage
+                src={item.image}
+                alt={item.alt}
+                className="object-[50%_20%]"
+              />
               <span className="gallery-expand" aria-hidden="true">
                 {item.videoUrl || item.posterOnly ? (
                   <Film size={18} />
@@ -117,7 +118,7 @@ export function GalleryGrid({
             aria-controls={gridId}
             onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
           >
-            Load more <ArrowRight size={16} aria-hidden="true" />
+            Load more <Plus size={18} />
           </button>
         </div>
       )}
