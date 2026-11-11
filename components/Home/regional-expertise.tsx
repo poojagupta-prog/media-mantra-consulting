@@ -18,6 +18,7 @@ const clients = [
   { name: "E2E Networks", file: "e2e-logo.webp", dark: true },
   { name: "BAMX", file: "bamx - .png" },
   { name: "EBTL", file: "EBTL - .png" },
+  { name: "Armaf", file: "armaf-logo.webp", mobileOnly: true },
 ];
 
 export function RegionalExpertise() {
@@ -55,10 +56,10 @@ export function RegionalExpertise() {
           aria-label="Our clients"
           className="grid grid-cols-2 gap-px overflow-hidden rounded-[3px] border border-foreground/10 bg-foreground/10 sm:grid-cols-3 lg:grid-cols-5"
         >
-          {clients.map(({ name, file, dark }) => (
+          {clients.map(({ name, file, dark, mobileOnly }) => (
             <li
               key={name}
-              className={`group flex min-w-0 items-center justify-center px-5 py-5 sm:px-6 sm:py-6 ${
+              className={`group flex min-w-0 items-center justify-center px-5 py-5 sm:px-6 sm:py-6 ${mobileOnly ? "sm:hidden" : ""} ${
                 dark
                   ? "bg-[#073f43] text-white/70 motion-safe:transition-colors motion-safe:duration-300 hover:bg-[#0a5054]"
                   : "bg-white text-muted motion-safe:transition-colors motion-safe:duration-300 hover:bg-[#eef3ef]"
