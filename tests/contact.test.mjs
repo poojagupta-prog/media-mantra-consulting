@@ -16,6 +16,11 @@ const compiled = ts.transpileModule(
   },
 ).outputText;
 
+const phoneModule = { exports: {} };
+runInNewContext(ts.transpileModule(readFileSync("lib/contact-phone.ts", "utf8"), {
+  compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
+}).outputText, { module: phoneModule, exports: phoneModule.exports });
+
 function handler(
   env = {},
   sendMail = () => {
@@ -31,7 +36,7 @@ function handler(
     Response,
     Date: clock,
     process: { env },
-    require: (name) => name === "node:net" ? { isIP } : name === "nodemailer" ? {
+    require: (name) => name === "@/lib/contact-phone" ? phoneModule.exports : name === "node:net" ? { isIP } : name === "nodemailer" ? {
       createTransport(options) {
         onCreateTransport(options);
         return { sendMail };
@@ -44,6 +49,8 @@ function handler(
 const enquiry = {
   name: " Alex Morgan ",
   email: "alex@example.com",
+  countryCode: "+91",
+  phone: "9876543210",
   company: "Example",
   service: "Public relations",
   message: "We would like to discuss our launch.",
@@ -73,6 +80,8 @@ test("contact API rejects invalid fields and oversized enquiries before forwardi
     { ...enquiry, service: "Unknown" },
     { ...enquiry, message: "x".repeat(5001) },
     { ...enquiry, company: 123 },
+    ...[undefined, "", " ", 9876543210, "12345", "12345678901234", "123abc4567", "+919876543210", "987 6543210", "123456\n789"].map((phone) => ({ ...enquiry, phone })),
+    ...[undefined, "", 91, "91", "+999", "+091"].map((countryCode) => ({ ...enquiry, countryCode })),
   ]) {
     assert.equal((await handler()(request(body))).status, 400);
   }
@@ -109,7 +118,7 @@ test("contact API emails all enquiry details to the fixed recipient with the sub
     emailEnv,
     async (email) => {
       sent = email;
-      return { accepted: ["mediamantragroupindia@gmail.com"] };
+      return { accepted: ["info@mediamantraconsulting.com"] };
     },
     (options) => { transport = options; },
   );
@@ -123,11 +132,11 @@ test("contact API emails all enquiry details to the fixed recipient with the sub
   assert.equal(transport.auth.user, emailEnv.SMTP_USER);
   assert.equal(transport.auth.pass, emailEnv.SMTP_PASS);
   const email = sent;
-  assert.deepEqual(Array.from(email.to), ["mediamantragroupindia@gmail.com"]);
+  assert.deepEqual(Array.from(email.to), ["info@mediamantraconsulting.com"]);
   assert.equal(email.from, emailEnv.CONTACT_FROM_EMAIL);
   assert.equal(email.replyTo, enquiry.email);
   assert.equal(email.subject, `New website enquiry: ${enquiry.service}`);
-  for (const detail of ["Name: Alex Morgan", `Email: ${enquiry.email}`, `Company: ${enquiry.company}`, `Service: ${enquiry.service}`, enquiry.message]) {
+  for (const detail of ["Name: Alex Morgan", `Email: ${enquiry.email}`, `Phone: ${enquiry.countryCode} ${enquiry.phone}`, `Company: ${enquiry.company}`, `Service: ${enquiry.service}`, enquiry.message]) {
     assert.ok(email.text.includes(detail));
   }
   assert.doesNotMatch(email.text, /omit me/);
@@ -161,7 +170,7 @@ test("enquiries without a company and multiline messages are included correctly"
   let email;
   const post = handler(emailEnv, async (message) => {
     email = message;
-    return { accepted: ["mediamantragroupindia@gmail.com"] };
+    return { accepted: ["info@mediamantraconsulting.com"] };
   });
   assert.equal((await post(request({ ...enquiry, company: undefined, message: "First line\nSecond line" }))).status, 200);
   assert.match(email.text, /Company: Not provided/);
@@ -169,7 +178,7 @@ test("enquiries without a company and multiline messages are included correctly"
 });
 
 test("SMTP responses without acceptance of the configured recipient never report success", async () => {
-  for (const result of [{ accepted: [] }, { accepted: ["other@example.com"] }, { rejected: ["mediamantragroupindia@gmail.com"] }, null]) {
+  for (const result of [{ accepted: [] }, { accepted: ["other@example.com"] }, { rejected: ["info@mediamantraconsulting.com"] }, null]) {
     const response = await handler(emailEnv, async () => result)(request(enquiry));
     assert.equal(response.status, 502);
   }
@@ -194,7 +203,7 @@ test("SMTP errors return delivery failure without exposing credentials", async (
 test("port 465 enables implicit TLS when SMTP_SECURE is omitted", async () => {
   let transport;
   const post = handler({ ...emailEnv, SMTP_PORT: "465", SMTP_SECURE: undefined },
-    async () => ({ accepted: ["mediamantragroupindia@gmail.com"] }),
+    async () => ({ accepted: ["info@mediamantraconsulting.com"] }),
     (options) => { transport = options; });
   assert.equal((await post(request(enquiry))).status, 200);
   assert.equal(transport.secure, true);
@@ -205,7 +214,7 @@ test("contact rate limit allows five concurrent requests and blocks SMTP on the 
   let sent = 0;
   const post = handler(emailEnv, async () => {
     sent += 1;
-    return { accepted: ["mediamantragroupindia@gmail.com"] };
+    return { accepted: ["info@mediamantraconsulting.com"] };
   });
   const headers = { "x-forwarded-for": "203.0.113.1, 10.0.0.1" };
   const responses = await Promise.all(Array.from({ length: 6 }, () => post(request(enquiry, headers))));
@@ -253,4 +262,17 @@ test("tracking capacity cannot evict existing limits and expired entries free sp
   assert.equal((await post(request({}, { "x-real-ip": "2001:db8::0" }))).status, 400);
   now = 600_000;
   assert.equal((await post(request({}, newClient))).status, 400);
+});
+
+
+test("phone validation accepts different country codes and preserves leading zeroes", async () => {
+  for (const [countryCode, phone] of [["+971", "0501234567"], ["+44", "02079460000"], ["+1", "2025550123"], ["+91", "1234567890123"]]) {
+    let sent;
+    const response = await handler(emailEnv, async (email) => {
+      sent = email;
+      return { accepted: ["info@mediamantraconsulting.com"] };
+    })(request({ ...enquiry, countryCode, phone }));
+    assert.equal(response.status, 200);
+    assert.ok(sent.text.includes(`Phone: ${countryCode} ${phone}`));
+  }
 });

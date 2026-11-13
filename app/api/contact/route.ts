@@ -1,3 +1,4 @@
+import { isValidContactPhone } from "@/lib/contact-phone";
 import { services } from "@/components/common/data";
 import { isIP } from "node:net";
 import nodemailer from "nodemailer";
@@ -82,6 +83,8 @@ export async function POST(request: Request) {
   const limits = {
     name: 120,
     email: 254,
+    countryCode: 4,
+    phone: 14,
     company: 150,
     service: 200,
     message: 5000,
@@ -109,6 +112,13 @@ export async function POST(request: Request) {
   ) {
     return Response.json(
       { error: "Please check your email and service." },
+      { status: 400 },
+    );
+  }
+
+  if (!isValidContactPhone(enquiry.countryCode, enquiry.phone)) {
+    return Response.json(
+      { error: "Please check your country code and phone number." },
       { status: 400 },
     );
   }
@@ -163,6 +173,7 @@ export async function POST(request: Request) {
         "",
         `Name: ${enquiry.name}`,
         `Email: ${enquiry.email}`,
+        `Phone: ${enquiry.countryCode} ${enquiry.phone}`,
         `Company: ${enquiry.company || "Not provided"}`,
         `Service: ${enquiry.service}`,
         "",

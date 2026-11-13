@@ -12,6 +12,7 @@ import { ArrowUpRight, Check, LoaderCircle, X } from "lucide-react";
 import { ContactModalContext } from "@/hooks/use-contact-modal";
 import { useContactForm } from "@/hooks/use-contact-form";
 import { services } from "./data";
+import { ContactPhoneFields } from "./contact-phone-fields";
 import { contactEmails } from "./contact-details";
 import { BrandStar } from "@/components/ui/brand-star";
 
@@ -108,6 +109,8 @@ function ContactModal({
             void submit({
               name: String(data.get("name") ?? "").trim(),
               email: String(data.get("email") ?? "").trim(),
+              countryCode: String(data.get("countryCode") ?? "").trim(),
+              phone: String(data.get("phone") ?? "").trim(),
               company: String(data.get("company") ?? "").trim(),
               service: String(data.get("service") ?? ""),
               message: String(data.get("message") ?? "").trim(),
@@ -154,6 +157,7 @@ function ContactModal({
                 maxLength={254}
               />
             </label>
+            <ContactPhoneFields />
             <label className="sm:col-span-2">
               Company <span className="contact-modal-optional">(optional)</span>
               <input

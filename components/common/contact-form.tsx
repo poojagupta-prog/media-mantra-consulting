@@ -3,6 +3,7 @@
 import { ArrowUpRight, CheckCircle2, LoaderCircle } from "lucide-react";
 import { services } from "./data";
 import { useContactForm } from "@/hooks/use-contact-form";
+import { ContactPhoneFields } from "./contact-phone-fields";
 import { contactEmails } from "./contact-details";
 
 export default function ContactForm() {
@@ -37,6 +38,8 @@ export default function ContactForm() {
             void submit({
               name: String(data.get("name") ?? "").trim(),
               email: String(data.get("email") ?? "").trim(),
+              countryCode: String(data.get("countryCode") ?? "").trim(),
+              phone: String(data.get("phone") ?? "").trim(),
               company: String(data.get("company") ?? "").trim(),
               service: String(data.get("service") ?? ""),
               message: String(data.get("message") ?? "").trim(),
@@ -79,6 +82,7 @@ export default function ContactForm() {
                 maxLength={254}
               />
             </label>
+            <ContactPhoneFields inputClassName="w-full min-w-0 rounded-none border-0 border-b border-[#abc3be] bg-transparent px-0 py-3.5 text-[15px] focus:outline-none! focus:border-teal focus:shadow-[0_2px_0_#007f83] mt-2" />
             <label className="block text-[11px] font-semibold sm:col-span-2">
               Company
               <input

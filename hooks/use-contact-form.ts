@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 export type ContactEnquiry = {
   name: string;
   email: string;
+  countryCode: string;
+  phone: string;
   company: string;
   service: string;
   message: string;
