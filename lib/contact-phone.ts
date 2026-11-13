@@ -1,6 +1,6 @@
 export const countryCodes = [
   ["India", "+91"],
-  ["United Arab Emirates", "+971"],
+  ["UAE", "+971"],
   ["United States / Canada", "+1"],
   ["United Kingdom", "+44"],
   ["Australia", "+61"],
@@ -40,7 +40,9 @@ export const countryCodes = [
 
 // Keep phone numbers as strings to preserve leading zeroes.
 export function isValidContactPhone(countryCode: string, phone: string) {
-  return countryCodes.some(([, code]) => code === countryCode) &&
+  return (
+    countryCodes.some(([, code]) => code === countryCode) &&
     /^[0-9]{6,14}$/.test(phone) &&
-    countryCode.length - 1 + phone.length <= 15;
+    countryCode.length - 1 + phone.length <= 15
+  );
 }

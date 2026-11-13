@@ -3,7 +3,11 @@
 import { useState } from "react";
 import { countryCodes } from "@/lib/contact-phone";
 
-export function ContactPhoneFields({ inputClassName = "" }: { inputClassName?: string }) {
+export function ContactPhoneFields({
+  inputClassName = "",
+}: {
+  inputClassName?: string;
+}) {
   const [countryCode, setCountryCode] = useState("+91");
 
   return (
@@ -15,7 +19,8 @@ export function ContactPhoneFields({ inputClassName = "" }: { inputClassName?: s
           style={{
             appearance: "none",
             paddingRight: "36px",
-            backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2319181b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2319181b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "right 12px center",
           }}
@@ -26,7 +31,9 @@ export function ContactPhoneFields({ inputClassName = "" }: { inputClassName?: s
           required
         >
           {countryCodes.map(([country, code]) => (
-            <option key={code} value={code}>{country} ({code})</option>
+            <option key={code} value={code}>
+              ({code}) {country}
+            </option>
           ))}
         </select>
       </label>
