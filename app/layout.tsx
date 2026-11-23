@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { EntryLoader } from "@/components/common/entry-loader";
+import { AnalyticsCookies } from "@/components/common/analytics-cookies";
 import { Header } from "@/components/common/header";
 import { Footer } from "@/components/common/footer";
 import { ScrollToSection } from "@/components/ui/scroll-to-section";
@@ -26,6 +27,9 @@ const breadcrumbLabels: Record<string, string> = {
 };
 
 export const metadata: Metadata = {
+  verification: {
+    google: "MxJTYFVK94QxyH15TyYv2FQTygF5g0N3Y4ttBpTUqfE",
+  },
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://mediamantraconsulting.com",
   ),
@@ -54,6 +58,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className="h-full antialiased scroll-smooth motion-reduce:scroll-auto"
     >
       <head>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-TX3K4QDM"
+        />
+        <script id="google-tag-manager-init">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+        `}</script>
         <link
           rel="preload"
           href="/videos/dubai-entry-poster.jpg"
@@ -95,6 +108,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </main>
           <Footer />
         </ContactModalProvider>
+        <AnalyticsCookies />
       </body>
     </html>
   );
