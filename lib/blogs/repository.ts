@@ -11,8 +11,16 @@ const repository: BlogRepository = {
     return blogs;
   },
 };
+export async function getPublishedBlogs() {
+  const records = await repository.getAll();
+  return records.filter((blog) =>
+    (!blog.status || blog.status === "published") &&
+    (blog.contentHtml || Object.hasOwn(blogBodies, blog.slug)),
+  );
+}
+
 export const getBlogs = cache(async (): Promise<PreparedBlog[]> => {
-  const blogs = await repository.getAll();
+  const blogs = await getPublishedBlogs();
   return blogs
     .map((blog) => {
       const Body = blogBodies[blog.slug];

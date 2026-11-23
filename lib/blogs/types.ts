@@ -11,6 +11,7 @@ export interface Blog {
     sourceUrl?: string;
   } | null;
   author: { name: string | null };
+  status?: "draft" | "scheduled" | "published" | "unpublished" | "deleted";
   publishedAt: string;
   updatedAt?: string;
   category: string;
