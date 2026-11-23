@@ -7,7 +7,7 @@ async function getPublishedStudies() {
   return portfolioStudies.filter(({ slug }) => Object.hasOwn(caseStudyStories, slug));
 }
 
-export async function GET() {
+export async function GET(request: Request) {
   await connection();
-  return contentSitemap("case-studies", getPublishedStudies);
+  return contentSitemap("case-studies", getPublishedStudies, request);
 }

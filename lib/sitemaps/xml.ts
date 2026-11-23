@@ -13,21 +13,57 @@ const entities: Record<string, string> = {
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&apos;",
 };
 
-export function xmlResponse(entries: MetadataRoute.Sitemap, index = false) {
-  const root = index ? "sitemapindex" : "urlset";
-  const tag = index ? "sitemap" : "url";
+const titles = {
+  index: "Sitemap index",
+  main: "Main sitemap",
+  blogs: "Blog sitemap",
+  "case-studies": "Case studies sitemap",
+};
+
+function escapeMarkup(value: string) {
+  return value.replace(/[&<>"']/g, (char) => entities[char]);
+}
+
+export function sitemapResponse(entries: MetadataRoute.Sitemap, section: keyof typeof titles, request?: Request) {
+  const index = section === "index";
+  const html = request?.headers.get("sec-fetch-mode") === "navigate" &&
+    request.headers.get("accept")?.includes("text/html") &&
+    !new URL(request.url).searchParams.has("raw");
   const seen = new Set<string>();
-  const lines = ['<?xml version="1.0" encoding="UTF-8"?>',
-    `<${root} xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`];
+  const rows: string[] = [];
   for (const { url, lastModified } of entries) {
     if (seen.has(url)) continue;
     seen.add(url);
-    const loc = url.replace(/[&<>"']/g, (char) => entities[char]);
+    const loc = escapeMarkup(url);
     const date = lastModified ? new Date(lastModified).toISOString() : undefined;
-    lines.push(`  <${tag}><loc>${loc}</loc>${date ? `<lastmod>${date}</lastmod>` : ""}</${tag}>`);
+    if (html) {
+      // Relative links keep preview and local navigation on the current site.
+      const href = escapeMarkup(new URL(url).pathname);
+      const modified = date ? `<time datetime="${date}">Updated ${date.slice(0, 10)}</time>` : "";
+      rows.push(`<li><a href="${href}">${loc}</a>${modified}</li>`);
+    } else {
+      const tag = index ? "sitemap" : "url";
+      rows.push(`  <${tag}><loc>${loc}</loc>${date ? `<lastmod>${date}</lastmod>` : ""}</${tag}>`);
+    }
   }
-  lines.push(`</${root}>`);
-  return new Response(lines.join("\n"), { headers: { "Content-Type": "application/xml; charset=utf-8" } });
+
+  const title = titles[section];
+  const root = index ? "sitemapindex" : "urlset";
+  const body = html ? `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,follow"><title>${title} | Media Mantra</title>
+<link rel="stylesheet" href="/sitemap.css"></head><body><main>
+<header><a href="/">Media Mantra</a><nav aria-label="Sitemap navigation">
+${index ? "" : '<a href="/sitemap.xml">Sitemap index</a>'}<a href="?raw=1">View XML</a></nav></header>
+<h1>${title}</h1><p>${seen.size} ${index ? "sitemap" : "URL"}${seen.size === 1 ? "" : "s"}</p>
+<ul>${rows.join("\n")}</ul></main></body></html>` :
+    ['<?xml version="1.0" encoding="UTF-8"?>', `<${root} xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
+      ...rows, `</${root}>`].join("\n");
+  return new Response(body, { headers: {
+    "Content-Type": `${html ? "text/html" : "application/xml"}; charset=utf-8`,
+    "Cache-Control": "no-store",
+    Vary: "Accept, Sec-Fetch-Mode",
+  } });
 }
 
 type ContentRecord = {
@@ -46,15 +82,13 @@ export function contentEntries(section: string, records: readonly ContentRecord[
   });
 }
 
-export async function contentSitemap(section: string, readPublished: () => Promise<readonly ContentRecord[]>) {
+export async function contentSitemap(section: "blogs" | "case-studies", readPublished: () => Promise<readonly ContentRecord[]>, request?: Request) {
   try {
     const now = Date.now();
     const records = (await readPublished()).filter(({ status, publishedAt }) =>
       (!status || status === "published") && (!publishedAt || Date.parse(publishedAt) <= now),
     );
-    const response = xmlResponse(contentEntries(section, records));
-    response.headers.set("Cache-Control", "no-store");
-    return response;
+    return sitemapResponse(contentEntries(section, records), section, request);
   } catch {
     console.error(`Failed to generate the ${section} sitemap`);
     return new Response("Sitemap temporarily unavailable", {
