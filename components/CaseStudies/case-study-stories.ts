@@ -33,7 +33,7 @@ export const caseStudyStories: Record<string, CaseStudyStory> = {
         title: "A bigger retail footprint needed a bigger conversation.",
         aside: "From product availability to regional relevance.",
         paragraphs: [
-          "boAt’s expansion into Lulu Hypermarkets gave the audio brand a tangible story to tell in the UAE: its products were becoming more accessible through a regional retail partner. Media Mantra Consulting’s role was to bring that development into the media conversation, connecting a distribution announcement with a clear reason for consumers and editors to pay attention.",
+          "boAt’s expansion into Lulu Hypermarkets gave the audio brand a tangible story to tell in the UAE: its products were becoming more accessible through a regional retail partner. Media Mantra Consultancy’s role was to bring that development into the media conversation, connecting a distribution announcement with a clear reason for consumers and editors to pay attention.",
           "The campaign centred on the brand’s growing retail footprint and expanded product availability. Business, technology and lifestyle media offered different ways into the same development. For business readers, the story concerned market presence and a retail partnership. For consumer audiences, its relevance lay in access to audio products through a familiar shopping destination.",
           "The UAE retail opportunity provided the organising idea. A new point of sale is also a point of discovery: an opportunity for people to encounter a brand while shopping. The communications task was to explain that availability in a regional context, giving the expansion meaning beyond the announcement itself.",
         ],

@@ -19,7 +19,7 @@ export const decaUnicoStory: CaseStudyStory = {
       aside: "International design ambition, connected with local market expertise.",
       paragraphs: [
         "UNICO’s appointment of DECA as its exclusive integration, sales and marketing partner created a specific business announcement in Dubai’s residential market. The underlying story concerned complementary capabilities: UNICO’s international development perspective and DECA’s experience in launches, sales strategy and local market execution.",
-        "For Media Mantra Consulting, the communications opportunity was to explain that relationship in terms readers could understand. An appointment becomes more relevant when it says what the parties intend to bring together and why that matters to the developments ahead. Here, the narrative connected the alliance with design-led, community-focused residential projects in Dubai.",
+        "For Media Mantra Consultancy FZCO, the communications opportunity was to explain that relationship in terms readers could understand. An appointment becomes more relevant when it says what the parties intend to bring together and why that matters to the developments ahead. Here, the narrative connected the alliance with design-led, community-focused residential projects in Dubai.",
         "The December 2025 coverage record follows that message through national, property, construction and regional digital media. This standalone case study takes a closer look at the DECA partnership story also featured in the wider real estate portfolio; its results are not additional placements to be added to that portfolio total.",
       ],
     },

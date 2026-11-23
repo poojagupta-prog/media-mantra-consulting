@@ -21,7 +21,7 @@ export const realEstateStory: CaseStudyStory = {
       aside: "Six clients. Different ambitions. A considered approach to each.",
       paragraphs: [
         "A branded residence, a wellness community and a major construction partnership ask different questions of communications. One needs to introduce a hospitality identity to a new residential setting. Another needs to explain a way of living. A third must make the scale and significance of a business agreement clear. Treating them alike would miss what makes each worth discussing.",
-        "Media Mantra Consulting’s UAE real estate portfolio brings together six client stories across launches, positioning, partnerships and events. The work spans English and Arabic communications, national newspapers, specialist construction and property titles, and regional digital platforms. Its common thread is a focus on the particular: the proposition, milestone or experience that gives each developer a recognisable place in the conversation.",
+        "Media Mantra Consultancy FZCO’s UAE real estate portfolio brings together six client stories across launches, positioning, partnerships and events. The work spans English and Arabic communications, national newspapers, specialist construction and property titles, and regional digital platforms. Its common thread is a focus on the particular: the proposition, milestone or experience that gives each developer a recognisable place in the conversation.",
       ],
     },
     {

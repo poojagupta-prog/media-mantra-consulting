@@ -1,4 +1,3 @@
-
 export type PortfolioStudy = {
   slug: string;
   sector: string;
@@ -62,20 +61,32 @@ const entries = [
     source: {
       brand: "Atlys",
       title: "From visa complexity to a national conversation.",
-      description: "Turning a complex travel service into a compelling media story through strategic storytelling, bilingual outreach, executive thought leadership, and timely travel insights.",
+      description:
+        "Turning a complex travel service into a compelling media story through strategic storytelling, bilingual outreach, executive thought leadership, and timely travel insights.",
       image: "/images/case-studies/atlys/atlys-airport-hero.jpg",
       alt: "Traveller using a phone in an airport terminal before a flight",
-      services: ["Public Relations", "Media Relations", "Thought Leadership", "Strategic Communications"],
-      challenge: "Build trust in a complex visa services category where travellers face changing requirements, limited appointment availability, and uncertainty around approvals. Atlys needed stronger credibility and recognition among UAE residents.",
-      approach: "Develop four connected editorial narratives covering Schengen visa applications, US tourist visas, AI-driven innovation, and winter travel trends. Target national, business, lifestyle, travel, and Arabic-language publications.",
+      services: [
+        "Public Relations",
+        "Media Relations",
+        "Thought Leadership",
+        "Strategic Communications",
+      ],
+      challenge:
+        "Build trust in a complex visa services category where travellers face changing requirements, limited appointment availability, and uncertainty around approvals. Atlys needed stronger credibility and recognition among UAE residents.",
+      approach:
+        "Develop four connected editorial narratives covering Schengen visa applications, US tourist visas, AI-driven innovation, and winter travel trends. Target national, business, lifestyle, travel, and Arabic-language publications.",
     },
     listingTitle: "Simplifying visas. Shaping travel conversations.",
-    listingDescription: "How four connected media narratives established Atlys as a credible voice across the UAE travel technology landscape.",
-    overview: "Media Mantra Consulting developed a four-month PR programme to strengthen Atlys's presence in the UAE travel technology market. By connecting the brand with traveller concerns, emerging technology, and seasonal travel trends, the campaign established a consistent editorial presence across regional media.",
+    listingDescription:
+      "How four connected media narratives established Atlys as a credible voice across the UAE travel technology landscape.",
+    overview:
+      "Media Mantra Consultancy FZCO developed a four-month PR programme to strengthen Atlys's presence in the UAE travel technology market. By connecting the brand with traveller concerns, emerging technology, and seasonal travel trends, the campaign established a consistent editorial presence across regional media.",
     period: "August–November 2025",
     resultHeading: "Four months. One consistent conversation.",
-    execution: "Implement a coordinated four-month media relations programme featuring bilingual outreach, targeted press pitches, executive thought leadership, technology-focused commentary, and data-led destination stories.",
-    result: "A sustained media campaign strengthened Atlys's visibility across the UAE's travel, technology, and business media landscape. The campaign report records 32 media outcomes, including seven flagship editorial wins, across four strategic storylines and coverage in English and Arabic. Notable outlets include Gulf News, Gulf Business, Khaleej Times, Arabian Business, and MSN.",
+    execution:
+      "Implement a coordinated four-month media relations programme featuring bilingual outreach, targeted press pitches, executive thought leadership, technology-focused commentary, and data-led destination stories.",
+    result:
+      "A sustained media campaign strengthened Atlys's visibility across the UAE's travel, technology, and business media landscape. The campaign report records 32 media outcomes, including seven flagship editorial wins, across four strategic storylines and coverage in English and Arabic. Notable outlets include Gulf News, Gulf Business, Khaleej Times, Arabian Business, and MSN.",
     metrics: [
       { value: "32", label: "Media outcomes" },
       { value: "7", label: "Flagship editorial wins" },
@@ -94,16 +105,26 @@ const entries = [
     source: {
       brand: "Real Estate Sector",
       title: "Places with presence. Stories with substance.",
-      description: "Six distinct developer stories across the UAE: branded residences, wellness living, strategic partnerships, luxury positioning and events, brought into focus through PR and communications.",
+      description:
+        "Six distinct developer stories across the UAE: branded residences, wellness living, strategic partnerships, luxury positioning and events, brought into focus through PR and communications.",
       image: "/images/case-studies/real-estate/waterfront-residences.webp",
       alt: "AI-generated architectural illustration of imagined waterfront residences in warm limestone; not a named client development",
-      services: ["Brand Positioning", "Media Relations", "Press Amplification", "Event Management"],
-      challenge: "Give each developer a distinctive story while communicating the significance of project launches, partnerships and market entry.",
-      approach: "Shape client-specific narratives for English and Arabic media, combining national and trade coverage with launch events and digital amplification where relevant.",
+      services: [
+        "Brand Positioning",
+        "Media Relations",
+        "Press Amplification",
+        "Event Management",
+      ],
+      challenge:
+        "Give each developer a distinctive story while communicating the significance of project launches, partnerships and market entry.",
+      approach:
+        "Shape client-specific narratives for English and Arabic media, combining national and trade coverage with launch events and digital amplification where relevant.",
     },
     period: "UAE / 2026 portfolio",
-    execution: "Deliver communications across six client portfolios, from branded residence launches and wellness positioning to partnership announcements and two Amirah events.",
-    result: "The portfolio records 115+ media placements across five developer brands, alongside two Amirah Developments events attended by 700 and 100 people respectively. Client project values and commercial milestones are presented separately.",
+    execution:
+      "Deliver communications across six client portfolios, from branded residence launches and wellness positioning to partnership announcements and two Amirah events.",
+    result:
+      "The portfolio records 115+ media placements across five developer brands, alongside two Amirah Developments events attended by 700 and 100 people respectively. Client project values and commercial milestones are presented separately.",
     metrics: [
       { value: "115+", label: "Reported portfolio media placements" },
       { value: "6", label: "Client portfolios" },
@@ -117,16 +138,26 @@ const entries = [
     source: {
       brand: "Bradford International Alliance",
       title: "Learning opens doors. Stories open conversations.",
-      description: "A four-month education PR programme connecting accessible learning, career readiness and professional skills through institutional news, authored articles and features.",
+      description:
+        "A four-month education PR programme connecting accessible learning, career readiness and professional skills through institutional news, authored articles and features.",
       image: "/images/case-studies/education/learning-commons.webp",
       alt: "AI-generated illustration of adult learners in an imagined Dubai learning commons; not a BIA campus or campaign event",
-      services: ["Education PR", "Media Relations", "Thought Leadership", "Press Amplification"],
-      challenge: "Build regional visibility for institutional milestones while developing a consistent editorial voice around accessible education and career relevance.",
-      approach: "Pair announcement-led distribution with named authored articles and features across a four-month programme.",
+      services: [
+        "Education PR",
+        "Media Relations",
+        "Thought Leadership",
+        "Press Amplification",
+      ],
+      challenge:
+        "Build regional visibility for institutional milestones while developing a consistent editorial voice around accessible education and career relevance.",
+      approach:
+        "Pair announcement-led distribution with named authored articles and features across a four-month programme.",
     },
     period: "Four-month programme",
-    execution: "Connect Graduation Day, the Sapio Solutions launch and a generative AI skill-sharing event with ongoing education and professional-skills commentary.",
-    result: "The programme summary reports 115 total placements, including eight premium named placements. Audience and valuation estimates apply only to Graduation Day, not the entire programme.",
+    execution:
+      "Connect Graduation Day, the Sapio Solutions launch and a generative AI skill-sharing event with ongoing education and professional-skills commentary.",
+    result:
+      "The programme summary reports 115 total placements, including eight premium named placements. Audience and valuation estimates apply only to Graduation Day, not the entire programme.",
     metrics: [
       { value: "115", label: "Reported total media placements" },
       { value: "8", label: "Reported premium named placements" },
@@ -141,16 +172,26 @@ const entries = [
     source: {
       brand: "DECA × UNICO",
       title: "Two perspectives. One shared direction.",
-      description: "Bringing UNICO’s appointment of DECA as its exclusive integration, sales and marketing partner into the UAE’s national, property and construction media conversation.",
+      description:
+        "Bringing UNICO’s appointment of DECA as its exclusive integration, sales and marketing partner into the UAE’s national, property and construction media conversation.",
       image: "/images/case-studies/deca-unico/connected-residences.webp",
       alt: "AI-generated architectural illustration of imagined complementary residential buildings; not a DECA or UNICO development",
-      services: ["Partnership Communications", "Media Relations", "Real Estate PR", "Bilingual Outreach"],
-      challenge: "Explain the significance of a commercial appointment through the complementary capabilities and residential vision behind the partnership.",
-      approach: "Connect international development ambition with local launch and market expertise, retaining a consistent message across English and Arabic coverage.",
+      services: [
+        "Partnership Communications",
+        "Media Relations",
+        "Real Estate PR",
+        "Bilingual Outreach",
+      ],
+      challenge:
+        "Explain the significance of a commercial appointment through the complementary capabilities and residential vision behind the partnership.",
+      approach:
+        "Connect international development ambition with local launch and market expertise, retaining a consistent message across English and Arabic coverage.",
     },
     period: "December 2025",
-    execution: "Communicate the exclusive partnership through national, property, construction and regional digital media.",
-    result: "The December 2025 campaign summary reports 15 placements in English and Arabic, alongside a publisher MUV total above 19 million. Publisher audience estimates are not verified campaign readership, and these placements overlap with the DECA work in the sector portfolio.",
+    execution:
+      "Communicate the exclusive partnership through national, property, construction and regional digital media.",
+    result:
+      "The December 2025 campaign summary reports 15 placements in English and Arabic, alongside a publisher MUV total above 19 million. Publisher audience estimates are not verified campaign readership, and these placements overlap with the DECA work in the sector portfolio.",
     metrics: [
       { value: "15", label: "Reported media placements" },
       { value: "2", label: "Languages: English and Arabic" },
@@ -163,16 +204,26 @@ const entries = [
     sector: "Real Estate PR",
     source: {
       brand: "Centurion Properties",
-      title: "Building brand visibility for Centurion Properties in the UAE real estate market",
-      description: "How Media Mantra Consulting brought Centurion Properties’ business milestones and its AED 10.5 billion agreement with CITIC Construction to regional business and trade audiences.",
+      title:
+        "Building brand visibility for Centurion Properties in the UAE real estate market",
+      description:
+        "How Media Mantra Consultancy FZCO brought Centurion Properties’ business milestones and its AED 10.5 billion agreement with CITIC Construction to regional business and trade audiences.",
       image: "/images/case-studies/centurion/dubai-skyline.webp",
       alt: "AI-generated illustration of residential towers and construction cranes against the Dubai skyline",
-      services: ["Media Relations", "Corporate Communications", "Brand Positioning"],
-      challenge: "Strengthen Centurion Properties’ visibility and corporate reputation in Dubai’s competitive real estate market.",
-      approach: "Build media outreach around strategic partnerships, business milestones, expansion plans and industry recognition.",
+      services: [
+        "Media Relations",
+        "Corporate Communications",
+        "Brand Positioning",
+      ],
+      challenge:
+        "Strengthen Centurion Properties’ visibility and corporate reputation in Dubai’s competitive real estate market.",
+      approach:
+        "Build media outreach around strategic partnerships, business milestones, expansion plans and industry recognition.",
     },
-    execution: "Use press releases and targeted outreach to reach business, real estate and regional publications.",
-    result: "The campaign secured more than 40 media placements and highlighted the developer’s AED 10.5 billion MOU with CITIC Construction.",
+    execution:
+      "Use press releases and targeted outreach to reach business, real estate and regional publications.",
+    result:
+      "The campaign secured more than 40 media placements and highlighted the developer’s AED 10.5 billion MOU with CITIC Construction.",
     metrics: [
       { value: "40+", label: "Media placements" },
       { value: "AED 10.5B", label: "Value of the CITIC Construction MOU" },
@@ -181,18 +232,22 @@ const entries = [
   },
 ] as const;
 
-export const portfolioSectors = [...new Set(entries.map(({ sector }) => sector))];
-export const portfolioStudies: PortfolioStudy[] = entries.map(({ source, ...entry }) => ({
-  ...entry,
-  title: source.title,
-  description: source.description,
-  image: source.image,
-  alt: source.alt,
-  services: source.services,
-  challenge: source.challenge,
-  strategy: source.approach,
-  brand: source.brand,
-}));
+export const portfolioSectors = [
+  ...new Set(entries.map(({ sector }) => sector)),
+];
+export const portfolioStudies: PortfolioStudy[] = entries.map(
+  ({ source, ...entry }) => ({
+    ...entry,
+    title: source.title,
+    description: source.description,
+    image: source.image,
+    alt: source.alt,
+    services: source.services,
+    challenge: source.challenge,
+    strategy: source.approach,
+    brand: source.brand,
+  }),
+);
 
 export const getPortfolioStudy = (slug: string) =>
   portfolioStudies.find((study) => study.slug === slug);
