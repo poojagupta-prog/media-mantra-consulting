@@ -140,7 +140,6 @@ export function EntryLoader() {
           { y: -50, opacity: 0, duration: 0.4, ease: "power2.in" },
           4.05,
         )
-        .to(".entry-meta", { opacity: 0, duration: 0.25 }, 4.1)
         .to(
           node,
           {

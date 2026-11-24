@@ -25,6 +25,10 @@ const nextConfig = {
   },
   images: {
     remotePatterns: [
+      ...(process.env.CONSULTING_MEDIA_ORIGIN
+        ? [new URL("/**", process.env.CONSULTING_MEDIA_ORIGIN)]
+        : []),
+      new URL("https://cms-dev.mediamantraglobal.com/api/uploads/**"),
       { protocol: "https", hostname: "images.unsplash.com", pathname: "/**" },
     ],
   },
@@ -38,12 +42,19 @@ const nextConfig = {
 
 /** @param {string} phase */
 module.exports = async (phase) => {
-  if (phase === "phase-production-build" || phase === "phase-development-server") {
+  if (
+    phase === "phase-production-build" ||
+    phase === "phase-development-server"
+  ) {
     const { staticPagePaths } = await import("./lib/sitemaps/static-pages.mjs");
     const { join } = await import("node:path");
     return {
       ...nextConfig,
-      env: { SITEMAP_STATIC_PATHS: JSON.stringify(staticPagePaths(join(__dirname, "app"))) },
+      env: {
+        SITEMAP_STATIC_PATHS: JSON.stringify(
+          staticPagePaths(join(__dirname, "app")),
+        ),
+      },
     };
   }
   return nextConfig;

@@ -6,6 +6,7 @@ import { getBlogs, SITE_URL } from "@/lib/blogs/repository";
 import { listingUrl, queryBlogs, PAGE_SIZE } from "@/lib/blogs/query";
 import { BlogCard } from "@/components/blogs/blog-card";
 import { BlogSearch } from "@/components/blogs/blog-search";
+import { BlogListingSkeleton } from "@/components/blogs/blog-skeleton";
 import { Closing } from "@/components/media/shared";
 import "./blogs.css";
 type Params = Promise<Record<string, string | string[] | undefined>>;
@@ -69,13 +70,7 @@ export default function BlogsPage({ searchParams }: { searchParams: Params }) {
           </div>
         </div>
       </header>
-      <Suspense
-        fallback={
-          <div className="media-wrap blog-loading" role="status">
-            Finding your next read…
-          </div>
-        }
-      >
+      <Suspense fallback={<BlogListingSkeleton />}>
         <BlogListing searchParams={searchParams} />
       </Suspense>
       <Closing />

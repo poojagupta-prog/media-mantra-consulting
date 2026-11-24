@@ -1,19 +1,18 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getBlog, getBlogs, SITE_URL } from "@/lib/blogs/repository";
 import { blogDate } from "@/lib/blogs/query";
-import { blogBodies } from "@/lib/blogs/bodies";
+import { Breadcrumbs } from "@/components/common/breadcrumbs";
+import { Comments } from "@/components/blogs/comments";
 import { BlogCard } from "@/components/blogs/blog-card";
+import { BlogImage } from "@/components/blogs/blog-image";
+import { BlogArticleSkeleton } from "@/components/blogs/blog-skeleton";
 import { TableOfContents, ShareTools } from "@/components/blogs/article-tools";
 import "../blogs.css";
 type Props = { params: Promise<{ slug: string }> };
-export async function generateStaticParams() {
-  return (await getBlogs()).map(({ slug }) => ({ slug }));
-}
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const blog = await getBlog((await params).slug);
   if (!blog) notFound();
@@ -50,13 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 export default function BlogDetailPage(props: Props) {
   return (
-    <Suspense
-      fallback={
-        <div className="media-wrap blog-loading" role="status">
-          Opening this perspective…
-        </div>
-      }
-    >
+    <Suspense fallback={<BlogArticleSkeleton />}>
       <Article {...props} />
     </Suspense>
   );
@@ -64,7 +57,6 @@ export default function BlogDetailPage(props: Props) {
 async function Article({ params }: Props) {
   const blog = await getBlog((await params).slug);
   if (!blog) notFound();
-  const Body = blog.hasLocalBody ? blogBodies[blog.slug] : undefined;
   const blogs = await getBlogs();
   const index = blogs.findIndex((item) => item.id === blog.id);
   const previous = blogs[index + 1];
@@ -104,6 +96,10 @@ async function Article({ params }: Props) {
   };
   return (
     <div className="blog-page blog-detail">
+      <Breadcrumbs
+        article
+        labels={{ "/blogs": "Blogs", ["/blogs/" + blog.slug]: blog.title }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -112,7 +108,7 @@ async function Article({ params }: Props) {
       />
       {blog.featuredImage && (
         <figure className="blog-cover">
-          <Image
+          <BlogImage
             src={blog.featuredImage.src}
             alt={blog.featuredImage.alt}
             width={blog.featuredImage.width}
@@ -153,11 +149,7 @@ async function Article({ params }: Props) {
         </aside>
         <div className="blog-reading-main">
           <article className="blog-prose" aria-label={blog.title}>
-            {Body ? (
-              <Body />
-            ) : (
-              <div dangerouslySetInnerHTML={{ __html: blog.contentHtml }} />
-            )}
+            <div dangerouslySetInnerHTML={{ __html: blog.contentHtml }} />
           </article>
           {blog.tags.length > 0 && (
             <ul className="blog-tags" aria-label="Article tags">
@@ -166,7 +158,20 @@ async function Article({ params }: Props) {
               ))}
             </ul>
           )}
-          {/* TODO: Restore the Comments component once the CMS is ready. */}
+          {Boolean(blog.faqs?.length) && (
+            <section className="blog-prose" aria-labelledby="blog-faq-title">
+              <h2 id="blog-faq-title">Frequently asked questions</h2>
+              {blog.faqs?.map((faq) => (
+                <details key={faq.id}>
+                  <summary>{faq.question}</summary>
+                  <p>{faq.answer}</p>
+                </details>
+              ))}
+            </section>
+          )}
+          {blog.comments?.enabled && (
+            <Comments key={blog.slug} slug={blog.slug} />
+          )}
         </div>
         <aside className="blog-share-rail">
           <ShareTools title={blog.title} url={url} />

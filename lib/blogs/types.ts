@@ -20,6 +20,8 @@ export interface Blog {
   featured: boolean;
   seo: { title?: string; description?: string };
   sourceUrl?: string;
+  faqs?: { id: string; question: string; answer: string }[];
+  comments?: { enabled: boolean };
   contentHtml?: string;
 }
 export interface TocEntry {

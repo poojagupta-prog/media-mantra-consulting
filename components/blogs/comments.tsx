@@ -1,19 +1,53 @@
 "use client";
-import { useState, useSyncExternalStore } from "react";
-import {
-  localCommentRepository as repository,
-  parseComments,
-  subscribeComments,
-  validateComment,
-} from "@/lib/blogs/comments";
+import { useState, useEffect, useCallback } from "react";
+import { type BlogComment, validateComment } from "@/lib/blogs/comments";
 import { blogDate } from "@/lib/blogs/query";
+import { loadComments, submitComment } from "@/lib/blogs/comment-actions";
 export function Comments({ slug }: { slug: string }) {
-  const raw = useSyncExternalStore(
-    subscribeComments,
-    () => repository.read(slug),
-    () => "[]",
+  const [comments, setComments] = useState<BlogComment[]>([]);
+  const [cursor, setCursor] = useState<string | null>(null);
+  const [loadError, setLoadError] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [sending, setSending] = useState(false);
+  const load = useCallback(
+    (page: string | null, signal?: AbortSignal) => {
+      return loadComments(slug, page)
+        .then((data) => {
+          if (
+            !Array.isArray(data?.items) ||
+            (data.nextCursor !== null && typeof data.nextCursor !== "string") ||
+            !data.items.every(
+              (item: BlogComment) =>
+                item &&
+                typeof item.id === "string" &&
+                typeof item.name === "string" &&
+                typeof item.body === "string" &&
+                Number.isFinite(Date.parse(item.createdAt)),
+            )
+          )
+            throw new Error();
+          if (!signal?.aborted) {
+            setComments((previous) =>
+              page ? [...previous, ...data.items] : data.items,
+            );
+            setCursor(data.nextCursor);
+            setLoadError(false);
+          }
+        })
+        .catch(() => {
+          if (!signal?.aborted) setLoadError(true);
+        })
+        .finally(() => {
+          if (!signal?.aborted) setLoading(false);
+        });
+    },
+    [slug],
   );
-  const comments = parseComments(raw);
+  useEffect(() => {
+    const controller = new AbortController();
+    void load(null, controller.signal);
+    return () => controller.abort();
+  }, [load]);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   return (
@@ -21,14 +55,13 @@ export function Comments({ slug }: { slug: string }) {
       <p className="media-label">Keep the conversation going</p>
       <h2 id="comments-title">What’s your perspective?</h2>
       <p className="blog-comment-notice" id="comment-notice">
-        Comments are private previews saved only in this browser, not published
-        or sent to Media Mantra. Your email is not stored. Up to 50 previews are
-        kept per article.
+        Your email stays private. Comments are screened for abusive language.
       </p>
       <form
         aria-describedby="comment-notice"
-        onSubmit={(event) => {
+        onSubmit={async (event) => {
           event.preventDefault();
+          if (sending) return;
           setError("");
           setMessage("");
           const form = event.currentTarget;
@@ -43,16 +76,17 @@ export function Comments({ slug }: { slug: string }) {
             setError(invalid);
             return;
           }
+          setSending(true);
           try {
-            repository.add(slug, input);
+            const result = await submitComment(slug, input);
+            if (!result.message) throw new Error(result.error || "Please try again.");
             form.reset();
-            setMessage(
-              "Preview saved in this browser. It has not been published.",
-            );
-          } catch {
-            setError(
-              "Your browser could not save this preview. Please enable local storage and try again.",
-            );
+            setMessage(result.message);
+            await load(null);
+          } catch (err) {
+            setError(err instanceof Error ? err.message : "Please try again.");
+          } finally {
+            setSending(false);
           }
         }}
       >
@@ -88,8 +122,8 @@ export function Comments({ slug }: { slug: string }) {
             rows={5}
           />
         </label>
-        <button className="blog-submit" type="submit">
-          Save comment preview ↗
+        <button className="blog-submit" type="submit" disabled={sending}>
+          {sending ? "Submitting…" : "Submit comment ↗"}
         </button>
         {error && (
           <p role="alert" className="blog-form-error">
@@ -100,39 +134,33 @@ export function Comments({ slug }: { slug: string }) {
       </form>
       <div className="blog-comment-list">
         <div className="blog-comment-list-heading">
-          <h3>Local previews ({comments.length})</h3>
-          {comments.length > 0 && (
-            <button
-              type="button"
-              onClick={() => {
-                try {
-                  repository.clear(slug);
-                  setMessage("Local previews cleared.");
-                  setError("");
-                } catch {
-                  setError("Could not clear local previews.");
-                }
-              }}
-            >
-              Clear previews
-            </button>
-          )}
+          <h3>Reader comments</h3>
         </div>
-        {comments.length ? (
-          comments.map((comment) => (
-            <article key={comment.id}>
-              <div>
-                <strong>{comment.name}</strong>
-                <time dateTime={comment.createdAt}>
-                  {blogDate(comment.createdAt)}
-                </time>
-              </div>
-              <p>{comment.body}</p>
-              <small>Private browser preview</small>
-            </article>
-          ))
-        ) : (
-          <p>No previews yet. Add your thoughts above.</p>
+        {comments.length
+          ? comments.map((comment) => (
+              <article key={comment.id}>
+                <div>
+                  <strong>{comment.name}</strong>
+                  <time dateTime={comment.createdAt}>
+                    {blogDate(comment.createdAt)}
+                  </time>
+                </div>
+                <p>{comment.body}</p>
+              </article>
+            ))
+          : !loadError && !loading && <p>No approved comments yet.</p>}
+        {loadError && <p role="alert">Comments could not be loaded.</p>}
+        {(cursor || loadError) && (
+          <button
+            type="button"
+            disabled={loading}
+            onClick={() => {
+              setLoading(true);
+              void load(cursor);
+            }}
+          >
+            {loadError ? "Retry" : "Load more"}
+          </button>
         )}
       </div>
     </section>

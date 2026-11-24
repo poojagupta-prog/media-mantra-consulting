@@ -9,7 +9,6 @@ import { AnchorNavigation } from "@/components/common/anchor-navigation";
 import { Suspense } from "react";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { links, services } from "@/components/common/data";
-import { blogs } from "@/lib/blogs/data";
 import { ContactModalProvider } from "@/components/common/contact-modal";
 
 const breadcrumbLabels: Record<string, string> = {
@@ -22,8 +21,9 @@ const breadcrumbLabels: Record<string, string> = {
   "/gallery": "Gallery",
   "/podcasts": "Podcasts",
   "/dubai-it": "Dubai-it",
-  ...Object.fromEntries(services.map(({ slug, title }) => [`/services/${slug}`, title])),
-  ...Object.fromEntries(blogs.map(({ slug, title }) => [`/blogs/${slug}`, title])),
+  ...Object.fromEntries(
+    services.map(({ slug, title }) => [`/services/${slug}`, title]),
+  ),
 };
 
 export const metadata: Metadata = {
@@ -90,7 +90,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-[#b6e9df] selection:text-foreground [&_:focus-visible]:outline-[3px] [&_:focus-visible]:outline-[#37b9ad] [&_:focus-visible]:outline-offset-[5px] [&_button]:cursor-pointer [&_summary]:cursor-pointer [&_a]:[-webkit-tap-highlight-color:transparent] [&_button]:[-webkit-tap-highlight-color:transparent] motion-reduce:[&_*]:animate-none! motion-reduce:[&_*]:transition-none! motion-reduce:[&_*::before]:animate-none! motion-reduce:[&_*::before]:transition-none! motion-reduce:[&_*::after]:animate-none! motion-reduce:[&_*::after]:transition-none!">
         <ContactModalProvider>
-          <AnchorNavigation />
+          <Suspense fallback={null}>
+            <AnchorNavigation />
+          </Suspense>
           <EntryLoader />
           <ScrollToSection
             targetId="main-content"
@@ -99,7 +101,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           >
             Skip to content
           </ScrollToSection>
-          <Header />
+          <Suspense fallback={null}>
+            <Header />
+          </Suspense>
           <main id="main-content" className="flex-1">
             <Suspense fallback={null}>
               <Breadcrumbs labels={breadcrumbLabels} />

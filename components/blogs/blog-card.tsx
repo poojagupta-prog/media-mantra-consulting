@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { BlogImage } from "@/components/blogs/blog-image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { PreparedBlog } from "@/lib/blogs/types";
@@ -15,7 +15,7 @@ export function BlogCard({
       <Link href={`/blogs/${blog.slug}`} className="blog-card-link">
         <div className="blog-image">
           {blog.featuredImage && (
-            <Image
+            <BlogImage
               src={blog.featuredImage.src}
               alt={blog.featuredImage.alt}
               fill
