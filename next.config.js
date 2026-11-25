@@ -29,6 +29,7 @@ const nextConfig = {
         ? [new URL("/**", process.env.CONSULTING_MEDIA_ORIGIN)]
         : []),
       new URL("https://cms-dev.mediamantraglobal.com/api/uploads/**"),
+      new URL("https://cms.mediamantraglobal.com/api/uploads/**"),
       { protocol: "https", hostname: "images.unsplash.com", pathname: "/**" },
     ],
   },
