@@ -102,12 +102,18 @@
   background: #e7efea;
 }
 
-.blog-image img {
+.blog-image .blog-image-backdrop {
+  object-fit: cover;
+  filter: blur(20px);
+  transform: scale(1.15);
+}
+
+.blog-image .blog-image-foreground {
   object-fit: contain;
   transition: transform 0.5s;
 }
 
-.blog-card-link:hover .blog-image img {
+.blog-card-link:hover .blog-image-foreground {
   transform: scale(1.025);
 }
 

@@ -10,22 +10,32 @@ export function BlogCard({
   blog: PreparedBlog;
   featured?: boolean;
 }) {
+  const imageSizes = featured
+    ? "(max-width: 768px) 100vw, 60vw"
+    : "(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw";
+
   return (
     <article className={`blog-card ${featured ? "blog-featured" : ""}`}>
       <Link href={`/blogs/${blog.slug}`} className="blog-card-link">
         <div className="blog-image">
           {blog.featuredImage && (
-            <BlogImage
-              src={blog.featuredImage.src}
-              alt={blog.featuredImage.alt}
-              fill
-              sizes={
-                featured
-                  ? "(max-width: 768px) 100vw, 60vw"
-                  : "(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw"
-              }
-              preload={featured}
-            />
+            <>
+              <BlogImage
+                src={blog.featuredImage.src}
+                alt=""
+                className="blog-image-backdrop"
+                fill
+                sizes={imageSizes}
+              />
+              <BlogImage
+                src={blog.featuredImage.src}
+                alt={blog.featuredImage.alt}
+                className="blog-image-foreground"
+                fill
+                sizes={imageSizes}
+                preload={featured}
+              />
+            </>
           )}
           <span className="blog-arrow">
             <ArrowUpRight size={21} aria-hidden="true" />
