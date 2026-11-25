@@ -8,6 +8,7 @@ import { blogDate } from "@/lib/blogs/query";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { Comments } from "@/components/blogs/comments";
 import { BlogCard } from "@/components/blogs/blog-card";
+import { BlogFaq } from "@/components/blogs/blog-faq";
 import { BlogImage } from "@/components/blogs/blog-image";
 import { BlogArticleSkeleton } from "@/components/blogs/blog-skeleton";
 import { TableOfContents, ShareTools } from "@/components/blogs/article-tools";
@@ -158,16 +159,8 @@ async function Article({ params }: Props) {
               ))}
             </ul>
           )}
-          {Boolean(blog.faqs?.length) && (
-            <section className="blog-prose" aria-labelledby="blog-faq-title">
-              <h2 id="blog-faq-title">Frequently asked questions</h2>
-              {blog.faqs?.map((faq) => (
-                <details key={faq.id}>
-                  <summary>{faq.question}</summary>
-                  <p>{faq.answer}</p>
-                </details>
-              ))}
-            </section>
+          {!!blog.faqs?.length && (
+            <BlogFaq key={blog.slug} faqs={blog.faqs} />
           )}
           {blog.comments?.enabled && (
             <Comments key={blog.slug} slug={blog.slug} />

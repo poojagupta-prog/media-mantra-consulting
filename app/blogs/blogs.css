@@ -737,6 +737,110 @@
   border-radius: 20px;
 }
 
+.blog-faq {
+  display: grid;
+  gap: 10px;
+  margin-block: 48px;
+  padding-top: 26px;
+  border-top: 1px solid var(--blog-line);
+  --faq-inset: clamp(14px, 3vw, 24px);
+}
+
+.blog-faq h2 {
+  margin: 0 0 10px;
+  color: var(--color-foreground);
+  font-size: clamp(26px, 2.4vw, 34px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.blog-faq-card {
+  border: 1px solid var(--blog-line);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.blog-faq-card[data-open="true"] {
+  border-color: #007f8355;
+  background: #eff7f5;
+}
+
+.blog-faq-card button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px var(--faq-inset);
+  border-radius: inherit;
+  cursor: pointer;
+  text-align: left;
+  color: var(--color-foreground);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.blog-faq-card button:hover {
+  background: #007f830a;
+}
+
+.blog-faq-card button:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+.blog-faq-card svg {
+  flex-shrink: 0;
+  box-sizing: content-box;
+  padding: 7px;
+  border-radius: 50%;
+  background: #e0efed;
+  color: var(--color-teal);
+}
+
+.blog-faq-card[data-open="true"] svg {
+  transform: rotate(180deg);
+  background: var(--color-teal);
+  color: #fff;
+}
+
+.blog-faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+}
+
+.blog-faq-card[data-open="true"] .blog-faq-answer {
+  grid-template-rows: 1fr;
+}
+
+.blog-faq-answer > div {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.blog-faq-answer p {
+  margin: 0 var(--faq-inset);
+  padding-block: 12px 18px;
+  border-top: 1px solid #007f8330;
+  color: #38383a;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .blog-faq-card {
+    transition: background-color 260ms ease, border-color 260ms ease;
+  }
+
+  .blog-faq-answer {
+    transition: grid-template-rows 260ms ease;
+  }
+
+  .blog-faq-card svg {
+    transition: transform 260ms ease, background-color 260ms ease, color 260ms ease;
+  }
+}
+
 .blog-share {
   padding-block: 30px;
   margin-top: 30px;
