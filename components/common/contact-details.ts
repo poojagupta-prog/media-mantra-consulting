@@ -8,7 +8,8 @@ export const offices = [
   },
   {
     title: "India HQ, Gurugram",
-    address: "Ground floor, Plot no. 63, Sector 32, Gurugram, Haryana 122001",
+    address:
+      "Ground floor, Plot no. 63, Institutional Area, Sector 32, Gurugram, Haryana 122001",
     phone: "+91 99907 95002",
     telephone: "+919990795002",
     email: "",
