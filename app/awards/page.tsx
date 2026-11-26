@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { consultingMetadata } from "@/lib/consulting-metadata";
 import { ArrowDown, Award } from "lucide-react";
 import { BrandStar } from "@/components/ui/brand-star";
 import { awardGroups, featuredAward } from "@/components/media/content";
@@ -9,11 +9,7 @@ import {
   MediaImage,
   RelatedNews,
 } from "@/components/media/shared";
-export const metadata: Metadata = {
-  title: "Awards & Recognition",
-  description:
-    "Explore Media Mantra’s awards and industry recognition, including Udit Pathak’s PR agency Head of the Year 2026 honour.",
-};
+export const metadata = consultingMetadata("/awards");
 export default function Awards() {
   return (
     <div className="media-page">

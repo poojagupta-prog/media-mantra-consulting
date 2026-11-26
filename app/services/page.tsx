@@ -1,18 +1,14 @@
 import { BrandStar } from "@/components/ui/brand-star";
 import Image from "next/image";
 import { serviceImages } from "@/lib/service-images";
-import type { Metadata } from "next";
+import { consultingMetadata } from "@/lib/consulting-metadata";
 import Link from "next/link";
 import { ContactModalLink } from "@/components/common/contact-modal-link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { services } from "@/components/common/data";
 import { ScrollToSection } from "@/components/ui/scroll-to-section";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Explore Media Mantra Consulting's media, public relations, digital, events, content and brand services.",
-};
+export const metadata = consultingMetadata("/services");
 
 export default function ServicesPage() {
   return (

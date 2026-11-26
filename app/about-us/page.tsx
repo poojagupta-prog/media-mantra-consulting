@@ -2,7 +2,7 @@ import {
   RecognitionPreview,
   GalleryPreview,
 } from "@/components/media/previews";
-import type { Metadata } from "next";
+import { consultingMetadata } from "@/lib/consulting-metadata";
 import { ScrollProgress } from "@/components/common/scroll-motion";
 import { Marquee } from "@/components/ui/marquee";
 import { HeroSection } from "@/components/About/hero-section";
@@ -15,11 +15,7 @@ import { PhilosophySection } from "@/components/About/philosophy-section";
 import { MantrasSection } from "@/components/About/mantras-section";
 import { CTA } from "@/components/About/cta";
 
-export const metadata: Metadata = {
-  title: "About Us",
-  description:
-    "Meet the people, ideas, philosophy, and mantras behind Media Mantra Consulting in Dubai.",
-};
+export const metadata = consultingMetadata("/about-us");
 
 export default function AboutUs() {
   return (

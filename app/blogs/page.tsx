@@ -1,3 +1,4 @@
+import { consultingMetadata } from "@/lib/consulting-metadata";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import Link from "next/link";
@@ -29,6 +30,10 @@ export async function generateMetadata({
 }: {
   searchParams: Params;
 }): Promise<Metadata> {
+  const query = await searchParams;
+  if (!first(query.page) && !first(query.q) && !first(query.category)) {
+    return consultingMetadata("/blogs");
+  }
   const { result } = await results(searchParams);
   const title = `Blogs & perspectives${result.page > 1 ? ` · Page ${result.page}` : ""}`;
   const url = `${SITE_URL}${listingUrl({ page: String(result.page), q: result.q, category: result.category })}`;

@@ -11,7 +11,7 @@ import { Dubai } from "@/components/Home/dubai";
 import { EditorialSection } from "@/components/Home/editorial-section";
 import { HeroSection } from "@/components/Home/hero-section";
 import { HomeFAQ, faqData } from "@/components/Home/home-faq";
-import type { Metadata } from "next";
+import { consultingMetadata } from "@/lib/consulting-metadata";
 import { IntroductionSection } from "@/components/Home/intro";
 import { Manifesto } from "@/components/Home/our-mantra";
 import { OurProcess } from "@/components/Home/our-process";
@@ -20,14 +20,14 @@ import { RegionalExpertise } from "@/components/Home/regional-expertise";
 import { SectorsSection } from "@/components/Home/sector-section";
 import { Marquee } from "@/components/ui/marquee";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/pr-agency-in-dubai-uae/" },
+const homeMetadata = consultingMetadata("/");
+export const metadata = {
+  ...homeMetadata,
+  // Keep the trailing slash in the spreadsheet's absolute homepage URL.
+  metadataBase: null,
 };
 
-const pageUrl = new URL(
-  "/pr-agency-in-dubai-uae/",
-  process.env.NEXT_PUBLIC_SITE_URL || "https://www.mediamantraconsulting.com",
-).href;
+const pageUrl = homeMetadata.alternates.canonical;
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -37,8 +37,7 @@ const structuredData = {
       "@id": `${pageUrl}#business`,
       name: "Media Mantra Consultancy FZCO",
       url: pageUrl,
-      description:
-        "Media Mantra is a PR agency in Dubai, UAE for media relations, reputation management, events and digital PR. Talk to our team today.",
+      description: metadata.description,
       areaServed: { "@type": "Country", name: "United Arab Emirates" },
     },
     {

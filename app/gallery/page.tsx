@@ -1,13 +1,9 @@
-import type { Metadata } from "next";
+import { consultingMetadata } from "@/lib/consulting-metadata";
 import { galleryItems, galleryVideos } from "@/components/media/gallery-data";
 import { GalleryGrid } from "@/components/media/gallery-grid";
 import { Closing, Label, TextLink } from "@/components/media/shared";
 
-export const metadata: Metadata = {
-  title: "Gallery",
-  description:
-    "Explore the Media Mantra gallery: events, team moments and conversations behind the scenes.",
-};
+export const metadata = consultingMetadata("/gallery");
 export default function Gallery() {
   return (
     <div className="media-page">

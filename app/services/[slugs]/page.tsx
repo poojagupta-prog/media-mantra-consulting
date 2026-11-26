@@ -1,3 +1,4 @@
+import { consultingMetadata } from "@/lib/consulting-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContactModalLink } from "@/components/common/contact-modal-link";
@@ -18,7 +19,7 @@ export async function generateMetadata({
   const { slugs } = await params;
   const service = services.find((item) => item.slug === slugs);
   return service
-    ? { title: service.title, description: service.text }
+    ? consultingMetadata(`/services/${service.slug}`)
     : { title: "Service not found" };
 }
 

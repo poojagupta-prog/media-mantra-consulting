@@ -1,15 +1,10 @@
-import type { Metadata } from "next";
+import { consultingMetadata } from "@/lib/consulting-metadata";
 import Link from "next/link";
 import { ContactModalLink } from "@/components/common/contact-modal-link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { StudyFilter } from "@/components/CaseStudies/study-filter";
 
-export const metadata: Metadata = {
-  title: "Case Studies",
-  description:
-    "Explore PR case studies for boAt, Atlys, Bradford International Alliance, DECA × UNICO and a six-client UAE real estate portfolio.",
-  alternates: { canonical: "/case-studies" },
-};
+export const metadata = consultingMetadata("/case-studies");
 
 export default function CaseStudiesPage() {
   return (

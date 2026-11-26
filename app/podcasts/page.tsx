@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { consultingMetadata } from "@/lib/consulting-metadata";
 import { Mic2, ArrowUpRight, Play } from "lucide-react";
 import { EpisodeList } from "@/components/media/episode-list";
 import {
@@ -9,20 +9,7 @@ import {
 } from "@/components/media/shared";
 import catalogue from "@/data/podcasts.json";
 
-export const metadata: Metadata = {
-  title: "Podcasts | Pure Reality With Udit",
-  description:
-    "Watch every video from Pure Reality With Udit. Candid conversations about life, business, leadership and the untold chapters behind success.",
-  openGraph: {
-    title: "Pure Reality With Udit | Podcasts",
-    description:
-      "Real people. Real stories. Explore the full Pure Reality video collection.",
-    type: "website",
-    images: [
-      { url: catalogue.videos[0].thumbnail, alt: catalogue.videos[0].title },
-    ],
-  },
-};
+export const metadata = consultingMetadata("/podcasts");
 function ChannelButton() {
   return (
     <a

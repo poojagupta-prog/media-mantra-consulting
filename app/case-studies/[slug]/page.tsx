@@ -1,3 +1,4 @@
+import { consultingMetadata } from "@/lib/consulting-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ContactModalLink } from "@/components/common/contact-modal-link";
@@ -31,32 +32,10 @@ export async function generateMetadata({
   const study = getPortfolioStudy(slug);
   const story = caseStudyStories[slug];
   if (!study || !story) return { title: "Case study not found" };
-  const url = new URL(`/case-studies/${slug}`, siteOrigin).toString();
-  return {
-    title: story.seoTitle,
-    description: study.description,
-    alternates: { canonical: url },
-    openGraph: {
-      type: "article",
-      title: story.seoTitle,
-      description: study.description,
-      url,
-      images: [
-        {
-          url: new URL(story.heroImage.src, siteOrigin).toString(),
-          alt: story.heroImage.alt,
-          width: story.heroImage.width,
-          height: story.heroImage.height,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: story.seoTitle,
-      description: study.description,
-      images: [new URL(story.heroImage.src, siteOrigin).toString()],
-    },
-  };
+  return consultingMetadata(`/case-studies/${slug}`, {
+    url: `/og/case-studies-${slug}.jpg`,
+    alt: story.heroImage.alt,
+  });
 }
 
 export default function CaseStudyDetailPage({
