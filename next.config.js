@@ -3,6 +3,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
+  // Wait for dynamic metadata so blog canonicals and social tags are sent in <head>.
+  htmlLimitedBots: /.*/,
   // Apply the host redirect before normalizing trailing slashes.
   skipTrailingSlashRedirect: true,
   redirects() {
