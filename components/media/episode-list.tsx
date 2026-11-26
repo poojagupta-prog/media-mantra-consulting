@@ -35,7 +35,7 @@ function VideoThumbnail({ video }: { video: PodcastVideo }) {
     <>
       <Image
         src={video.thumbnail}
-        alt=""
+        alt={video.title}
         fill
         unoptimized
         sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"

@@ -38,10 +38,7 @@ export function HeroSection() {
             </ScrollToSection>
           </div>
         </div>
-        <div
-          className="mt-14 grid grid-cols-[1.15fr_.85fr] gap-3 md:mt-16 md:grid-cols-[1.2fr_.8fr_1fr] md:gap-5"
-          aria-hidden="true"
-        >
+        <div className="mt-14 grid grid-cols-[1.15fr_.85fr] gap-3 md:mt-16 md:grid-cols-[1.2fr_.8fr_1fr] md:gap-5">
           {[sectors[4], sectors[6], sectors[8]].map((sector, index) => (
             <div
               key={sector.image}
@@ -49,7 +46,7 @@ export function HeroSection() {
             >
               <Image
                 src={photo(sector.image)}
-                alt=""
+                alt={sector.alt}
                 fill
                 unoptimized
                 preload={index === 0}
