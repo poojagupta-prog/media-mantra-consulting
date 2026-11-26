@@ -57,6 +57,7 @@ test("discovers new public page files and omits private and noncanonical routes"
     "services",
     "services/[slug]",
     "dubai-it",
+    "pr-agency-in-dubai-uae",
     "careers/openings",
     "admin/tools",
     "api/v1",
@@ -70,6 +71,7 @@ test("discovers new public page files and omits private and noncanonical routes"
     writeFileSync(join(root, path, "page.tsx"), "");
   }
   assert.deepEqual(staticPagePaths(root), [
+    "/",
     "/careers/openings",
     "/culture",
     "/services",

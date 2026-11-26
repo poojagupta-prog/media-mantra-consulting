@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     google: "MxJTYFVK94QxyH15TyYv2FQTygF5g0N3Y4ttBpTUqfE",
   },
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://mediamantraconsulting.com",
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.mediamantraconsulting.com",
   ),
   title: {
     default: "PR Agency in Dubai UAE | Media Mantra Consultancy FZCO",

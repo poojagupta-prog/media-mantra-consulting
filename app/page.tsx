@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 const pageUrl = new URL(
   "/pr-agency-in-dubai-uae/",
-  process.env.NEXT_PUBLIC_SITE_URL || "https://mediamantraconsulting.com",
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.mediamantraconsulting.com",
 ).href;
 
 const structuredData = {

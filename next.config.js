@@ -3,8 +3,25 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
+  // Apply the host redirect before normalizing trailing slashes.
+  skipTrailingSlashRedirect: true,
   redirects() {
+    /** @type {import('next/dist/lib/load-custom-routes').RouteHas[]} */
+    const apexHost = [{ type: "host", value: "mediamantraconsulting\\.com" }];
     return [
+      {
+        source: "/:path+/",
+        has: apexHost,
+        destination: "https://www.mediamantraconsulting.com/:path+/",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: apexHost,
+        destination: "https://www.mediamantraconsulting.com/:path*",
+        permanent: true,
+      },
+      { source: "/:path+/", destination: "/:path+", permanent: true },
       { source: "/about", destination: "/about-us", permanent: true },
       {
         source: "/terms-and-conditions",

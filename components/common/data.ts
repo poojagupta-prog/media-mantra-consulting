@@ -26,7 +26,7 @@ export const services = [
   {
     title: "Public Relations",
     slug: "public-relations",
-    text: "Social media marketing moves fast, and so do we. We build a voice your audience recognises, create content people actually want to share, and grow communities that talk back, so your brand stays part of the daily scroll.",
+    text: "Public relations moves fast, and so do we. We build a voice your audience recognises, create content people actually want to share, and grow communities that talk back, so your brand stays part of the daily scroll.",
     icon: "✳",
     color: "bg-[#e0efec] text-teal",
     tags: "Communications strategy · Campaigns · Stakeholder engagement",
