@@ -89,14 +89,11 @@ module.exports = async (phase) => {
     phase === "phase-production-build" ||
     phase === "phase-development-server"
   ) {
-    const { staticPagePaths } = await import("./lib/sitemaps/static-pages.mjs");
-    const { join } = await import("node:path");
+    const { sitemapSourceDates } = await import("./lib/sitemaps/static-pages.mjs");
     return {
       ...nextConfig,
       env: {
-        SITEMAP_STATIC_PATHS: JSON.stringify(
-          staticPagePaths(join(__dirname, "app")),
-        ),
+        SITEMAP_SOURCE_DATES: JSON.stringify(sitemapSourceDates(__dirname)),
       },
     };
   }

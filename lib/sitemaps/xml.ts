@@ -1,4 +1,9 @@
 import type { MetadataRoute } from "next";
+import type { sitemapSourceDates } from "./static-pages.mjs";
+
+export function sourceDates(): ReturnType<typeof sitemapSourceDates> {
+  return JSON.parse(process.env.SITEMAP_SOURCE_DATES!);
+}
 
 export function siteOrigin() {
   const url = new URL(
@@ -106,17 +111,27 @@ type ContentRecord = {
 export function contentEntries(
   section: string,
   records: readonly ContentRecord[],
+  fallbackDate?: string,
 ): MetadataRoute.Sitemap {
   const origin = siteOrigin();
   return records.flatMap(({ slug, publishedAt, updatedAt }) => {
     if (typeof slug !== "string" || !/^[\p{L}\p{N}_-]+$/u.test(slug)) return [];
     const lastModified = [updatedAt, publishedAt].find(
       (value) => value && Number.isFinite(Date.parse(value)),
-    );
+    ) ?? fallbackDate;
     return [
       { url: `${origin}/${section}/${encodeURIComponent(slug)}`, lastModified },
     ];
   });
+}
+
+export function publishedContentEntries(section: string, records: readonly ContentRecord[]) {
+  const now = Date.now();
+  return contentEntries(section, records.filter(
+    ({ status, publishedAt }) =>
+      (!status || status === "published") &&
+      (!publishedAt || Date.parse(publishedAt) <= now),
+  ));
 }
 
 export async function contentSitemap(
@@ -125,13 +140,7 @@ export async function contentSitemap(
   request?: Request,
 ) {
   try {
-    const now = Date.now();
-    const records = (await readPublished()).filter(
-      ({ status, publishedAt }) =>
-        (!status || status === "published") &&
-        (!publishedAt || Date.parse(publishedAt) <= now),
-    );
-    return sitemapResponse(contentEntries(section, records), section, request);
+    return sitemapResponse(publishedContentEntries(section, await readPublished()), section, request);
   } catch {
     console.error(`Failed to generate the ${section} sitemap`);
     return new Response("Sitemap temporarily unavailable", {
