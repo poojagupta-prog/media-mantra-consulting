@@ -93,7 +93,13 @@ async function Article({ params }: Props) {
     )
     .slice(0, 3);
   const url = blogCanonicalUrl(blog);
-  const author = blog.author.name;
+  const { name: author, url: cmsAuthorUrl } = blog.author;
+  const authorUrl =
+    typeof cmsAuthorUrl === "string" &&
+    /^https?:\/\//i.test(cmsAuthorUrl) &&
+    URL.canParse(cmsAuthorUrl)
+      ? new URL(cmsAuthorUrl).href
+      : new URL("/about-us", siteUrl).href;
   const structuredData = {
     "@context": schemaContext,
     "@type": "BlogPosting",
@@ -101,7 +107,9 @@ async function Article({ params }: Props) {
     description: blog.seo.description || blog.excerpt,
     datePublished: blog.publishedAt,
     dateModified: blog.updatedAt || undefined,
-    ...(author ? { author: { "@type": "Organization", name: author } } : {}),
+    ...(author
+      ? { author: { "@type": "Organization", name: author, url: authorUrl } }
+      : {}),
     publisher: organizationRef,
     image: blog.featuredImage
       ? new URL(blog.featuredImage.src, SITE_URL).href
