@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ContactModalLink } from "@/components/common/contact-modal-link";
 import { ArrowUpRight } from "lucide-react";
 import { photo, type Sector } from "./sectors-data";
@@ -32,13 +33,24 @@ export function SectorCard({ sector, index }: { sector: Sector; index: number })
         <p className="text-[10px] leading-5 uppercase tracking-[.07em] text-muted">
           {sector.tags}
         </p>
-        <ContactModalLink
-          href="/contact-us"
-          aria-label={`Let’s talk about ${sector.title}`}
-          className="mt-4 inline-flex items-center gap-3 text-xs font-semibold transition-colors hover:text-teal"
-        >
-          Let’s talk <ArrowUpRight size={17} aria-hidden="true" />
-        </ContactModalLink>
+        <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3">
+          <Link
+            href={sector.caseStudySector
+              ? { pathname: "/case-studies", query: { sector: sector.caseStudySector }, hash: "work" }
+              : "/case-studies"}
+            aria-label={sector.caseStudySector ? `View case studies for ${sector.title}` : "View all case studies"}
+            className="inline-flex items-center gap-2 rounded-full border border-black/15 px-4 py-2.5 text-xs font-semibold transition-colors hover:border-teal hover:text-teal"
+          >
+            View case studies <ArrowUpRight size={15} aria-hidden="true" />
+          </Link>
+          <ContactModalLink
+            href="/contact-us"
+            aria-label={`Let’s talk about ${sector.title}`}
+            className="inline-flex items-center gap-3 text-xs font-semibold transition-colors hover:text-teal"
+          >
+            Let’s talk <ArrowUpRight size={17} aria-hidden="true" />
+          </ContactModalLink>
+        </div>
       </div>
     </article>
   );

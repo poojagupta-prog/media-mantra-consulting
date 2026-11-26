@@ -1,4 +1,16 @@
-export const sectors = [
+import type { portfolioSectors } from "@/components/CaseStudies/case-studies-data";
+
+export type Sector = {
+  title: string;
+  label: string;
+  image: string;
+  alt: string;
+  description: string;
+  tags: string;
+  caseStudySector?: (typeof portfolioSectors)[number];
+};
+
+export const sectors: Sector[] = [
   {
     title: "Tech PR for Startups",
     label: "Ideas into impact",
@@ -19,6 +31,7 @@ export const sectors = [
   },
   {
     title: "Consumer Tech Publicity",
+    caseStudySector: "Consumer Technology PR",
     label: "Innovation meets everyday life",
     image: "photo-1511707171634-5f897ff02aa9",
     alt: "Smartphone displaying apps on a wooden surface",
@@ -100,6 +113,7 @@ export const sectors = [
   },
   {
     title: "Real Estate PR",
+    caseStudySector: "Real Estate PR",
     label: "An address. A bigger story.",
     image: "photo-1600596542815-ffad4c1539a9",
     alt: "Contemporary residence with landscaped gardens and a pool",
@@ -107,9 +121,29 @@ export const sectors = [
       "Buyers don't just choose buildings, they choose a life. We tell the story behind developments, design and communities, showing what makes a place matter and why investors and residents should care about it in Dubai.",
     tags: "Developments / Architecture / Communities",
   },
+  {
+    title: "Travel Technology PR",
+    caseStudySector: "Travel Technology PR",
+    label: "Making travel simpler",
+    image: "photo-1436491865332-7a61a109cc05",
+    alt: "View from an aeroplane window above the clouds",
+    description:
+      "We help travel technology brands show how their products solve practical problems for travellers, from planning a trip to navigating visa requirements.",
+    tags: "Travel technology / Product awareness / Media relations",
+  },
+  {
+    title: "Education PR",
+    caseStudySector: "Education PR",
+    label: "Reaching learners and employers",
+    image: "/images/sectors/education-pr.webp",
+    alt: "A journalist and camera operator interview a graduate at a university commencement",
+    description:
+      "We help education and training providers reach learners, employers and industry partners with stories about professional skills and flexible study.",
+    tags: "Education / Professional training / Workforce skills",
+  },
 ];
 
-export type Sector = (typeof sectors)[number];
-
-export const photo = (id: string) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=85`;
+export const photo = (image: string) =>
+  image.startsWith("/")
+    ? image
+    : `https://images.unsplash.com/${image}?auto=format&fit=crop&w=900&q=85`;

@@ -4,7 +4,8 @@ import { consultingMetadata } from "@/lib/consulting-metadata";
 import Link from "next/link";
 import { ContactModalLink } from "@/components/common/contact-modal-link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { StudyFilter } from "@/components/CaseStudies/study-filter";
+import { Suspense } from "react";
+import { StudyFilter, StudyResults } from "@/components/CaseStudies/study-filter";
 
 export const metadata = consultingMetadata("/case-studies");
 
@@ -61,7 +62,9 @@ export default function CaseStudiesPage() {
           </div>
         </div>
       </section>
-      <StudyFilter />
+      <Suspense fallback={<StudyResults />}>
+        <StudyFilter />
+      </Suspense>
       <section className="bg-[#dcece5] py-16 md:py-24">
         <div className="mx-auto flex w-[min(1440px,calc(100%-112px))] flex-wrap items-end justify-between gap-8 max-[768px]:w-[calc(100%-40px)]">
           <div>

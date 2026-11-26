@@ -1,14 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { portfolioSectors, portfolioStudies } from "./case-studies-data";
 import { StudyCard } from "./study-card";
 
+const allStudies = "All Case Studies";
+
 export function StudyFilter() {
-  const [active, setActive] = useState("All Case Studies");
-  const visible = active === "All Case Studies" ? portfolioStudies : portfolioStudies.filter((study) => study.sector === active);
+  const requested = useSearchParams().get("sector");
+  const active = portfolioSectors.find((sector) => sector === requested) ?? allStudies;
+
+  return <StudyResults active={active} />;
+}
+
+export function StudyResults({ active = allStudies }: { active?: string }) {
+  function setActive(sector: string) {
+    const url = new URL(window.location.href);
+    if (sector === allStudies) {
+      url.searchParams.delete("sector");
+    } else {
+      url.searchParams.set("sector", sector);
+    }
+    window.history.pushState(null, "", url);
+  }
+
+  const visible = active === allStudies ? portfolioStudies : portfolioStudies.filter((study) => study.sector === active);
   return (
     <section id="work" className="scroll-mt-10 py-20 md:py-28" aria-labelledby="work-title">
       <div className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)]">
@@ -17,9 +35,9 @@ export function StudyFilter() {
           <p aria-live="polite" className="font-mono text-[11px] uppercase tracking-[.1em] text-muted">{visible.length} {visible.length === 1 ? "story" : "stories"}</p>
         </div>
         <div className="mb-10 flex flex-wrap gap-2" role="group" aria-label="Filter case studies by sector">
-          {["All Case Studies", ...portfolioSectors].map((sector) => <button key={sector} type="button" onClick={() => setActive(sector)} aria-pressed={active === sector} className={`rounded-full border px-4 py-2.5 text-xs transition-colors ${active === sector ? "border-foreground bg-foreground text-white" : "border-black/15 text-foreground hover:border-teal hover:text-teal"}`}>{sector}</button>)}
+          {[allStudies, ...portfolioSectors].map((sector) => <button key={sector} type="button" onClick={() => setActive(sector)} aria-pressed={active === sector} className={`rounded-full border px-4 py-2.5 text-xs transition-colors ${active === sector ? "border-foreground bg-foreground text-white" : "border-black/15 text-foreground hover:border-teal hover:text-teal"}`}>{sector}</button>)}
         </div>
-        {visible.length ? <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">{visible.map((study, index) => <StudyCard key={study.slug} study={study} index={index} />)}</div> : <div className="rounded-[3px] border border-black/10 bg-[#e7f0eb] px-7 py-14 md:px-12"><span className="font-mono text-[10px] uppercase tracking-[.14em] text-teal">More stories to come</span><h3 className="mt-4 text-3xl tracking-[-.045em]">No case studies in {active} yet.</h3><p className="mt-3 max-w-xl text-sm leading-6 text-muted">Explore all concept examples or discover how we approach this sector.</p><div className="mt-7 flex flex-wrap gap-5 text-sm font-medium text-teal"><button type="button" onClick={() => setActive("All Case Studies")} className="underline underline-offset-4">View all case studies</button><Link href="/sectors" className="inline-flex items-center gap-1 underline underline-offset-4">Explore sectors <ArrowUpRight size={15} /></Link></div></div>}
+        {visible.length ? <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">{visible.map((study, index) => <StudyCard key={study.slug} study={study} index={index} />)}</div> : <div className="rounded-[3px] border border-black/10 bg-[#e7f0eb] px-7 py-14 md:px-12"><span className="font-mono text-[10px] uppercase tracking-[.14em] text-teal">More stories to come</span><h3 className="mt-4 text-3xl tracking-[-.045em]">No case studies in {active} yet.</h3><p className="mt-3 max-w-xl text-sm leading-6 text-muted">Explore all concept examples or discover how we approach this sector.</p><div className="mt-7 flex flex-wrap gap-5 text-sm font-medium text-teal"><button type="button" onClick={() => setActive(allStudies)} className="underline underline-offset-4">View all case studies</button><Link href="/sectors" className="inline-flex items-center gap-1 underline underline-offset-4">Explore sectors <ArrowUpRight size={15} /></Link></div></div>}
       </div>
     </section>
   );
