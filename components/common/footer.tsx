@@ -40,9 +40,9 @@ export function Footer() {
             key={office.title}
             className="min-w-0 border-l border-[#92dfd4]/30 pl-5"
           >
-            <h2 className="mb-3 font-mono text-[11px] font-medium uppercase tracking-[.12em] text-[#92dfd4]">
+            <p className="mb-3 font-mono text-[11px] font-medium uppercase tracking-[.12em] text-[#92dfd4]">
               {office.title}
-            </h2>
+            </p>
             <address className="space-y-2 text-xs leading-relaxed not-italic text-white/70">
               <p className="max-w-sm">{office.address}</p>
               {office.phone && office.telephone && (
