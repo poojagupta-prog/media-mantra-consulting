@@ -1,3 +1,5 @@
+import { JsonLd } from "@/components/common/json-ld";
+import { aboutSchema } from "@/lib/schema";
 import {
   RecognitionPreview,
   GalleryPreview,
@@ -20,6 +22,7 @@ export const metadata = consultingMetadata("/about-us");
 export default function AboutUs() {
   return (
     <div className="[&_section[id]]:scroll-mt-24 [&_h2]:text-balance [&_h3]:text-balance">
+      <JsonLd data={aboutSchema} />
       <ScrollProgress />
       <HeroSection />
       <Marquee />

@@ -1,1 +1,7 @@
-export { default, metadata } from "../page";
+import { HomeView } from "@/components/Home/home-view";
+
+export { metadata } from "../page";
+
+export default function PrAgencyLandingPage() {
+  return <HomeView />;
+}

@@ -1,3 +1,5 @@
+import { JsonLd } from "@/components/common/json-ld";
+import { breadcrumbSchema, organizationRef, schemaContext } from "@/lib/schema";
 import { consultingMetadata } from "@/lib/consulting-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -18,8 +20,14 @@ import {
 import { StudyCard } from "@/components/CaseStudies/study-card";
 import "../stories.css";
 
-const siteOrigin =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://mediamantraconsulting.com";
+const articleSubjects: Record<string, string> = {
+  "boat-middle-east-pr-campaign": "boAt Middle East",
+  "atlys-uae-travel-technology-pr": "Atlys UAE",
+  "real-estate-sector-pr-portfolio": "UAE Real Estate PR",
+  "bradford-international-alliance-education-pr": "Bradford International Alliance",
+  "deca-unico-partnership-pr-campaign": "DECA × UNICO",
+  "centurion-properties-uae-real-estate-pr": "Centurion Properties"
+};
 
 export function generateStaticParams() {
   return portfolioStudies.map(({ slug }) => ({ slug }));
@@ -32,9 +40,13 @@ export async function generateMetadata({
   const study = getPortfolioStudy(slug);
   const story = caseStudyStories[slug];
   if (!study || !story) return { title: "Case study not found" };
+  return caseStudyMetadata(slug, story.heroImage.alt);
+}
+
+function caseStudyMetadata(slug: string, imageAlt: string) {
   return consultingMetadata(`/case-studies/${slug}`, {
     url: `/og/case-studies-${slug}.jpg`,
-    alt: story.heroImage.alt,
+    alt: imageAlt,
   });
 }
 
@@ -69,55 +81,32 @@ async function CaseStudyContent({
   const related = portfolioStudies
     .filter((item) => item.slug !== slug)
     .slice(0, 2);
-  const url = new URL(`/case-studies/${slug}`, siteOrigin).toString();
+  const path = `/case-studies/${slug}`;
+  const metadata = caseStudyMetadata(slug, story.heroImage.alt);
+  const url = metadata.alternates.canonical;
   const structuredData = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Article",
-        "@id": `${url}#article`,
-        headline: story.seoTitle,
-        description: study.description,
-        image: new URL(story.heroImage.src, siteOrigin).toString(),
-        mainEntityOfPage: url,
-        inLanguage: "en",
-        about: {
-          "@type": study.scope ? "Thing" : "Organization",
-          name:
-            study.scope === "sector-portfolio"
-              ? "UAE real estate communications"
-              : study.brand,
-        },
-        author: {
-          "@type": "Organization",
-          name: "Media Mantra Consulting",
-          url: siteOrigin,
-        },
-        articleSection: study.sector,
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: siteOrigin },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Case studies",
-            item: new URL("/case-studies", siteOrigin).toString(),
-          },
-          { "@type": "ListItem", position: 3, name: study.brand, item: url },
-        ],
-      },
-    ],
+    "@context": schemaContext,
+    "@type": "Article",
+    "@id": `${url}#article`,
+    headline: metadata.openGraph.title.absolute,
+    description: metadata.description,
+    image: metadata.openGraph.images[0].url,
+    author: organizationRef,
+    publisher: organizationRef,
+    about: { "@type": "Organization", name: articleSubjects[slug] ?? study.brand },
+    url,
+    mainEntityOfPage: url,
+    inLanguage: "en",
+    articleSection: study.sector,
   };
   return (
     <article className={`cs-story cs-${story.theme}`}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
-        }}
-      />
+      <JsonLd data={structuredData} />
+      <JsonLd data={breadcrumbSchema([
+        { href: "/", label: "Home" },
+        { href: "/case-studies", label: "Case studies" },
+        { href: path, label: study.brand },
+      ])} />
       <div className="cs-progress" aria-hidden="true" />
       <StoryHero study={study} story={story} />
       <StoryContents study={study} story={story} />

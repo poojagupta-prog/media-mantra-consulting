@@ -18,7 +18,16 @@ export interface Blog {
   sourceCategories?: string[];
   tags: string[];
   featured: boolean;
-  seo: { title?: string; description?: string };
+  seo: {
+    title?: string;
+    description?: string;
+    metaKeywords?: string[];
+    metaImage?: string;
+    ogTitle?: string;
+    ogDescription?: string;
+    ogImage?: string;
+    canonicalUrl?: string;
+  };
   sourceUrl?: string;
   faqs?: { id: string; question: string; answer: string }[];
   comments?: { enabled: boolean };

@@ -1,3 +1,5 @@
+import { JsonLd } from "@/components/common/json-ld";
+import { siteSchema } from "@/lib/schema";
 import type { Metadata } from "next";
 import "./globals.css";
 import { EntryLoader } from "@/components/common/entry-loader";
@@ -89,6 +91,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-[#b6e9df] selection:text-foreground [&_:focus-visible]:outline-[3px] [&_:focus-visible]:outline-[#37b9ad] [&_:focus-visible]:outline-offset-[5px] [&_button]:cursor-pointer [&_summary]:cursor-pointer [&_a]:[-webkit-tap-highlight-color:transparent] [&_button]:[-webkit-tap-highlight-color:transparent] motion-reduce:[&_*]:animate-none! motion-reduce:[&_*]:transition-none! motion-reduce:[&_*::before]:animate-none! motion-reduce:[&_*::before]:transition-none! motion-reduce:[&_*::after]:animate-none! motion-reduce:[&_*::after]:transition-none!">
+        <JsonLd data={siteSchema} />
         <ContactModalProvider>
           <Suspense fallback={null}>
             <AnchorNavigation />

@@ -1,5 +1,7 @@
 "use client";
 
+import { JsonLd } from "./json-ld";
+import { breadcrumbSchema } from "@/lib/schema";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronRight } from "lucide-react";
@@ -42,6 +44,7 @@ export function Breadcrumbs({
       aria-label="Breadcrumb"
       className="border-b border-black/10 bg-background"
     >
+      {labels[currentPath] && <JsonLd data={breadcrumbSchema(items)} />}
       <ol className="mx-auto flex w-[min(1440px,calc(100%-112px))] flex-wrap items-center gap-x-3 gap-y-2 py-4 text-xs leading-5 max-[768px]:w-[calc(100%-40px)]">
         {items.map((item, index) => (
           <li key={item.href} className="flex min-w-0 items-center gap-3">

@@ -31,7 +31,7 @@ export const faqData = [
     id: 5,
     question: "Can you support both local and international brands?",
     answer:
-      "Yes. We help UAE brands go global and international brands enter the Middle East, backed by our offices in India, Singapore and Australia.",
+      "Yes. We help UAE brands go global and international brands enter the Middle East, backed by our offices in India and Australia.",
   },
   {
     id: 6,

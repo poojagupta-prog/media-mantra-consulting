@@ -1,3 +1,5 @@
+import { JsonLd } from "@/components/common/json-ld";
+import { organizationRef, schemaContext } from "@/lib/schema";
 import { consultingMetadata } from "@/lib/consulting-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -108,8 +110,18 @@ export default async function ServiceDetailPage({
   const index = services.indexOf(service);
   const next = services[(index + 1) % services.length];
 
+  const metadata = consultingMetadata(`/services/${service.slug}`);
   return (
     <div>
+      <JsonLd data={{
+        "@context": schemaContext,
+        "@type": "Service",
+        name: service.title,
+        url: metadata.alternates.canonical,
+        provider: organizationRef,
+        areaServed: ["AE", "IN", "AU"],
+        description: metadata.description,
+      }} />
       <section className="relative isolate flex min-h-[650px] flex-col overflow-hidden bg-[#19181b] text-white md:min-h-[720px]">
         <div
           aria-hidden="true"

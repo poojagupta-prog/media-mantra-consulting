@@ -1,9 +1,13 @@
+import { JsonLd } from "@/components/common/json-ld";
+import { organizationRef, schemaContext, siteUrl } from "@/lib/schema";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getBlog, getBlogs, SITE_URL } from "@/lib/blogs/repository";
+import { blogImageSources, socialImageSize, type SocialCard } from "@/lib/blogs/social-image";
+import type { Blog } from "@/lib/blogs/types";
 import { blogDate } from "@/lib/blogs/query";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { Comments } from "@/components/blogs/comments";
@@ -14,37 +18,55 @@ import { BlogArticleSkeleton } from "@/components/blogs/blog-skeleton";
 import { TableOfContents, ShareTools } from "@/components/blogs/article-tools";
 import "../blogs.css";
 type Props = { params: Promise<{ slug: string }> };
+function blogCanonicalUrl(blog: Blog) {
+  const raw = blog.seo.canonicalUrl;
+  if (typeof raw === "string" && raw.trim() && URL.canParse(raw, siteUrl)) {
+    const canonical = new URL(raw, siteUrl);
+    if (canonical.protocol === "https:" || canonical.protocol === "http:") {
+      return canonical.href;
+    }
+  }
+  return new URL(`/blogs/${blog.slug}`, siteUrl).href;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const blog = await getBlog((await params).slug);
   if (!blog) notFound();
-  const url = `${SITE_URL}/blogs/${blog.slug}`;
-  const images = blog.featuredImage
-    ? [
-        {
-          url: new URL(blog.featuredImage.src, SITE_URL).href,
-          alt: blog.featuredImage.alt,
-        },
-      ]
+  const { seo } = blog;
+  const articlePath = `/blogs/${blog.slug}`;
+  const url = blogCanonicalUrl(blog);
+  const title = seo.title || blog.title;
+  const description = seo.description || blog.excerpt;
+  const keywords = Array.isArray(seo.metaKeywords)
+    ? seo.metaKeywords.filter((keyword) => typeof keyword === "string" && keyword.trim())
+    : [];
+  const images = (card: SocialCard) => blogImageSources(blog, card).length
+    ? [{
+        url: new URL(`${articlePath}/social-image/${card}`, siteUrl).href,
+        alt: blog.featuredImage?.alt || blog.title,
+        ...socialImageSize,
+      }]
     : [];
   return {
-    title: { absolute: blog.seo.title || blog.title },
-    description: blog.seo.description || blog.excerpt,
+    title: { absolute: title },
+    description,
+    ...(keywords.length ? { keywords } : {}),
     alternates: { canonical: url },
     openGraph: {
       type: "article",
-      title: blog.title,
-      description: blog.seo.description || blog.excerpt,
+      title: seo.ogTitle || title,
+      description: seo.ogDescription || description,
       url,
       publishedTime: blog.publishedAt,
       modifiedTime: blog.updatedAt,
       authors: blog.author.name ? [blog.author.name] : [],
-      images,
+      images: images("og"),
     },
     twitter: {
       card: "summary_large_image",
-      title: blog.title,
-      description: blog.excerpt,
-      images,
+      title,
+      description,
+      images: images("twitter"),
     },
   };
 }
@@ -70,22 +92,17 @@ async function Article({ params }: Props) {
         Number(a.category === blog.category),
     )
     .slice(0, 3);
-  const url = `${SITE_URL}/blogs/${blog.slug}`;
+  const url = blogCanonicalUrl(blog);
+  const author = blog.author.name;
   const structuredData = {
-    "@context": "https://schema.org",
+    "@context": schemaContext,
     "@type": "BlogPosting",
-    headline: blog.title,
-    description: blog.excerpt,
+    headline: blog.seo.title || blog.title,
+    description: blog.seo.description || blog.excerpt,
     datePublished: blog.publishedAt,
-    dateModified: blog.updatedAt || blog.publishedAt,
-    ...(blog.author.name
-      ? { author: { "@type": "Organization", name: blog.author.name } }
-      : {}),
-    publisher: {
-      "@type": "Organization",
-      name: "Media Mantra Consulting",
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
-    },
+    dateModified: blog.updatedAt || undefined,
+    ...(author ? { author: { "@type": "Organization", name: author } } : {}),
+    publisher: organizationRef,
     image: blog.featuredImage
       ? new URL(blog.featuredImage.src, SITE_URL).href
       : undefined,
@@ -101,12 +118,7 @@ async function Article({ params }: Props) {
         article
         labels={{ "/blogs": "Blogs", ["/blogs/" + blog.slug]: blog.title }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
-        }}
-      />
+      <JsonLd data={structuredData} />
       {blog.featuredImage && (
         <figure className="blog-cover">
           <BlogImage

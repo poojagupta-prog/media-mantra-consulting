@@ -1,3 +1,5 @@
+import { JsonLd } from "@/components/common/json-ld";
+import { breadcrumbSchema } from "@/lib/schema";
 import { consultingMetadata } from "@/lib/consulting-metadata";
 import Link from "next/link";
 import { ContactModalLink } from "@/components/common/contact-modal-link";
@@ -9,6 +11,10 @@ export const metadata = consultingMetadata("/case-studies");
 export default function CaseStudiesPage() {
   return (
     <>
+      <JsonLd data={breadcrumbSchema([
+        { href: "/", label: "Home" },
+        { href: "/case-studies", label: "Case studies" },
+      ])} />
       <section className="relative overflow-hidden bg-[#19181b] py-16 text-white md:py-24">
         <div
           aria-hidden="true"
