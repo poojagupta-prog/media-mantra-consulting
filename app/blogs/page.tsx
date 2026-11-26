@@ -31,8 +31,10 @@ export async function generateMetadata({
   searchParams: Params;
 }): Promise<Metadata> {
   const query = await searchParams;
+  const robots = { index: false, follow: true };
   if (!first(query.page) && !first(query.q) && !first(query.category)) {
-    return consultingMetadata("/blogs");
+    const metadata = consultingMetadata("/blogs");
+    return Object.keys(query).length ? { ...metadata, robots } : metadata;
   }
   const { result } = await results(searchParams);
   const title = `Blogs & perspectives${result.page > 1 ? ` · Page ${result.page}` : ""}`;
@@ -42,7 +44,7 @@ export async function generateMetadata({
     description:
       "Ideas on reputation, culture and communications. Explore the latest perspectives from Media Mantra Consulting.",
     alternates: { canonical: url },
-    robots: result.q ? { index: false, follow: true } : undefined,
+    robots,
     openGraph: {
       title,
       url,
