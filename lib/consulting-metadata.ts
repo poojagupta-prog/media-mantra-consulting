@@ -13,7 +13,7 @@ type PageDetails = {
   | { article?: never; imageUrl: string; imageAlt: string }
 );
 
-const siteOrigin = "https://www.mediamantraconsulting.com";
+const siteOrigin = "https://mediamantraconsulting.com";
 
 const pageDetails: Record<string, PageDetails> = {
   "/": {

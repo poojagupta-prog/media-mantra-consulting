@@ -3,6 +3,7 @@ import { cache } from "react";
 import { connection } from "next/server";
 import { prepareHtml } from "./html";
 import type { Blog, PreparedBlog } from "./types";
+import { configuredSiteUrl } from "../site-url.mjs";
 import { cmsUrl } from "./cms-url";
 
 function validBlog(value: unknown): value is Blog {
@@ -70,6 +71,4 @@ export const getBlogs = cache(async (): Promise<PreparedBlog[]> =>
 export const getBlog = cache(async (slug: string) =>
   (await getBlogs()).find((blog) => blog.slug === slug),
 );
-export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://mediamantraconsulting.com"
-).replace(/\/$/, "");
+export const SITE_URL = configuredSiteUrl().href.replace(/\/$/, "");

@@ -1,3 +1,4 @@
+import { configuredSiteUrl } from "../site-url.mjs";
 import type { MetadataRoute } from "next";
 import type { sitemapSourceDates } from "./static-pages.mjs";
 
@@ -6,9 +7,7 @@ export function sourceDates(): ReturnType<typeof sitemapSourceDates> {
 }
 
 export function siteOrigin() {
-  const url = new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://mediamantraconsulting.com",
-  );
+  const url = configuredSiteUrl();
   if (
     !["http:", "https:"].includes(url.protocol) ||
     url.username ||

@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { normalizeSiteUrl } from "@/lib/site-url.mjs";
 import { getBlog, getBlogs, SITE_URL } from "@/lib/blogs/repository";
 import { blogImageSources, socialImageSize, type SocialCard } from "@/lib/blogs/social-image";
 import type { Blog } from "@/lib/blogs/types";
@@ -27,7 +28,7 @@ function blogCanonicalUrl(blog: Blog) {
   if (typeof raw === "string" && raw.trim() && URL.canParse(raw, siteUrl)) {
     const canonical = new URL(raw, siteUrl);
     if (canonical.protocol === "https:" || canonical.protocol === "http:") {
-      return canonical.href;
+      return normalizeSiteUrl(canonical).href;
     }
   }
   return new URL(`/blogs/${blog.slug}`, siteUrl).href;

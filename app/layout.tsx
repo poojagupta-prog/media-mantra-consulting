@@ -1,4 +1,5 @@
 import { JsonLd } from "@/components/common/json-ld";
+import { configuredSiteUrl } from "@/lib/site-url.mjs";
 import { siteSchema } from "@/lib/schema";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -32,9 +33,7 @@ export const metadata: Metadata = {
   verification: {
     google: "MxJTYFVK94QxyH15TyYv2FQTygF5g0N3Y4ttBpTUqfE",
   },
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://www.mediamantraconsulting.com",
-  ),
+  metadataBase: configuredSiteUrl(),
   title: {
     default: "PR Agency in Dubai UAE | Media Mantra Consultancy FZCO",
     template: "%s | Media Mantra Consulting",

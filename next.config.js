@@ -9,18 +9,18 @@ const nextConfig = {
   skipTrailingSlashRedirect: true,
   redirects() {
     /** @type {import('next/dist/lib/load-custom-routes').RouteHas[]} */
-    const apexHost = [{ type: "host", value: "mediamantraconsulting\\.com" }];
+    const wwwHost = [{ type: "host", value: "www\\.mediamantraconsulting\\.com" }];
     return [
       {
         source: "/:path+/",
-        has: apexHost,
-        destination: "https://www.mediamantraconsulting.com/:path+/",
+        has: wwwHost,
+        destination: "https://mediamantraconsulting.com/:path+/",
         permanent: true,
       },
       {
         source: "/:path*",
-        has: apexHost,
-        destination: "https://www.mediamantraconsulting.com/:path*",
+        has: wwwHost,
+        destination: "https://mediamantraconsulting.com/:path*",
         permanent: true,
       },
       ...[

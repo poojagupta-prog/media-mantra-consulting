@@ -1,5 +1,5 @@
 export const schemaContext = "https://schema.org";
-export const siteUrl = "https://www.mediamantraconsulting.com/";
+export const siteUrl = "https://mediamantraconsulting.com/";
 export const organizationRef = { "@id": `${siteUrl}#organization` };
 const websiteRef = { "@id": `${siteUrl}#website` };
 const founderRef = { "@id": `${siteUrl}about-us#udit-pathak` };
