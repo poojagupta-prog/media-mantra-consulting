@@ -19,7 +19,10 @@ export function Breadcrumbs({
   const segments = pathname.split("/").filter(Boolean);
   const currentPath = `/${segments.join("/")}`;
 
-  if ((!article && /^\/blogs\/[^/]+$/.test(currentPath)) || currentPath === "/")
+  if (currentPath === "/" || currentPath === "/pr-agency-in-dubai-uae")
+    return null;
+
+  if (!article && /^\/blogs\/[^/]+$/.test(currentPath))
     return null;
 
   // These pages already render breadcrumbs within their bespoke story heroes.

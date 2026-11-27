@@ -48,6 +48,22 @@ const nextConfig = {
           statusCode: 301,
         })),
       ),
+      ...[
+        "how-a-media-relations-agency-in-dubai-builds-trust-and-credibility-for-brands",
+        "why-your-brand-needs-a-leading-pr-agency-in-dubai-for-success",
+        "why-top-pr-agencies-in-dubai-are-a-must-for-expanding-into-the-middle-east-market",
+      ].flatMap((slug) =>
+        [`/blog-details/${slug}`, `/blog-details/${slug}/`].map((source) => ({
+          source,
+          destination: `/blogs/${slug}`,
+          statusCode: 301,
+        })),
+      ),
+      ...["/pr-agencies-in-dubai", "/pr-agencies-in-dubai/"].map((source) => ({
+        source,
+        destination: "/pr-agency-in-dubai-uae",
+        statusCode: 301,
+      })),
       { source: "/:path+/", destination: "/:path+", permanent: true },
       { source: "/about", destination: "/about-us", permanent: true },
       {
