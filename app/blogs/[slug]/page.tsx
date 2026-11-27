@@ -17,6 +17,10 @@ import { BlogImage } from "@/components/blogs/blog-image";
 import { BlogArticleSkeleton } from "@/components/blogs/blog-skeleton";
 import { TableOfContents, ShareTools } from "@/components/blogs/article-tools";
 import "../blogs.css";
+
+// Work around the Next.js 16.4.6 static-shell validator invariant.
+export const instant = false;
+
 type Props = { params: Promise<{ slug: string }> };
 function blogCanonicalUrl(blog: Blog) {
   const raw = blog.seo.canonicalUrl;

@@ -11,6 +11,9 @@ import { services } from "@/components/common/data";
 import { servicePerspectives } from "./service-perspectives";
 import { ScrollToSection } from "@/components/ui/scroll-to-section";
 
+// Work around the Next.js 16.4.6 dev validator invariant on this route.
+export const instant = false;
+
 export function generateStaticParams() {
   return services.map(({ slug }) => ({ slugs: slug }));
 }
@@ -147,7 +150,7 @@ export default async function ServiceDetailPage({
               {design.eyebrow}
             </span>
             <h1 className="max-w-5xl text-[clamp(3.8rem,8vw,8.5rem)] font-[650] leading-[.92] tracking-[-.075em] text-balance">
-              {service.title}
+              {service.heading}
               <span className="text-[#92dfd4]">.</span>
             </h1>
           </div>

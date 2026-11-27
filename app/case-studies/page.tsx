@@ -12,10 +12,12 @@ export const metadata = consultingMetadata("/case-studies");
 export default function CaseStudiesPage() {
   return (
     <>
-      <JsonLd data={breadcrumbSchema([
-        { href: "/", label: "Home" },
-        { href: "/case-studies", label: "Case studies" },
-      ])} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { href: "/", label: "Home" },
+          { href: "/case-studies", label: "Case studies" },
+        ])}
+      />
       <section className="relative overflow-hidden bg-[#19181b] py-16 text-white md:py-24">
         <div
           aria-hidden="true"
@@ -38,20 +40,21 @@ export default function CaseStudiesPage() {
               Case studies
             </span>
           </nav>
-          <p className="mb-6 font-mono text-[11px] uppercase tracking-[.16em] text-[#92dfd4]">
-            Stories in action / Portfolio
-          </p>
-          <h1 className="max-w-[11ch] text-[clamp(3.5rem,8vw,8rem)] font-[550] leading-[.95] tracking-[-.07em]">
+          <h1 className="mb-6 font-mono text-[11px] uppercase tracking-[.16em] text-[#92dfd4]">
+            PR Case Studies from Dubai & the UAE
+          </h1>
+          <h2 className="max-w-[11ch] text-[clamp(3.5rem,8vw,8rem)] font-[550] leading-[.95] tracking-[-.07em]">
             Ideas that{" "}
             <span className="font-[Georgia,'Times_New_Roman',serif] font-normal italic text-[#92dfd4]">
               move
             </span>{" "}
             people.
-          </h1>
+          </h2>
           <div className="mt-12 flex flex-wrap items-end justify-between gap-8 border-t border-white/20 pt-7">
             <p className="max-w-[560px] text-sm leading-7 text-white/70 md:text-base">
               Explore the thinking behind consumer technology, travel, education
-              and real estate campaigns, from brand narratives to regional media outcomes.
+              and real estate campaigns, from brand narratives to regional media
+              outcomes.
             </p>
             <a
               href="#work"

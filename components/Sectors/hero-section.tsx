@@ -11,18 +11,17 @@ export function HeroSection() {
   return (
     <section className="overflow-hidden bg-[#c9eae2] pb-14 pt-16 md:pb-20 md:pt-24">
       <div className={container}>
-        <p className="mb-9 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[.13em] text-teal">
-          <span className="h-2 w-2 rounded-full bg-orange" /> Our sectors /
-          Worlds we move in
-        </p>
+        <h1 className="mb-9 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[.13em] text-teal">
+          PR Expertise by Sector in Dubai
+        </h1>
         <div className="grid items-end gap-10 lg:grid-cols-[1.5fr_1fr]">
-          <h1 className="text-[clamp(3.5rem,8.5vw,8.5rem)] font-[650] leading-[.94] tracking-[-.075em]">
+          <h2 className="text-[clamp(3.5rem,8.5vw,8.5rem)] font-[650] leading-[.94] tracking-[-.075em]">
             Different worlds.
             <br />
             <span className="font-[Georgia,'Times_New_Roman',serif] font-normal italic text-teal">
               One instinct.
             </span>
-          </h1>
+          </h2>
           <div>
             <p className="max-w-md text-lg leading-8">
               Every industry speaks its own language, but the instinct behind

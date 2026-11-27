@@ -543,7 +543,9 @@
   line-height: 1.7;
   margin-bottom: 22px;
 }
-.media-page h1 {
+.media-page h1:not(:where(.media-label)),
+.podcast-hero .podcast-hero-title,
+.media-page .gallery-hero > h2 {
   font-size: clamp(3.5rem, 7.8vw, 8rem);
   font-weight: 550;
   line-height: 0.98;
@@ -814,21 +816,11 @@
   z-index: 1;
 }
 .awards-hero-copy > .media-label {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   color: var(--color-teal);
 }
-.awards-hero-copy > .media-label::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: var(--color-orange, #f47939);
-}
-.awards-hero h1 {
+.awards-hero-copy > h2 {
   font-size: clamp(3.5rem, 6.8vw, 7rem);
+  font-weight: 550;
   line-height: 0.98;
   letter-spacing: -0.065em;
 }
@@ -1106,10 +1098,10 @@
 .gallery-hero {
   padding-block: 85px 55px;
 }
-.gallery-hero h1 {
+.gallery-hero > h2 {
   position: relative;
 }
-.gallery-hero h1 > span {
+.gallery-hero > h2 > span {
   float: right;
   color: #007f83;
   font-size: 1.4em;
@@ -1721,7 +1713,7 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  .awards-hero h1 {
+  .awards-hero-copy > h2 {
     font-size: clamp(2.7rem, 8.8vw, 4.5rem);
   }
   .awards-hero-art {
@@ -1736,7 +1728,7 @@
   .gallery-hero {
     padding-block: 55px 35px;
   }
-  .gallery-hero h1 > span {
+  .gallery-hero > h2 > span {
     display: none;
   }
   .gallery-intro {

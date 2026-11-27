@@ -16,12 +16,12 @@ export default function Awards() {
       <section className="awards-hero">
         <div className="media-wrap awards-hero-layout">
           <div className="awards-hero-copy">
-            <Label>Awards & recognition</Label>
-            <h1>
+            <h1 className="media-label">Awards & recognition</h1>
+            <h2>
               Good work.
               <br />
               <em>Lasting resonance.</em>
-            </h1>
+            </h2>
             <p className="media-copy">
               Recognition means more when there is a meaningful story behind it.
             </p>

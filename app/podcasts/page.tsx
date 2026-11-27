@@ -50,14 +50,14 @@ export default function Podcasts() {
       <section className="podcast-hero">
         <div className="media-wrap media-split">
           <div>
-            <Label>On the record / Pure Reality With Udit</Label>
-            <h1>
+            <h1 className="media-label">Pure Reality With Udit — The Podcast</h1>
+            <h2 className="podcast-hero-title">
               Real people.
               <br />
               Real stories.
               <br />
               <em>Pure Reality.</em>
-            </h1>
+            </h2>
             <p className="media-copy">
               Behind every success story are chapters you haven’t heard. Join
               Udit and his guests for candid conversations about life, business

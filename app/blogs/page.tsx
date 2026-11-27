@@ -10,6 +10,10 @@ import { BlogSearch } from "@/components/blogs/blog-search";
 import { BlogListingSkeleton } from "@/components/blogs/blog-skeleton";
 import { Closing } from "@/components/media/shared";
 import "./blogs.css";
+
+// Work around the Next.js 16.4.6 static-shell validator invariant.
+export const instant = false;
+
 type Params = Promise<Record<string, string | string[] | undefined>>;
 const first = (value: string | string[] | undefined) =>
   Array.isArray(value) ? value[0] : value;
@@ -57,15 +61,13 @@ export default function BlogsPage({ searchParams }: { searchParams: Params }) {
   return (
     <div className="blog-page">
       <header className="blog-hero media-wrap">
-        <p className="media-label">
-          <span className="blog-label-dot" /> Blogs & insights
-        </p>
+        <h1 className="media-label">PR Insights & Perspectives from Dubai</h1>
         <div className="blog-hero-row">
-          <h1>
+          <h2>
             Behind the story.
             <br />
             <em>Ahead of the curve.</em>
-          </h1>
+          </h2>
           <div className="blog-hero-intro">
             <p>
               Fresh thinking on reputation, culture and the conversations that

@@ -3,7 +3,7 @@ import type { CaseStudyStory } from "./story-types";
 export const centurionStory: CaseStudyStory = {
   theme: "alliance",
   hero: "immersive",
-  heroLines: ["Building visibility for", "Centurion Properties"],
+  heroLines: ["Centurion Properties:", "UAE Real Estate PR Case Study"],
   heroKicker: "UAE real estate / Corporate communications",
   heroImage: {
     src: "/images/case-studies/centurion/dubai-skyline.webp",

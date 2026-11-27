@@ -34,7 +34,7 @@ export function Header() {
             alt="Media Mantra Consulting"
             width={135}
             height={95}
-            priority
+            loading="eager"
             className="h-14 w-auto"
           />
         </Link>

@@ -15,17 +15,16 @@ export default function ServicesPage() {
     <div>
       <section className="relative overflow-hidden bg-[#c9eae2] py-20 md:py-28">
         <div className="relative z-10 mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)]">
-          <p className="mb-9 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[.13em] text-teal">
-            <span className="h-2 w-2 rounded-full bg-orange" /> What we do /
-            Media Mantra Consultancy FZCO
-          </p>
-          <h1 className="max-w-5xl text-[clamp(4rem,9vw,9rem)] font-[650] leading-[.92] tracking-[-.075em]">
+          <h1 className="mb-9 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[.13em] text-teal">
+            PR &amp; Communication Services in Dubai
+          </h1>
+          <p className="max-w-5xl text-[clamp(4rem,9vw,9rem)] font-[650] leading-[.92] tracking-[-.075em]">
             Ideas that move.
             <br />
             <span className="font-[Georgia,'Times_New_Roman',serif] font-normal italic text-teal">
               Stories that stay.
             </span>
-          </h1>
+          </p>
           <div className="mt-16 flex flex-wrap items-end justify-between gap-8 border-t border-teal/25 pt-8">
             <p className="max-w-xl text-lg leading-8 md:text-xl">
               Looking for a communications partner that thinks like a founder

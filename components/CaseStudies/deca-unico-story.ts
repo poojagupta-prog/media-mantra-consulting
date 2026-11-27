@@ -2,7 +2,7 @@ import type { CaseStudyStory } from "./story-types";
 
 export const decaUnicoStory: CaseStudyStory = {
   theme: "alliance", hero: "immersive",
-  heroLines: ["Two perspectives.", "One shared", "direction."],
+  heroLines: ["DECA × UNICO:", "Dubai Partnership", "PR Case Study"],
   heroKicker: "DECA × UNICO / Partnership communications",
   heroImage: {
     src: "/images/case-studies/deca-unico/connected-residences.webp",

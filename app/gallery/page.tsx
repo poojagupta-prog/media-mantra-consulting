@@ -8,13 +8,13 @@ export default function Gallery() {
   return (
     <div className="media-page">
       <section className="media-wrap gallery-hero">
-        <Label>The visual notebook / Gallery</Label>
-        <h1>
+        <h1 className="media-label">Gallery:</h1>
+        <h2>
           Life between
           <br />
           <em>the headlines.</em>
           <span aria-hidden="true">↗</span>
-        </h1>
+        </h2>
         <div className="gallery-intro">
           <p>The places, people and perspectives that inspire a story.</p>
           <p className="media-copy">
@@ -40,8 +40,8 @@ export default function Gallery() {
             </h2>
           </div>
           <p className="media-copy">
-            A closer look at life at Media Mantra. Press play and step into
-            the story.
+            A closer look at life at Media Mantra. Press play and step into the
+            story.
           </p>
         </div>
         <GalleryGrid items={galleryVideos} compact />
@@ -56,9 +56,7 @@ export default function Gallery() {
           </h2>
         </div>
         <div>
-          <TextLink href="/case-studies">
-            Explore our projects
-          </TextLink>
+          <TextLink href="/case-studies">Explore our projects</TextLink>
           <TextLink href="/news-room">
             Read the original press coverage
           </TextLink>

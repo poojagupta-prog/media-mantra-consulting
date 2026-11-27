@@ -13,18 +13,26 @@ export function HeroSection() {
     >
       <div className="mx-auto w-[min(1440px,calc(100%-112px))] max-[768px]:w-[calc(100%-40px)]">
         <div className="grid grid-cols-[1.15fr_1fr] items-center gap-[clamp(40px,6vw,100px)] pt-[52px] pb-[66px] min-[1600px]:gap-[110px] max-[1101px]:gap-[35px] max-[1024px]:grid-cols-1 max-[768px]:pt-9 max-[768px]:pb-[45px] max-[768px]:gap-9">
-          <div className="relative z-2 [&_h1]:mt-[22px] [&_h1]:text-[clamp(60px,6.8vw,106px)] [&_h1]:font-semibold [&_h1]:leading-[.96] [&_h1]:tracking-[-.065em] [&_h1_span:first-of-type]:text-[#00777b] [&_h1_span:first-of-type]:font-normal max-[1101px]:[&_h1]:text-[clamp(54px,7vw,78px)] max-[768px]:[&_h1]:text-[clamp(44px,11.8vw,85px)]">
-            <h1 id="home-hero-title">
+          <div className="relative z-2">
+            <h1
+              id="home-hero-title"
+              className="font-mono text-[10px] leading-[1.6] tracking-[.13em] text-[#00777b] uppercase"
+            >
+              PR Agency in Dubai, UAE
+            </h1>
+            <h2
+              className="mt-[22px] text-[clamp(60px,6.8vw,106px)] leading-[.96] font-semibold tracking-[-.065em] max-[1101px]:text-[clamp(54px,7vw,78px)] max-[768px]:text-[clamp(44px,11.8vw,85px)]"
+            >
               Make your
               <br />
               next chapter
               <br />
-              <span className="font-[Georgia,'Times_New_Roman',serif] italic font-normal tracking-[-.065em]">
+              <span className="font-[Georgia,'Times_New_Roman',serif] font-normal tracking-[-.065em] text-[#00777b] italic">
                 impossible
               </span>
               <br />
               to ignore<span className="text-[#e96540]">.</span>
-            </h1>
+            </h2>
             <p className="mt-7 max-w-[450px] text-[15px] leading-[1.85] text-[#62635d] max-[768px]:mt-[23px] max-[768px]:text-sm">
               Media Mantra Consultancy FZCO is a PR agency in Dubai, UAE that
               gets ambitious brands talked about by the right people, in the

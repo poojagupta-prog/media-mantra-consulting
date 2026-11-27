@@ -2,7 +2,7 @@ import type { CaseStudyStory } from "./story-types";
 
 export const educationStory: CaseStudyStory = {
   theme: "academy", hero: "editorial",
-  heroLines: ["Learning opens doors.", "Stories open conversations."],
+  heroLines: ["Bradford International Alliance:", "Education PR Case Study"],
   heroKicker: "Bradford International Alliance / Education & professional skills",
   heroImage: {
     src: "/images/case-studies/education/learning-commons.webp",

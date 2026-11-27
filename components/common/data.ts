@@ -10,6 +10,7 @@ export const photos = {
 export const services = [
   {
     title: "Media Relations",
+    heading: "Media Relations Agency in Dubai",
     slug: "media-relations",
     text: "Our media relations put your story in front of the journalists and editors who shape the conversation. We build real relationships, pitch with relevance, and earn coverage that builds credibility instead of chasing headlines that fade by tomorrow.",
     icon: "↗",
@@ -25,6 +26,7 @@ export const services = [
   },
   {
     title: "Public Relations",
+    heading: "Public Relations Agency in Dubai",
     slug: "public-relations",
     text: "Public relations moves fast, and so do we. We build a voice your audience recognises, create content people actually want to share, and grow communities that talk back, so your brand stays part of the daily scroll.",
     icon: "✳",
@@ -40,6 +42,7 @@ export const services = [
   },
   {
     title: "Social & Digital Media",
+    heading: "Social Media & Digital PR in Dubai",
     slug: "social-digital-media",
     text: "Social Digital media moves fast, and so do we. We build a distinctive brand voice that resonates with your audience, create engaging content worth sharing, and nurture thriving communities that spark conversations. We make sure your brand stays relevant, connected, and always part of the daily scroll.",
     icon: "◎",
@@ -55,6 +58,7 @@ export const services = [
   },
   {
     title: "Event Management",
+    heading: "Event Management & Launch PR in Dubai",
     slug: "event-management",
     text: "Event management is about more than a venue and a guest list. We turn an occasion into an experience people remember, share and talk about long after it ends, from the first concept to the final goodbye.",
     icon: "⌘",
@@ -70,6 +74,7 @@ export const services = [
   },
   {
     title: "Reputation Building & Management",
+    heading: "Reputation & Crisis Management in Dubai",
     slug: "reputation-building-management",
     text: "Earn trust over time and navigate sensitive moments with perspective, preparation and care. We build your credibility steadily, keep an eye on what is being said about you and stay ready to respond when something goes wrong. A calm, clear reply early often saves months of repair later.",
     icon: "◇",
@@ -85,6 +90,7 @@ export const services = [
   },
   {
     title: "SEO & Performance Marketing",
+    heading: "SEO & Performance Marketing in Dubai",
     slug: "seo-performance-marketing",
     text: "Help the right people find you, then turn attention into measurable action. We improve how you show up in search, run paid campaigns against clear goals and report honestly on what the spend actually brought in. What works gets more budget, and what doesn’t gets fixed or dropped.",
     icon: "↗",
@@ -100,6 +106,7 @@ export const services = [
   },
   {
     title: "Podcast",
+    heading: "Podcast Production Services in Dubai",
     slug: "podcast",
     text: "Podcast production  gives your ideas a voice people choose to listen to. We shape the show concept, handle recording and editing, and distribute it widely, so your brand earns long-term attention through real conversations.",
     icon: "◉",
@@ -115,6 +122,7 @@ export const services = [
   },
   {
     title: "Content Marketing",
+    heading: "Content Marketing Agency in Dubai",
     slug: "content-marketing",
     text: "Content marketing works when it's useful, distinctive and honest. We create articles, stories and campaign content that draw people in and keep your brand in the conversation, long after the first click.",
     icon: "✦",
@@ -130,6 +138,7 @@ export const services = [
   },
   {
     title: "Strategic Content Planning",
+    heading: "Content Strategy & Planning in Dubai",
     slug: "strategic-content-planning",
     text: "A good story needs a plan behind it. Our content strategy maps your audience, your key themes and your publishing calendar, so every message has a purpose and every post moves your business a step forward.",
     icon: "▤",
@@ -145,6 +154,7 @@ export const services = [
   },
   {
     title: "Brand Elevation",
+    heading: "Brand Positioning & Elevation in Dubai",
     slug: "brand-elevation",
     text: "Brand elevation  starts by finding what makes you different. We sharpen your story, refine your positioning and increase your visibility, so your brand steps into its next chapter with confidence and presence.",
     icon: "✳",

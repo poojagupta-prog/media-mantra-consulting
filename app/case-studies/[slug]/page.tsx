@@ -20,6 +20,9 @@ import {
 import { StudyCard } from "@/components/CaseStudies/study-card";
 import "../stories.css";
 
+// Work around the Next.js 16.4.6 dev validator invariant on this route.
+export const instant = false;
+
 const articleSubjects: Record<string, string> = {
   "boat-middle-east-pr-campaign": "boAt Middle East",
   "atlys-uae-travel-technology-pr": "Atlys UAE",

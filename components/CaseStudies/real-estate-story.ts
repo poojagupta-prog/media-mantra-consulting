@@ -3,7 +3,7 @@ import type { CaseStudyStory } from "./story-types";
 export const realEstateStory: CaseStudyStory = {
   theme: "architecture",
   hero: "architectural",
-  heroLines: ["Places with", "presence."],
+  heroLines: ["UAE Real Estate PR:", "Six Developer Stories"],
   heroKicker: "Real estate / A portfolio of perspectives",
   heroImage: {
     src: "/images/case-studies/real-estate/waterfront-residences.webp",

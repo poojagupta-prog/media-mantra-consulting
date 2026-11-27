@@ -17,7 +17,7 @@ export const caseStudyStories: Record<string, CaseStudyStory> = {
   [boat.slug]: {
     theme: "electric",
     hero: "campaign",
-    heroLines: ["Making waves.", "Making", "headlines."],
+    heroLines: ["boAt Middle East:", "UAE Retail Expansion", "PR Case Study"],
     heroKicker: "boAt / Middle East",
     heroImage: {
       src: boat.image,
@@ -88,7 +88,7 @@ export const caseStudyStories: Record<string, CaseStudyStory> = {
   },
   [atlys.slug]: {
     theme: "journey", hero: "immersive",
-    heroLines: ["From visa complexity", "to a national", "conversation."],
+    heroLines: ["Atlys UAE:", "Travel Technology", "PR Case Study"],
     heroKicker: "Atlys / A journey in four chapters",
     heroImage: { src: atlys.image, alt: atlys.alt, caption: "Travel technology, seen through the traveller’s experience.", width: 1280, height: 720 },
     period: "United Arab Emirates / August–November 2025",
