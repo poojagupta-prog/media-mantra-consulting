@@ -2,7 +2,7 @@ import { BlogImage } from "@/components/blogs/blog-image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { PreparedBlog } from "@/lib/blogs/types";
-import { blogDate } from "@/lib/blogs/query";
+import { blogDate, formatBlogCategory } from "@/lib/blogs/query";
 export function BlogCard({
   blog,
   featured = false,
@@ -49,7 +49,7 @@ export function BlogCard({
                   Latest story <span aria-hidden="true">/</span>{" "}
                 </span>
               )}
-              {blog.category}
+              <span className="blog-category">{formatBlogCategory(blog.category)}</span>
             </p>
             <div className="blog-meta">
               {blog.author.name && <span>{blog.author.name}</span>}

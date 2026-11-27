@@ -1,12 +1,20 @@
 import type { BlogQuery, PreparedBlog } from "./types";
 export const PAGE_SIZE = 9;
+
+export function formatBlogCategory(category: string) {
+  return category.trim().toLowerCase().replace(
+    /(^|[\s&/-])(\p{L})/gu,
+    (_, separator, letter) => separator + letter.toUpperCase(),
+  );
+}
+
 export function queryBlogs(blogs: PreparedBlog[], query: BlogQuery) {
   const q = (query.q || "").trim().slice(0, 160);
-  const category = (query.category || "").trim().slice(0, 80);
+  const category = formatBlogCategory((query.category || "").trim().slice(0, 80));
   const terms = q.toLocaleLowerCase().split(/\s+/).filter(Boolean);
   const filtered = blogs.filter(
     (blog) =>
-      (!category || blog.category === category) &&
+      (!category || formatBlogCategory(blog.category) === category) &&
       terms.every((term) =>
         `${blog.title} ${blog.excerpt} ${blog.category} ${blog.tags.join(" ")}`
           .toLocaleLowerCase()

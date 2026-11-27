@@ -7,6 +7,10 @@
   color: var(--color-teal);
 }
 
+.blog-category {
+  text-transform: none;
+}
+
 .blog-hero {
   padding-block: 64px 54px;
 }

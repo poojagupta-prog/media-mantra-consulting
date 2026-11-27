@@ -8,7 +8,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getBlog, getBlogs, SITE_URL } from "@/lib/blogs/repository";
 import { blogImageSources, socialImageSize, type SocialCard } from "@/lib/blogs/social-image";
 import type { Blog } from "@/lib/blogs/types";
-import { blogDate } from "@/lib/blogs/query";
+import { blogDate, formatBlogCategory } from "@/lib/blogs/query";
 import { Breadcrumbs } from "@/components/common/breadcrumbs";
 import { Comments } from "@/components/blogs/comments";
 import { BlogCard } from "@/components/blogs/blog-card";
@@ -84,6 +84,7 @@ export default function BlogDetailPage(props: Props) {
 async function Article({ params }: Props) {
   const blog = await getBlog((await params).slug);
   if (!blog) notFound();
+  const category = formatBlogCategory(blog.category);
   const blogs = await getBlogs();
   const index = blogs.findIndex((item) => item.id === blog.id);
   const previous = blogs[index + 1];
@@ -92,8 +93,8 @@ async function Article({ params }: Props) {
     .filter((item) => item.id !== blog.id)
     .sort(
       (a, b) =>
-        Number(b.category === blog.category) -
-        Number(a.category === blog.category),
+        Number(formatBlogCategory(b.category) === category) -
+        Number(formatBlogCategory(a.category) === category),
     )
     .slice(0, 3);
   const url = blogCanonicalUrl(blog);
@@ -120,7 +121,7 @@ async function Article({ params }: Props) {
       : undefined,
     mainEntityOfPage: url,
     url,
-    articleSection: blog.category,
+    articleSection: category,
     keywords: blog.tags.join(", "),
     inLanguage: "en",
   };
@@ -147,7 +148,9 @@ async function Article({ params }: Props) {
         <Link className="blog-back" href="/blogs">
           <ArrowLeft size={16} /> Back to the journal
         </Link>
-        <p className="media-label">{blog.category} / Perspective</p>
+        <p className="media-label">
+          <span className="blog-category">{category}</span> / Perspective
+        </p>
         <h1>{blog.title}</h1>
         <div className="blog-article-byline">
           <span>

@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getBlogs, SITE_URL } from "@/lib/blogs/repository";
-import { listingUrl, queryBlogs, PAGE_SIZE } from "@/lib/blogs/query";
+import { formatBlogCategory, listingUrl, queryBlogs, PAGE_SIZE } from "@/lib/blogs/query";
 import { BlogCard } from "@/components/blogs/blog-card";
 import { BlogSearch } from "@/components/blogs/blog-search";
 import { BlogListingSkeleton } from "@/components/blogs/blog-skeleton";
@@ -88,7 +88,7 @@ export default function BlogsPage({ searchParams }: { searchParams: Params }) {
 }
 async function BlogListing({ searchParams }: { searchParams: Params }) {
   const { blogs, result } = await results(searchParams);
-  const categories = [...new Set(blogs.map((blog) => blog.category))].sort();
+  const categories = [...new Set(blogs.map((blog) => formatBlogCategory(blog.category)))].sort();
   const url = (page: number) =>
     listingUrl({ page: String(page), q: result.q, category: result.category });
   return (
