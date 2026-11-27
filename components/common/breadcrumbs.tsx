@@ -19,8 +19,7 @@ export function Breadcrumbs({
   const segments = pathname.split("/").filter(Boolean);
   const currentPath = `/${segments.join("/")}`;
 
-  if (currentPath === "/" || currentPath === "/pr-agency-in-dubai-uae")
-    return null;
+  if (currentPath === "/") return null;
 
   if (!article && /^\/blogs\/[^/]+$/.test(currentPath))
     return null;

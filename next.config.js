@@ -59,11 +59,17 @@ const nextConfig = {
           statusCode: 301,
         })),
       ),
-      ...["/pr-agencies-in-dubai", "/pr-agencies-in-dubai/"].map((source) => ({
-        source,
-        destination: "/pr-agency-in-dubai-uae",
-        statusCode: 301,
-      })),
+      ...[
+        "/pr-agencies-in-dubai",
+        "/pr-agencies-in-dubai-uae",
+        "/pr-agency-in-dubai-uae",
+      ].flatMap((path) =>
+        [path, `${path}/`].map((source) => ({
+          source,
+          destination: "/",
+          statusCode: 301,
+        })),
+      ),
       { source: "/:path+/", destination: "/:path+", permanent: true },
       { source: "/about", destination: "/about-us", permanent: true },
       {
